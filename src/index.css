@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-handwriting: 'Caveat', cursive;
+  --color-brand-purple: #6D28D9;
+  --color-brand-lavender: #A78BFA;
+  --color-brand-bg: #FAFAF9;
+  --color-brand-surface: #FFFFFF;
+  --color-brand-text: #18181B;
+  --color-brand-muted: #71717A;
+  --color-brand-border: #E4E4E7;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #FAFAF9;
+    color: #18181B;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom subtle animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-float-slow {
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}

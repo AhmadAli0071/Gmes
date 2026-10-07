@@ -1,0 +1,8 @@
+{
+  "name": "GEMS - Virtual Gifting Platform",
+  "description": "Make Every Moment a Gift. Create beautiful interactive digital gifts for special occasions and share them through a link.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
