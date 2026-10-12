@@ -30,7 +30,8 @@ const giftFields = {
 
 const createSchema = z.object({
   ...giftFields,
-  ownerToken: z.string().min(16).max(128).optional(),
+  // .nullish(): clients may send `ownerToken: null` when they have no device token yet.
+  ownerToken: z.string().min(16).max(128).nullish(),
 });
 
 const updateSchema = z
