@@ -11,24 +11,36 @@ import {
   Copy,
   Trash2,
   Gift,
-  ExternalLink,
 } from 'lucide-react';
 
 export const DashboardView: React.FC = () => {
   const {
     gifts,
-    setCurrentView,
+    startNewGift,
     editGift,
     duplicateGift,
     deleteGift,
     openRecipientView,
-    showToast,
     setJustCreatedGift,
   } = useApp();
+
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   const handleShareClick = (gift: GiftData) => {
     setJustCreatedGift(gift);
   };
+
+  const handleDelete = (gift: GiftData) => {
+    if (confirmDeleteId !== gift.id) {
+      setConfirmDeleteId(gift.id);
+      return;
+    }
+    setConfirmDeleteId(null);
+    deleteGift(gift.id);
+  };
+
+  // Own preview: don't count it as a recipient view.
+  const preview = (gift: GiftData) => openRecipientView(gift, { countView: false });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -44,7 +56,7 @@ export const DashboardView: React.FC = () => {
         </div>
 
         <button
-          onClick={() => setCurrentView('create')}
+          onClick={() => startNewGift()}
           className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer"
         >
           <Plus className="w-4 h-4" />
@@ -63,7 +75,7 @@ export const DashboardView: React.FC = () => {
             Create your first GEMS and send an unforgettable surprise.
           </p>
           <button
-            onClick={() => setCurrentView('create')}
+            onClick={() => startNewGift()}
             className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-xs cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-300" />
@@ -83,11 +95,20 @@ export const DashboardView: React.FC = () => {
               >
                 {/* Visual Present Card Artwork */}
                 <div
-                  className="h-44 relative flex items-center justify-center cursor-pointer overflow-hidden group"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open preview for ${gift.recipientName}`}
+                  className="h-44 relative flex items-center justify-center cursor-pointer overflow-hidden group focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#6D28D9]"
                   style={{
                     background: `radial-gradient(circle at 50% 50%, ${gift.boxColor}25 0%, #FFFFFF 85%)`,
                   }}
-                  onClick={() => openRecipientView(gift)}
+                  onClick={() => preview(gift)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      preview(gift);
+                    }
+                  }}
                 >
                   {/* Miniature 3D Gift Present */}
                   <div
@@ -138,10 +159,10 @@ export const DashboardView: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Direct Actions: Open, Share, Edit, Duplicate */}
-                  <div className="mt-5 pt-3 border-t border-zinc-100 grid grid-cols-4 gap-1 text-center text-xs">
+                  {/* Direct Actions: Open, Share, Edit, Duplicate, Delete */}
+                  <div className="mt-5 pt-3 border-t border-zinc-100 grid grid-cols-5 gap-1 text-center text-[11px]">
                     <button
-                      onClick={() => openRecipientView(gift)}
+                      onClick={() => preview(gift)}
                       className="py-1.5 px-1 rounded-lg text-zinc-700 hover:bg-zinc-100 font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer"
                       title="Open gift"
                     >
@@ -174,6 +195,25 @@ export const DashboardView: React.FC = () => {
                     >
                       <Copy className="w-3.5 h-3.5 text-zinc-500" />
                       <span>Copy</span>
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(gift)}
+                      onBlur={() => setConfirmDeleteId((id) => (id === gift.id ? null : id))}
+                      className={`py-1.5 px-1 rounded-lg font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer ${
+                        confirmDeleteId === gift.id
+                          ? 'bg-red-600 text-white'
+                          : 'text-zinc-700 hover:bg-zinc-100'
+                      }`}
+                      title={confirmDeleteId === gift.id ? 'Click again to confirm' : 'Delete gift'}
+                      aria-label={
+                        confirmDeleteId === gift.id
+                          ? `Confirm deleting gift for ${gift.recipientName}`
+                          : `Delete gift for ${gift.recipientName}`
+                      }
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>{confirmDeleteId === gift.id ? 'Sure?' : 'Delete'}</span>
                     </button>
                   </div>
                 </div>

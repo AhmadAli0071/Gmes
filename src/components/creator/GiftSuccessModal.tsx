@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import QRCode from 'qrcode';
 import { GiftData } from '../../types';
 import { useApp } from '../../context/AppContext';
 import {
@@ -22,8 +23,29 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
   const { showToast, openRecipientView, setCurrentView } = useApp();
   const [copied, setCopied] = useState(false);
   const [showQr, setShowQr] = useState(false);
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
-  const shareUrl = `${window.location.origin}/g/${gift.shareCode}`;
+  // Hash route — resolves inside the SPA, so the link actually opens the gift.
+  const shareUrl = `${window.location.origin}${window.location.pathname}#/g/${gift.shareCode}`;
+
+  useEffect(() => {
+    if (!showQr || qrDataUrl) return;
+    let cancelled = false;
+    QRCode.toDataURL(shareUrl, {
+      width: 320,
+      margin: 1,
+      color: { dark: '#18181B', light: '#FFFFFF' },
+    })
+      .then((url) => {
+        if (!cancelled) setQrDataUrl(url);
+      })
+      .catch(() => {
+        if (!cancelled) showToast('Could not generate a QR code for this link.', 'error');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [showQr, qrDataUrl, shareUrl, showToast]);
 
   const handleCopy = async () => {
     try {
@@ -32,7 +54,27 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
       showToast('Link copied to clipboard! Ready to send.');
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      showToast('Copied share link!');
+      try {
+        // Fallback for browsers/contexts without the async clipboard API.
+        const input = document.createElement('textarea');
+        input.value = shareUrl;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(input);
+        if (ok) {
+          setCopied(true);
+          showToast('Link copied to clipboard! Ready to send.');
+          setTimeout(() => setCopied(false), 2500);
+          return;
+        }
+      } catch {
+        /* fall through to the error toast */
+      }
+      showToast('Could not copy the link — please select and copy it manually.', 'error');
     }
   };
 
@@ -72,7 +114,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
         </button>
 
         {/* Celebration header */}
-        <div className="w-16 h-16 rounded-2xl bg-purple-100 text-[#6D28D9] flex items-center justify-center mx-auto mb-4 shadow-sm border border-purple-200">
+        <div className="w-16 h-16 rounded-2xl bg-[var(--mood-soft-strong)] text-[var(--mood-accent)] flex items-center justify-center mx-auto mb-4 shadow-sm border border-[var(--mood-border)]">
           <Sparkles className="w-8 h-8" />
         </div>
 
@@ -90,7 +132,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
           </div>
           <button
             onClick={handleCopy}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#6D28D9] text-white text-xs font-semibold rounded-xl hover:bg-[#5B21B6] transition-colors shrink-0 shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[var(--mood-accent)] text-white text-xs font-semibold rounded-xl hover:bg-[var(--mood-accent-hover)] transition-colors shrink-0 shadow-xs"
           >
             {copied ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
             <span>{copied ? 'Copied' : 'Copy'}</span>
@@ -122,50 +164,39 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
             onClick={() => setShowQr(!showQr)}
             className="inline-flex items-center gap-1.5 hover:text-zinc-900 transition-colors"
           >
-            <QrCode className="w-4 h-4 text-purple-600" />
+            <QrCode className="w-4 h-4 text-[var(--mood-strong)]" />
             <span>{showQr ? 'Hide QR Code' : 'View QR Code'}</span>
           </button>
 
           <button
             onClick={() => {
               onClose();
-              openRecipientView(gift);
+              // Own preview — don't inflate the recipient view counter.
+              openRecipientView(gift, { countView: false });
             }}
-            className="inline-flex items-center gap-1.5 text-[#6D28D9] font-semibold hover:underline"
+            className="inline-flex items-center gap-1.5 text-[var(--mood-accent)] font-semibold hover:underline"
           >
             <span>Test as Recipient</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        {/* QR Code view */}
+        {/* QR Code view — a real, scannable code encoding the share link */}
         {showQr && (
-          <div className="mt-4 p-4 bg-zinc-50 border border-zinc-200 rounded-2xl animate-in fade-in">
-            {/* SVG Simulated QR code with GEMS branding */}
-            <div className="w-40 h-40 mx-auto bg-white p-3 rounded-xl shadow-sm border border-zinc-200 flex flex-col items-center justify-center">
-              <svg viewBox="0 0 100 100" className="w-full h-full text-zinc-900 fill-current">
-                <rect x="5" y="5" width="25" height="25" fill="#18181B" />
-                <rect x="10" y="10" width="15" height="15" fill="#FFFFFF" />
-                <rect x="13" y="13" width="9" height="9" fill="#18181B" />
-                <rect x="70" y="5" width="25" height="25" fill="#18181B" />
-                <rect x="75" y="10" width="15" height="15" fill="#FFFFFF" />
-                <rect x="78" y="13" width="9" height="9" fill="#18181B" />
-                <rect x="5" y="70" width="25" height="25" fill="#18181B" />
-                <rect x="10" y="75" width="15" height="15" fill="#FFFFFF" />
-                <rect x="13" y="78" width="9" height="9" fill="#18181B" />
-                {/* Patterns */}
-                <rect x="36" y="8" width="8" height="8" fill="#6D28D9" />
-                <rect x="50" y="16" width="10" height="8" fill="#18181B" />
-                <rect x="36" y="36" width="14" height="14" fill="#6D28D9" />
-                <rect x="55" y="38" width="8" height="8" fill="#18181B" />
-                <rect x="70" y="45" width="12" height="12" fill="#18181B" />
-                <rect x="38" y="60" width="12" height="8" fill="#18181B" />
-                <rect x="58" y="68" width="8" height="14" fill="#6D28D9" />
-                <rect x="74" y="74" width="16" height="8" fill="#18181B" />
-              </svg>
+          <div className="mt-4 p-4 bg-zinc-50 border border-zinc-200 rounded-2xl animate-in fade-in duration-200">
+            <div className="w-40 h-40 mx-auto bg-white p-3 rounded-xl shadow-sm border border-zinc-200 flex items-center justify-center">
+              {qrDataUrl ? (
+                <img
+                  src={qrDataUrl}
+                  alt="QR code linking to this gift"
+                  className="w-full h-full"
+                />
+              ) : (
+                <span className="text-[11px] text-zinc-500 animate-pulse">Generating…</span>
+              )}
             </div>
             <p className="mt-2 text-[11px] text-zinc-500">
-              Scan with phone camera to instantly open gift
+              Scan with a phone camera to open the gift
             </p>
           </div>
         )}

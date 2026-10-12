@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Check, Sparkles, HelpCircle } from 'lucide-react';
+import { Check, Sparkles } from 'lucide-react';
+
+const PRO_MONTHLY = 12;
+const PRO_YEARLY_MONTHLY = 9.6;
 
 export const PricingView: React.FC = () => {
-  const { setCurrentView, showToast } = useApp();
+  const { openCreator, showToast } = useApp();
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
 
   const handleSelectPlan = (planName: string) => {
     if (planName === 'Free') {
-      setCurrentView('create');
-    } else {
-      showToast(`Selected ${planName}! Ready to build your gift.`);
-      setCurrentView('create');
+      openCreator();
+      return;
     }
+    showToast(
+      `${planName} selected — checkout isn't wired up yet, so you're on the free plan for now.`,
+      'info'
+    );
+    openCreator();
   };
+
+  const yearlyTotal = (PRO_YEARLY_MONTHLY * 12).toFixed(2);
+  const yearlySaving = ((PRO_MONTHLY - PRO_YEARLY_MONTHLY) * 12).toFixed(2);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -32,7 +41,9 @@ export const PricingView: React.FC = () => {
         {/* Monthly / Yearly Toggle */}
         <div className="mt-6 inline-flex items-center gap-2 p-1 bg-zinc-200/60 rounded-xl text-xs font-semibold">
           <button
+            type="button"
             onClick={() => setBillingCycle('monthly')}
+            aria-pressed={billingCycle === 'monthly'}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               billingCycle === 'monthly'
                 ? 'bg-white text-zinc-900 shadow-2xs'
@@ -42,7 +53,9 @@ export const PricingView: React.FC = () => {
             Monthly
           </button>
           <button
+            type="button"
             onClick={() => setBillingCycle('yearly')}
+            aria-pressed={billingCycle === 'yearly'}
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               billingCycle === 'yearly'
                 ? 'bg-white text-zinc-900 shadow-2xs'
@@ -159,10 +172,15 @@ export const PricingView: React.FC = () => {
 
             <div className="mt-6 flex items-baseline gap-1 font-mono">
               <span className="text-4xl font-extrabold text-zinc-900">
-                {billingCycle === 'monthly' ? '$12' : '$9.60'}
+                ${billingCycle === 'monthly' ? PRO_MONTHLY : PRO_YEARLY_MONTHLY}
               </span>
               <span className="text-xs text-zinc-500">/ month</span>
             </div>
+            <p className="mt-1.5 text-xs text-zinc-500">
+              {billingCycle === 'monthly'
+                ? 'Billed monthly, cancel anytime'
+                : `Billed $${yearlyTotal} once a year — saves $${yearlySaving}`}
+            </p>
 
             <ul className="mt-8 space-y-3 text-xs text-zinc-600">
               <li className="flex items-center gap-2.5 font-medium text-zinc-800">

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { Sparkles, ArrowRight, Smartphone, ShieldCheck, Heart, Zap, Globe, MessageSquare } from 'lucide-react';
+import { Sparkles, Smartphone, ShieldCheck, Zap } from 'lucide-react';
 
 export const HowItWorksView: React.FC = () => {
-  const { setCurrentView } = useApp();
+  const { openCreator } = useApp();
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -35,7 +35,7 @@ export const HowItWorksView: React.FC = () => {
               Every GEMS template is designed around an emotion — from cozy Christmas hearths with gentle snowfall to electric birthday confetti and candlelit romance. Pick what speaks to you.
             </p>
             <div className="mt-4 flex items-center gap-4 text-xs text-zinc-500 font-medium">
-              <span>· 8+ Event Themes</span>
+              <span>· 12 Event Themes</span>
               <span>· Bespoke Color Palettes</span>
               <span>· Ambient Audio Tracks</span>
             </div>
@@ -52,12 +52,12 @@ export const HowItWorksView: React.FC = () => {
           <div className="md:col-span-8">
             <h3 className="text-2xl font-bold text-zinc-900">Make It Truly Personal</h3>
             <p className="mt-2 text-sm text-zinc-600 leading-relaxed">
-              Write your heartfelt note, or let our AI writing companion assist with tones from heartfelt to playful banter. Attach your favorite photo memories and record an audio greeting.
+              Write your heartfelt note, or use the built-in message helper for tones from heartfelt to playful banter. Attach your favorite photo memories and record an audio greeting.
             </p>
             <div className="mt-4 flex items-center gap-4 text-xs text-zinc-500 font-medium">
-              <span>· AI Writing Helper</span>
+              <span>· Message Helper</span>
               <span>· Photo Carousel</span>
-              <span>· 30-Second Voice Notes</span>
+              <span>· 60-Second Voice Notes</span>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@ export const HowItWorksView: React.FC = () => {
       {/* CTA Bottom */}
       <div className="mt-16 text-center">
         <button
-          onClick={() => setCurrentView('create')}
+          onClick={() => openCreator()}
           className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-md transition-all transform hover:scale-105"
         >
           <Sparkles className="w-4 h-4 text-amber-300" />

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { BrandLogo } from '../common/BrandLogo';
-import { X, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
   const { isAuthModalOpen, setIsAuthModalOpen, setUser, showToast } = useApp();
@@ -9,6 +9,18 @@ export const AuthModal: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isAuthModalOpen) return undefined;
+    const firstField = panelRef.current?.querySelector<HTMLElement>('input');
+    firstField?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsAuthModalOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isAuthModalOpen, setIsAuthModalOpen]);
 
   if (!isAuthModalOpen) return null;
 
@@ -36,19 +48,31 @@ export const AuthModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in">
-      <div className="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs animate-in fade-in"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) setIsAuthModalOpen(false);
+      }}
+    >
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="auth-modal-title"
+        className="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[calc(100vh-2rem)] overflow-y-auto"
+      >
         <button
+          type="button"
           onClick={() => setIsAuthModalOpen(false)}
           className="absolute top-5 right-5 p-1.5 text-zinc-400 hover:text-zinc-700 transition-colors"
-          aria-label="Close"
+          aria-label="Close sign in dialog"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
 
         <div className="text-center mb-6">
           <BrandLogo size="md" className="justify-center mb-3" />
-          <h2 className="text-xl font-extrabold text-zinc-900 tracking-tight">
+          <h2 id="auth-modal-title" className="text-xl font-extrabold text-zinc-900 tracking-tight">
             {mode === 'login' ? 'Welcome Back' : 'Create Your GEMS Account'}
           </h2>
           <p className="mt-1 text-xs text-zinc-500">
@@ -98,11 +122,16 @@ export const AuthModal: React.FC = () => {
         <form onSubmit={handleSubmit} className="space-y-3">
           {mode === 'signup' && (
             <div>
-              <label className="block text-[11px] font-bold text-zinc-700 uppercase mb-1">
+              <label
+                htmlFor="auth-name"
+                className="block text-[11px] font-bold text-zinc-700 uppercase mb-1"
+              >
                 Name
               </label>
               <input
+                id="auth-name"
                 type="text"
+                autoComplete="name"
                 placeholder="Ahmad Ali"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -112,12 +141,17 @@ export const AuthModal: React.FC = () => {
           )}
 
           <div>
-            <label className="block text-[11px] font-bold text-zinc-700 uppercase mb-1">
+            <label
+              htmlFor="auth-email"
+              className="block text-[11px] font-bold text-zinc-700 uppercase mb-1"
+            >
               Email
             </label>
             <input
+              id="auth-email"
               type="email"
               required
+              autoComplete="email"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -126,12 +160,18 @@ export const AuthModal: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-[11px] font-bold text-zinc-700 uppercase mb-1">
+            <label
+              htmlFor="auth-password"
+              className="block text-[11px] font-bold text-zinc-700 uppercase mb-1"
+            >
               Password
             </label>
             <input
+              id="auth-password"
               type="password"
               required
+              minLength={6}
+              autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

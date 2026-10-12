@@ -3,12 +3,15 @@ import React from 'react';
 interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg';
   showWordmark?: boolean;
+  /** Renders the wordmark in white for dark surfaces. */
+  light?: boolean;
   className?: string;
 }
 
 export const BrandLogo: React.FC<BrandLogoProps> = ({
   size = 'md',
   showWordmark = true,
+  light = false,
   className = '',
 }) => {
   const iconDimensions = {
@@ -37,7 +40,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           <path
             d="M8 4L24 4L30 11L16 28L2 11L8 4Z"
             fill="url(#gem_grad)"
-            stroke="#5B21B6"
+            stroke={light ? '#DDD6FE' : '#5B21B6'}
             strokeWidth="1.5"
             strokeLinejoin="round"
           />
@@ -73,7 +76,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
       </div>
 
       {showWordmark && (
-        <span className={`${textSizes} text-[#18181B] font-extrabold tracking-tight`}>
+        <span
+          className={`${textSizes} font-extrabold tracking-tight ${
+            light ? 'text-white' : 'text-[#18181B]'
+          }`}
+        >
           GEMS
         </span>
       )}

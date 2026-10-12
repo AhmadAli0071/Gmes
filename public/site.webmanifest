@@ -1,0 +1,24 @@
+{
+  "name": "GEMS — Send a Virtual Gift Online",
+  "short_name": "GEMS",
+  "description": "Create a personalized digital gift box with photos, a voice note and your message, then share it as one link.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#120C33",
+  "theme_color": "#120C33",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

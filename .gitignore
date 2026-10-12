@@ -6,3 +6,9 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# local-only / credentials / server runtime data
+vps.md
+.data/
+uploads/
+gift-box-reveal-react.zip

@@ -1,34 +1,72 @@
-import React from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { AppProvider, useApp } from './context/AppContext';
+import { injectContentSchema, usePageMeta } from './lib/seo';
 import { Navbar } from './components/navigation/Navbar';
 import { Toast } from './components/common/Toast';
 import { AuthModal } from './components/auth/AuthModal';
+import { GiftSuccessModal } from './components/creator/GiftSuccessModal';
 
 // Views
 import { HomeView } from './components/home/HomeView';
-import { GiftCreator } from './components/creator/GiftCreator';
-import { ExploreView } from './components/explore/ExploreView';
-import { HowItWorksView } from './components/info/HowItWorksView';
-import { PricingView } from './components/pricing/PricingView';
-import { DashboardView } from './components/dashboard/DashboardView';
 import { RecipientView } from './components/recipient/RecipientView';
-import { AdminPanel } from './components/admin/AdminPanel';
-import { SettingsView } from './components/settings/SettingsView';
+
+// Every screen after the landing page is split out so the home page — the one
+// that has to rank — ships the smallest possible bundle.
+const GiftCreator = lazy(() =>
+  import('./components/creator/GiftCreator').then((m) => ({ default: m.GiftCreator }))
+);
+const ExploreView = lazy(() =>
+  import('./components/explore/ExploreView').then((m) => ({ default: m.ExploreView }))
+);
+const HowItWorksView = lazy(() =>
+  import('./components/info/HowItWorksView').then((m) => ({ default: m.HowItWorksView }))
+);
+const PricingView = lazy(() =>
+  import('./components/pricing/PricingView').then((m) => ({ default: m.PricingView }))
+);
+const DashboardView = lazy(() =>
+  import('./components/dashboard/DashboardView').then((m) => ({ default: m.DashboardView }))
+);
+const AdminPanel = lazy(() =>
+  import('./components/admin/AdminPanel').then((m) => ({ default: m.AdminPanel }))
+);
+const SettingsView = lazy(() =>
+  import('./components/settings/SettingsView').then((m) => ({ default: m.SettingsView }))
+);
+
+const ViewFallback = () => (
+  <div className="min-h-[60vh] grid place-items-center" role="status">
+    <div className="flex flex-col items-center gap-3">
+      <span className="h-8 w-8 rounded-full border-2 border-violet-200 border-t-[#6D28D9] animate-spin" />
+      <span className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">
+        Loading
+      </span>
+    </div>
+  </div>
+);
 
 const MainRouter: React.FC = () => {
   const { currentView } = useApp();
 
-  // If in recipient mode, show pure full-screen distraction-free unboxing without standard navigation
+  // Head tags follow the route: title, description, canonical and OG tags.
+  usePageMeta(currentView);
+
+  useEffect(() => {
+    injectContentSchema();
+  }, []);
+
+  // Recipient mode: pure full-screen distraction-free unboxing, no site chrome.
   if (currentView === 'recipient') {
     return <RecipientView />;
   }
 
-  // If in creator mode, show dedicated full-screen creation experience (no website navbar)
+  // Creator mode: dedicated full-screen creation experience (no website navbar).
   if (currentView === 'create') {
     return (
       <div className="min-h-screen flex flex-col bg-[#FAFAF9] text-[#18181B]">
-        <GiftCreator />
-        <Toast />
+        <Suspense fallback={<ViewFallback />}>
+          <GiftCreator />
+        </Suspense>
       </div>
     );
   }
@@ -38,19 +76,37 @@ const MainRouter: React.FC = () => {
       <Navbar />
 
       <main className="flex-1">
-        {currentView === 'home' && <HomeView />}
-        {currentView === 'explore' && <ExploreView />}
-        {currentView === 'how-it-works' && <HowItWorksView />}
-        {currentView === 'pricing' && <PricingView />}
-        {currentView === 'dashboard' && <DashboardView />}
-        {currentView === 'admin' && <AdminPanel />}
-        {currentView === 'settings' && <SettingsView />}
+        <Suspense fallback={<ViewFallback />}>
+          {currentView === 'home' && <HomeView />}
+          {currentView === 'explore' && <ExploreView />}
+          {currentView === 'how-it-works' && <HowItWorksView />}
+          {currentView === 'pricing' && <PricingView />}
+          {currentView === 'dashboard' && <DashboardView />}
+          {currentView === 'admin' && <AdminPanel />}
+          {currentView === 'settings' && <SettingsView />}
+        </Suspense>
       </main>
 
-      {/* Global Modals & Notifications */}
       <AuthModal />
-      <Toast />
     </div>
+  );
+};
+
+/** Toasts + the post-create share dialog live above every screen, including
+ *  the dashboard "Share" action and the recipient preview. */
+const GlobalOverlays: React.FC = () => {
+  const { justCreatedGift, setJustCreatedGift } = useApp();
+
+  return (
+    <>
+      <Toast />
+      {justCreatedGift && (
+        <GiftSuccessModal
+          gift={justCreatedGift}
+          onClose={() => setJustCreatedGift(null)}
+        />
+      )}
+    </>
   );
 };
 
@@ -58,6 +114,7 @@ export default function App() {
   return (
     <AppProvider>
       <MainRouter />
+      <GlobalOverlays />
     </AppProvider>
   );
 }

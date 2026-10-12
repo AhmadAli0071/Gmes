@@ -92,26 +92,3 @@ export const AI_MESSAGE_TEMPLATES = {
     'Wishing you endless sunshine, laughter, and your favorite coffee today. Cheers to you!',
   ],
 };
-
-export const SAMPLE_PHOTO_PRESETS = [
-  {
-    id: 'p1',
-    name: 'Celebration Confetti',
-    url: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80',
-  },
-  {
-    id: 'p2',
-    name: 'Champagne Cheers',
-    url: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=600&auto=format&fit=crop&q=80',
-  },
-  {
-    id: 'p3',
-    name: 'Cozy Holiday Gathering',
-    url: 'https://images.unsplash.com/photo-1543258103-a62bd9610bd6?w=600&auto=format&fit=crop&q=80',
-  },
-  {
-    id: 'p4',
-    name: 'Golden Sunset Glow',
-    url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80',
-  },
-];

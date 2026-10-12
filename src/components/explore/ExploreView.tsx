@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { TEMPLATES } from '../../data/templates';
+import { EVENTS } from '../../data/events';
 import { GiftTemplate, EventSlug } from '../../types';
-import { Search, Sparkles } from 'lucide-react';
+import { Search, Sparkles, SearchX } from 'lucide-react';
 
 export const ExploreView: React.FC = () => {
-  const { setCurrentDraft, setCurrentView } = useApp();
+  const { applyTemplate } = useApp();
   const [search, setSearch] = useState('');
   const [selectedOccasion, setSelectedOccasion] = useState<EventSlug | 'all'>('all');
 
-  const occasions: { slug: EventSlug; label: string; emoji: string }[] = [
-    { slug: 'christmas', label: 'Christmas', emoji: '🎄' },
-    { slug: 'birthday', label: 'Birthday', emoji: '🎂' },
-    { slug: 'valentines', label: "Valentine's", emoji: '❤️' },
-    { slug: 'halloween', label: 'Halloween', emoji: '🎃' },
-    { slug: 'anniversary', label: 'Anniversary', emoji: '💍' },
-    { slug: 'graduation', label: 'Graduation', emoji: '🎓' },
-    { slug: 'mothers-day', label: "Mother's Day", emoji: '💐' },
-  ];
+  // Every occasion the platform ships with — kept in sync with `EVENTS`.
+  const occasions: { slug: EventSlug; label: string; emoji: string }[] = EVENTS.map((e) => ({
+    slug: e.slug,
+    label: e.name,
+    emoji: e.emoji,
+  }));
 
   const filtered = TEMPLATES.filter((tpl) => {
     const matchesOccasion = selectedOccasion === 'all' || tpl.eventSlug === selectedOccasion;
@@ -28,20 +26,13 @@ export const ExploreView: React.FC = () => {
     return matchesOccasion && matchesSearch;
   });
 
-  const handleUse = (tpl: GiftTemplate) => {
-    setCurrentDraft({
-      templateId: tpl.id,
-      eventSlug: tpl.eventSlug,
-      mood: tpl.mood,
-      fontStyle: tpl.fontStyle,
-      musicTrack: tpl.musicTrack,
-      animationEffect: tpl.animationEffect,
-      boxColor: tpl.boxColor,
-      ribbonColor: tpl.ribbonColor,
-    });
-    setCurrentView('create');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleUse = (tpl: GiftTemplate) => applyTemplate(tpl);
+
+  const clearFilters = () => {
+    setSearch('');
+    setSelectedOccasion('all');
   };
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -59,9 +50,13 @@ export const ExploreView: React.FC = () => {
       <div className="mt-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Search */}
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" aria-hidden />
+          <label htmlFor="template-search" className="sr-only">
+            Search gifts
+          </label>
           <input
-            type="text"
+            id="template-search"
+            type="search"
             placeholder="Search gifts..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -99,17 +94,39 @@ export const ExploreView: React.FC = () => {
       </div>
 
       {/* Visual Template Grid (Large visuals, minimal text) */}
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filtered.map((tpl) => (
-          <div
-            key={tpl.id}
-            onClick={() => handleUse(tpl)}
-            className="group bg-white rounded-3xl border border-[#E4E4E7] shadow-xs hover:border-purple-300 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between"
+      {filtered.length === 0 ? (
+        <div className="mt-16 mx-auto max-w-sm text-center bg-white rounded-3xl border border-[#E4E4E7] p-10 shadow-xs">
+          <SearchX className="w-8 h-8 text-zinc-300 mx-auto" aria-hidden />
+          <h3 className="mt-3 text-base font-bold text-zinc-900">No gifts match that</h3>
+          <p className="mt-1 text-xs text-zinc-500">
+            Try a different search term or clear the occasion filter.
+          </p>
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="mt-4 px-4 py-2 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl cursor-pointer"
           >
+            Clear filters
+          </button>
+        </div>
+      ) : (
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filtered.map((tpl) => (
+            <button
+              key={tpl.id}
+              type="button"
+              onClick={() => handleUse(tpl)}
+              aria-label={`Use template ${tpl.title}`}
+              className="group bg-white rounded-3xl border border-[#E4E4E7] shadow-xs hover:border-purple-300 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between text-left w-full"
+            >
             <div className="relative aspect-4/3 overflow-hidden bg-zinc-100">
               <img
                 src={tpl.coverImage}
-                alt={tpl.title}
+                alt={`${tpl.title} — digital gift design`}
+                loading="lazy"
+                decoding="async"
+                width={640}
+                height={480}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -139,15 +156,16 @@ export const ExploreView: React.FC = () => {
               </div>
 
               <div className="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between text-xs">
-                <span className="text-zinc-400 capitalize">{tpl.vibe}</span>
+                <span className="text-zinc-500 capitalize">{tpl.vibe}</span>
                 <span className="font-semibold text-[#6D28D9] group-hover:translate-x-0.5 transition-transform">
                   Use this gift →
                 </span>
               </div>
             </div>
-          </div>
+          </button>
         ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

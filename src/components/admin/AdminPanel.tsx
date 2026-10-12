@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { EventTheme, EventSlug } from '../../types';
-import { TEMPLATES } from '../../data/templates';
-import {
-  Calendar,
-  Sparkles,
-  Palette,
-  Check,
-  Edit2,
-  Eye,
-  Sliders,
-  ShieldAlert,
-} from 'lucide-react';
+import { Sliders } from 'lucide-react';
+
+const DATE_PATTERN = /^\d{2}-\d{2}$/;
+
+const isValidMonthDay = (value: string) => {
+  if (!DATE_PATTERN.test(value)) return false;
+  const [month, day] = value.split('-').map((n) => parseInt(n, 10));
+  if (month < 1 || month > 12) return false;
+  return day >= 1 && day <= 31;
+};
 
 export const AdminPanel: React.FC = () => {
   const {
@@ -19,7 +18,6 @@ export const AdminPanel: React.FC = () => {
     selectedEventSlug,
     setSelectedEventSlug,
     updateEventTheme,
-    gifts,
     showToast,
   } = useApp();
 
@@ -35,9 +33,20 @@ export const AdminPanel: React.FC = () => {
     if (!editingEventId) return;
     const existing = allEvents.find((e) => e.id === editingEventId);
     if (!existing) return;
+    if (!isValidMonthDay(formData.startDate || '') || !isValidMonthDay(formData.endDate || '')) {
+      showToast('Dates must be MM-DD, e.g. 10-01.', 'error');
+      return;
+    }
+    if (!formData.heroTitle?.trim()) {
+      showToast('Hero title cannot be empty.', 'error');
+      return;
+    }
     const updated: EventTheme = {
       ...existing,
       ...formData,
+      startDate: formData.startDate!,
+      endDate: formData.endDate!,
+      heroTitle: formData.heroTitle.trim(),
     } as EventTheme;
     updateEventTheme(updated);
     setEditingEventId(null);
@@ -85,6 +94,8 @@ export const AdminPanel: React.FC = () => {
           {allEvents.map((ev) => (
             <button
               key={ev.id}
+              type="button"
+              aria-pressed={selectedEventSlug === ev.slug}
               onClick={() => handleSetActiveSeasonal(ev.slug)}
               className={`p-3 rounded-2xl border text-xs text-left transition-all flex flex-col justify-between ${
                 selectedEventSlug === ev.slug
@@ -92,7 +103,9 @@ export const AdminPanel: React.FC = () => {
                   : 'border-[#E4E4E7] hover:border-zinc-300 bg-zinc-50/50 text-zinc-700'
               }`}
             >
-              <span className="text-xl mb-1">{ev.emoji}</span>
+              <span className="text-xl mb-1" aria-hidden="true">
+                {ev.emoji}
+              </span>
               <span className="truncate">{ev.name}</span>
               <span className="text-[10px] text-zinc-400 font-normal mt-1">
                 {ev.startDate} – {ev.endDate}
@@ -128,9 +141,13 @@ export const AdminPanel: React.FC = () => {
 
                 return (
                   <tr key={ev.id} className="hover:bg-zinc-50/50 transition-colors">
-                    <td className="py-3.5 px-4 font-semibold text-zinc-900 flex items-center gap-2">
-                      <span className="text-base">{ev.emoji}</span>
-                      <span>{ev.name}</span>
+                    <td className="py-3.5 px-4 font-semibold text-zinc-900">
+                      <span className="flex items-center gap-2">
+                        <span className="text-base" aria-hidden="true">
+                          {ev.emoji}
+                        </span>
+                        <span>{ev.name}</span>
+                      </span>
                     </td>
 
                     <td className="py-3.5 px-4 text-zinc-600 font-mono">
@@ -138,15 +155,21 @@ export const AdminPanel: React.FC = () => {
                         <div className="flex items-center gap-1">
                           <input
                             type="text"
+                            inputMode="numeric"
+                            aria-label={`${ev.name} start date (MM-DD)`}
+                            placeholder="MM-DD"
                             value={formData.startDate || ''}
                             onChange={(e) =>
                               setFormData((prev) => ({ ...prev, startDate: e.target.value }))
                             }
                             className="w-16 p-1 border rounded text-xs"
                           />
-                          <span>–</span>
+                          <span aria-hidden="true">–</span>
                           <input
                             type="text"
+                            inputMode="numeric"
+                            aria-label={`${ev.name} end date (MM-DD)`}
+                            placeholder="MM-DD"
                             value={formData.endDate || ''}
                             onChange={(e) =>
                               setFormData((prev) => ({ ...prev, endDate: e.target.value }))
@@ -166,19 +189,23 @@ export const AdminPanel: React.FC = () => {
                         <div className="flex items-center gap-1.5">
                           <input
                             type="color"
+                            aria-label={`${ev.name} primary accent colour`}
                             value={formData.primaryAccent || ev.primaryAccent}
                             onChange={(e) =>
                               setFormData((prev) => ({ ...prev, primaryAccent: e.target.value }))
                             }
                             className="w-6 h-6 rounded cursor-pointer border"
                           />
-                          <span className="font-mono text-[11px]">{formData.primaryAccent}</span>
+                          <span className="font-mono text-[11px]">
+                            {formData.primaryAccent || ev.primaryAccent}
+                          </span>
                         </div>
                       ) : (
                         <div className="flex items-center gap-2">
                           <span
                             className="w-4 h-4 rounded-full border border-black/10"
                             style={{ backgroundColor: ev.primaryAccent }}
+                            aria-hidden="true"
                           />
                           <span className="font-mono text-zinc-700">{ev.primaryAccent}</span>
                         </div>
@@ -189,6 +216,7 @@ export const AdminPanel: React.FC = () => {
                       {isEditing ? (
                         <input
                           type="text"
+                          aria-label={`${ev.name} hero title`}
                           value={formData.heroTitle || ''}
                           onChange={(e) =>
                             setFormData((prev) => ({ ...prev, heroTitle: e.target.value }))
@@ -204,12 +232,14 @@ export const AdminPanel: React.FC = () => {
                       {isEditing ? (
                         <div className="flex items-center justify-end gap-1.5">
                           <button
+                            type="button"
                             onClick={handleSaveEdit}
                             className="px-2.5 py-1 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
                           >
                             Save
                           </button>
                           <button
+                            type="button"
                             onClick={() => setEditingEventId(null)}
                             className="px-2 py-1 text-zinc-500 rounded-lg text-xs hover:bg-zinc-100"
                           >
@@ -218,6 +248,7 @@ export const AdminPanel: React.FC = () => {
                         </div>
                       ) : (
                         <button
+                          type="button"
                           onClick={() => handleStartEdit(ev)}
                           className="px-2.5 py-1 text-xs font-semibold text-[#6D28D9] hover:bg-purple-50 rounded-lg transition-colors"
                         >

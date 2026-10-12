@@ -243,40 +243,55 @@ export const EVENTS: EventTheme[] = [
   },
 ];
 
+/** Neutral, always-available fallback — never a seasonal event. */
+const FALLBACK_EVENT_ID = 'evt-other';
+
 export function getEventBySlug(slug: EventSlug | string): EventTheme {
   const match = EVENTS.find((e) => e.slug === slug);
-  return match || EVENTS[0];
+  if (match) return match;
+  return EVENTS.find((e) => e.id === FALLBACK_EVENT_ID) || EVENTS[EVENTS.length - 1];
+}
+
+/** `MM-DD` → a sortable ordinal (coarse, but enough for date-window maths). */
+function toOrdinal(monthDay: string): number {
+  const [m, d] = monthDay.split('-').map((n) => parseInt(n, 10) || 1);
+  return m * 31 + (d || 1);
 }
 
 /**
- * Determines current seasonal event based on current month/day or defaults to Halloween / Christmas
+ * True when `date` falls inside the event's `startDate`..`endDate` window.
+ * Windows that wrap the new year (end < start) are supported.
+ */
+function isInWindow(date: Date, startDate: string, endDate: string): boolean {
+  const current = (date.getMonth() + 1) * 31 + date.getDate();
+  const start = toOrdinal(startDate);
+  const end = toOrdinal(endDate);
+  if (start <= end) return current >= start && current <= end;
+  return current >= start || current <= end;
+}
+
+function windowLength(startDate: string, endDate: string): number {
+  const length = toOrdinal(endDate) - toOrdinal(startDate);
+  return length < 0 ? length + 366 : length;
+}
+
+/**
+ * The seasonal event for today, derived from each event's declared date
+ * window. When several windows overlap, the most specific (shortest) one
+ * wins — so year-round occasions like Birthday/Anniversary never shadow
+ * Halloween or Valentine's. Falls back to the neutral "Other" theme.
  */
 export function getCurrentSeasonalEvent(): EventTheme {
   const now = new Date();
-  const month = now.getMonth() + 1; // 1-12
-  const day = now.getDate();
+  const candidates = EVENTS.filter((e) => isInWindow(now, e.startDate, e.endDate));
 
-  // If October -> Halloween
-  if (month === 10) {
-    return EVENTS.find((e) => e.slug === 'halloween') || EVENTS[0];
-  }
-  // If November or December -> Christmas
-  if (month === 11 || month === 12) {
-    return EVENTS.find((e) => e.slug === 'christmas') || EVENTS[1];
-  }
-  // If February -> Valentine's
-  if (month === 2) {
-    return EVENTS.find((e) => e.slug === 'valentines') || EVENTS[2];
-  }
-  // If May -> Mother's Day
-  if (month === 5) {
-    return EVENTS.find((e) => e.slug === 'mothers-day') || EVENTS[4];
-  }
-  // If June -> Father's Day or Graduation
-  if (month === 6) {
-    return EVENTS.find((e) => e.slug === 'fathers-day') || EVENTS[5];
+  if (candidates.length > 0) {
+    return candidates.reduce((best, event) =>
+      windowLength(event.startDate, event.endDate) < windowLength(best.startDate, best.endDate)
+        ? event
+        : best
+    );
   }
 
-  // Default to Halloween as requested in prompt example or Birthday
-  return EVENTS.find((e) => e.slug === 'halloween') || EVENTS[0];
+  return getEventBySlug('other');
 }
