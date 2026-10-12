@@ -8,7 +8,23 @@ import {
   ViewRoute,
 } from '../types';
 import { EVENTS, getCurrentSeasonalEvent } from '../data/events';
-import { INITIAL_GIFTS } from '../data/mockGifts';
+import { ApiError, isAuthError } from '../lib/api';
+import {
+  createGift,
+  deleteGift as deleteGiftApi,
+  getGiftByCode,
+  listGifts,
+  recordGiftView,
+  updateGift,
+  type GiftPayload,
+} from '../services/gifts';
+import {
+  fetchMe,
+  login as loginApi,
+  logout as logoutApi,
+  register as registerApi,
+  updateMe,
+} from '../services/auth';
 
 interface ToastInfo {
   id: string;
@@ -28,21 +44,28 @@ interface AppContextType {
   setSelectedEventSlug: (slug: EventSlug) => void;
   activeEvent: EventTheme;
   updateEventTheme: (updated: EventTheme) => void;
-  // User Auth
+  // User Auth (real sessions, backed by the API)
   user: User | null;
+  authReady: boolean;
   setUser: (user: User | null) => void;
+  signIn: (mode: 'login' | 'signup', input: { name?: string; email: string; password: string }) => Promise<User>;
+  signOut: () => Promise<void>;
+  updateProfile: (patch: { name?: string; avatarUrl?: string | null }) => Promise<void>;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
-  // Gifts
+  // Gifts (API-backed)
   gifts: GiftData[];
+  giftsLoaded: boolean;
+  refreshGifts: () => Promise<void>;
   currentDraft: Partial<GiftData>;
   setCurrentDraft: React.Dispatch<React.SetStateAction<Partial<GiftData>>>;
-  saveCurrentGift: () => GiftData;
-  deleteGift: (id: string) => void;
-  duplicateGift: (id: string) => void;
+  saveCurrentGift: () => Promise<GiftData>;
+  deleteGift: (id: string) => Promise<void>;
+  duplicateGift: (id: string) => Promise<void>;
   editGift: (id: string) => void;
   // Recipient Mode
   recipientGift: GiftData | null;
+  recipientLoading: boolean;
   openRecipientView: (gift: GiftData, options?: { countView?: boolean }) => void;
   closeRecipientView: () => void;
   // Created Success Modal
@@ -91,56 +114,11 @@ function routeToHash(view: ViewRoute, giftCode?: string): string {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Persistence                                                                 */
+/* Preferences (small, device-local). Gift data itself lives on the server.    */
 /* -------------------------------------------------------------------------- */
 
-const STORAGE_KEY = 'gems_gifts';
 const EVENTS_STORAGE_KEY = 'gems_events';
 const SEASON_STORAGE_KEY = 'gems_season';
-
-function readStoredGifts(): GiftData[] {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return INITIAL_GIFTS;
-    const parsed = JSON.parse(saved);
-    return Array.isArray(parsed) && parsed.length ? parsed : INITIAL_GIFTS;
-  } catch {
-    return INITIAL_GIFTS;
-  }
-}
-
-/** Drop media from every gift so the records themselves still survive a quota error. */
-function stripMedia(gifts: GiftData[], keepOnePhoto: boolean): GiftData[] {
-  return gifts.map((g) => ({
-    ...g,
-    photos: keepOnePhoto ? (g.photos || []).slice(0, 1) : [],
-    voiceNoteUrl: undefined,
-    voiceNoteDuration: undefined,
-  }));
-}
-
-type PersistResult = 'full' | 'media-dropped' | 'metadata-only' | 'failed';
-
-function persistGifts(gifts: GiftData[]): PersistResult {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(gifts));
-    return 'full';
-  } catch {
-    /* quota exceeded — try a smaller payload */
-  }
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(stripMedia(gifts, true)));
-    return 'media-dropped';
-  } catch {
-    /* still too big */
-  }
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(stripMedia(gifts, false)));
-    return 'metadata-only';
-  } catch {
-    return 'failed';
-  }
-}
 
 /**
  * Admin console edits are merged back onto the built-in catalogue by id, so
@@ -194,6 +172,32 @@ function makeDraft(user: User | null, eventSlug: EventSlug): Partial<GiftData> {
   };
 }
 
+function buildPayload(draft: Partial<GiftData>): GiftPayload {
+  return {
+    recipientName: draft.recipientName?.trim() || 'Someone Special',
+    senderName: draft.senderName?.trim() || 'A Friend',
+    message:
+      draft.message?.trim() ||
+      'Wishing you endless joy, laughter, and sweet moments today and always!',
+    templateId: draft.templateId || 'tpl-nordic-wonder',
+    eventSlug: draft.eventSlug || 'other',
+    mood: draft.mood || 'magical',
+    fontStyle: draft.fontStyle || 'editorial',
+    musicTrack: draft.musicTrack || 'ambient',
+    animationEffect: draft.animationEffect || 'sparkles',
+    photos: draft.photos || [],
+    voiceNoteUrl: draft.voiceNoteUrl || null,
+    voiceNoteDuration: draft.voiceNoteDuration || 0,
+    videoUrl: draft.videoUrl || null,
+    boxColor: draft.boxColor || '#6D28D9',
+    ribbonColor: draft.ribbonColor || '#F59E0B',
+    status: draft.status === 'draft' ? 'draft' : 'published',
+  };
+}
+
+const errorMessage = (err: unknown, fallback: string): string =>
+  err instanceof ApiError ? err.message : fallback;
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [initialRoute] = useState(() => hashToRoute(window.location.hash));
   const initialSeason = getCurrentSeasonalEvent();
@@ -227,56 +231,110 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const activeEvent = allEvents.find((e) => e.slug === selectedEventSlug) || initialSeason;
 
-  // Mock User
-  const [user, setUser] = useState<User | null>({
-    id: 'u-1',
-    name: 'Ahmad Ali',
-    email: 'ahmad@gems.com',
-    plan: 'pro',
-  });
+  /* ---------------------------------- auth --------------------------------- */
+
+  const [user, setUserState] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
-  // User's Gifts list
-  const [gifts, setGifts] = useState<GiftData[]>(readStoredGifts);
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const me = await fetchMe();
+        if (alive) setUserState(me);
+      } catch {
+        if (alive) setUserState(null);
+      } finally {
+        if (alive) setAuthReady(true);
+      }
+    })();
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  /* --------------------------------- gifts --------------------------------- */
+
+  const [gifts, setGifts] = useState<GiftData[]>([]);
+  const [giftsLoaded, setGiftsLoaded] = useState(false);
+
+  const refreshGifts = useCallback(async () => {
+    try {
+      const list = await listGifts();
+      setGifts(list);
+    } catch (err) {
+      if (isAuthError(err)) setGifts([]);
+      // A transient network failure keeps whatever we already had on screen.
+    } finally {
+      setGiftsLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    void refreshGifts();
+  }, [refreshGifts]);
+
+  const signIn = useCallback(
+    async (
+      mode: 'login' | 'signup',
+      input: { name?: string; email: string; password: string }
+    ): Promise<User> => {
+      const next =
+        mode === 'signup'
+          ? await registerApi(input.name || '', input.email, input.password)
+          : await loginApi(input.email, input.password);
+      setUserState(next);
+      // Logging in claims the gifts this device created while signed out.
+      await refreshGifts();
+      return next;
+    },
+    [refreshGifts]
+  );
+
+  const signOut = useCallback(async () => {
+    try {
+      await logoutApi();
+    } catch {
+      /* the cookie may already be gone */
+    }
+    setUserState(null);
+    await refreshGifts();
+    showToast('Signed out', 'info');
+  }, [refreshGifts, showToast]);
+
+  const setUser = (next: User | null) => setUserState(next);
+
+  const updateProfile = useCallback(async (patch: { name?: string; avatarUrl?: string | null }) => {
+    try {
+      setUserState(await updateMe(patch));
+    } catch (err) {
+      showToast(errorMessage(err, 'Could not save your profile.'), 'error');
+      throw err;
+    }
+  }, [showToast]);
 
   const [currentView, setCurrentViewState] = useState<ViewRoute>(initialRoute.view);
-  const [recipientGift, setRecipientGift] = useState<GiftData | null>(() => {
-    if (initialRoute.view !== 'recipient' || !initialRoute.giftCode) return null;
-    return gifts.find((g) => g.shareCode === initialRoute.giftCode) || null;
-  });
+  const [recipientGift, setRecipientGift] = useState<GiftData | null>(null);
+  const [recipientLoading, setRecipientLoading] = useState(false);
 
   const currentViewRef = useRef(currentView);
   currentViewRef.current = currentView;
   const recipientGiftRef = useRef(recipientGift);
   recipientGiftRef.current = recipientGift;
+  const giftsRef = useRef(gifts);
+  giftsRef.current = gifts;
 
   const viewBeforeRecipient = useRef<ViewRoute>('home');
-  const persistNotice = useRef<PersistResult | null>(null);
+  const routeSeq = useRef(0);
 
   // Current draft in Gift Creator
   const [currentDraft, setCurrentDraft] = useState<Partial<GiftData>>(() =>
-    makeDraft(user, initialSeason.slug)
+    makeDraft(null, initialSeason.slug)
   );
 
   // Recently created gift for success screen
   const [justCreatedGift, setJustCreatedGift] = useState<GiftData | null>(null);
-
-  /* --------------------------------- persist -------------------------------- */
-
-  useEffect(() => {
-    const result = persistGifts(gifts);
-    if (result === persistNotice.current) return;
-    persistNotice.current = result === 'full' ? null : result;
-    if (result === 'media-dropped' || result === 'metadata-only') {
-      showToast(
-        'Storage is full — some photos/voice notes could not be saved and will be lost after a refresh.',
-        'info'
-      );
-    } else if (result === 'failed') {
-      showToast('Storage is full — gifts are kept for this session only.', 'info');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gifts]);
 
   /* ------------------------------- navigation ------------------------------ */
 
@@ -297,33 +355,64 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     [writeHash]
   );
 
+  /**
+   * Resolves a share code. Local copy first (instant preview from the
+   * dashboard), otherwise the API — which is what makes links work on any
+   * device instead of only in the browser that created them.
+   */
+  const loadRecipient = useCallback(
+    async (giftCode: string, options?: { countView?: boolean }) => {
+      const seq = (routeSeq.current += 1);
+      const local = giftsRef.current.find((g) => g.shareCode === giftCode);
+
+      if (local) {
+        setRecipientGift(local);
+        setCurrentViewState('recipient');
+        if (options?.countView) recordGiftView(giftCode);
+        return;
+      }
+
+      setRecipientLoading(true);
+      setCurrentViewState('recipient');
+      try {
+        const gift = await getGiftByCode(giftCode);
+        if (seq !== routeSeq.current) return;
+        setRecipientGift(gift);
+        if (options?.countView !== false) recordGiftView(giftCode);
+      } catch (err) {
+        if (seq !== routeSeq.current) return;
+        // Unknown / stale code — land on home instead of a blank screen.
+        setRecipientGift(null);
+        if (currentViewRef.current === 'recipient') {
+          setCurrentViewState('home');
+          writeHash('home');
+        }
+        if (!(err instanceof ApiError && err.status === 404)) {
+          showToast(errorMessage(err, 'Could not load this gift.'), 'error');
+        }
+      } finally {
+        if (seq === routeSeq.current) setRecipientLoading(false);
+      }
+    },
+    [writeHash, showToast]
+  );
+
   // Reflect external hash changes: back/forward buttons, pasted links, reloads.
   useEffect(() => {
     const onHashChange = () => {
       const { view, giftCode } = hashToRoute(window.location.hash);
 
       if (view === 'recipient') {
-        const found = giftCode ? gifts.find((g) => g.shareCode === giftCode) : null;
-        if (!found) {
-          // Unknown / stale code — land on home instead of a blank screen.
-          setRecipientGift(null);
-          setCurrentViewState('home');
-          return;
-        }
+        if (!giftCode) return;
         const arriving = currentViewRef.current !== 'recipient';
-        if (arriving) {
-          viewBeforeRecipient.current = currentViewRef.current;
-          setGifts((prev) =>
-            prev.map((g) => (g.id === found.id ? { ...g, viewsCount: g.viewsCount + 1 } : g))
-          );
-        }
-        setRecipientGift(found);
-        setCurrentViewState('recipient');
+        if (arriving) viewBeforeRecipient.current = currentViewRef.current;
+        void loadRecipient(giftCode, { countView: arriving });
         return;
       }
 
-      const alreadyThere =
-        currentViewRef.current === view && recipientGiftRef.current === null;
+      routeSeq.current += 1;
+      setRecipientLoading(false);
+      const alreadyThere = currentViewRef.current === view && recipientGiftRef.current === null;
       setRecipientGift(null);
       setCurrentViewState((prev) => (prev === view ? prev : view));
       if (!alreadyThere && currentViewRef.current === 'recipient') {
@@ -333,7 +422,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
-  }, [gifts]);
+  }, [loadRecipient]);
+
+  // Deep link on first paint: #/g/{code} before anything else has happened.
+  useEffect(() => {
+    const { view, giftCode } = hashToRoute(window.location.hash);
+    if (view === 'recipient' && giftCode) void loadRecipient(giftCode, { countView: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Every new screen starts at the top.
   useEffect(() => {
@@ -355,55 +451,40 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   /* --------------------------------- gifts --------------------------------- */
 
-  const saveCurrentGift = (): GiftData => {
-    const newId = currentDraft.id || `gift-${Date.now()}`;
-    const code = currentDraft.shareCode || `gems-${Math.random().toString(36).substring(2, 7)}`;
-    const fullGift: GiftData = {
-      id: newId,
-      shareCode: code,
-      recipientName: currentDraft.recipientName?.trim() || 'Someone Special',
-      senderName: currentDraft.senderName?.trim() || (user ? user.name : 'A Friend'),
-      message:
-        currentDraft.message?.trim() ||
-        'Wishing you endless joy, laughter, and sweet moments today and always!',
-      templateId: currentDraft.templateId || 'tpl-nordic-wonder',
-      eventSlug: currentDraft.eventSlug || selectedEventSlug,
-      mood: currentDraft.mood || 'magical',
-      fontStyle: currentDraft.fontStyle || 'editorial',
-      musicTrack: currentDraft.musicTrack || 'ambient',
-      animationEffect: currentDraft.animationEffect || 'sparkles',
-      photos: currentDraft.photos || [],
-      voiceNoteUrl: currentDraft.voiceNoteUrl,
-      voiceNoteDuration: currentDraft.voiceNoteDuration,
-      videoUrl: currentDraft.videoUrl,
-      boxColor: currentDraft.boxColor || '#6D28D9',
-      ribbonColor: currentDraft.ribbonColor || '#F59E0B',
-      createdAt: new Date().toISOString().split('T')[0],
-      viewsCount: currentDraft.viewsCount || 0,
-      status: 'published',
-    };
+  const saveCurrentGift = async (): Promise<GiftData> => {
+    const payload = buildPayload(currentDraft);
+    const existingId = currentDraft.id;
 
-    setGifts((prev) => {
-      const exists = prev.some((g) => g.id === fullGift.id);
-      if (exists) {
-        return prev.map((g) => (g.id === fullGift.id ? fullGift : g));
-      }
-      return [fullGift, ...prev];
-    });
+    try {
+      const saved = existingId ? await updateGift(existingId, payload) : await createGift(payload);
 
-    // Detach so the next "Create" builds a brand-new gift instead of
-    // silently overwriting the one we just saved.
-    setCurrentDraft((prev) => ({
-      ...prev,
-      id: undefined,
-      shareCode: undefined,
-      viewsCount: 0,
-      createdAt: undefined,
-    }));
+      setGifts((prev) => {
+        const index = prev.findIndex((g) => g.id === saved.id);
+        if (index >= 0) {
+          const next = [...prev];
+          next[index] = saved;
+          return next;
+        }
+        return [saved, ...prev];
+      });
 
-    setJustCreatedGift(fullGift);
-    showToast('Your GEMS is ready! 🎉');
-    return fullGift;
+      // Detach so the next "Create" builds a brand-new gift instead of
+      // silently overwriting the one we just saved.
+      setCurrentDraft((prev) => ({
+        ...prev,
+        id: undefined,
+        shareCode: undefined,
+        viewsCount: 0,
+        createdAt: undefined,
+      }));
+
+      setJustCreatedGift(saved);
+      showToast('Your GEMS is ready! 🎉');
+      return saved;
+    } catch (err) {
+      showToast(errorMessage(err, 'Could not save your gift. Please try again.'), 'error');
+      throw err;
+    }
   };
 
   const startNewGift = (preset?: Partial<GiftData>) => {
@@ -452,28 +533,35 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setCurrentView('create');
   };
 
-  const deleteGift = (id: string) => {
+  const deleteGift = async (id: string) => {
+    const snapshot = giftsRef.current;
     setGifts((prev) => prev.filter((g) => g.id !== id));
-    showToast('Gift deleted');
+    try {
+      await deleteGiftApi(id);
+      showToast('Gift deleted');
+    } catch (err) {
+      setGifts(snapshot);
+      showToast(errorMessage(err, 'Could not delete that gift.'), 'error');
+    }
   };
 
-  const duplicateGift = (id: string) => {
-    const target = gifts.find((g) => g.id === id);
+  const duplicateGift = async (id: string) => {
+    const target = giftsRef.current.find((g) => g.id === id);
     if (!target) return;
-    const duplicated: GiftData = {
-      ...target,
-      id: `gift-${Date.now()}`,
-      shareCode: `gems-${Math.random().toString(36).substring(2, 7)}`,
-      recipientName: `${target.recipientName} (Copy)`,
-      createdAt: new Date().toISOString().split('T')[0],
-      viewsCount: 0,
-    };
-    setGifts((prev) => [duplicated, ...prev]);
-    showToast('Gift duplicated successfully');
+    try {
+      const created = await createGift({
+        ...buildPayload(target),
+        recipientName: `${target.recipientName} (Copy)`,
+      });
+      setGifts((prev) => [created, ...prev]);
+      showToast('Gift duplicated successfully');
+    } catch (err) {
+      showToast(errorMessage(err, 'Could not duplicate that gift.'), 'error');
+    }
   };
 
   const editGift = (id: string) => {
-    const target = gifts.find((g) => g.id === id);
+    const target = giftsRef.current.find((g) => g.id === id);
     if (!target) return;
     setCurrentDraft(target);
     setJustCreatedGift(null);
@@ -488,15 +576,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (currentViewRef.current !== 'recipient') {
         viewBeforeRecipient.current = currentViewRef.current;
       }
-      if (countView) {
-        setGifts((prev) =>
-          prev.map((g) => (g.id === gift.id ? { ...g, viewsCount: g.viewsCount + 1 } : g))
-        );
-      }
-      setRecipientGift({
-        ...gift,
-        viewsCount: countView ? gift.viewsCount + 1 : gift.viewsCount,
-      });
+      if (countView) recordGiftView(gift.shareCode);
+      setRecipientGift(countView ? { ...gift, viewsCount: gift.viewsCount + 1 } : gift);
       setCurrentViewState('recipient');
       writeHash('recipient', gift.shareCode);
     },
@@ -504,7 +585,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   );
 
   const closeRecipientView = useCallback(() => {
+    routeSeq.current += 1;
     setRecipientGift(null);
+    setRecipientLoading(false);
     const back = viewBeforeRecipient.current || 'home';
     viewBeforeRecipient.current = 'home';
     setCurrentViewState(back);
@@ -525,10 +608,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         activeEvent,
         updateEventTheme,
         user,
+        authReady,
         setUser,
+        signIn,
+        signOut,
+        updateProfile,
         isAuthModalOpen,
         setIsAuthModalOpen,
         gifts,
+        giftsLoaded,
+        refreshGifts,
         currentDraft,
         setCurrentDraft,
         saveCurrentGift,
@@ -536,6 +625,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         duplicateGift,
         editGift,
         recipientGift,
+        recipientLoading,
         openRecipientView,
         closeRecipientView,
         justCreatedGift,

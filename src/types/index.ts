@@ -94,7 +94,9 @@ export interface User {
   name: string;
   email: string;
   avatarUrl?: string;
+  role?: 'user' | 'admin';
   plan: 'free' | 'premium' | 'pro';
+  planExpiresAt?: string;
 }
 
 export type ViewRoute =

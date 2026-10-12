@@ -45,6 +45,33 @@ const ViewFallback = () => (
   </div>
 );
 
+const AdminGate: React.FC = () => {
+  const { user, authReady, setIsAuthModalOpen } = useApp();
+
+  if (!authReady) return <ViewFallback />;
+  if (user && user.role === 'admin') return <AdminPanel />;
+
+  return (
+    <div className="max-w-md mx-auto my-20 text-center px-6">
+      <h1 className="text-2xl font-extrabold text-[#18181B] tracking-tight">Admins only</h1>
+      <p className="mt-2 text-sm text-[#71717A]">
+        {user
+          ? `Signed in as ${user.email} — this account doesn't have admin access.`
+          : 'Sign in with an admin account to open the console.'}
+      </p>
+      {!user && (
+        <button
+          type="button"
+          onClick={() => setIsAuthModalOpen(true)}
+          className="mt-5 px-5 py-2.5 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-xs transition-colors cursor-pointer"
+        >
+          Sign in
+        </button>
+      )}
+    </div>
+  );
+};
+
 const MainRouter: React.FC = () => {
   const { currentView } = useApp();
 
@@ -82,7 +109,7 @@ const MainRouter: React.FC = () => {
           {currentView === 'how-it-works' && <HowItWorksView />}
           {currentView === 'pricing' && <PricingView />}
           {currentView === 'dashboard' && <DashboardView />}
-          {currentView === 'admin' && <AdminPanel />}
+          {currentView === 'admin' && <AdminGate />}
           {currentView === 'settings' && <SettingsView />}
         </Suspense>
       </main>

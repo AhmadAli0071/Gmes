@@ -9,7 +9,8 @@ import {
   Upload,
   X,
 } from 'lucide-react';
-import { blobToDataUrl, probeAudioDuration, useRealAudio } from '../../hooks/useRealAudio';
+import { probeAudioDuration, useRealAudio } from '../../hooks/useRealAudio';
+import { uploadMedia } from '../../services/media';
 
 interface VoiceRecorderProps {
   value?: string;
@@ -145,11 +146,14 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
           return;
         }
         try {
-          const url = await blobToDataUrl(blob);
+          setBusy(true);
+          const url = await uploadMedia(blob, 'voice');
           onChange(url, secs);
-          showToast('Voice note recorded 🎤');
-        } catch {
-          showToast('Could not save the recording.', 'error');
+          showToast('Voice note recorded ✅');
+        } catch (err) {
+          showToast((err as Error)?.message || 'Could not save the recording.', 'error');
+        } finally {
+          setBusy(false);
         }
       };
 
@@ -184,12 +188,12 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
     }
     setBusy(true);
     try {
-      const url = await blobToDataUrl(file);
+      const url = await uploadMedia(file, 'voice', file.name);
       const secs = Math.round(await probeAudioDuration(url));
       onChange(url, secs > 0 ? secs : 10);
-      showToast('Voice note attached 🎤');
-    } catch {
-      showToast('Could not read that audio file.', 'error');
+      showToast('Voice note attached ✅');
+    } catch (err) {
+      showToast((err as Error)?.message || 'Could not read that audio file.', 'error');
     } finally {
       setBusy(false);
       if (fileRef.current) fileRef.current.value = '';

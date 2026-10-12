@@ -20,7 +20,7 @@ export const Navbar: React.FC = () => {
     setCurrentView,
     openCreator,
     user,
-    setUser,
+    signOut,
     setIsAuthModalOpen,
   } = useApp();
 
@@ -210,7 +210,7 @@ export const Navbar: React.FC = () => {
                   <div className="border-t border-zinc-100 mt-1 pt-1">
                     <button
                       onClick={() => {
-                        setUser(null);
+                        void signOut();
                         setUserDropdownOpen(false);
                       }}
                       className="w-full text-left px-3 py-2 text-xs text-rose-600 hover:bg-rose-50 flex items-center gap-2 cursor-pointer"
@@ -332,7 +332,10 @@ export const Navbar: React.FC = () => {
                   {user.name}
                 </span>
                 <button
-                  onClick={() => setUser(null)}
+                  onClick={() => {
+                    void signOut();
+                    setMobileMenuOpen(false);
+                  }}
                   className="text-xs text-rose-600 font-semibold"
                 >
                   Log Out

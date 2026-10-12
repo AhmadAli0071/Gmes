@@ -42,6 +42,7 @@ export const GiftCreator: React.FC = () => {
 
   // Live preview unbox state
   const [previewUnboxed, setPreviewUnboxed] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   // Live preview mode: 3D box vs flat card artwork
   const [previewMode, setPreviewMode] = useState<'box' | 'card'>('box');
@@ -137,10 +138,18 @@ export const GiftCreator: React.FC = () => {
     }
   };
 
-  const handleFinishCreate = () => {
-    saveCurrentGift();
-    setStep(1);
-    setPreviewUnboxed(false);
+  const handleFinishCreate = async () => {
+    if (saving) return;
+    setSaving(true);
+    try {
+      await saveCurrentGift();
+      setStep(1);
+      setPreviewUnboxed(false);
+    } catch {
+      /* the context already surfaced the error as a toast */
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -679,7 +688,8 @@ export const GiftCreator: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleFinishCreate}
-                    className="w-full py-3.5 text-xs font-semibold text-white bg-[var(--mood-accent)] hover:bg-[var(--mood-accent-hover)] rounded-xl shadow-md transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={saving}
+                    className="w-full py-3.5 text-xs font-semibold text-white bg-[var(--mood-accent)] hover:bg-[var(--mood-accent-hover)] disabled:opacity-70 disabled:cursor-wait rounded-xl shadow-md transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4 text-amber-300" />
                     <span>Create My Gift →</span>
@@ -705,7 +715,8 @@ export const GiftCreator: React.FC = () => {
           <button
             type="button"
             onClick={handleFinishCreate}
-            className="w-full py-3 text-xs font-semibold text-white bg-[var(--mood-accent)] rounded-xl shadow-sm cursor-pointer"
+            disabled={saving}
+            className="w-full py-3 text-xs font-semibold text-white bg-[var(--mood-accent)] disabled:opacity-70 disabled:cursor-wait rounded-xl shadow-sm cursor-pointer"
           >
             Create My Gift →
           </button>

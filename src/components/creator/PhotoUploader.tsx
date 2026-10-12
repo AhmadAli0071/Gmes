@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Image as ImageIcon, Upload, X, Loader2, Check, Plus } from 'lucide-react';
+import { dataUrlToBlob, uploadMedia } from '../../services/media';
 
 interface PhotoUploaderProps {
   photos: string[];
@@ -34,8 +35,8 @@ const readFileAsDataUrl = (file: File): Promise<string | null> =>
     }
   });
 
-/** Downscale + JPEG-compress so uploads stay small enough for localStorage.
-    Returns null when the browser cannot decode the file (e.g. HEIC). */
+/** Downscale + JPEG-compress before uploading: keeps payloads light and
+    sidesteps files the browser cannot decode (e.g. HEIC). */
 const compressImage = (dataUrl: string): Promise<string | null> =>
   new Promise((resolve) => {
     let settled = false;
@@ -131,8 +132,12 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
         unreadable += 1;
         continue;
       }
-      added.push(compressed);
-      room -= 1;
+      try {
+        added.push(await uploadMedia(dataUrlToBlob(compressed), 'photo', file.name));
+        room -= 1;
+      } catch {
+        unreadable += 1;
+      }
     }
 
     setBusy(false);
@@ -141,7 +146,7 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
     if (added.length === 0) {
       if (notImage > 0) showToast('Those files are not images — use JPG or PNG.', 'error');
       else if (unreadable > 0)
-        showToast('Could not read that image — convert it to JPG and retry.', 'error');
+        showToast('Could not upload those images — check the file and try again.', 'error');
       return;
     }
 

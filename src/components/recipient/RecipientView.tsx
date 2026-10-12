@@ -25,7 +25,7 @@ const GREETING_LABEL: Partial<Record<EventSlug, string>> = {
 };
 
 export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) => {
-  const { recipientGift, closeRecipientView, setCurrentView, startNewGift } = useApp();
+  const { recipientGift, recipientLoading, closeRecipientView, setCurrentView, startNewGift } = useApp();
 
   const gift = propGift || recipientGift;
 
@@ -33,6 +33,21 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   if (!gift) {
+    if (recipientLoading) {
+      return (
+        <div className="min-h-screen bg-[#120c33] flex flex-col items-center justify-center gap-4 text-center">
+          <span
+            className="h-9 w-9 rounded-full border-2 border-violet-300/40 border-t-violet-200 animate-spin"
+            role="status"
+            aria-label="Loading gift"
+          />
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-violet-200/70">
+            Fetching your gift…
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-[#FAFAF9] flex flex-col items-center justify-center p-6 text-center">
         <Sparkles className="w-10 h-10 text-[#6D28D9] mb-3" aria-hidden />

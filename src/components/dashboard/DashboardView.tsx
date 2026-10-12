@@ -16,6 +16,7 @@ import {
 export const DashboardView: React.FC = () => {
   const {
     gifts,
+    giftsLoaded,
     startNewGift,
     editGift,
     duplicateGift,
@@ -65,7 +66,16 @@ export const DashboardView: React.FC = () => {
       </div>
 
       {/* Empty State */}
-      {gifts.length === 0 ? (
+      {!giftsLoaded ? (
+        <div className="my-16 grid place-items-center" role="status">
+          <div className="flex flex-col items-center gap-3">
+            <span className="h-8 w-8 rounded-full border-2 border-violet-200 border-t-[#6D28D9] animate-spin" />
+            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">
+              Loading your gifts
+            </span>
+          </div>
+        </div>
+      ) : gifts.length === 0 ? (
         <div className="my-16 p-12 text-center bg-white rounded-3xl border border-[#E4E4E7] max-w-sm mx-auto shadow-xs">
           <div className="w-14 h-14 rounded-2xl bg-purple-50 text-[#6D28D9] flex items-center justify-center mx-auto mb-3">
             <Gift className="w-7 h-7" />

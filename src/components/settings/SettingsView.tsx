@@ -11,10 +11,11 @@ const TABS = [
 type SettingsTab = (typeof TABS)[number]['id'];
 
 export const SettingsView: React.FC = () => {
-  const { user, setUser, showToast } = useApp();
+  const { user, updateProfile, showToast } = useApp();
   const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
-  const [name, setName] = useState(user?.name || 'Ahmad Ali');
-  const [email, setEmail] = useState(user?.email || 'ahmad@gems.com');
+  const [name, setName] = useState(user?.name || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [saving, setSaving] = useState(false);
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [unboxingAlerts, setUnboxingAlerts] = useState(true);
 
@@ -27,18 +28,25 @@ export const SettingsView: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  const handleSaveProfile = (e: React.FormEvent) => {
+  const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
       showToast('Sign in first to update your profile.', 'error');
       return;
     }
-    if (!name.trim() || !email.trim()) {
-      showToast('Name and email are required.', 'error');
+    if (!name.trim()) {
+      showToast('Name is required.', 'error');
       return;
     }
-    setUser({ ...user, name: name.trim(), email: email.trim() });
-    showToast('Profile updated successfully');
+    setSaving(true);
+    try {
+      await updateProfile({ name: name.trim() });
+      showToast('Profile updated successfully');
+    } catch {
+      /* the context surfaced the server error */
+    } finally {
+      setSaving(false);
+    }
   };
 
   return (
@@ -117,19 +125,25 @@ export const SettingsView: React.FC = () => {
                   id="settings-email"
                   type="email"
                   required
+                  readOnly
+                  title="Email changes need verification — coming soon."
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-[#FAFAF9] border border-[#E4E4E7] rounded-xl text-xs focus:ring-2 focus:ring-[#6D28D9]"
+                  className="w-full px-3.5 py-2.5 bg-zinc-100 border border-[#E4E4E7] rounded-xl text-xs text-zinc-500 focus:outline-none"
                 />
+                <p className="mt-1 text-[11px] text-zinc-400">
+                  Email is locked until address-change verification ships.
+                </p>
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-xs transition-colors"
+                  disabled={saving}
+                  className="px-5 py-2.5 text-xs font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] disabled:opacity-60 rounded-xl shadow-xs transition-colors"
                 >
-                  Save Changes
+                  {saving ? 'Saving…' : 'Save Changes'}
                 </button>
               </div>
             </form>
