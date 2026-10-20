@@ -14,6 +14,8 @@ COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
 COPY package.json package-lock.json tsconfig.json ./
 COPY server ./server
+COPY --from=build /app/src/data ./src/data
+COPY --from=build /app/src/types ./src/types
 
 EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s \
