@@ -1,4 +1,9 @@
 import { GiftTemplate } from '../types';
+import heroGiftUnboxing from '../assets/images/hero_gift_unboxing_1791359349622.jpg';
+import christmasWonder from '../assets/images/template_christmas_wonder_1791359394567.jpg';
+import romanticRose from '../assets/images/template_romantic_rose_1791359379033.jpg';
+import birthdayConfetti from '../assets/images/template_birthday_confetti_1791359364339.jpg';
+import graduationSummit from '../assets/images/template_graduation_summit.jpg';
 
 export const TEMPLATES: GiftTemplate[] = [
   // --- MAGICAL VIBE ---
@@ -9,7 +14,7 @@ export const TEMPLATES: GiftTemplate[] = [
     vibe: 'magical',
     eventSlug: 'anniversary',
     isPremium: true,
-    coverImage: '/src/assets/images/hero_gift_unboxing_1791359349622.jpg',
+    coverImage: heroGiftUnboxing,
     mood: 'magical',
     fontStyle: 'editorial',
     musicTrack: 'ambient',
@@ -25,7 +30,7 @@ export const TEMPLATES: GiftTemplate[] = [
     vibe: 'magical',
     eventSlug: 'christmas',
     isPremium: true,
-    coverImage: '/src/assets/images/template_christmas_wonder_1791359394567.jpg',
+    coverImage: christmasWonder,
     mood: 'festive',
     fontStyle: 'editorial',
     musicTrack: 'festive',
@@ -107,7 +112,7 @@ export const TEMPLATES: GiftTemplate[] = [
     vibe: 'romantic',
     eventSlug: 'valentines',
     isPremium: true,
-    coverImage: '/src/assets/images/template_romantic_rose_1791359379033.jpg',
+    coverImage: romanticRose,
     mood: 'romantic',
     fontStyle: 'handwritten',
     musicTrack: 'acoustic',
@@ -205,7 +210,7 @@ export const TEMPLATES: GiftTemplate[] = [
     vibe: 'cute',
     eventSlug: 'birthday',
     isPremium: false,
-    coverImage: '/src/assets/images/template_birthday_confetti_1791359364339.jpg',
+    coverImage: birthdayConfetti,
     mood: 'playful',
     fontStyle: 'modern',
     musicTrack: 'birthday',
@@ -401,7 +406,7 @@ export const TEMPLATES: GiftTemplate[] = [
     vibe: 'elegant',
     eventSlug: 'graduation',
     isPremium: true,
-    coverImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=700&auto=format&fit=crop&q=80',
+    coverImage: graduationSummit,
     mood: 'magical',
     fontStyle: 'editorial',
     musicTrack: 'ambient',
