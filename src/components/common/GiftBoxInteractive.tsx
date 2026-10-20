@@ -11,6 +11,8 @@ interface GiftBoxInteractiveProps {
   mode?: 'preview' | 'full';
   /** Height of the preview frame — the reveal scales itself down to fit it. */
   heightClass?: string;
+  /** Hide the reveal's own heading when the host already renders an H1. */
+  showHeading?: boolean;
   className?: string;
 }
 
@@ -30,6 +32,7 @@ export const GiftBoxInteractive: React.FC<GiftBoxInteractiveProps> = ({
   interactive = true,
   mode = 'preview',
   heightClass = 'h-[clamp(430px,62vh,600px)]',
+  showHeading = true,
   className = '',
 }) => {
   const [openedInternal, setOpenedInternal] = useState(isOpened);
@@ -98,6 +101,7 @@ export const GiftBoxInteractive: React.FC<GiftBoxInteractiveProps> = ({
           opened={opened}
           onOpen={handleOpen}
           onReset={handleOpen}
+          showHeading={showHeading}
         />
       </div>
     </div>

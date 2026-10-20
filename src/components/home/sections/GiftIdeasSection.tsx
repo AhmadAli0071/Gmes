@@ -1,19 +1,77 @@
 import React from 'react';
 import { useApp } from '../../../context/AppContext';
-import { GIFT_IDEAS } from '../../../data/seoContent';
+import { EventSlug } from '../../../types';
 import { Reveal } from './Reveal';
-import { SectionHeading } from './SectionHeading';
-import { ArrowRight } from 'lucide-react';
 
-/**
- * Long-tail landing copy: one card per high-intent search phrase
- * ("birthday gift online", "long distance gift", …) that links straight into
- * the creator with that occasion pre-selected.
- */
+const OCCASIONS: {
+  emoji: string;
+  title: string;
+  body: string;
+  slug: EventSlug;
+  href: string;
+}[] = [
+  {
+    emoji: '🎂',
+    title: 'Birthday',
+    body: 'Make their birthday unforgettable',
+    slug: 'birthday',
+    href: '/virtual-birthday-gift',
+  },
+  {
+    emoji: '🥂',
+    title: 'Anniversary',
+    body: 'Relive your best moments together',
+    slug: 'anniversary',
+    href: '/anniversary-digital-gift',
+  },
+  {
+    emoji: '💌',
+    title: "Valentine's Day",
+    body: 'Say it with photos and your own voice',
+    slug: 'valentines',
+    href: '/valentines-day-virtual-gift',
+  },
+  {
+    emoji: '🌷',
+    title: "Mother's and Father's Day",
+    body: 'Show your parents they matter',
+    slug: 'mothers-day',
+    href: '/create',
+  },
+  {
+    emoji: '🎓',
+    title: 'Graduation and Congratulations',
+    body: 'Celebrate every big win',
+    slug: 'graduation',
+    href: '/create',
+  },
+  {
+    emoji: '💍',
+    title: 'Wedding',
+    body: 'A keepsake for the happy couple',
+    slug: 'wedding',
+    href: '/create',
+  },
+  {
+    emoji: '🙏',
+    title: 'Thank You',
+    body: 'Say thanks in a way they remember',
+    slug: 'thank-you',
+    href: '/create',
+  },
+  {
+    emoji: '🎄',
+    title: 'Christmas',
+    body: 'Unwrap the holidays together',
+    slug: 'christmas',
+    href: '/create',
+  },
+];
+
 export const GiftIdeasSection: React.FC = () => {
   const { openCreator, setSelectedEventSlug } = useApp();
 
-  const handleStart = (slug: (typeof GIFT_IDEAS)[number]['eventSlug']) => {
+  const handleStart = (slug: EventSlug) => {
     setSelectedEventSlug(slug);
     openCreator({ eventSlug: slug });
   };
@@ -22,67 +80,61 @@ export const GiftIdeasSection: React.FC = () => {
     <section
       id="gift-ideas"
       aria-labelledby="gift-ideas-title"
-      className="relative overflow-hidden scroll-mt-24"
+      className="relative scroll-mt-24 bg-white"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FAF5FF]/80 to-transparent" />
-
-      <div className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto py-20 sm:py-24">
+      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
         <Reveal>
-          <SectionHeading
-            eyebrow="Virtual gift ideas"
-            title={
-              <span id="gift-ideas-title">
-                A virtual gift for{' '}
-                <span className="bg-gradient-to-r from-[#6D28D9] to-fuchsia-500 bg-clip-text text-transparent">
-                  every occasion
-                </span>
-                .
-              </span>
-            }
-            subtitle="Stuck on what to send? These are the personalized digital gifts people search for most — each one opens the creator with the occasion already picked, so you are one photo away from sending it."
-          />
+          <div className="mx-auto max-w-2xl text-center">
+            <h2
+              id="gift-ideas-title"
+              className="text-3xl font-extrabold tracking-tight text-[#1E1B4B] text-balance sm:text-4xl"
+            >
+              A Digital Gift for Every Occasion
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-[#6B7280] sm:text-base">
+              Whether it is a birthday surprise or a thank you from far away, there is a GEMS
+              gift box for the moment.
+            </p>
+          </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {GIFT_IDEAS.map((idea, i) => (
-            <Reveal key={idea.title} delay={(i % 3) * 0.08}>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {OCCASIONS.map((occasion, i) => (
+            <Reveal key={occasion.title} delay={(i % 4) * 0.06}>
               <a
-                href="#/create"
-                onClick={(event) => {
-                  event.preventDefault();
-                  handleStart(idea.eventSlug);
-                }}
-                className="group flex h-full flex-col rounded-3xl border border-[#E4E4E7] bg-white p-6 shadow-xs hover:-translate-y-1.5 hover:border-violet-300 hover:shadow-[0_30px_60px_-28px_rgba(109,40,217,0.55)] transition-all duration-300"
+                href={occasion.href}
+                onClick={
+                  occasion.href === '/create'
+                    ? (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        handleStart(occasion.slug);
+                      }
+                    : undefined
+                }
+                aria-label={
+                  occasion.href === '/create'
+                    ? `Create a ${occasion.title} gift`
+                    : `Read the ${occasion.title} gift guide`
+                }
+                className="group flex h-full w-full flex-col rounded-2xl border border-[#EAE4F9] bg-white p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-[#C4B5FD] hover:shadow-[0_24px_50px_-30px_rgba(109,40,217,0.6)]"
               >
                 <span
                   aria-hidden
-                  className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-[#F5F3FF] to-[#FCE7F3] text-2xl shadow-inner transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6"
+                  className="text-3xl leading-none transition-transform duration-300 group-hover:scale-110"
                 >
-                  {idea.emoji}
+                  {occasion.emoji}
                 </span>
-
-                <h3 className="mt-5 text-base font-extrabold text-[#18181B] tracking-tight">
-                  {idea.title}
+                <h3 className="mt-4 text-[15px] font-extrabold leading-snug tracking-tight text-[#1E1B4B]">
+                  {occasion.title}
                 </h3>
-                <p className="mt-2 text-sm text-[#71717A] leading-relaxed flex-1">{idea.body}</p>
-
-                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-bold text-[#6D28D9] group-hover:gap-2.5 transition-all">
-                  Start this gift
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </span>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#6B7280]">
+                  {occasion.body}
+                </p>
               </a>
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.15}>
-          <p className="mt-10 mx-auto max-w-3xl text-center text-sm text-[#71717A] leading-relaxed">
-            Whether it is a birthday gift online, an anniversary voice note, a graduation
-            surprise or a just-because digital greeting card, the format is the same: photos,
-            your voice and your words, wrapped in a 3D box and delivered as a single link that
-            opens on any phone — no app, no account, no delivery cut-off.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useApp } from '../../context/AppContext';
+import { readStoredStep, useApp } from '../../context/AppContext';
 import { BrandLogo } from '../common/BrandLogo';
 import { GiftBoxInteractive } from '../common/GiftBoxInteractive';
 import { GiftCardArt } from '../common/GiftCardArt';
@@ -34,7 +34,16 @@ export const GiftCreator: React.FC = () => {
     showToast,
   } = useApp();
 
-  const [step, setStep] = useState<Step>(1);
+  const [step, setStep] = useState<Step>(() => readStoredStep() as Step);
+
+  // Resume on the step the user was last on — persists alongside the draft.
+  useEffect(() => {
+    try {
+      localStorage.setItem('gems_draft_step', String(step));
+    } catch {
+      /* private-mode quota errors are not worth surfacing */
+    }
+  }, [step]);
 
   // Message helper popover
   const [showAiWriter, setShowAiWriter] = useState(false);
@@ -457,7 +466,7 @@ export const GiftCreator: React.FC = () => {
                           <X className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <div className="grid grid-cols-3 gap-1.5">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
                         {(['sweet', 'funny', 'romantic', 'heartfelt', 'short'] as MessageTone[]).map(
                           (tone) => (
                             <button
@@ -465,7 +474,7 @@ export const GiftCreator: React.FC = () => {
                               type="button"
                               disabled={isSuggesting}
                               onClick={() => handleApplyAiMessage(tone)}
-                              className="px-2.5 py-1.5 text-xs font-medium bg-white text-zinc-800 border border-[var(--mood-border)] rounded-xl hover:bg-[var(--mood-soft-strong)] transition-colors capitalize text-center cursor-pointer disabled:opacity-50 disabled:cursor-wait"
+                              className="px-2.5 py-2.5 sm:py-1.5 text-xs font-medium bg-white text-zinc-800 border border-[var(--mood-border)] rounded-xl hover:bg-[var(--mood-soft-strong)] transition-colors capitalize text-center cursor-pointer disabled:opacity-50 disabled:cursor-wait min-h-[44px] sm:min-h-0"
                             >
                               {tone}
                             </button>

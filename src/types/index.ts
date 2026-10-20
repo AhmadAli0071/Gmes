@@ -99,6 +99,15 @@ export interface User {
   planExpiresAt?: string;
 }
 
+export const LANDING_VIEWS = [
+  'virtual-birthday-gift',
+  'anniversary-digital-gift',
+  'valentines-day-virtual-gift',
+  'long-distance-gift-ideas',
+] as const;
+
+export type LandingView = (typeof LANDING_VIEWS)[number];
+
 export type ViewRoute =
   | 'home'
   | 'create'
@@ -108,5 +117,7 @@ export type ViewRoute =
   | 'dashboard'
   | 'recipient'
   | 'admin'
-  | 'settings';
+  | 'settings'
+  | 'blog'
+  | LandingView;
 

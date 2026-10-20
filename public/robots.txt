@@ -2,9 +2,9 @@ User-agent: *
 Allow: /
 
 # Private app screens (client-side routes)
-Disallow: /#/dashboard
-Disallow: /#/admin
-Disallow: /#/settings
-Disallow: /#/g/
+Disallow: /dashboard
+Disallow: /admin
+Disallow: /settings
+Disallow: /g/
 
-Sitemap: http://40.160.149.176/sitemap.xml
+Sitemap: https://gemsvg.com/sitemap.xml

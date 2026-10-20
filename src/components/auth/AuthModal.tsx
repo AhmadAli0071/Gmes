@@ -67,12 +67,12 @@ export const AuthModal: React.FC = () => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="auth-modal-title"
-        className="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[calc(100vh-2rem)] overflow-y-auto"
+        className="bg-white rounded-3xl max-w-sm w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain"
       >
         <button
           type="button"
           onClick={() => setIsAuthModalOpen(false)}
-          className="absolute top-5 right-5 p-1.5 text-zinc-400 hover:text-zinc-700 transition-colors"
+          className="absolute top-3 right-3 p-2.5 text-zinc-400 hover:text-zinc-700 transition-colors"
           aria-label="Close sign in dialog"
         >
           <X className="w-5 h-5" aria-hidden="true" />

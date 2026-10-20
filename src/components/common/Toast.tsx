@@ -16,7 +16,7 @@ export const Toast: React.FC = () => {
       aria-atomic="true"
       className={
         toast
-          ? 'fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 bg-[#18181B] text-white text-sm font-medium rounded-xl shadow-xl border border-zinc-800 transition-all duration-300 animate-in fade-in slide-in-from-bottom-3'
+          ? 'fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-50 mx-auto sm:mx-0 flex items-center gap-2.5 px-4 py-3 bg-[#18181B] text-white text-sm font-medium rounded-xl shadow-xl border border-zinc-800 transition-all duration-300 animate-in fade-in slide-in-from-bottom-3'
           : 'sr-only'
       }
     >

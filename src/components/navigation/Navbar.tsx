@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { BrandLogo } from '../common/BrandLogo';
-import { ViewRoute } from '../../types';
+import { LANDING_VIEWS, ViewRoute } from '../../types';
 import {
   Menu,
   X,
@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
     { label: 'Pricing', view: 'pricing' },
   ];
 
-  const hrefFor = (view: ViewRoute) => (view === 'home' ? '#/' : `#/${view}`);
+  const hrefFor = (view: ViewRoute) => (view === 'home' ? '/' : `/${view}`);
 
   const handleNavClick = (view: ViewRoute) => {
     setCurrentView(view);
@@ -72,15 +72,17 @@ export const Navbar: React.FC = () => {
     setUserDropdownOpen(false);
   };
 
-  // Home has a dark gradient hero — at the very top the bar is fully
-  // transparent so the hero runs straight through it (the navbar sits *on*
-  // the hero instead of above it), then it fogs up once the page moves.
-  const isHome = currentView === 'home';
-  const atTop = isHome && !scrolled;
+  // The home page and every SEO landing page open on a dark gradient hero — at
+  // the very top the bar is fully transparent so the hero runs straight
+  // through it (the navbar sits *on* the hero instead of above it), then it
+  // fogs up once the page moves.
+  const isDarkHero =
+    currentView === 'home' || LANDING_VIEWS.includes(currentView as (typeof LANDING_VIEWS)[number]);
+  const atTop = isDarkHero && !scrolled;
 
   const glassBg = atTop
     ? 'bg-transparent'
-    : isHome
+    : isDarkHero
       ? 'bg-[#171033]/75'
       : scrolled
         ? 'bg-white/85'
@@ -88,7 +90,7 @@ export const Navbar: React.FC = () => {
 
   const glassBorder = atTop
     ? 'border-transparent'
-    : isHome
+    : isDarkHero
       ? 'border-white/15'
       : 'border-zinc-900/10';
 
@@ -112,14 +114,14 @@ export const Navbar: React.FC = () => {
             className="flex items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6D28D9] rounded-lg cursor-pointer"
             aria-label="GEMS home"
           >
-            <BrandLogo size="md" light={isHome} />
+            <BrandLogo size="md" light={isDarkHero} />
           </button>
         </div>
 
         {/* Center: Explore | My Gifts | How It Works */}
         <nav
           className={`hidden md:flex items-center gap-8 text-sm font-medium ${
-            isHome ? 'text-white/75' : 'text-zinc-600'
+            isDarkHero ? 'text-white/75' : 'text-zinc-600'
           }`}
         >
           {navLinks.map((link) => (
@@ -128,10 +130,10 @@ export const Navbar: React.FC = () => {
               href={hrefFor(link.view)}
               className={`transition-colors py-1 cursor-pointer ${
                 currentView === link.view
-                  ? isHome
+                  ? isDarkHero
                     ? 'text-amber-300 font-semibold border-b-2 border-amber-300'
                     : 'text-[#6D28D9] font-semibold border-b-2 border-[#6D28D9]'
-                  : isHome
+                  : isDarkHero
                     ? 'hover:text-white'
                     : 'hover:text-[#18181B]'
               }`}
@@ -149,12 +151,12 @@ export const Navbar: React.FC = () => {
               openCreator();
             }}
             className={`inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-full transition-all duration-150 transform hover:-translate-y-0.5 cursor-pointer ${
-              isHome
+              isDarkHero
                 ? 'text-[#4C1D95] bg-white hover:bg-amber-100 shadow-[0_12px_30px_-14px_rgba(255,255,255,0.9)]'
                 : 'text-white bg-gradient-to-r from-[#6D28D9] to-fuchsia-500 hover:from-[#5B21B6] hover:to-fuchsia-600 shadow-[0_14px_32px_-14px_rgba(109,40,217,0.9)]'
             }`}
           >
-            <Sparkles className={`w-3.5 h-3.5 ${isHome ? 'text-amber-500' : 'text-amber-300'}`} />
+            <Sparkles className={`w-3.5 h-3.5 ${isDarkHero ? 'text-amber-500' : 'text-amber-300'}`} />
             <span>Create Gift</span>
           </button>
 
@@ -169,7 +171,7 @@ export const Navbar: React.FC = () => {
                   {user.name.charAt(0)}
                 </div>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 ${isHome ? 'text-white/60' : 'text-zinc-400'}`}
+                  className={`w-3.5 h-3.5 ${isDarkHero ? 'text-white/60' : 'text-zinc-400'}`}
                 />
               </button>
 
@@ -226,7 +228,7 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setIsAuthModalOpen(true)}
               className={`px-3 py-1.5 text-xs font-semibold transition-colors cursor-pointer ${
-                isHome
+                isDarkHero
                   ? 'text-white/85 hover:text-white'
                   : 'text-zinc-700 hover:text-zinc-900'
               }`}
@@ -243,8 +245,8 @@ export const Navbar: React.FC = () => {
               setMobileMenuOpen(false);
               openCreator();
             }}
-            className={`px-3.5 py-2 text-xs font-bold rounded-full shadow-xs ${
-              isHome
+            className={`px-3.5 py-2 text-xs font-bold rounded-full shadow-xs min-h-[44px] inline-flex items-center ${
+              isDarkHero
                 ? 'text-[#4C1D95] bg-white'
                 : 'text-white bg-gradient-to-r from-[#6D28D9] to-fuchsia-500'
             }`}
@@ -254,10 +256,11 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`p-2 focus:outline-none ${
-              isHome ? 'text-white/85 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
+            className={`p-2.5 focus:outline-none ${
+              isDarkHero ? 'text-white/85 hover:text-white' : 'text-zinc-600 hover:text-zinc-900'
             }`}
             aria-label="Toggle mobile menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -268,7 +271,7 @@ export const Navbar: React.FC = () => {
       {mobileMenuOpen && (
         <div
           className={`md:hidden max-w-7xl mx-auto border-t px-4 pt-3 pb-5 space-y-2 ${
-            isHome ? 'border-white/10' : 'border-zinc-900/8'
+            isDarkHero ? 'border-white/10' : 'border-zinc-900/8'
           }`}
         >
           {navLinks.map((link) => (
@@ -276,12 +279,12 @@ export const Navbar: React.FC = () => {
               key={link.label}
               href={hrefFor(link.view)}
               onClick={() => setMobileMenuOpen(false)}
-              className={`block w-full px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+              className={`block w-full px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
                 currentView === link.view
-                  ? isHome
+                  ? isDarkHero
                     ? 'bg-white/10 text-amber-300 font-semibold'
                     : 'bg-purple-100/60 text-[#6D28D9] font-semibold'
-                  : isHome
+                  : isDarkHero
                     ? 'text-white/75 hover:bg-white/10'
                     : 'text-zinc-700 hover:bg-zinc-100'
               }`}
@@ -292,12 +295,12 @@ export const Navbar: React.FC = () => {
 
           <button
             onClick={() => handleNavClick('settings')}
-            className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+            className={`w-full text-left px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
               currentView === 'settings'
-                ? isHome
+                ? isDarkHero
                   ? 'bg-white/10 text-amber-300 font-semibold'
                   : 'bg-purple-100/60 text-[#6D28D9] font-semibold'
-                : isHome
+                : isDarkHero
                   ? 'text-white/75 hover:bg-white/10'
                   : 'text-zinc-700 hover:bg-zinc-100'
             }`}
@@ -307,12 +310,12 @@ export const Navbar: React.FC = () => {
           {user && (
             <button
               onClick={() => handleNavClick('admin')}
-              className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+              className={`w-full text-left px-3 py-3 rounded-xl text-sm font-medium transition-colors ${
                 currentView === 'admin'
-                  ? isHome
+                  ? isDarkHero
                     ? 'bg-white/10 text-amber-300 font-semibold'
                     : 'bg-purple-100/60 text-[#6D28D9] font-semibold'
-                  : isHome
+                  : isDarkHero
                     ? 'text-white/75 hover:bg-white/10'
                     : 'text-zinc-700 hover:bg-zinc-100'
               }`}
@@ -321,12 +324,12 @@ export const Navbar: React.FC = () => {
             </button>
           )}
 
-          <div className={`pt-2 border-t ${isHome ? 'border-white/10' : 'border-zinc-200'}`}>
+          <div className={`pt-2 border-t ${isDarkHero ? 'border-white/10' : 'border-zinc-200'}`}>
             {user ? (
               <div className="flex items-center justify-between py-1">
                 <span
                   className={`text-xs font-medium ${
-                    isHome ? 'text-white/70' : 'text-zinc-600'
+                    isDarkHero ? 'text-white/70' : 'text-zinc-600'
                   }`}
                 >
                   {user.name}
@@ -348,7 +351,7 @@ export const Navbar: React.FC = () => {
                   setMobileMenuOpen(false);
                 }}
                 className={`w-full text-center py-2 text-xs font-semibold rounded-xl border ${
-                  isHome
+                  isDarkHero
                     ? 'text-white bg-white/10 border-white/15'
                     : 'text-zinc-800 bg-white border-zinc-200'
                 }`}

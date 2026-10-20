@@ -245,7 +245,7 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
             Ticked photos are attached to the gift. Tap ✕ to remove one.
           </p>
 
-          <div className="mt-2 grid grid-cols-4 gap-2">
+          <div className="mt-2 grid grid-cols-3 sm:grid-cols-4 gap-2">
             {photos.map((url, index) => (
               <div
                 key={index}
@@ -256,16 +256,18 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
                   alt={`Attached memory ${index + 1}`}
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute top-1 left-1 w-4 h-4 rounded-full bg-[var(--mood-accent)] text-white flex items-center justify-center shadow">
+                <span className="absolute top-1 left-1 w-5 h-5 rounded-full bg-[var(--mood-accent)] text-white flex items-center justify-center shadow">
                   <Check className="w-3 h-3" strokeWidth={3.5} />
                 </span>
                 <button
                   type="button"
                   onClick={() => removePhoto(index)}
                   aria-label={`Remove photo ${index + 1}`}
-                  className="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/65 text-white flex items-center justify-center hover:bg-black transition-colors cursor-pointer"
+                  className="absolute -top-1.5 -right-1.5 w-8 h-8 flex items-center justify-center cursor-pointer group/rem"
                 >
-                  <X className="w-3 h-3" />
+                  <span className="w-6 h-6 rounded-full bg-black/65 text-white flex items-center justify-center group-hover/rem:bg-black transition-colors">
+                    <X className="w-3.5 h-3.5" />
+                  </span>
                 </button>
               </div>
             ))}

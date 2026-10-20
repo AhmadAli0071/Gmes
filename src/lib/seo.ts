@@ -5,11 +5,13 @@ import { FAQS, PAGES, PageMeta, SITE } from '../data/seoContent';
 /* URLs                                                                        */
 /* -------------------------------------------------------------------------- */
 
-/** Absolute URL for a hash route, e.g. `#/pricing` -> `https://site/#/pricing`. */
+/** Absolute URL for a route path, e.g. `/pricing` -> `https://site/pricing`. */
 export function canonicalUrl(path: string): string {
   const base = SITE.url.replace(/\/+$/, '');
-  const rest = (path || '').replace(/^#\/?/, '');
-  return rest ? `${base}/#/${rest}` : `${base}/`;
+  // Accepts both the canonical `/pricing` form and a legacy `#/pricing`.
+  const clean = (path || '').replace(/^#/, '').replace(/\/+$/, '');
+  if (!clean) return `${base}/`;
+  return `${base}${clean.startsWith('/') ? clean : `/${clean}`}`;
 }
 
 /** Absolute URL for a root-relative asset (`/og-image.png`). */
@@ -86,8 +88,8 @@ export function applyPageMeta(page: PageMeta, options: { noindex?: boolean } = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: canonicalUrl('#/') },
-      ...(page.path === '#/'
+      { '@type': 'ListItem', position: 1, name: 'Home', item: canonicalUrl('/') },
+      ...(page.path === '/'
         ? []
         : [
             {
@@ -108,16 +110,20 @@ const NOINDEX_VIEWS = new Set(['recipient', 'dashboard', 'admin', 'settings']);
  * the app boots and can never disagree with what the visitor reads.
  * (Organization / WebSite / SoftwareApplication live statically in index.html.)
  */
-export function injectContentSchema(): void {
-  setJsonLd('gems-faq', {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: FAQS.map((faq) => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: { '@type': 'Answer', text: faq.a },
-    })),
-  });
+export function injectContentSchema(options: { includeFaq?: boolean } = {}): void {
+  if (options.includeFaq === false) {
+    document.getElementById('gems-faq')?.remove();
+  } else {
+    setJsonLd('gems-faq', {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    });
+  }
 
   setJsonLd('gems-howto', {
     '@context': 'https://schema.org',
@@ -129,18 +135,18 @@ export function injectContentSchema(): void {
     step: [
       {
         '@type': 'HowToStep',
-        name: 'Pick a gift design',
-        text: 'Choose from 36 gift designs across 12 occasions, or start from a blank box.',
+        name: 'Add your memories',
+        text: 'Upload photos, record a voice note and type a heartfelt message.',
       },
       {
         '@type': 'HowToStep',
-        name: 'Add your photos, voice note and message',
-        text: 'Drop in photos, record a short voice note in your own voice, write the message and choose the mood.',
+        name: 'Choose a gift box',
+        text: 'Pick a design that fits the occasion, from birthdays to anniversaries.',
       },
       {
         '@type': 'HowToStep',
-        name: 'Send the link',
-        text: 'Copy the shareable link or QR code and send it over WhatsApp, email or any chat. They open it in their browser and the box unwraps.',
+        name: 'Share one link',
+        text: 'Send it on WhatsApp, text or email. They tap the link and unwrap it.',
       },
     ],
   });

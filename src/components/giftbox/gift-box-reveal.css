@@ -177,3 +177,16 @@ background:repeating-conic-gradient(from 0deg,#ffd97a66 0 8deg,#0000 8deg 24deg)
 .gbr .vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gbr .vt{pointer-events:none}
 .gbr .pp[role="button"]:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+/* Small phones (<=400px content width): the 300px scene is wider than the
+   padded content box, so it used to overflow and get clipped off-centre.
+   Scale the whole scene down and shrink the card padding to match. The
+   .done state scales by the same factor so the reveal exit stays aligned. */
+@media (max-width:400px){
+.gbr-main{padding:14px 12px}
+.gbr .scene{transform:scale(.8);transform-origin:50% 0}
+.gbr .scene.done{transform:scale(.64) translateY(30px)}
+.gbr h1{font-size:1.5rem}
+.gbr .card{padding:22px 16px 16px;min-height:0}
+.gbr .polaroid div{height:120px}
+.gbr .env{height:220px}
+}

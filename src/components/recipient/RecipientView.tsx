@@ -91,7 +91,7 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
       <header className="w-full px-4 sm:px-6 py-3.5 flex items-center justify-between z-40 bg-black/25 backdrop-blur-md border-b border-white/10 shrink-0">
         <button
           onClick={closeRecipientView}
-          className="p-2 text-white/70 hover:text-white rounded-full transition-colors cursor-pointer"
+          className="p-2.5 text-white/70 hover:text-white rounded-full transition-colors cursor-pointer"
           aria-label="Close gift"
         >
           <X className="w-5 h-5" aria-hidden />
@@ -108,7 +108,7 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
           {opened && (
             <button
               onClick={() => setOpened(false)}
-              className="p-2 text-white/80 hover:text-white rounded-full bg-white/15 backdrop-blur-md border border-white/20 shadow-2xs transition-colors cursor-pointer"
+              className="p-2.5 text-white/80 hover:text-white rounded-full bg-white/15 backdrop-blur-md border border-white/20 shadow-2xs transition-colors cursor-pointer"
               title="Replay gift unboxing"
               aria-label="Replay gift unboxing"
             >
@@ -118,7 +118,7 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
 
           <button
             onClick={toggleSound}
-            className="p-2 text-white/80 hover:text-white rounded-full bg-white/15 backdrop-blur-md border border-white/20 shadow-2xs transition-colors cursor-pointer"
+            className="p-2.5 text-white/80 hover:text-white rounded-full bg-white/15 backdrop-blur-md border border-white/20 shadow-2xs transition-colors cursor-pointer"
             title={soundEnabled ? 'Mute voice note' : 'Unmute voice note'}
             aria-label={soundEnabled ? 'Mute voice note' : 'Unmute voice note'}
             aria-pressed={!soundEnabled}
@@ -149,8 +149,8 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
 
       {/* Recipient Experience Viral Growth Footer */}
       <footer className="w-full py-5 px-4 text-center z-40 bg-black/25 backdrop-blur-md border-t border-white/10 shrink-0">
-        <div className="max-w-md mx-auto flex items-center justify-between gap-3 text-xs">
-          <div className="text-left">
+        <div className="max-w-md mx-auto flex flex-col items-center justify-between gap-3 text-xs sm:flex-row">
+          <div className="text-center sm:text-left">
             <span className="font-bold text-white block">Make someone smile today</span>
             <span className="text-[11px] text-white/60">
               Send an interactive digital gift in 60s.
@@ -159,7 +159,7 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
 
           <button
             onClick={() => startNewGift()}
-            className="px-4 py-2 bg-[#ff4f8b] hover:bg-[#d92f72] text-white font-semibold rounded-xl shadow-xs transition-transform hover:scale-105 cursor-pointer whitespace-nowrap"
+            className="px-4 py-2.5 bg-[#ff4f8b] hover:bg-[#d92f72] text-white font-semibold rounded-xl shadow-xs transition-transform hover:scale-105 cursor-pointer whitespace-nowrap min-h-[44px] w-full sm:w-auto"
           >
             Create your own GEMS →
           </button>

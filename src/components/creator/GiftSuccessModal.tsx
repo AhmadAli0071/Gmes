@@ -25,8 +25,8 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
   const [showQr, setShowQr] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
-  // Hash route — resolves inside the SPA, so the link actually opens the gift.
-  const shareUrl = `${window.location.origin}${window.location.pathname}#/g/${gift.shareCode}`;
+  // Clean path route — resolves inside the SPA, so the link opens the gift.
+  const shareUrl = `${window.location.origin}/g/${gift.shareCode}`;
 
   useEffect(() => {
     if (!showQr || qrDataUrl) return;
@@ -103,11 +103,11 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative text-center">
+      <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-zinc-200 relative text-center max-h-[calc(100dvh-2rem)] overflow-y-auto overscroll-contain">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 text-zinc-400 hover:text-zinc-700 rounded-lg transition-colors"
+          className="absolute top-3 right-3 p-2.5 text-zinc-400 hover:text-zinc-700 rounded-lg transition-colors"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -126,8 +126,8 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
         </p>
 
         {/* Shareable Link Box */}
-        <div className="mt-6 p-3 bg-zinc-50 border border-zinc-200 rounded-2xl flex items-center justify-between gap-2">
-          <div className="font-mono text-xs text-zinc-700 truncate px-2 text-left">
+        <div className="mt-6 p-3 bg-zinc-50 border border-zinc-200 rounded-2xl flex flex-wrap items-center justify-between gap-2">
+          <div className="font-mono text-xs text-zinc-700 truncate px-2 text-left min-w-0 flex-1 basis-full sm:basis-0">
             {shareUrl}
           </div>
           <button
@@ -159,7 +159,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
         </div>
 
         {/* Secondary options: QR Code & Recipient Preview */}
-        <div className="mt-4 pt-4 border-t border-zinc-100 flex items-center justify-around text-xs text-zinc-600 font-medium">
+        <div className="mt-4 pt-4 border-t border-zinc-100 flex flex-wrap items-center justify-around gap-3 text-xs text-zinc-600 font-medium">
           <button
             onClick={() => setShowQr(!showQr)}
             className="inline-flex items-center gap-1.5 hover:text-zinc-900 transition-colors"

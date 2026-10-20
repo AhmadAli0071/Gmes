@@ -9,6 +9,7 @@ import {
 } from '../types';
 import { EVENTS, getCurrentSeasonalEvent } from '../data/events';
 import { ApiError, isAuthError } from '../lib/api';
+import { onRouteChange, pathToRoute, writePath } from '../lib/router';
 import {
   createGift,
   deleteGift as deleteGiftApi,
@@ -79,39 +80,10 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 /* -------------------------------------------------------------------------- */
-/* Hash routing — URL is the source of truth, so back/forward, refresh and     */
-/* shared `#/g/{shareCode}` links all resolve to the right screen.             */
+/* Path routing — the URL is the source of truth, so back/forward, refresh and */
+/* shared `/g/{shareCode}` links all resolve to the right screen.              */
+/* (Parsing lives in lib/router.ts; only the state sync lives here.)           */
 /* -------------------------------------------------------------------------- */
-
-const ROUTES: ViewRoute[] = [
-  'home',
-  'create',
-  'explore',
-  'how-it-works',
-  'pricing',
-  'dashboard',
-  'admin',
-  'settings',
-];
-
-function hashToRoute(hash: string): { view: ViewRoute; giftCode?: string } {
-  const raw = hash.replace(/^#/, '').replace(/^\//, '');
-  if (!raw) return { view: 'home' };
-  if (raw.startsWith('g/')) {
-    const code = decodeURIComponent(raw.slice(2)).trim();
-    return code ? { view: 'recipient', giftCode: code } : { view: 'home' };
-  }
-  const match = ROUTES.find((route) => route === raw);
-  return { view: match || 'home' };
-}
-
-function routeToHash(view: ViewRoute, giftCode?: string): string {
-  if (view === 'recipient') {
-    return giftCode ? `#/g/${encodeURIComponent(giftCode)}` : '#/';
-  }
-  if (view === 'home') return '#/';
-  return `#/${view}`;
-}
 
 /* -------------------------------------------------------------------------- */
 /* Preferences (small, device-local). Gift data itself lives on the server.    */
@@ -119,6 +91,10 @@ function routeToHash(view: ViewRoute, giftCode?: string): string {
 
 const EVENTS_STORAGE_KEY = 'gems_events';
 const SEASON_STORAGE_KEY = 'gems_season';
+/** In-progress creator form, so a refresh mid-build doesn't wipe the user's work. */
+const DRAFT_STORAGE_KEY = 'gems_draft';
+/** Which wizard step they were on — kept beside the draft for the same reason. */
+const STEP_STORAGE_KEY = 'gems_draft_step';
 
 /**
  * Admin console edits are merged back onto the built-in catalogue by id, so
@@ -150,6 +126,38 @@ function readStoredSeason(fallback: EventSlug): EventSlug {
     /* ignore */
   }
   return fallback;
+}
+
+/**
+ * Restores a half-finished gift after a refresh. The stored shape is the same
+ * `Partial<GiftData>` the creator edits, so photos/voice survive as their
+ * uploaded URLs. Anything unreadable falls back to a fresh draft rather than
+ * crashing the creator.
+ */
+export function readStoredDraft(user: User | null, eventSlug: EventSlug): Partial<GiftData> {
+  const fresh = makeDraft(user, eventSlug);
+  try {
+    const saved = localStorage.getItem(DRAFT_STORAGE_KEY);
+    if (!saved) return fresh;
+    const parsed: unknown = JSON.parse(saved);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return fresh;
+    return { ...fresh, ...(parsed as Partial<GiftData>) };
+  } catch {
+    return fresh;
+  }
+}
+
+/** Exported so GiftCreator can resume on the same step after a refresh. */
+export function readStoredStep(): number {
+  try {
+    const saved = Number(localStorage.getItem(STEP_STORAGE_KEY));
+    // isInteger guards against "2.7" and NaN — a fractional step would not
+    // match any real wizard step and would render a blank creator.
+    if (Number.isInteger(saved) && saved >= 1 && saved <= 4) return saved;
+  } catch {
+    /* ignore */
+  }
+  return 1;
 }
 
 function makeDraft(user: User | null, eventSlug: EventSlug): Partial<GiftData> {
@@ -199,7 +207,9 @@ const errorMessage = (err: unknown, fallback: string): string =>
   err instanceof ApiError ? err.message : fallback;
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [initialRoute] = useState(() => hashToRoute(window.location.hash));
+  const [initialRoute] = useState(
+    () => pathToRoute(window.location.pathname) ?? { view: 'home' as ViewRoute }
+  );
   const initialSeason = getCurrentSeasonalEvent();
 
   const [toast, setToast] = useState<ToastInfo | null>(null);
@@ -328,20 +338,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const viewBeforeRecipient = useRef<ViewRoute>('home');
   const routeSeq = useRef(0);
 
-  // Current draft in Gift Creator
+  // Current draft in Gift Creator. Hydrated from localStorage so a refresh
+  // (or an accidental back-navigation) doesn't throw away a half-built gift.
   const [currentDraft, setCurrentDraft] = useState<Partial<GiftData>>(() =>
-    makeDraft(null, initialSeason.slug)
+    readStoredDraft(null, initialSeason.slug)
   );
 
   // Recently created gift for success screen
   const [justCreatedGift, setJustCreatedGift] = useState<GiftData | null>(null);
 
-  /* ------------------------------- navigation ------------------------------ */
+  // Mirror the draft to storage on every keystroke. Debounced by React's own
+  // batching, and guarded because private-mode quota errors are not fatal.
+  useEffect(() => {
+    try {
+      localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(currentDraft));
+    } catch {
+      /* a full/blocked localStorage must never break the creator */
+    }
+  }, [currentDraft]);
 
-  const writeHash = useCallback((view: ViewRoute, giftCode?: string) => {
-    const target = routeToHash(view, giftCode);
-    if (window.location.hash !== target) window.location.hash = target;
-  }, []);
+  /* ------------------------------- navigation ------------------------------ */
 
   const setCurrentView = useCallback(
     (view: ViewRoute, giftCode?: string) => {
@@ -350,10 +366,46 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
       if (view !== 'recipient') setRecipientGift(null);
       setCurrentViewState(view);
-      writeHash(view, giftCode);
+      writePath(view, giftCode);
     },
-    [writeHash]
+    [writePath]
   );
+
+  /**
+   * Internal `<a href="/pricing">` clicks stay in the SPA. Anything else —
+   * modifier clicks, new tabs, downloads, other origins, plain anchors — is
+   * left to the browser.
+   */
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const anchor = (event.target as Element | null)?.closest?.('a[href]');
+      if (!anchor) return;
+
+      const href = anchor.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      if (anchor.hasAttribute('download') || anchor.getAttribute('target')) return;
+
+      let url: URL;
+      try {
+        url = new URL(href, window.location.href);
+      } catch {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+
+      const route = pathToRoute(url.pathname);
+      if (!route) return;
+
+      event.preventDefault();
+      setCurrentView(route.view, route.giftCode);
+    };
+
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [setCurrentView]);
 
   /**
    * Resolves a share code. Local copy first (instant preview from the
@@ -385,7 +437,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         setRecipientGift(null);
         if (currentViewRef.current === 'recipient') {
           setCurrentViewState('home');
-          writeHash('home');
+          writePath('home');
         }
         if (!(err instanceof ApiError && err.status === 404)) {
           showToast(errorMessage(err, 'Could not load this gift.'), 'error');
@@ -394,40 +446,41 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (seq === routeSeq.current) setRecipientLoading(false);
       }
     },
-    [writeHash, showToast]
+    [writePath, showToast]
   );
 
-  // Reflect external hash changes: back/forward buttons, pasted links, reloads.
+  // Reflect external URL changes: back/forward buttons, pasted links, reloads.
+  useEffect(
+    () =>
+      onRouteChange(() => {
+        const { view, giftCode } = pathToRoute(window.location.pathname) ?? { view: 'home' };
+
+        if (view === 'recipient') {
+          if (!giftCode) return;
+          const arriving = currentViewRef.current !== 'recipient';
+          if (arriving) viewBeforeRecipient.current = currentViewRef.current;
+          void loadRecipient(giftCode, { countView: arriving });
+          return;
+        }
+
+        routeSeq.current += 1;
+        setRecipientLoading(false);
+        const alreadyThere = currentViewRef.current === view && recipientGiftRef.current === null;
+        setRecipientGift(null);
+        setCurrentViewState((prev) => (prev === view ? prev : view));
+        if (!alreadyThere && currentViewRef.current === 'recipient') {
+          viewBeforeRecipient.current = 'home';
+        }
+      }),
+    [loadRecipient]
+  );
+
+  // Deep link on first paint: /g/{code} before anything else has happened.
   useEffect(() => {
-    const onHashChange = () => {
-      const { view, giftCode } = hashToRoute(window.location.hash);
-
-      if (view === 'recipient') {
-        if (!giftCode) return;
-        const arriving = currentViewRef.current !== 'recipient';
-        if (arriving) viewBeforeRecipient.current = currentViewRef.current;
-        void loadRecipient(giftCode, { countView: arriving });
-        return;
-      }
-
-      routeSeq.current += 1;
-      setRecipientLoading(false);
-      const alreadyThere = currentViewRef.current === view && recipientGiftRef.current === null;
-      setRecipientGift(null);
-      setCurrentViewState((prev) => (prev === view ? prev : view));
-      if (!alreadyThere && currentViewRef.current === 'recipient') {
-        viewBeforeRecipient.current = 'home';
-      }
-    };
-
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, [loadRecipient]);
-
-  // Deep link on first paint: #/g/{code} before anything else has happened.
-  useEffect(() => {
-    const { view, giftCode } = hashToRoute(window.location.hash);
-    if (view === 'recipient' && giftCode) void loadRecipient(giftCode, { countView: true });
+    const route = pathToRoute(window.location.pathname);
+    if (route?.view === 'recipient' && route.giftCode) {
+      void loadRecipient(route.giftCode, { countView: true });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -579,9 +632,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (countView) recordGiftView(gift.shareCode);
       setRecipientGift(countView ? { ...gift, viewsCount: gift.viewsCount + 1 } : gift);
       setCurrentViewState('recipient');
-      writeHash('recipient', gift.shareCode);
+      writePath('recipient', gift.shareCode);
     },
-    [writeHash]
+    [writePath]
   );
 
   const closeRecipientView = useCallback(() => {
@@ -591,8 +644,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const back = viewBeforeRecipient.current || 'home';
     viewBeforeRecipient.current = 'home';
     setCurrentViewState(back);
-    writeHash(back);
-  }, [writeHash]);
+    writePath(back);
+  }, [writePath]);
 
   return (
     <AppContext.Provider

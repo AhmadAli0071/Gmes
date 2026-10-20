@@ -5,6 +5,7 @@ import { Navbar } from './components/navigation/Navbar';
 import { Toast } from './components/common/Toast';
 import { AuthModal } from './components/auth/AuthModal';
 import { GiftSuccessModal } from './components/creator/GiftSuccessModal';
+import { LANDING_VIEWS, LandingView } from './types';
 
 // Views
 import { HomeView } from './components/home/HomeView';
@@ -32,6 +33,14 @@ const AdminPanel = lazy(() =>
 );
 const SettingsView = lazy(() =>
   import('./components/settings/SettingsView').then((m) => ({ default: m.SettingsView }))
+);
+const LandingPageView = lazy(() =>
+  import('./components/landing/LandingPageView').then((m) => ({
+    default: m.LandingPageView,
+  }))
+);
+const BlogView = lazy(() =>
+  import('./components/blog/BlogView').then((m) => ({ default: m.BlogView }))
 );
 
 const ViewFallback = () => (
@@ -79,8 +88,8 @@ const MainRouter: React.FC = () => {
   usePageMeta(currentView);
 
   useEffect(() => {
-    injectContentSchema();
-  }, []);
+    injectContentSchema({ includeFaq: currentView === 'home' });
+  }, [currentView]);
 
   // Recipient mode: pure full-screen distraction-free unboxing, no site chrome.
   if (currentView === 'recipient') {
@@ -111,22 +120,27 @@ const MainRouter: React.FC = () => {
           {currentView === 'dashboard' && <DashboardView />}
           {currentView === 'admin' && <AdminGate />}
           {currentView === 'settings' && <SettingsView />}
+          {currentView === 'blog' && <BlogView />}
+          {LANDING_VIEWS.includes(currentView as LandingView) && (
+            <LandingPageView slug={currentView as LandingView} />
+          )}
         </Suspense>
       </main>
-
-      <AuthModal />
     </div>
   );
 };
 
 /** Toasts + the post-create share dialog live above every screen, including
- *  the dashboard "Share" action and the recipient preview. */
+ *  the dashboard "Share" action and the recipient preview. Auth lives here too
+ *  so a sign-in prompt works from the creator and the recipient view, and so
+ *  the form's mode/email survive open→close instead of resetting on unmount. */
 const GlobalOverlays: React.FC = () => {
   const { justCreatedGift, setJustCreatedGift } = useApp();
 
   return (
     <>
       <Toast />
+      <AuthModal />
       {justCreatedGift && (
         <GiftSuccessModal
           gift={justCreatedGift}

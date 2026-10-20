@@ -11,12 +11,12 @@ export const SITE = {
   name: 'GEMS',
   legalName: 'GEMS',
   /** Replace with the production origin — used by canonical, OG and sitemap. */
-  url: 'http://40.160.149.176',
+  url: 'https://gemsvg.com',
   locale: 'en_US',
   tagline: 'Make Every Moment a Gift',
   email: 'hello@gems.example.com',
   description:
-    'Create a virtual gift online in 60 seconds. Add photos, a voice note and a message inside a 3D gift box, then share one link — no app, free to start.',
+    'Create a virtual gift in 60 seconds. Add photos, a voice note and a message inside a 3D gift box, then share one link. No app needed. Free to start.',
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -59,7 +59,7 @@ export const KEYWORDS = {
 /* -------------------------------------------------------------------------- */
 
 export interface PageMeta {
-  /** Hash path, e.g. `` for home, `#/pricing` for pricing. */
+  /** Route path, e.g. `/` for home, `/pricing` for pricing. */
   path: string;
   title: string;
   description: string;
@@ -67,38 +67,68 @@ export interface PageMeta {
 
 export const PAGES: Record<string, PageMeta> = {
   home: {
-    path: '#/',
-    title: 'Send a Virtual Gift Online Free in 60s | GEMS',
+    path: '/',
+    title: 'Send a Virtual Gift Online | Free 3D Digital Gift Box | GEMS',
     description: SITE.description,
   },
   explore: {
-    path: '#/explore',
+    path: '/explore',
     title: 'Gift Designs & Templates — 36 Virtual Gift Ideas | GEMS',
     description:
       'Browse 36 digital gift designs across 12 occasions. Steal a template, add your photos and voice note, and send a virtual gift by link in under a minute.',
   },
   'how-it-works': {
-    path: '#/how-it-works',
+    path: '/how-it-works',
     title: 'How to Send a Virtual Gift in 3 Steps | GEMS',
     description:
       'Learn how to send a personalized digital gift online: pick a design, add photos and a voice note, then share one link. No app or account needed for them.',
   },
   pricing: {
-    path: '#/pricing',
+    path: '/pricing',
     title: 'Pricing — Send a Digital Gift Free or from $4.99 | GEMS',
     description:
       'Send a virtual gift free, unlock a Premium gift for $4.99, or go Pro for unlimited personalized digital gifts with HD unboxing animations.',
   },
   create: {
-    path: '#/create',
+    path: '/create',
     title: 'Create a Virtual Gift Box | GEMS',
     description:
       'Build your own interactive digital gift box — add photos, record a voice note, write your message and share a single link.',
   },
+  blog: {
+    path: '/blog',
+    title: 'Gift Ideas and Tips — Birthdays, Anniversaries & More | GEMS',
+    description:
+      'Practical gift ideas and tips for birthdays, anniversaries, Valentine’s Day and long distance relationships. Create a personal 3D gift box in minutes.',
+  },
+  'virtual-birthday-gift': {
+    path: '/virtual-birthday-gift',
+    title: 'Virtual Birthday Gift Ideas | Send a 3D Gift Box',
+    description:
+      'Send a virtual birthday gift with photos, a voice note and a message in a 3D gift box. Share it with one link and surprise someone now. Try GEMS.',
+  },
+  'anniversary-digital-gift': {
+    path: '/anniversary-digital-gift',
+    title: 'Digital Anniversary Gift Ideas | GEMS 3D Gift Box',
+    description:
+      'Create a digital anniversary gift with photos, a voice note and a love message inside a 3D gift box. Share one link and celebrate your story now.',
+  },
+  'valentines-day-virtual-gift': {
+    path: '/valentines-day-virtual-gift',
+    title: "Valentine's Day Virtual Gift Ideas | GEMS Gift Box",
+    description:
+      'Send a Valentine’s Day virtual gift with photos, a voice note and a love message in a 3D gift box. One link and one sweet surprise. Try GEMS now.',
+  },
+  'long-distance-gift-ideas': {
+    path: '/long-distance-gift-ideas',
+    title: 'Long Distance Relationship Gifts | GEMS Gift Box',
+    description:
+      'Find long distance relationship gifts that feel closer. Send photos, a voice note and a message inside a 3D gift box with one link. Try GEMS now.',
+  },
 };
 
 /* -------------------------------------------------------------------------- */
-/* FAQ — mirrored by FAQPage JSON-LD in index.html                             */
+/* FAQ — FAQPage JSON-LD is injected by lib/seo.ts on the homepage.           */
 /* -------------------------------------------------------------------------- */
 
 export interface Faq {
@@ -109,35 +139,35 @@ export interface Faq {
 export const FAQS: Faq[] = [
   {
     q: 'What is a virtual gift?',
-    a: 'A virtual gift (or digital gift) is a present you send online as a link instead of a physical parcel. With GEMS you wrap photos, a voice note and a written message inside an animated 3D gift box that the recipient unwraps in their browser — no wrapping paper, no delivery wait, no app to install.',
+    a: 'A virtual gift is a digital present made of photos, a voice note and a personal message, delivered as an interactive 3D gift box through one link.',
   },
   {
-    q: 'How do I send a digital gift without an app?',
-    a: 'Build the box in your browser, press Create Gift, and you instantly get a shareable link and a QR code. Send that link over WhatsApp, iMessage, email or any chat you already use. They tap it and the gift opens right there — nothing to download and no account to make.',
+    q: 'How do I send a virtual gift online?',
+    a: 'Add your photos, record a voice note, write your message and pick a gift box. Then share the link on WhatsApp, text or email.',
   },
   {
-    q: 'Can I add photos and a voice note inside the gift?',
-    a: 'Yes. Drop in your photos, record a voice note in your own voice so they hear you rather than read you, write the message, and choose a mood. The mood restyles the card artwork, palette and fonts to match the moment — magical, romantic, playful, elegant or festive.',
+    q: 'Does the receiver need an app or an account?',
+    a: 'No. They open the link on any phone or computer and unwrap the gift — nothing to download and no account to create.',
   },
   {
-    q: 'Does the recipient need an account to open the gift?',
-    a: 'No. That is the whole point of GEMS: one link opens the gift on any phone, tablet or laptop, straight in the browser. Your recipient never signs up, installs anything, or pays anything.',
+    q: 'Is GEMS really free?',
+    a: 'Yes. You can create and share a gift for free with basic templates, your personal message and an instant link. Optional paid upgrades add premium designs, HD unboxing animations and unlimited gifting — the pricing page lists exactly what each plan includes.',
   },
   {
-    q: 'Is GEMS free to use?',
-    a: 'Yes — creating and sending a virtual gift is free with the $0 plan, which includes basic unboxing templates, your personalized message and an instant shareable link. A one-off Premium gift ($4.99) adds premium templates, up to 4 photos, a voice note and animation effects, while GEMS Pro is for people who send gifts regularly.',
+    q: 'Can I send a virtual gift to someone in another country?',
+    a: 'Yes. There is no shipping or customs, so it arrives instantly anywhere in the world.',
   },
   {
-    q: 'What occasions can I send a virtual gift for?',
-    a: 'Twelve occasions are covered out of the box — birthday, Valentine’s Day, Christmas, anniversary, graduation, wedding, Halloween, Mother’s Day, Father’s Day, thank you and congratulations — plus a generic box for just-because moments. Each occasion ships with its own palette, artwork and copy.',
+    q: 'Can I add a voice note to my gift?',
+    a: 'Yes. You can record it right in your browser. A voice makes the gift feel personal.',
   },
   {
-    q: 'How long does it take to make one?',
-    a: 'Most people finish in under 60 seconds. Pick a design, add a photo or two, record a short voice note, type the message and hit send. The gift is ready to share the moment you are done.',
+    q: 'Which occasions work best?',
+    a: 'Birthdays, anniversaries, Valentine’s Day, graduations, weddings, Mother’s Day, Father’s Day and thank you gifts.',
   },
   {
-    q: 'What makes GEMS different from an e-gift card?',
-    a: 'An e-gift card sends a code. GEMS sends an experience: the ribbon unties, the lid lifts, confetti pops, and inside is your photo, your voice and your words. It is closer to handing someone a real present than to forwarding a voucher.',
+    q: 'How long does my gift link stay active?',
+    a: 'There is no expiry date. Your gift link stays active until you delete the gift from your dashboard.',
   },
 ];
 

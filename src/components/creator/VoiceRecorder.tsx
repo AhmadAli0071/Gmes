@@ -210,16 +210,16 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
 
   return (
     <div className="border border-zinc-200 rounded-xl p-3 space-y-3">
-      <div className="flex items-center justify-between gap-2">
-        <span className="flex items-center gap-2 text-xs font-semibold text-zinc-800">
-          <Mic className="w-4 h-4 text-[var(--mood-accent)]" />
-          <span>Voice greeting {value ? `· ${fmt(player.duration || duration)}` : ''}</span>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="flex items-center gap-2 text-xs font-semibold text-zinc-800 min-w-0">
+          <Mic className="w-4 h-4 text-[var(--mood-accent)] shrink-0" />
+          <span className="truncate">Voice greeting {value ? `· ${fmt(player.duration || duration)}` : ''}</span>
         </span>
         {value && !recording && (
           <button
             type="button"
             onClick={removeNote}
-            className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-500 hover:text-rose-600 cursor-pointer"
+            className="inline-flex items-center gap-1 text-[11px] font-semibold text-rose-500 hover:text-rose-600 cursor-pointer py-2 px-2 -m-2 shrink-0"
           >
             <Trash2 className="w-3.5 h-3.5" />
             Remove
@@ -229,9 +229,9 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
 
       {/* Recording in progress */}
       {recording && (
-        <div className="rounded-xl border border-rose-200 bg-rose-50 p-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <span className="relative flex h-3 w-3">
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-3 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="relative flex h-3 w-3 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500" />
             </span>
@@ -239,11 +239,11 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
               Recording {fmt(elapsed)} / {fmt(MAX_SECONDS)}
             </span>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 ml-auto">
             <button
               type="button"
               onClick={cancelRecording}
-              className="p-1.5 rounded-lg text-rose-500 hover:bg-rose-100 cursor-pointer"
+              className="p-2.5 rounded-lg text-rose-500 hover:bg-rose-100 cursor-pointer"
               aria-label="Cancel recording"
             >
               <X className="w-4 h-4" />
