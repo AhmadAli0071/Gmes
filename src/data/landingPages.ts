@@ -349,6 +349,83 @@ export const LANDING_PAGES: LandingPage[] = [
       { label: "Valentine's Day virtual gift", path: '/valentines-day-virtual-gift' },
     ],
   },
+  {
+    slug: 'christmas-digital-gift-card',
+    keyword: 'christmas digital gift card',
+    metaTitle: 'Christmas Digital Gift Card Ideas | GEMS Gift Box',
+    metaDescription:
+      'Send a Christmas digital gift card with photos, a voice note and a holiday message in a 3D gift box. One link, one warm surprise. Try GEMS today.',
+    h1: 'Christmas Digital Gift Card Ideas That Feel Like Real Holiday Magic',
+    intro:
+      'By mid December, the same gift cards and generic e-cards fill every inbox. A Christmas digital gift card from GEMS stands out because it is built from your own photos, voice and words. You place them inside a 3D gift box, add a holiday message and send everything through one link. The person unwraps it on screen, and the moment feels warm even if you are hundreds of miles apart.',
+    blocks: [
+      { kind: 'h2', text: 'Why a Digital Christmas Gift Beats a Plain E-Card' },
+      {
+        kind: 'p',
+        text: 'A plain e-card is read in two seconds and forgotten. A digital Christmas card with photos holds the memories from your year, and a voice note adds the laugh, the tone and the small pauses that make it unmistakably you. It is also a smart idea for a Christmas gift for someone who has everything, because it offers what money cannot easily buy: your time and attention. Across the USA, many families travel less than they would like at the holidays, so a gift that arrives instantly can close the gap.',
+      },
+      { kind: 'h2', text: 'A Simple Countdown for the Holiday Season' },
+      {
+        kind: 'ul',
+        items: [
+          'Early December: gather photos from the year and note the memories you want to mention.',
+          'Mid December: record your voice note and finish the gift box so it is ready early.',
+          'December 24: send the link at night so it is waiting on Christmas morning.',
+          'December 25: for last minute Christmas gift ideas online, create one over breakfast and send it before lunch.',
+        ],
+      },
+      { kind: 'h2', text: 'Message Starters for Your Christmas Gift Box' },
+      {
+        kind: 'p',
+        text: "Stuck on what to write? Open with one favorite moment from this year, then say what you are thankful for and end with a wish for the holidays. A personalized Christmas message gift does not need rhyme or poetry, only honesty. If you also want to share details of a store gift card or a small treat, simply mention it in your message so the surprise feels complete. Saving romance for later? Our [Valentine's Day virtual gift ideas](/valentines-day-virtual-gift) are ready for February.",
+      },
+      { kind: 'h2', text: 'Who Will Love Your Christmas Gift Box' },
+      {
+        kind: 'ul',
+        items: [
+          'Grandparents: a Christmas voice message for family members who treasure the sound of your voice.',
+          'Partners: a romantic note, or a keepsake in the spirit of a [digital anniversary gift](/anniversary-digital-gift) if you have a milestone this year.',
+          'Friends: funny photos and a message that closes the year with a smile.',
+          'Relatives overseas: a virtual Christmas gift for long distance family that makes the day feel shared. Browse more [long distance relationship gifts](/long-distance-gift-ideas) too.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The same idea works all year. Explore our [virtual birthday gift](/virtual-birthday-gift) page for celebrations.',
+      },
+    ],
+    ctaHeading: 'Give Someone a Christmas They Will Replay',
+    ctaBody:
+      'Create your Christmas digital gift card with GEMS and send a surprise that feels warm, personal and ready in minutes. It may become the part of their holiday they open again next December.',
+    faqs: [
+      {
+        q: 'What is a Christmas digital gift card?',
+        a: 'It is a personal holiday gift made of photos, a voice note and a message inside a GEMS 3D gift box. You share it with one link.',
+      },
+      {
+        q: 'When should I send a Christmas gift box?',
+        a: 'Send it on December 24 for a Christmas morning surprise, or any day in December. The link works whenever you decide to share it.',
+      },
+      {
+        q: 'What should I write in a Christmas message?',
+        a: 'Share one memory from the year and one thing you are thankful for. Add a warm wish for the season.',
+      },
+      {
+        q: 'Which photos suit a digital Christmas card?',
+        a: 'Pick happy moments from the past year, such as trips, gatherings and silly snapshots. Clear photos with real smiles work best.',
+      },
+      {
+        q: 'Who can open the Christmas gift box?',
+        a: 'Anyone with your link, on a phone or computer, wherever they live. It suits relatives abroad and friends across the USA.',
+      },
+    ],
+    related: [
+      { label: 'Virtual birthday gift', path: '/virtual-birthday-gift' },
+      { label: 'Digital anniversary gift', path: '/anniversary-digital-gift' },
+      { label: "Valentine's Day virtual gift", path: '/valentines-day-virtual-gift' },
+      { label: 'Long distance relationship gifts', path: '/long-distance-gift-ideas' },
+    ],
+  },
 ];
 
 export function getLandingPage(slug: LandingView): LandingPage {

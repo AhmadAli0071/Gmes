@@ -36,6 +36,11 @@ const BLOG_PREVIEWS = [
     excerpt: 'Close the distance with your voice, your photos and a message they can replay.',
     path: '/long-distance-gift-ideas',
   },
+  {
+    title: 'Christmas Digital Gift Card Ideas',
+    excerpt: 'Holiday magic in one link — photos, a voice note and a festive 3D gift box.',
+    path: '/christmas-digital-gift-card',
+  },
 ];
 
 const SITE_STYLES = `
@@ -178,9 +183,10 @@ const HOME_PAGE: SeoPage = {
       <li><a href="/virtual-birthday-gift">Virtual birthday gift</a></li>
       <li><a href="/anniversary-digital-gift">Digital anniversary gift</a></li>
       <li><a href="/valentines-day-virtual-gift">Valentine's Day virtual gift</a></li>
+      <li><a href="/christmas-digital-gift-card">Christmas digital gift card</a></li>
       <li>Mother's Day and Father's Day gifts</li>
       <li>Graduation, wedding and thank you gifts</li>
-      <li>Christmas, Halloween and just because surprises</li>
+      <li>Halloween and just because surprises</li>
     </ul>
 
     <h2>Why a Virtual Gift Feels Better Than an E-Card</h2>
@@ -307,6 +313,7 @@ const SIMPLE_PAGES: SeoPage[] = [
       <li><a href="/anniversary-digital-gift">Digital anniversary gift ideas</a></li>
       <li><a href="/valentines-day-virtual-gift">Valentine's Day virtual gift ideas</a></li>
       <li><a href="/long-distance-gift-ideas">Long distance relationship gifts</a></li>
+      <li><a href="/christmas-digital-gift-card">Christmas digital gift card ideas</a></li>
     </ul>
     <a class="seo-cta" href="/create">Create your gift</a>
   </main>

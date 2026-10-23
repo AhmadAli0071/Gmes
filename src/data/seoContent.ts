@@ -125,6 +125,12 @@ export const PAGES: Record<string, PageMeta> = {
     description:
       'Find long distance relationship gifts that feel closer. Send photos, a voice note and a message inside a 3D gift box with one link. Try GEMS now.',
   },
+  'christmas-digital-gift-card': {
+    path: '/christmas-digital-gift-card',
+    title: 'Christmas Digital Gift Card Ideas | GEMS Gift Box',
+    description:
+      'Send a Christmas digital gift card with photos, a voice note and a holiday message in a 3D gift box. One link, one warm surprise. Try GEMS today.',
+  },
 };
 
 /* -------------------------------------------------------------------------- */

@@ -1,6 +1,7 @@
 import birthdayImage from '../assets/images/guides/birthday.jpg';
 import anniversaryImage from '../assets/images/guides/anniversary.jpg';
 import valentinesImage from '../assets/images/guides/valentines.jpg';
+import christmasImage from '../assets/images/template_christmas_wonder_1791359394567.jpg';
 
 export interface GiftGuide {
   title: string;
@@ -48,6 +49,16 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: valentinesImage,
     alt: 'Long distance gift box with photos and a voice note',
     tag: 'Long distance',
+    readTime: '5 min read',
+  },
+  {
+    title: 'Christmas Digital Gift Card Ideas',
+    excerpt:
+      'Holiday magic in one link — photos, a voice note and a message inside a festive 3D gift box.',
+    path: '/christmas-digital-gift-card',
+    image: christmasImage,
+    alt: 'Christmas digital gift card with a festive 3D gift box and holiday lights',
+    tag: 'Christmas',
     readTime: '5 min read',
   },
 ];

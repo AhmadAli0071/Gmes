@@ -64,7 +64,7 @@ const OCCASIONS: {
     title: 'Christmas',
     body: 'Unwrap the holidays together',
     slug: 'christmas',
-    href: '/create',
+    href: '/christmas-digital-gift-card',
   },
 ];
 

@@ -13,7 +13,7 @@ const OCCASION_LINKS: { label: string; href: string }[] = [
   { label: "Valentine's Day virtual gift", href: '/valentines-day-virtual-gift' },
   { label: 'Digital anniversary gift', href: '/anniversary-digital-gift' },
   { label: 'Long distance gift ideas', href: '/long-distance-gift-ideas' },
-  { label: 'Christmas digital gift card', href: '/explore' },
+  { label: 'Christmas digital gift card', href: '/christmas-digital-gift-card' },
   { label: 'Graduation surprise', href: '/explore' },
 ];
 
