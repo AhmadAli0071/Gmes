@@ -5,7 +5,7 @@ const PRODUCT_LINKS: { label: string; href: string }[] = [
   { label: 'Gift designs & templates', href: '/explore' },
   { label: 'How to send a virtual gift', href: '/how-it-works' },
   { label: 'Gift ideas & tips', href: '/blog' },
-  { label: 'Pricing — free & Premium gifts', href: '/pricing' },
+  { label: 'Pricing: free & Premium gifts', href: '/pricing' },
 ];
 
 const OCCASION_LINKS: { label: string; href: string }[] = [
@@ -14,14 +14,13 @@ const OCCASION_LINKS: { label: string; href: string }[] = [
   { label: 'Digital anniversary gift', href: '/anniversary-digital-gift' },
   { label: 'Long distance gift ideas', href: '/long-distance-gift-ideas' },
   { label: 'Christmas digital gift card', href: '/christmas-digital-gift-card' },
-  { label: 'Graduation surprise', href: '/explore' },
 ];
 
 const KNOW_LINKS: { label: string; href: string }[] = [
-  { label: 'Free to start — no card needed', href: '/pricing' },
-  { label: 'They need no app and no account', href: '/how-it-works' },
+  { label: 'Free to start, no card needed', href: '/pricing' },
+  { label: 'No app or account needed to open', href: '/how-it-works' },
   { label: 'Works on any phone or laptop', href: '/how-it-works' },
-  { label: 'Sent as a single shareable link', href: '/how-it-works' },
+  { label: 'Shared as a single link', href: '/how-it-works' },
 ];
 
 export const SiteFooter: React.FC = () => (
@@ -37,7 +36,7 @@ export const SiteFooter: React.FC = () => (
           </div>
           <p className="mt-3 text-sm text-white/55 leading-relaxed max-w-xs">
             Send a virtual gift online: a 3D digital gift box holding your photos, a voice
-            note and your message — one link, no app, made in under 60 seconds.
+            note and your message. One link, no app, made in under 60 seconds.
           </p>
           <p className="mt-5 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40">
             Made with <Heart className="w-3.5 h-3.5 fill-rose-400 text-rose-400" /> for
@@ -81,9 +80,9 @@ export const SiteFooter: React.FC = () => (
           </ul>
         </nav>
 
-        <nav aria-label="Good to know">
+        <nav aria-label="Why GEMS">
           <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">
-            Good to know
+            Why GEMS
           </h4>
           <ul className="mt-4 space-y-2.5">
             {KNOW_LINKS.map((link) => (
