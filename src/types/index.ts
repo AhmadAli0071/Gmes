@@ -105,6 +105,8 @@ export const LANDING_VIEWS = [
   'valentines-day-virtual-gift',
   'long-distance-gift-ideas',
   'christmas-digital-gift-card',
+  'long-distance-birthday-surprise',
+  'last-minute-christmas-gift-ideas',
 ] as const;
 
 export type LandingView = (typeof LANDING_VIEWS)[number];

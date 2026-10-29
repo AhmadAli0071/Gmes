@@ -16,8 +16,9 @@ export const BlogView: React.FC = () => (
           Gift Ideas and Tips
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#6B7280] sm:text-base">
-          Practical ideas for birthdays, anniversaries, Valentine&apos;s Day and long distance
-          relationships — all built around photos, your voice and a message that lasts.
+          Practical ideas for birthdays, anniversaries, Valentine&apos;s Day, long distance
+          relationships and the holidays — all built around photos, your voice and a message
+          that lasts.
         </p>
       </div>
     </section>

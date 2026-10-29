@@ -99,7 +99,7 @@ export const PAGES: Record<string, PageMeta> = {
     path: '/blog',
     title: 'Gift Ideas and Tips — Birthdays, Anniversaries & More | GEMS',
     description:
-      'Practical gift ideas and tips for birthdays, anniversaries, Valentine’s Day and long distance relationships. Create a personal 3D gift box in minutes.',
+      'Practical gift ideas and tips for birthdays, anniversaries, Valentine’s Day, long distance relationships and the holidays. Create a personal 3D gift box in minutes.',
   },
   'virtual-birthday-gift': {
     path: '/virtual-birthday-gift',
@@ -130,6 +130,18 @@ export const PAGES: Record<string, PageMeta> = {
     title: 'Christmas Digital Gift Card Ideas | GEMS Gift Box',
     description:
       'Send a Christmas digital gift card with photos, a voice note and a holiday message in a 3D gift box. One link, one warm surprise. Try GEMS today.',
+  },
+  'long-distance-birthday-surprise': {
+    path: '/long-distance-birthday-surprise',
+    title: 'Surprise a Long Distance Partner on Their Birthday',
+    description:
+      'Plan a long distance birthday surprise that feels personal. Get timing tips, gift ideas and a simple step-by-step guide to make them feel closer.',
+  },
+  'last-minute-christmas-gift-ideas': {
+    path: '/last-minute-christmas-gift-ideas',
+    title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
+    description:
+      'Need a Christmas gift fast? These easy last-minute ideas feel thoughtful, arrive on time and go beyond gift cards. Find options for every budget.',
   },
 };
 

@@ -41,6 +41,16 @@ const BLOG_PREVIEWS = [
     excerpt: 'Holiday magic in one link — photos, a voice note and a festive 3D gift box.',
     path: '/christmas-digital-gift-card',
   },
+  {
+    title: 'Surprise a Long Distance Partner on Their Birthday',
+    excerpt: 'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
+    path: '/long-distance-birthday-surprise',
+  },
+  {
+    title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
+    excerpt: 'Thoughtful ideas you can finish in an afternoon — digital, local and handmade.',
+    path: '/last-minute-christmas-gift-ideas',
+  },
 ];
 
 const SITE_STYLES = `
@@ -285,7 +295,7 @@ const BLOG_PAGE: SeoPage = {
   <main>
     <p class="seo-eyebrow">Gift guides</p>
     <h1>Gift Ideas and Tips</h1>
-    <p>Practical ideas for birthdays, anniversaries, Valentine's Day and long distance relationships — all built around photos, your voice and a message that lasts.</p>
+    <p>Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays — all built around photos, your voice and a message that lasts.</p>
     <ul>
       ${BLOG_PREVIEWS.map(
         (guide) =>

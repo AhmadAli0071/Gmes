@@ -426,6 +426,301 @@ export const LANDING_PAGES: LandingPage[] = [
       { label: 'Long distance relationship gifts', path: '/long-distance-gift-ideas' },
     ],
   },
+  {
+    slug: 'long-distance-birthday-surprise',
+    keyword: 'long distance birthday surprise',
+    metaTitle: 'Surprise a Long Distance Partner on Their Birthday',
+    metaDescription:
+      'Plan a long distance birthday surprise that feels personal. Get timing tips, gift ideas and a simple step-by-step guide to make them feel closer.',
+    h1: 'How to Surprise Your Long Distance Partner on Their Birthday',
+    intro:
+      'Birthdays feel different when you live apart. You cannot show up with a cake, so the surprise has to come from your effort, timing and small details. This guide shows how to plan a birthday surprise for a partner in a long-distance relationship without making it feel rushed. You will get a simple plan, practical ideas and a few mistakes to avoid.',
+    blocks: [
+      { kind: 'h2', text: 'What Makes a Long Distance Birthday Surprise Feel Special?' },
+      {
+        kind: 'p',
+        text: 'Distance removes the easy parts of celebrating, like a hug or a shared dinner. A good surprise replaces them with attention. It shows you remember the details that matter to them.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Make it personal. Reference a joke, a trip or a song only you two share.',
+          'Time it well. A message that lands at midnight in their time zone shows you planned ahead.',
+          'Spread it out. Several small moments often feel better than one big reveal.',
+        ],
+      },
+      { kind: 'h2', text: 'How Do You Plan a Birthday Surprise Across Time Zones?' },
+      {
+        kind: 'p',
+        text: 'Start about a week early. Check their local time, work schedule and any plans friends or family already made. If your partner is far ahead or behind you, pick a delivery hour that works for both of you.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Learn their plans without giving the surprise away.',
+          'Choose one main surprise and two small extras.',
+          'Schedule each message for their local time, not yours.',
+          'Ask a friend nearby to help if you want a cake or flowers delivered.',
+          'Write the plan down so nothing clashes on the day.',
+        ],
+      },
+      { kind: 'h2', text: 'What Are the Best Long Distance Birthday Surprise Ideas?' },
+      {
+        kind: 'p',
+        text: 'These ideas work for most couples and budgets:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Group video call. Gather their friends for a short surprise toast.',
+          'Personal playlist. Add songs that mark moments from your relationship.',
+          'Local delivery. Order their favorite meal or dessert to arrive during the call.',
+          'Mailed letter. Send a handwritten note early so it arrives on time.',
+          'Digital gift box. You can create a virtual gift with photos, a voice note and a message, then share it as one link.',
+        ],
+      },
+      { kind: 'h2', text: 'How Can a Digital Gift Make the Surprise More Personal?' },
+      {
+        kind: 'p',
+        text: 'A digital gift suits long distance birthdays because it avoids shipping delays. The GEMS virtual gift box wraps photos, a voice note and a written message inside a 3D box that opens when your partner taps the link. They need no app and no account.',
+      },
+      {
+        kind: 'p',
+        text: 'Need inspiration? These [virtual birthday gift ideas](/virtual-birthday-gift) show how different couples can structure the reveal.',
+      },
+      {
+        kind: 'p',
+        text: 'Use these tips when you build it:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Pick five to eight photos that follow your story from early memories to recent ones.',
+          'Keep your voice note under one minute and speak naturally.',
+          'Name one specific memory in your message instead of using a generic greeting.',
+        ],
+      },
+      { kind: 'h2', text: 'What Should You Say in a Birthday Message?' },
+      {
+        kind: 'p',
+        text: 'Keep it short and specific. Start with why you admire them, add one shared memory and end with something to look forward to, such as your next visit. Avoid long apologies about the distance. Focus on the connection you share.',
+      },
+      {
+        kind: 'p',
+        text: 'Example: \u201CI still smile about our first video call. Thank you for making the distance feel smaller. Happy birthday.\u201D',
+      },
+      { kind: 'h2', text: 'What Mistakes Should You Avoid?' },
+      {
+        kind: 'ul',
+        items: [
+          'Overplanning. Too many tasks can stress your partner on their own day.',
+          'Ignoring their schedule. A surprise during a work meeting can backfire.',
+          'Sending generic messages. Copied wishes feel less caring than one real memory.',
+          'Waiting until the last day. Early planning leaves room for delays.',
+          'Forcing a surprise. If your partner dislikes surprises, share that a gift is coming and keep the details secret.',
+        ],
+      },
+      {
+        kind: 'h2',
+        text: 'A Birthday They Will Replay Long After the Call Ends',
+      },
+      {
+        kind: 'p',
+        text: 'The best surprise shows attention more than money. Choose one personal detail, time it for their day and give them something they can revisit. Whatever you choose, plan early and keep the details true to your relationship. If you have questions about building a gift, you can contact the GEMS team.',
+      },
+    ],
+    ctaHeading: 'Send Your Partner a Birthday They Can Open Anywhere',
+    ctaBody:
+      'Ready to start? Create your free gift now and finish in about a minute. Not sure how it works? Read the step-by-step guide on how GEMS works first.',
+    faqs: [
+      {
+        q: 'How early should I plan a long distance birthday surprise?',
+        a: 'Start about one week ahead. This leaves time to coordinate with friends and fix delivery or time zone issues.',
+      },
+      {
+        q: 'What can I send when shipping is too slow?',
+        a: 'Send a digital gift, a voice note or a scheduled video message. These arrive instantly and still feel personal.',
+      },
+      {
+        q: 'What is a low-cost birthday surprise for a long distance partner?',
+        a: 'A playlist, a short video or a shared photo collection costs little. Effort and detail matter more than price.',
+      },
+      {
+        q: 'How do I plan a surprise across different time zones?',
+        a: 'Convert the schedule to their local time and send messages for that hour. Early morning or midnight messages often feel special.',
+      },
+      {
+        q: 'What if my partner does not like surprises?',
+        a: 'Tell them something is coming and keep the details secret. This respects their comfort and keeps some excitement.',
+      },
+    ],
+    related: [
+      { label: 'Virtual birthday gift ideas', path: '/virtual-birthday-gift' },
+      { label: 'How GEMS works', path: '/how-it-works' },
+      { label: 'Long distance relationship gifts', path: '/long-distance-gift-ideas' },
+    ],
+  },
+  {
+    slug: 'last-minute-christmas-gift-ideas',
+    keyword: 'last minute christmas gift ideas',
+    metaTitle: "Last-Minute Christmas Gifts That Aren't Gift Cards",
+    metaDescription:
+      'Need a Christmas gift fast? These easy last-minute ideas feel thoughtful, arrive on time and go beyond gift cards. Find options for every budget.',
+    h1: "Last-Minute Christmas Gift Ideas That Aren't Gift Cards",
+    intro:
+      'Gift cards are fast, but they can feel generic when you want a present that shows real thought. The good news is that a last-minute gift can still feel personal. This guide covers ideas you can finish in an afternoon, for people nearby and people far away. Whether you celebrate Christmas with a full table or a quiet video call, these ideas fit.',
+    blocks: [
+      { kind: 'h2', text: 'Why Do Last-Minute Gifts Often Feel Rushed?' },
+      {
+        kind: 'p',
+        text: "Rushed gifts usually feel generic, not late. A present that ignores someone's interests reads as an afterthought, even if it arrives early. One personal detail fixes most of the problem. A name, a shared memory or a short message can turn a basic gift into a thoughtful one.",
+      },
+      {
+        kind: 'p',
+        text: 'Ask yourself three questions before you buy:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Does it match something they enjoy?',
+          'Can I add a personal note or photo?',
+          'Will it arrive or open before Christmas?',
+        ],
+      },
+      {
+        kind: 'h2',
+        text: "What Are the Best Last-Minute Christmas Gifts That Aren't Gift Cards?",
+      },
+      { kind: 'h3', text: 'Digital gifts you can send today' },
+      {
+        kind: 'p',
+        text: 'Digital gifts skip shipping, which makes them the safest option close to the holiday.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A photo slideshow set to a song they love.',
+          'A recorded voice message with your Christmas wishes.',
+          'A shared playlist built from songs that mark your year.',
+          'A virtual gift box with photos, a voice note and a message. You can create a [virtual gift](/create) in about a minute.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For more seasonal inspiration, browse these [Christmas digital gift ideas](/christmas-digital-gift-card).',
+      },
+      { kind: 'h3', text: 'Gifts you can pick up locally' },
+      {
+        kind: 'ul',
+        items: [
+          'A hot chocolate set with a handwritten label.',
+          'A framed printed photo from a local print shop.',
+          'A candle or small plant matched to their taste.',
+        ],
+      },
+      { kind: 'h3', text: 'Handmade gifts you can finish in one day' },
+      {
+        kind: 'ul',
+        items: [
+          'A memory jar with 12 notes, one for each month of the year.',
+          'A handwritten letter that names three things you appreciate.',
+        ],
+      },
+      { kind: 'h2', text: 'Which Gift Fits Which Person?' },
+      {
+        kind: 'p',
+        text: 'Match the gift to the relationship, not the price tag.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Partner: Combine photos with a voice note for something private and personal.',
+          'Parents and grandparents: A recorded message with family photos can feel warmer than another object.',
+          'Friends: A playlist of songs tied to shared memories.',
+          'Coworkers: A small treat with a handwritten note.',
+          'Family abroad: Choose a digital gift, since shipping cutoffs may pass before the holiday.',
+        ],
+      },
+      { kind: 'h2', text: 'How Can You Send a Meaningful Gift to Someone Far Away?' },
+      {
+        kind: 'p',
+        text: 'International shipping is the main risk when family lives in another country. Check carrier deadlines early, and switch to a digital gift if the window has closed. The GEMS virtual gift box lets you add photos, a voice note and a message, then share one link by text or email.',
+      },
+      {
+        kind: 'p',
+        text: 'The process takes four steps. You can read more about [how GEMS works](/how-it-works) before you start.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Upload your photos.',
+          'Record a short voice note.',
+          'Pick a gift box that suits the holiday.',
+          'Share the link by text, email or social media.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Your recipient opens the link on any phone or computer, so there is nothing to download.',
+      },
+      {
+        kind: 'h2',
+        text: 'What Should You Write in a Last-Minute Christmas Message?',
+      },
+      {
+        kind: 'p',
+        text: 'Keep it short and specific. Start with the person\u2019s name, mention one memory from the year and close with a wish. For example: \u201CThis year I kept thinking about our June road trip. Thank you for making it the best part of my year. Merry Christmas.\u201D',
+      },
+      { kind: 'h2', text: 'How Can You Avoid Gift Stress Next Year?' },
+      {
+        kind: 'ul',
+        items: [
+          'Keep a running list of gift ideas in your phone notes.',
+          'Set a reminder for early November, before shipping slows down.',
+          'Decide on a budget for each person first.',
+          'Save photos through the year so a memory gift is easy to build.',
+        ],
+      },
+      {
+        kind: 'h2',
+        text: 'A Thoughtful Gift Does Not Need a Long Lead Time',
+      },
+      {
+        kind: 'p',
+        text: 'Last-minute does not have to mean low effort. Pick one personal detail, choose a format that arrives on time and add a few honest words. If you want help choosing a format, you can contact the GEMS team.',
+      },
+    ],
+    ctaHeading: 'Finish Your Christmas Gift in About a Minute',
+    ctaBody:
+      'Start with your photos and a message, then create your free Christmas gift. Prefer to see the paid options first? Check the pricing page.',
+    faqs: [
+      {
+        q: 'When should I order gifts that need shipping?',
+        a: 'Check the carrier\u2019s holiday cutoff dates as early as possible. If the dates have passed, choose a digital gift.',
+      },
+      {
+        q: 'What is a good Christmas gift if I have no time to shop?',
+        a: 'Send a digital gift, such as a photo slideshow or a virtual gift box. Both take minutes and need no shipping.',
+      },
+      {
+        q: 'Do digital Christmas gifts feel thoughtful?',
+        a: 'They can, when you add personal photos, a voice note or a specific memory. Generic digital gifts feel less special.',
+      },
+      {
+        q: 'What can I give coworkers without spending much?',
+        a: 'A small treat with a handwritten note works well. Keep the budget similar for everyone to stay fair.',
+      },
+      {
+        q: 'How do I send a gift to family in another country?',
+        a: 'Use a digital gift that arrives instantly by link. This avoids customs and shipping delays.',
+      },
+    ],
+    related: [
+      { label: 'Christmas digital gift card ideas', path: '/christmas-digital-gift-card' },
+      { label: 'How GEMS works', path: '/how-it-works' },
+      { label: 'Pricing — free & Premium gifts', path: '/pricing' },
+    ],
+  },
 ];
 
 export function getLandingPage(slug: LandingView): LandingPage {

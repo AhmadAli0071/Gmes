@@ -1,6 +1,7 @@
 import birthdayImage from '../assets/images/guides/birthday.jpg';
 import anniversaryImage from '../assets/images/guides/anniversary.jpg';
 import valentinesImage from '../assets/images/guides/valentines.jpg';
+import longDistanceImage from '../assets/images/use-cases/long-distance.jpg';
 import christmasImage from '../assets/images/template_christmas_wonder_1791359394567.jpg';
 
 export interface GiftGuide {
@@ -60,5 +61,25 @@ export const GIFT_GUIDES: GiftGuide[] = [
     alt: 'Christmas digital gift card with a festive 3D gift box and holiday lights',
     tag: 'Christmas',
     readTime: '5 min read',
+  },
+  {
+    title: 'Surprise a Long Distance Partner on Their Birthday',
+    excerpt:
+      'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
+    path: '/long-distance-birthday-surprise',
+    image: longDistanceImage,
+    alt: 'Long distance birthday surprise with a virtual gift box and a video call',
+    tag: 'Long distance',
+    readTime: '6 min read',
+  },
+  {
+    title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
+    excerpt:
+      'Thoughtful ideas you can finish in an afternoon — digital, local and handmade options.',
+    path: '/last-minute-christmas-gift-ideas',
+    image: christmasImage,
+    alt: 'Last-minute Christmas gifts including a festive virtual gift box',
+    tag: 'Christmas',
+    readTime: '6 min read',
   },
 ];
