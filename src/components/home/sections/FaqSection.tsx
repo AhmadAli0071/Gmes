@@ -30,7 +30,7 @@ export const FaqSection: React.FC = () => (
             Frequently Asked Questions
           </h2>
           <p className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-[#6B7280]">
-            Virtual gifting, explained in plain English — what it is, how it reaches them, and
+            Virtual gifting, explained in plain English - what it is, how it reaches them, and
             what it costs.
           </p>
           <a

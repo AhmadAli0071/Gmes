@@ -38,5 +38,5 @@ export interface Reaction {
 /** Lifecycle of the 3D box itself. */
 export type GiftPhase = 'closed' | 'shake' | 'open' | 'done';
 
-/** Where the reveal is rendered — controls only its backdrop and height. */
+/** Where the reveal is rendered - controls only its backdrop and height. */
 export type RevealVariant = 'page' | 'card' | 'bare';

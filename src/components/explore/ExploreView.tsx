@@ -10,7 +10,7 @@ export const ExploreView: React.FC = () => {
   const [search, setSearch] = useState('');
   const [selectedOccasion, setSelectedOccasion] = useState<EventSlug | 'all'>('all');
 
-  // Every occasion the platform ships with — kept in sync with `EVENTS`.
+  // Every occasion the platform ships with - kept in sync with `EVENTS`.
   const occasions: { slug: EventSlug; label: string; emoji: string }[] = EVENTS.map((e) => ({
     slug: e.slug,
     label: e.name,
@@ -122,7 +122,7 @@ export const ExploreView: React.FC = () => {
             <div className="relative aspect-4/3 overflow-hidden bg-zinc-100">
               <img
                 src={tpl.coverImage}
-                alt={`${tpl.title} — digital gift design`}
+                alt={`${tpl.title} - digital gift design`}
                 loading="lazy"
                 decoding="async"
                 width={640}

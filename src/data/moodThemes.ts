@@ -16,7 +16,7 @@ export interface MoodTheme {
 
 /**
  * Full palette per mood. Components read these through CSS custom properties
- * (`--mood-*`), so switching the mood repaints the entire screen — not just the box.
+ * (`--mood-*`), so switching the mood repaints the entire screen - not just the box.
  */
 export const MOOD_THEMES: Record<GiftMood, MoodTheme> = {
   magical: {
@@ -105,7 +105,7 @@ export const moodCssVars = (theme: MoodTheme): CSSProperties =>
   }) as CSSProperties;
 
 /* ------------------------------------------------------------------ */
-/* GIFT CARD ARTWORK — per-mood card design tokens                     */
+/* GIFT CARD ARTWORK - per-mood card design tokens                     */
 /* Used by: the 2D flat preview (GiftCardArt) and the keepsake letter. */
 /* ------------------------------------------------------------------ */
 
@@ -249,7 +249,7 @@ export const CARD_DESIGNS: Record<GiftMood, CardDesign> = {
     frameInner: '#D4AF37',
     frameWidth: 6,
     cornerGlyph: '🤍',
-    dividerGlyph: '—',
+    dividerGlyph: '-',
     dividerStyle: 'rule',
     dividerColor: '#A1A1AA',
     badgeStyle: 'tag',

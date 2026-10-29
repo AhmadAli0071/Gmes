@@ -2,7 +2,7 @@ const OWNER_TOKEN_KEY = 'gems_owner_token';
 
 /**
  * Device secret stored in localStorage so a visitor who never signs in still
- * owns the gifts they create — and can claim them later by logging in.
+ * owns the gifts they create - and can claim them later by logging in.
  * The server sees it as the `x-owner-token` header.
  */
 export function getOwnerToken(): string {
@@ -16,7 +16,7 @@ export function getOwnerToken(): string {
     localStorage.setItem(OWNER_TOKEN_KEY, created);
     return created;
   } catch {
-    // Private browsing with storage disabled — fall back to an ephemeral token.
+    // Private browsing with storage disabled - fall back to an ephemeral token.
     return `ot-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 14)}`;
   }
 }

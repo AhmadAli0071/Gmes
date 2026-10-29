@@ -19,7 +19,7 @@ const EXT_BY_TYPE: Record<string, string> = {
 /**
  * Sends the file to the API which sniffs its magic bytes, stores it under
  * /uploads/<year>/<month>/ and hands back the URL. Media never lives in
- * localStorage — that was the source of the old 5MB quota drops.
+ * localStorage - that was the source of the old 5MB quota drops.
  */
 export async function uploadMedia(
   file: Blob,

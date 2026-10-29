@@ -9,7 +9,7 @@ import { Sparkles, ArrowRight } from 'lucide-react';
 export const TemplatesSection: React.FC = () => {
   const { setCurrentView, applyTemplate } = useApp();
 
-  // Merges the design tokens into whatever the user has already drafted —
+  // Merges the design tokens into whatever the user has already drafted -
   // their recipient name, message and photos are never overwritten.
   const handleUseTemplate = (tpl: GiftTemplate) => applyTemplate(tpl);
 
@@ -24,7 +24,7 @@ export const TemplatesSection: React.FC = () => {
             align="left"
             eyebrow="Gift designs"
             title="Steal one. Make it theirs."
-            subtitle={`${TEMPLATES.length} ready-to-send designs — tap any card and it loads straight into the creator.`}
+            subtitle={`${TEMPLATES.length} ready-to-send designs - tap any card and it loads straight into the creator.`}
           />
           <button
             type="button"
@@ -48,7 +48,7 @@ export const TemplatesSection: React.FC = () => {
               <div className="relative aspect-4/3 overflow-hidden bg-zinc-100">
                 <img
                   src={tpl.coverImage}
-                  alt={`${tpl.title} — digital gift design`}
+                  alt={`${tpl.title} - digital gift design`}
                   loading="lazy"
                   decoding="async"
                   width={640}

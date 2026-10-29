@@ -73,7 +73,7 @@ background:repeating-conic-gradient(from 0deg,#ffd97a66 0 8deg,#0000 8deg 24deg)
 .gbr .wrap::before,.gbr .wrap::after{content:"";position:absolute;inset:10px 14px -2px;border-radius:22px;background:#ffffff14;border:1px solid var(--line);z-index:0}
 .gbr .wrap::after{inset:20px 28px -10px;opacity:.6}
 .gbr .card{position:relative;z-index:1;background:linear-gradient(160deg,#ffffff26,#ffffff0d);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;padding:26px 20px 20px;min-height:300px;text-align:left;display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 50px #0006;animation:gbr-flip .6s cubic-bezier(.2,1.1,.4,1)}
-/* Ribbon across the top of the keepsake card — same gold/pink as the box bow. */
+/* Ribbon across the top of the keepsake card - same gold/pink as the box bow. */
 .gbr .card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:22px 22px 0 0;background:linear-gradient(90deg,var(--pink) 0%,var(--gold) 50%,var(--pink) 100%)}
 @keyframes gbr-flip{from{opacity:0;transform:perspective(800px) rotateY(-35deg) translateX(40px)}}
 .gbr .card h2{margin:0;font-size:1.15rem}

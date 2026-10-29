@@ -243,7 +243,7 @@ export const EVENTS: EventTheme[] = [
   },
 ];
 
-/** Neutral, always-available fallback — never a seasonal event. */
+/** Neutral, always-available fallback - never a seasonal event. */
 const FALLBACK_EVENT_ID = 'evt-other';
 
 export function getEventBySlug(slug: EventSlug | string): EventTheme {
@@ -278,7 +278,7 @@ function windowLength(startDate: string, endDate: string): number {
 /**
  * The seasonal event for today, derived from each event's declared date
  * window. When several windows overlap, the most specific (shortest) one
- * wins — so year-round occasions like Birthday/Anniversary never shadow
+ * wins - so year-round occasions like Birthday/Anniversary never shadow
  * Halloween or Valentine's. Falls back to the neutral "Other" theme.
  */
 export function getCurrentSeasonalEvent(): EventTheme {

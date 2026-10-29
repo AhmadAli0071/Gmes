@@ -21,7 +21,7 @@ const OPEN_DONE_MS = 2700;
 
 export interface GiftBoxRevealProps {
   gift: RevealGift;
-  /** Controlled open state — the host owns it so it can replay / reset. */
+  /** Controlled open state - the host owns it so it can replay / reset. */
   opened: boolean;
   /** Called when the recipient taps the sealed box. */
   onOpen?: () => void;
@@ -41,7 +41,7 @@ export interface GiftBoxRevealProps {
 /**
  * A 3D gift box that opens with an animated reveal, then walks the recipient
  * through the gift: a note, photos, voice notes, videos, and a reaction card.
- * Fully controlled — `opened` drives the sequence.
+ * Fully controlled - `opened` drives the sequence.
  */
 export const GiftBoxReveal: React.FC<GiftBoxRevealProps> = ({
   gift,

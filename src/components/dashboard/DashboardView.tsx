@@ -141,7 +141,7 @@ export const DashboardView: React.FC = () => {
                     <span>{eventInfo.name}</span>
                   </div>
 
-                  {/* Open Preview badge — always shown on touch (no hover), hover-revealed on desktop */}
+                  {/* Open Preview badge - always shown on touch (no hover), hover-revealed on desktop */}
                   <div className="absolute bottom-3 right-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity bg-zinc-900 text-white text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1">
                     <Play className="w-3 h-3" />
                     <span>Open</span>

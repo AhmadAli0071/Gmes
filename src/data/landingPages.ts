@@ -718,7 +718,7 @@ export const LANDING_PAGES: LandingPage[] = [
     related: [
       { label: 'Christmas digital gift card ideas', path: '/christmas-digital-gift-card' },
       { label: 'How GEMS works', path: '/how-it-works' },
-      { label: 'Pricing — free & Premium gifts', path: '/pricing' },
+      { label: 'Pricing - free & Premium gifts', path: '/pricing' },
     ],
   },
 ];

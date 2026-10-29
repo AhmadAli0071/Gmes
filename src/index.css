@@ -14,7 +14,7 @@
   --color-brand-border: #E4E4E7;
 }
 
-/* Mood theme tokens — components read these so a mood switch repaints the whole UI.
+/* Mood theme tokens - components read these so a mood switch repaints the whole UI.
    Defaults (purple / magical) live here; GiftCreator overrides them on its root. */
 :root {
   --mood-accent: #6d28d9;
@@ -62,7 +62,7 @@
   animation: shimmer 2.5s infinite;
 }
 
-/* Ambient landing backdrop — aurora blobs + twinkling sparkles (AnimatedBackdrop).
+/* Ambient landing backdrop - aurora blobs + twinkling sparkles (AnimatedBackdrop).
    GPU-composited transforms only; text stays readable because the layer sits at
    z-0 behind every section. */
 .aurora {
@@ -178,7 +178,7 @@
   }
 }
 
-/* Occasion marquee — two identical halves so -50% loops seamlessly */
+/* Occasion marquee - two identical halves so -50% loops seamlessly */
 .animate-marquee {
   animation: marquee-x 38s linear infinite;
 }

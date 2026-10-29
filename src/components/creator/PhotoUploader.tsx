@@ -144,9 +144,9 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
     if (inputRef.current) inputRef.current.value = '';
 
     if (added.length === 0) {
-      if (notImage > 0) showToast('Those files are not images — use JPG or PNG.', 'error');
+      if (notImage > 0) showToast('Those files are not images - use JPG or PNG.', 'error');
       else if (unreadable > 0)
-        showToast('Could not upload those images — check the file and try again.', 'error');
+        showToast('Could not upload those images - check the file and try again.', 'error');
       return;
     }
 

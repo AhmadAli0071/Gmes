@@ -38,17 +38,17 @@ const BLOG_PREVIEWS = [
   },
   {
     title: 'Christmas Digital Gift Card Ideas',
-    excerpt: 'Holiday magic in one link — photos, a voice note and a festive 3D gift box.',
+    excerpt: 'Holiday magic in one link - photos, a voice note and a festive 3D gift box.',
     path: '/christmas-digital-gift-card',
   },
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
-    excerpt: 'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
+    excerpt: 'A simple plan across time zones - timing tips, gift ideas and mistakes to avoid.',
     path: '/long-distance-birthday-surprise',
   },
   {
     title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
-    excerpt: 'Thoughtful ideas you can finish in an afternoon — digital, local and handmade.',
+    excerpt: 'Thoughtful ideas you can finish in an afternoon - digital, local and handmade.',
     path: '/last-minute-christmas-gift-ideas',
   },
 ];
@@ -150,7 +150,7 @@ function renderHead(page: SeoPage): string {
     <meta property="og:image" content="https://gemsvg.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="GEMS — a 3D virtual gift box ready to unwrap" />
+    <meta property="og:image:alt" content="GEMS - a 3D virtual gift box ready to unwrap" />
     <meta property="og:image:type" content="image/png" />
 
     <!-- Twitter -->
@@ -159,7 +159,7 @@ function renderHead(page: SeoPage): string {
     <meta name="twitter:description" content="${escapeHtml(page.description)}" />
     <meta name="twitter:url" content="${escapeHtml(url)}" />
     <meta name="twitter:image" content="https://gemsvg.com/og-image.png" />
-    <meta name="twitter:image:alt" content="GEMS — a 3D virtual gift box ready to unwrap" />
+    <meta name="twitter:image:alt" content="GEMS - a 3D virtual gift box ready to unwrap" />
     ${schema}${SITE_STYLES}`;
 }
 
@@ -236,7 +236,7 @@ const HOME_PAGE: SeoPage = {
     <ul>
       ${BLOG_PREVIEWS.map(
         (guide) =>
-          `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> — ${escapeHtml(guide.excerpt)}</li>`
+          `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> - ${escapeHtml(guide.excerpt)}</li>`
       ).join('')}
     </ul>
     <p><a href="/blog">View all articles</a></p>
@@ -297,11 +297,11 @@ const BLOG_PAGE: SeoPage = {
   <main>
     <p class="seo-eyebrow">Gift guides</p>
     <h1>Gift Ideas and Tips</h1>
-    <p>Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays — all built around photos, your voice and a message that lasts.</p>
+    <p>Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays - all built around photos, your voice and a message that lasts.</p>
     <ul>
       ${BLOG_ARTICLES.map(
         (guide) =>
-          `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> — ${escapeHtml(guide.excerpt)}</li>`
+          `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> - ${escapeHtml(guide.excerpt)}</li>`
       ).join('')}
     </ul>
     <a class="seo-cta" href="/create">Create a virtual gift</a>

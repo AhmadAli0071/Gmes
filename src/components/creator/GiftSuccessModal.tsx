@@ -25,7 +25,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
   const [showQr, setShowQr] = useState(false);
   const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
 
-  // Clean path route — resolves inside the SPA, so the link opens the gift.
+  // Clean path route - resolves inside the SPA, so the link opens the gift.
   const shareUrl = `${window.location.origin}/g/${gift.shareCode}`;
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
       } catch {
         /* fall through to the error toast */
       }
-      showToast('Could not copy the link — please select and copy it manually.', 'error');
+      showToast('Could not copy the link - please select and copy it manually.', 'error');
     }
   };
 
@@ -171,7 +171,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
           <button
             onClick={() => {
               onClose();
-              // Own preview — don't inflate the recipient view counter.
+              // Own preview - don't inflate the recipient view counter.
               openRecipientView(gift, { countView: false });
             }}
             className="inline-flex items-center gap-1.5 text-[var(--mood-accent)] font-semibold hover:underline"
@@ -181,7 +181,7 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
           </button>
         </div>
 
-        {/* QR Code view — a real, scannable code encoding the share link */}
+        {/* QR Code view - a real, scannable code encoding the share link */}
         {showQr && (
           <div className="mt-4 p-4 bg-zinc-50 border border-zinc-200 rounded-2xl animate-in fade-in duration-200">
             <div className="w-40 h-40 mx-auto bg-white p-3 rounded-xl shadow-sm border border-zinc-200 flex items-center justify-center">

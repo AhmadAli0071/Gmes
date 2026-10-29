@@ -101,7 +101,7 @@ export const SiteFooter: React.FC = () => (
 
       <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
         <span>
-          © {new Date().getFullYear()} GEMS — free virtual gift box maker. All rights
+          © {new Date().getFullYear()} GEMS - free virtual gift box maker. All rights
           reserved.
         </span>
         <span className="flex items-center gap-1.5">🎁 36 designs · 12 occasions · 5 moods</span>

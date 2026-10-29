@@ -17,7 +17,7 @@ function randomCode(length: number): string {
 
 /**
  * Collision-checked share code. The old client-side version drew 5 characters
- * from `Math.random()` with no uniqueness check — roughly a 1-in-60M clash per
+ * from `Math.random()` with no uniqueness check - roughly a 1-in-60M clash per
  * gift, and it was guessable.
  */
 export async function uniqueShareCode(

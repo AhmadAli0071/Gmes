@@ -1,7 +1,7 @@
 import { LANDING_VIEWS, ViewRoute } from '../types';
 
 /* -------------------------------------------------------------------------- */
-/* Path-based routing — the URL (no `#`) is the source of truth, so back/      */
+/* Path-based routing - the URL (no `#`) is the source of truth, so back/      */
 /* forward, refresh and shared `/g/{shareCode}` links all resolve correctly.   */
 /* -------------------------------------------------------------------------- */
 

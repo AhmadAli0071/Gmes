@@ -130,7 +130,7 @@ export function injectContentSchema(options: { includeFaq?: boolean } = {}): voi
     '@type': 'HowTo',
     name: 'How to send a virtual gift online',
     description:
-      'Create a personalized digital gift box with photos, a voice note and a message, then share it as one link — no app required.',
+      'Create a personalized digital gift box with photos, a voice note and a message, then share it as one link - no app required.',
     totalTime: 'PT1M',
     step: [
       {

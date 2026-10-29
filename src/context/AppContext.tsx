@@ -80,7 +80,7 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 /* -------------------------------------------------------------------------- */
-/* Path routing — the URL is the source of truth, so back/forward, refresh and */
+/* Path routing - the URL is the source of truth, so back/forward, refresh and */
 /* shared `/g/{shareCode}` links all resolve to the right screen.              */
 /* (Parsing lives in lib/router.ts; only the state sync lives here.)           */
 /* -------------------------------------------------------------------------- */
@@ -93,7 +93,7 @@ const EVENTS_STORAGE_KEY = 'gems_events';
 const SEASON_STORAGE_KEY = 'gems_season';
 /** In-progress creator form, so a refresh mid-build doesn't wipe the user's work. */
 const DRAFT_STORAGE_KEY = 'gems_draft';
-/** Which wizard step they were on — kept beside the draft for the same reason. */
+/** Which wizard step they were on - kept beside the draft for the same reason. */
 const STEP_STORAGE_KEY = 'gems_draft_step';
 
 /**
@@ -151,7 +151,7 @@ export function readStoredDraft(user: User | null, eventSlug: EventSlug): Partia
 export function readStoredStep(): number {
   try {
     const saved = Number(localStorage.getItem(STEP_STORAGE_KEY));
-    // isInteger guards against "2.7" and NaN — a fractional step would not
+    // isInteger guards against "2.7" and NaN - a fractional step would not
     // match any real wizard step and would render a blank creator.
     if (Number.isInteger(saved) && saved >= 1 && saved <= 4) return saved;
   } catch {
@@ -235,7 +235,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     try {
       localStorage.setItem(SEASON_STORAGE_KEY, slug);
     } catch {
-      /* season pick is a preference — a quota error is not worth a toast */
+      /* season pick is a preference - a quota error is not worth a toast */
     }
   };
 
@@ -372,8 +372,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   );
 
   /**
-   * Internal `<a href="/pricing">` clicks stay in the SPA. Anything else —
-   * modifier clicks, new tabs, downloads, other origins, plain anchors — is
+   * Internal `<a href="/pricing">` clicks stay in the SPA. Anything else -
+   * modifier clicks, new tabs, downloads, other origins, plain anchors - is
    * left to the browser.
    */
   useEffect(() => {
@@ -409,7 +409,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   /**
    * Resolves a share code. Local copy first (instant preview from the
-   * dashboard), otherwise the API — which is what makes links work on any
+   * dashboard), otherwise the API - which is what makes links work on any
    * device instead of only in the browser that created them.
    */
   const loadRecipient = useCallback(
@@ -433,7 +433,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (options?.countView !== false) recordGiftView(giftCode);
       } catch (err) {
         if (seq !== routeSeq.current) return;
-        // Unknown / stale code — land on home instead of a blank screen.
+        // Unknown / stale code - land on home instead of a blank screen.
         setRecipientGift(null);
         if (currentViewRef.current === 'recipient') {
           setCurrentViewState('home');
@@ -564,7 +564,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const applyTemplate = (template: GiftTemplate) => {
-    // Merge — never clobber what the user already typed or uploaded — and
+    // Merge - never clobber what the user already typed or uploaded - and
     // detach so applying a design can't overwrite a previously saved gift.
     setCurrentDraft((prev) => ({
       ...prev,

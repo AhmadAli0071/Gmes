@@ -11,11 +11,11 @@ interface RecipientViewProps {
   gift?: GiftData | null;
 }
 
-/** The reveal's own backdrop — kept in sync with `gift-box-reveal.css`. */
+/** The reveal's own backdrop - kept in sync with `gift-box-reveal.css`. */
 const REVEAL_BG =
   'radial-gradient(120% 90% at 50% 100%,#5b2a8f 0%,#2a1861 40%,#120c33 100%) #120c33';
 
-/** Occasions where "Happy <name>" reads wrong — use an occasion-specific line. */
+/** Occasions where "Happy <name>" reads wrong - use an occasion-specific line. */
 const GREETING_LABEL: Partial<Record<EventSlug, string>> = {
   other: 'Thinking of you',
   wedding: 'Congratulations to the happy couple',
@@ -132,7 +132,7 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
         </div>
       </header>
 
-      {/* Main Experience — one mounted reveal for the whole flow. */}
+      {/* Main Experience - one mounted reveal for the whole flow. */}
       <main className="flex-1 min-h-0 overflow-y-auto">
         <div className="min-h-full flex items-center justify-center px-3 py-5">
           <GiftBoxReveal

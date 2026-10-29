@@ -18,7 +18,7 @@ export const BLOG_POSTS: GiftGuide[] = [
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
     excerpt:
-      'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
+      'A simple plan across time zones - timing tips, gift ideas and mistakes to avoid.',
     path: '/long-distance-birthday-surprise',
     image: longDistanceImage,
     alt: 'Long distance birthday surprise with a virtual gift box and a video call',
@@ -28,7 +28,7 @@ export const BLOG_POSTS: GiftGuide[] = [
   {
     title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
     excerpt:
-      'Thoughtful ideas you can finish in an afternoon — digital, local and handmade options.',
+      'Thoughtful ideas you can finish in an afternoon - digital, local and handmade options.',
     path: '/last-minute-christmas-gift-ideas',
     image: christmasImage,
     alt: 'Last-minute Christmas gifts including a festive virtual gift box',
@@ -78,7 +78,7 @@ export const GIFT_GUIDES: GiftGuide[] = [
   {
     title: 'Christmas Digital Gift Card Ideas',
     excerpt:
-      'Holiday magic in one link — photos, a voice note and a message inside a festive 3D gift box.',
+      'Holiday magic in one link - photos, a voice note and a message inside a festive 3D gift box.',
     path: '/christmas-digital-gift-card',
     image: christmasImage,
     alt: 'Christmas digital gift card with a festive 3D gift box and holiday lights',

@@ -83,7 +83,7 @@ export async function deleteGift(id: string): Promise<void> {
   await api(`/api/gifts/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 
-/** Fire-and-forget open counter — a slow network must not stall the unboxing. */
+/** Fire-and-forget open counter - a slow network must not stall the unboxing. */
 export function recordGiftView(shareCode: string): void {
   void api(`/api/gifts/${encodeURIComponent(shareCode)}/events`, {
     method: 'POST',

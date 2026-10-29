@@ -11,8 +11,8 @@ import { LANDING_VIEWS, LandingView } from './types';
 import { HomeView } from './components/home/HomeView';
 import { RecipientView } from './components/recipient/RecipientView';
 
-// Every screen after the landing page is split out so the home page — the one
-// that has to rank — ships the smallest possible bundle.
+// Every screen after the landing page is split out so the home page - the one
+// that has to rank - ships the smallest possible bundle.
 const GiftCreator = lazy(() =>
   import('./components/creator/GiftCreator').then((m) => ({ default: m.GiftCreator }))
 );
@@ -65,7 +65,7 @@ const AdminGate: React.FC = () => {
       <h1 className="text-2xl font-extrabold text-[#18181B] tracking-tight">Admins only</h1>
       <p className="mt-2 text-sm text-[#71717A]">
         {user
-          ? `Signed in as ${user.email} — this account doesn't have admin access.`
+          ? `Signed in as ${user.email} - this account doesn't have admin access.`
           : 'Sign in with an admin account to open the console.'}
       </p>
       {!user && (

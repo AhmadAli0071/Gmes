@@ -108,7 +108,7 @@ export const AdminPanel: React.FC = () => {
               </span>
               <span className="truncate">{ev.name}</span>
               <span className="text-[10px] text-zinc-400 font-normal mt-1">
-                {ev.startDate} – {ev.endDate}
+                {ev.startDate} - {ev.endDate}
               </span>
             </button>
           ))}
@@ -164,7 +164,7 @@ export const AdminPanel: React.FC = () => {
                             }
                             className="w-16 p-1 border rounded text-xs"
                           />
-                          <span aria-hidden="true">–</span>
+                          <span aria-hidden="true">-</span>
                           <input
                             type="text"
                             inputMode="numeric"

@@ -21,7 +21,7 @@ interface VoiceRecorderProps {
 
 const MAX_SECONDS = 60;
 
-/** Safari records `audio/mp4`, Chrome/Firefox `audio/webm` — pick what this
+/** Safari records `audio/mp4`, Chrome/Firefox `audio/webm` - pick what this
  *  browser actually supports instead of hard-coding WebM. */
 const pickMimeType = (): string | undefined => {
   if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') {
@@ -87,7 +87,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
 
   const startRecording = async () => {
     if (typeof MediaRecorder === 'undefined' || !navigator.mediaDevices?.getUserMedia) {
-      showToast('Mic is not available — upload an audio file instead.', 'error');
+      showToast('Mic is not available - upload an audio file instead.', 'error');
       return;
     }
     let stream: MediaStream;
@@ -142,7 +142,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
           return;
         }
         if (blob.size === 0) {
-          showToast('Nothing was recorded — try again.', 'error');
+          showToast('Nothing was recorded - try again.', 'error');
           return;
         }
         try {
@@ -171,7 +171,7 @@ export const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
       stream.getTracks().forEach((t) => t.stop());
       recorderRef.current = null;
       setRecording(false);
-      showToast('Could not start recording — try again.', 'error');
+      showToast('Could not start recording - try again.', 'error');
     }
   };
 

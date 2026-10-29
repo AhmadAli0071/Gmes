@@ -126,7 +126,7 @@ export const SettingsView: React.FC = () => {
                   type="email"
                   required
                   readOnly
-                  title="Email changes need verification — coming soon."
+                  title="Email changes need verification - coming soon."
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

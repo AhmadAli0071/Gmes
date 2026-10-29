@@ -9,7 +9,7 @@ interface GiftBoxInteractiveProps {
   onOpen?: () => void;
   interactive?: boolean;
   mode?: 'preview' | 'full';
-  /** Height of the preview frame — the reveal scales itself down to fit it. */
+  /** Height of the preview frame - the reveal scales itself down to fit it. */
   heightClass?: string;
   /** Hide the reveal's own heading when the host already renders an H1. */
   showHeading?: boolean;

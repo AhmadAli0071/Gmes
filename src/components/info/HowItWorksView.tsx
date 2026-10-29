@@ -32,7 +32,7 @@ export const HowItWorksView: React.FC = () => {
           <div className="md:col-span-8">
             <h3 className="text-2xl font-bold text-zinc-900">Choose a Curated Template</h3>
             <p className="mt-2 text-sm text-zinc-600 leading-relaxed">
-              Every GEMS template is designed around an emotion — from cozy Christmas hearths with gentle snowfall to electric birthday confetti and candlelit romance. Pick what speaks to you.
+              Every GEMS template is designed around an emotion - from cozy Christmas hearths with gentle snowfall to electric birthday confetti and candlelit romance. Pick what speaks to you.
             </p>
             <div className="mt-4 flex items-center gap-4 text-xs text-zinc-500 font-medium">
               <span>· 12 Event Themes</span>
@@ -117,7 +117,7 @@ export const HowItWorksView: React.FC = () => {
           className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-white bg-[#6D28D9] hover:bg-[#5B21B6] rounded-xl shadow-md transition-all transform hover:scale-105"
         >
           <Sparkles className="w-4 h-4 text-amber-300" />
-          <span>Try It Now — Create a Gift</span>
+          <span>Try It Now - Create a Gift</span>
         </button>
       </div>
     </div>

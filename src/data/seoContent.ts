@@ -10,7 +10,7 @@
 export const SITE = {
   name: 'GEMS',
   legalName: 'GEMS',
-  /** Replace with the production origin — used by canonical, OG and sitemap. */
+  /** Replace with the production origin - used by canonical, OG and sitemap. */
   url: 'https://gemsvg.com',
   locale: 'en_US',
   tagline: 'Make Every Moment a Gift',
@@ -24,7 +24,7 @@ export const SITE = {
 /* -------------------------------------------------------------------------- */
 
 export const KEYWORDS = {
-  /** Head terms — one per major section, used in headings and body copy. */
+  /** Head terms - one per major section, used in headings and body copy. */
   shortTail: [
     'virtual gift',
     'digital gift',
@@ -73,7 +73,7 @@ export const PAGES: Record<string, PageMeta> = {
   },
   explore: {
     path: '/explore',
-    title: 'Gift Designs & Templates — 36 Virtual Gift Ideas | GEMS',
+    title: 'Gift Designs & Templates - 36 Virtual Gift Ideas | GEMS',
     description:
       'Browse 36 digital gift designs across 12 occasions. Steal a template, add your photos and voice note, and send a virtual gift by link in under a minute.',
   },
@@ -85,7 +85,7 @@ export const PAGES: Record<string, PageMeta> = {
   },
   pricing: {
     path: '/pricing',
-    title: 'Pricing — Send a Digital Gift Free or from $4.99 | GEMS',
+    title: 'Pricing - Send a Digital Gift Free or from $4.99 | GEMS',
     description:
       'Send a virtual gift free, unlock a Premium gift for $4.99, or go Pro for unlimited personalized digital gifts with HD unboxing animations.',
   },
@@ -93,11 +93,11 @@ export const PAGES: Record<string, PageMeta> = {
     path: '/create',
     title: 'Create a Virtual Gift Box | GEMS',
     description:
-      'Build your own interactive digital gift box — add photos, record a voice note, write your message and share a single link.',
+      'Build your own interactive digital gift box - add photos, record a voice note, write your message and share a single link.',
   },
   blog: {
     path: '/blog',
-    title: 'Gift Ideas and Tips — Birthdays, Anniversaries & More | GEMS',
+    title: 'Gift Ideas and Tips - Birthdays, Anniversaries & More | GEMS',
     description:
       'Practical gift ideas and tips for birthdays, anniversaries, Valentine’s Day, long distance relationships and the holidays. Create a personal 3D gift box in minutes.',
   },
@@ -146,7 +146,7 @@ export const PAGES: Record<string, PageMeta> = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* FAQ — FAQPage JSON-LD is injected by lib/seo.ts on the homepage.           */
+/* FAQ - FAQPage JSON-LD is injected by lib/seo.ts on the homepage.           */
 /* -------------------------------------------------------------------------- */
 
 export interface Faq {
@@ -165,11 +165,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Does the receiver need an app or an account?',
-    a: 'No. They open the link on any phone or computer and unwrap the gift — nothing to download and no account to create.',
+    a: 'No. They open the link on any phone or computer and unwrap the gift - nothing to download and no account to create.',
   },
   {
     q: 'Is GEMS really free?',
-    a: 'Yes. You can create and share a gift for free with basic templates, your personal message and an instant link. Optional paid upgrades add premium designs, HD unboxing animations and unlimited gifting — the pricing page lists exactly what each plan includes.',
+    a: 'Yes. You can create and share a gift for free with basic templates, your personal message and an instant link. Optional paid upgrades add premium designs, HD unboxing animations and unlimited gifting - the pricing page lists exactly what each plan includes.',
   },
   {
     q: 'Can I send a virtual gift to someone in another country?',
@@ -190,7 +190,7 @@ export const FAQS: Faq[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/* Gift ideas — long-tail landing copy, rendered as linked cards               */
+/* Gift ideas - long-tail landing copy, rendered as linked cards               */
 /* -------------------------------------------------------------------------- */
 
 export interface GiftIdea {
@@ -213,7 +213,7 @@ export interface GiftIdea {
 export const GIFT_IDEAS: GiftIdea[] = [
   {
     title: 'Birthday gift online',
-    body: 'A last-minute birthday surprise that still feels handmade — photos from the year, a voice note, and a box that opens on their screen at midnight.',
+    body: 'A last-minute birthday surprise that still feels handmade - photos from the year, a voice note, and a box that opens on their screen at midnight.',
     eventSlug: 'birthday',
     emoji: '🎂',
   },
@@ -225,7 +225,7 @@ export const GIFT_IDEAS: GiftIdea[] = [
   },
   {
     title: 'Anniversary gift with a voice note',
-    body: 'Record the message you would say out loud. Hearing your voice is the part they replay — not the text they skim.',
+    body: 'Record the message you would say out loud. Hearing your voice is the part they replay - not the text they skim.',
     eventSlug: 'anniversary',
     emoji: '🥂',
   },
@@ -237,7 +237,7 @@ export const GIFT_IDEAS: GiftIdea[] = [
   },
   {
     title: 'Graduation surprise',
-    body: 'Class photos, a proud message and confetti that actually pops — the graduation card their group chat screenshots.',
+    body: 'Class photos, a proud message and confetti that actually pops - the graduation card their group chat screenshots.',
     eventSlug: 'graduation',
     emoji: '🎓',
   },

@@ -52,7 +52,7 @@ export async function suggestMessage(params: {
     `Tone: ${TONE_PROMPT[params.tone]}.`,
     params.recipientName ? `Recipient: ${params.recipientName}.` : '',
     params.senderName ? `Signed by: ${params.senderName}.` : '',
-    'No quotes, no emoji clutter, no preamble — just the message itself.',
+    'No quotes, no emoji clutter, no preamble - just the message itself.',
   ]
     .filter(Boolean)
     .join(' ');

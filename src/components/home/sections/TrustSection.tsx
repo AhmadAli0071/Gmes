@@ -12,7 +12,7 @@ const REASONS = [
   {
     icon: Smartphone,
     title: 'Nothing for them to install',
-    copy: 'Recipients open the gift in any browser — no app, no signup and no password.',
+    copy: 'Recipients open the gift in any browser - no app, no signup and no password.',
     grad: 'linear-gradient(135deg,#FBBF24,#F472B6)',
   },
   {

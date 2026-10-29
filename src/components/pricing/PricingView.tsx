@@ -15,7 +15,7 @@ export const PricingView: React.FC = () => {
       return;
     }
     showToast(
-      `${planName} selected — checkout isn't wired up yet, so you're on the free plan for now.`,
+      `${planName} selected - checkout isn't wired up yet, so you're on the free plan for now.`,
       'info'
     );
     openCreator();
@@ -179,7 +179,7 @@ export const PricingView: React.FC = () => {
             <p className="mt-1.5 text-xs text-zinc-500">
               {billingCycle === 'monthly'
                 ? 'Billed monthly, cancel anytime'
-                : `Billed $${yearlyTotal} once a year — saves $${yearlySaving}`}
+                : `Billed $${yearlyTotal} once a year - saves $${yearlySaving}`}
             </p>
 
             <ul className="mt-8 space-y-3 text-xs text-zinc-600">

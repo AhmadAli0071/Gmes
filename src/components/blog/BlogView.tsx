@@ -17,7 +17,7 @@ export const BlogView: React.FC = () => (
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#6B7280] sm:text-base">
           Practical ideas for birthdays, anniversaries, Valentine&apos;s Day, long distance
-          relationships and the holidays — all built around photos, your voice and a message
+          relationships and the holidays - all built around photos, your voice and a message
           that lasts.
         </p>
       </div>

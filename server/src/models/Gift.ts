@@ -4,7 +4,7 @@ import { Schema, model } from 'mongoose';
  * A gift is the unit the product shares: the same document backs the creator's
  * dashboard entry and the recipient's unboxing screen (looked up by shareCode).
  *
- * `photos` / `voiceNoteUrl` hold **URLs** (`/uploads/...`), never base64 — the
+ * `photos` / `voiceNoteUrl` hold **URLs** (`/uploads/...`), never base64 - the
  * old localStorage build stored data URLs and blew the 5MB quota.
  */
 const giftSchema = new Schema(

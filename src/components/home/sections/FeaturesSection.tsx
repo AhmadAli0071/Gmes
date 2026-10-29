@@ -13,7 +13,7 @@ const FEATURES = [
   {
     icon: Layers,
     title: 'Mood-matched cards',
-    body: 'Pick magical, romantic, playful, elegant or festive — art, palette and fonts change with it.',
+    body: 'Pick magical, romantic, playful, elegant or festive - art, palette and fonts change with it.',
     tint: 'from-fuchsia-500 to-pink-500',
   },
   {
@@ -25,7 +25,7 @@ const FEATURES = [
   {
     icon: Zap,
     title: 'Sent in 60 seconds',
-    body: 'One shareable link. No app, no account for them — it just opens and unwraps.',
+    body: 'One shareable link. No app, no account for them - it just opens and unwraps.',
     tint: 'from-sky-500 to-violet-500',
   },
 ];
@@ -44,7 +44,7 @@ export const FeaturesSection: React.FC = () => (
             .
           </>
         }
-        subtitle="Photos, a voice note, music and motion wrapped into one link — everything a digital gift should be, and nothing it shouldn't."
+        subtitle="Photos, a voice note, music and motion wrapped into one link - everything a digital gift should be, and nothing it shouldn't."
       />
     </Reveal>
 

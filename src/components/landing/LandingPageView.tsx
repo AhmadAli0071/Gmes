@@ -185,7 +185,7 @@ export const LandingPageView: React.FC<{ slug: LandingView }> = ({ slug }) => {
                   Make yours in 60 seconds
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-[#6B7280]">
-                  Add photos, record a voice note and write your message — then share one
+                  Add photos, record a voice note and write your message - then share one
                   link.
                 </p>
                 <button

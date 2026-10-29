@@ -46,7 +46,7 @@ export const giftsRouter = Router();
 
 type Scope = { filter: Record<string, unknown> };
 
-/** Only the owner — by account, or by the guest device token — may list/manage. */
+/** Only the owner - by account, or by the guest device token - may list/manage. */
 function scopeOf(req: any): Scope {
   if (req.user) return { filter: { ownerId: req.user._id } };
   const ownerToken = ownerTokenOf(req);

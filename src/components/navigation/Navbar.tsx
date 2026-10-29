@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
     setUserDropdownOpen(false);
   };
 
-  // The home page and every SEO landing page open on a dark gradient hero — at
+  // The home page and every SEO landing page open on a dark gradient hero - at
   // the very top the bar is fully transparent so the hero runs straight
   // through it (the navbar sits *on* the hero instead of above it), then it
   // fogs up once the page moves.

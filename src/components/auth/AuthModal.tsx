@@ -52,7 +52,7 @@ export const AuthModal: React.FC = () => {
   };
 
   const handleGoogleAuth = () => {
-    showToast('Google sign-in is not connected yet — use email instead.', 'info');
+    showToast('Google sign-in is not connected yet - use email instead.', 'info');
   };
 
   return (

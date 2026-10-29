@@ -36,7 +36,7 @@ export const GiftCreator: React.FC = () => {
 
   const [step, setStep] = useState<Step>(() => readStoredStep() as Step);
 
-  // Resume on the step the user was last on — persists alongside the draft.
+  // Resume on the step the user was last on - persists alongside the draft.
   useEffect(() => {
     try {
       localStorage.setItem('gems_draft_step', String(step));
@@ -63,7 +63,7 @@ export const GiftCreator: React.FC = () => {
     if (step === 3) setPreviewUnboxed(false);
   }, [step]);
 
-  // The flat card has no box state — resealing keeps the toggle honest.
+  // The flat card has no box state - resealing keeps the toggle honest.
   useEffect(() => {
     if (previewMode === 'card') setPreviewUnboxed(false);
   }, [previewMode]);
@@ -85,7 +85,7 @@ export const GiftCreator: React.FC = () => {
   ];
 
 
-  // Step 3: Mood visual choices — `theme` repaints the whole screen, not just the box
+  // Step 3: Mood visual choices - `theme` repaints the whole screen, not just the box
   const moods: {
     id: GiftMood;
     name: string;
@@ -139,7 +139,7 @@ export const GiftCreator: React.FC = () => {
       showToast(
         result.source === 'ai'
           ? 'Wrote a fresh message just for you ✨'
-          : 'No AI key configured — showing a saved example instead.',
+          : 'No AI key configured - showing a saved example instead.',
         result.source === 'ai' ? 'success' : 'info'
       );
     } finally {
@@ -255,7 +255,7 @@ export const GiftCreator: React.FC = () => {
               className="relative w-full max-w-lg rounded-[2rem] p-3.5 sm:p-4 shadow-[0_34px_70px_-28px_rgba(109,40,217,0.85)] ring-1 ring-[#ffc95c]/40 overflow-hidden lg:sticky lg:top-24"
               style={{ background: 'linear-gradient(165deg,#3b1f7a 0%,#22124f 45%,#150d33 100%)' }}
             >
-              {/* Ribbon across the top — same pink/gold as the box bow */}
+              {/* Ribbon across the top - same pink/gold as the box bow */}
               <div
                 aria-hidden
                 className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#ff4f8b] via-[#ffc95c] to-[#ff4f8b]"
@@ -609,7 +609,7 @@ export const GiftCreator: React.FC = () => {
                   })}
                 </div>
 
-                {/* Live theme readout — proves the whole palette moved with the mood */}
+                {/* Live theme readout - proves the whole palette moved with the mood */}
                 <div className="p-3.5 rounded-2xl border border-[var(--mood-border)] bg-[var(--mood-soft)] transition-colors duration-500">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--mood-strong)] mb-2.5">
                     {activeMood.emoji} {activeMood.name} theme applied
