@@ -14,6 +14,29 @@ export interface GiftGuide {
   readTime: string;
 }
 
+export const BLOG_POSTS: GiftGuide[] = [
+  {
+    title: 'Surprise a Long Distance Partner on Their Birthday',
+    excerpt:
+      'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
+    path: '/long-distance-birthday-surprise',
+    image: longDistanceImage,
+    alt: 'Long distance birthday surprise with a virtual gift box and a video call',
+    tag: 'Long distance',
+    readTime: '6 min read',
+  },
+  {
+    title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
+    excerpt:
+      'Thoughtful ideas you can finish in an afternoon — digital, local and handmade options.',
+    path: '/last-minute-christmas-gift-ideas',
+    image: christmasImage,
+    alt: 'Last-minute Christmas gifts including a festive virtual gift box',
+    tag: 'Christmas',
+    readTime: '6 min read',
+  },
+];
+
 export const GIFT_GUIDES: GiftGuide[] = [
   {
     title: 'Virtual Birthday Gift Ideas',
@@ -62,24 +85,5 @@ export const GIFT_GUIDES: GiftGuide[] = [
     tag: 'Christmas',
     readTime: '5 min read',
   },
-  {
-    title: 'Surprise a Long Distance Partner on Their Birthday',
-    excerpt:
-      'A simple plan across time zones — timing tips, gift ideas and mistakes to avoid.',
-    path: '/long-distance-birthday-surprise',
-    image: longDistanceImage,
-    alt: 'Long distance birthday surprise with a virtual gift box and a video call',
-    tag: 'Long distance',
-    readTime: '6 min read',
-  },
-  {
-    title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
-    excerpt:
-      'Thoughtful ideas you can finish in an afternoon — digital, local and handmade options.',
-    path: '/last-minute-christmas-gift-ideas',
-    image: christmasImage,
-    alt: 'Last-minute Christmas gifts including a festive virtual gift box',
-    tag: 'Christmas',
-    readTime: '6 min read',
-  },
+  ...BLOG_POSTS,
 ];

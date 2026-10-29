@@ -286,6 +286,8 @@ const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => ({
 </div>`,
 }));
 
+const BLOG_ARTICLES = BLOG_PREVIEWS.slice(-2);
+
 const BLOG_PAGE: SeoPage = {
   path: PAGES.blog.path,
   title: PAGES.blog.title,
@@ -297,7 +299,7 @@ const BLOG_PAGE: SeoPage = {
     <h1>Gift Ideas and Tips</h1>
     <p>Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays — all built around photos, your voice and a message that lasts.</p>
     <ul>
-      ${BLOG_PREVIEWS.map(
+      ${BLOG_ARTICLES.map(
         (guide) =>
           `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> — ${escapeHtml(guide.excerpt)}</li>`
       ).join('')}

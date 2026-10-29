@@ -56,12 +56,13 @@ export const Navbar: React.FC = () => {
     };
   }, [userDropdownOpen]);
 
-  // Exact links requested: Explore, My Gifts, How It Works, Pricing
+  // Exact links requested: Explore, My Gifts, How It Works, Pricing, Blogs
   const navLinks: { label: string; view: ViewRoute }[] = [
     { label: 'Explore', view: 'explore' },
     { label: 'My Gifts', view: 'dashboard' },
     { label: 'How It Works', view: 'how-it-works' },
     { label: 'Pricing', view: 'pricing' },
+    { label: 'Blogs', view: 'blog' },
   ];
 
   const hrefFor = (view: ViewRoute) => (view === 'home' ? '/' : `/${view}`);

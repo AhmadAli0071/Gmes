@@ -1,5 +1,5 @@
 import React from 'react';
-import { GIFT_GUIDES } from '../../data/guides';
+import { BLOG_POSTS } from '../../data/guides';
 import { SiteFooter } from '../navigation/SiteFooter';
 import { ArrowRight, BookOpen } from 'lucide-react';
 
@@ -25,7 +25,7 @@ export const BlogView: React.FC = () => (
 
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       <div className="grid gap-6 md:grid-cols-2">
-        {GIFT_GUIDES.map((guide) => (
+        {BLOG_POSTS.map((guide) => (
           <a
             key={guide.path}
             href={guide.path}
