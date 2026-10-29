@@ -14,7 +14,8 @@ export type LandingBlock =
   | { kind: 'h2'; text: string }
   | { kind: 'h3'; text: string }
   | { kind: 'p'; text: string }
-  | { kind: 'ul'; items: string[] };
+  | { kind: 'ul'; items: string[] }
+  | { kind: 'table'; headers: string[]; rows: string[][] };
 
 export interface LandingPage {
   slug: LandingView;
@@ -718,6 +719,491 @@ export const LANDING_PAGES: LandingPage[] = [
     related: [
       { label: 'Christmas digital gift card ideas', path: '/christmas-digital-gift-card' },
       { label: 'How GEMS works', path: '/how-it-works' },
+      { label: 'Pricing - free & Premium gifts', path: '/pricing' },
+    ],
+  },
+  {
+    slug: 'instant-gift-ideas',
+    keyword: 'instant gift ideas',
+    metaTitle: 'Instant Gift Ideas You Can Send in Minutes | GEMS',
+    metaDescription:
+      'Forgot a gift? Try these instant gift ideas you can share in minutes, from digital gift boxes to voice notes. See which works for every occasion.',
+    h1: 'Instant Gift Ideas You Can Send in Minutes',
+    intro:
+      'Sometimes you remember a birthday, an anniversary or a hard week at the last second. An instant gift lets you show up on time without a shipping window. This guide lists gifts you can send in minutes, explains what makes them thoughtful and shows how to match them to the moment. It also covers the limits, so you can choose well.',
+    blocks: [
+      { kind: 'h2', text: 'What Counts as an Instant Gift?' },
+      {
+        kind: 'p',
+        text: 'An instant gift is a present the recipient can receive immediately, with no shipping or pickup. Most are digital, such as messages, subscriptions or online experiences. Examples include a voice note, a photo slideshow, an e-book, an online class or a digital gift box. Since gift-giving is about showing care, speed should support the thought, not replace it.',
+      },
+      { kind: 'h2', text: 'Who Benefits Most From Instant Gifts?' },
+      {
+        kind: 'ul',
+        items: [
+          'People who live in another city or country, since nothing needs to ship.',
+          'Busy friends who rarely have time to meet.',
+          'Anyone who forgot a date and wants to respond quickly and sincerely.',
+          'Remote coworkers celebrating a milestone.',
+        ],
+      },
+      { kind: 'h2', text: 'Which Gifts Can You Send in Under Five Minutes?' },
+      {
+        kind: 'ul',
+        items: [
+          'Voice message: Record a short note in your own voice.',
+          'Photo with a caption: Send a favorite picture and say why you chose it.',
+          'Playlist: Build five songs that remind you of them.',
+          'E-book or audiobook: Gift a title that fits their interests.',
+          'Virtual gift box: Add photos, a voice note and a message, then share one link. You can build a [virtual gift](/create) on GEMS in about 60 seconds.',
+        ],
+      },
+      { kind: 'h2', text: 'Which Gifts Take 15 Minutes to an Hour?' },
+      {
+        kind: 'ul',
+        items: [
+          'Mini photo slideshow: Pick 10 photos and add one song.',
+          'Shared online album: Collect family photos from a trip in one place.',
+          'Online class or workshop: Book a session on a topic they enjoy.',
+          'Video message from friends: Ask three or four people for short clips and combine them.',
+        ],
+      },
+      { kind: 'h2', text: 'What Instant Gift Works for Each Occasion?' },
+      {
+        kind: 'table',
+        headers: ['Occasion', 'Quick idea'],
+        rows: [
+          ['Birthday', 'Voice note plus a photo from a favorite day'],
+          ['Anniversary', 'Photo timeline with one memory per year'],
+          ["Valentine's Day", 'Playlist and a written love message'],
+          ['Thank you', 'Short video message that names what they did'],
+          ['Get well soon', 'Funny photos and a cheerful voice note'],
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For deeper ideas, see these [digital anniversary gift ideas](/anniversary-digital-gift).',
+      },
+      { kind: 'h2', text: 'How Do You Send an Instant Gift Step by Step?' },
+      {
+        kind: 'ul',
+        items: [
+          'Decide who it is for and what moment you want to mark.',
+          'Choose a format that fits their habits, such as audio, photos or video.',
+          'Add one personal detail, such as an inside joke or shared memory.',
+          'Check the link or file on your own device first.',
+          'Send it at a time that suits their day, then follow up with a short text.',
+        ],
+      },
+      { kind: 'h2', text: 'How Do You Make an Instant Gift Feel Personal?' },
+      {
+        kind: 'p',
+        text: 'Speed does not have to mean generic. Three small choices raise the quality fast:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Name a specific memory instead of saying you miss them.',
+          'Use your own voice, since it carries tone that text cannot.',
+          'Choose photos that tell a short story, not a random set.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The GEMS virtual gift box keeps those pieces together in one 3D box that opens with a small surprise.',
+      },
+      {
+        kind: 'p',
+        text: 'Questions about how to set it up? You can contact the GEMS team.',
+      },
+      { kind: 'h2', text: 'What Are the Pros and Cons of Instant Gifts?' },
+      { kind: 'h3', text: 'Pros' },
+      {
+        kind: 'ul',
+        items: [
+          'No shipping delays or customs.',
+          'Easy to personalize with photos and voice.',
+          'Often low cost or free to start.',
+        ],
+      },
+      { kind: 'h3', text: 'Cons' },
+      {
+        kind: 'ul',
+        items: [
+          'Some people prefer something they can hold.',
+          'Generic e-cards can feel impersonal.',
+          'A digital link can get buried in a busy inbox, so send it with a short note.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Pair a digital gift with a small physical item when you can.',
+      },
+      { kind: 'h2', text: 'Speed Works Best When the Details Are Yours' },
+      {
+        kind: 'p',
+        text: 'The fastest gift is only memorable if it feels chosen for the person. Pick one format, add one real memory and send it at a moment that suits their day. Small, sincere gifts often beat rushed purchases. If you want a gift that holds photos, audio and text together, a link-based gift box is one practical option.',
+      },
+    ],
+    ctaHeading: 'Send a Gift in Minutes',
+    ctaBody:
+      'Add your photos and message, then create your free gift on GEMS. Not sure where to begin? Follow the quick guide on how GEMS works.',
+    faqs: [
+      {
+        q: 'What is the fastest gift I can send online?',
+        a: 'A voice message or a photo with a caption takes under five minutes. Both arrive as soon as you hit send.',
+      },
+      {
+        q: 'Are instant gifts considered rude or lazy?',
+        a: 'Not when they include a personal detail. A specific memory or a recorded message shows effort.',
+      },
+      {
+        q: 'What instant gift works for someone who lives abroad?',
+        a: 'Digital gifts suit people abroad because they avoid shipping and customs. A link-based gift opens on any phone.',
+      },
+      {
+        q: 'How can I make a digital gift feel less generic?',
+        a: 'Add a real memory, your own voice and photos that tell a story. Avoid copied quotes and template messages.',
+      },
+      {
+        q: 'Can I send an instant gift on the same day as an event?',
+        a: 'Digital gifts can arrive within minutes, so same-day sending is realistic. Schedule it for the right hour in their time zone.',
+      },
+    ],
+    related: [
+      { label: 'How GEMS works', path: '/how-it-works' },
+      { label: 'Digital anniversary gift ideas', path: '/anniversary-digital-gift' },
+      { label: 'Pricing - free & Premium gifts', path: '/pricing' },
+    ],
+  },
+  {
+    slug: 'valentines-day-gifts-long-distance-couples',
+    keyword: 'valentines day gifts for long distance couples',
+    metaTitle: 'Valentine\u2019s Day Gifts for Long Distance Couples',
+    metaDescription:
+      'Find easy Valentine\u2019s Day gift ideas for long distance couples, from voice notes to shared playlists. Plan ahead and make February 14 feel close.',
+    h1: 'Valentine\u2019s Day Gift Ideas for Long Distance Couples',
+    intro:
+      'Valentine\u2019s Day on February 14 can feel loud when your partner lives far away. The right gift does not need to be big. It needs to show attention and arrive when it matters. This guide shares gift ideas for long distance couples, plus planning tips and a few ways to celebrate together on screen.',
+    blocks: [
+      { kind: 'h2', text: 'When Should Long Distance Couples Start Planning?' },
+      {
+        kind: 'p',
+        text: 'Plan four to six weeks ahead if you want to send a physical gift. International shipping can slow down in busy periods, so build in extra time. Digital gifts can wait until the final week. Here is a simple timeline:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Six weeks out: Choose the gift type and check delivery dates.',
+          'Two weeks out: Confirm the address and start collecting photos or writing your message.',
+          'Three days out: Test links and schedule delivery times.',
+        ],
+      },
+      { kind: 'h2', text: 'What Are the Best Valentine\u2019s Day Gifts for Long Distance Couples?' },
+      { kind: 'h3', text: 'Digital gifts' },
+      {
+        kind: 'p',
+        text: 'Digital gifts arrive on Valentine\u2019s Day itself, which removes shipping stress and gives you room to personalize.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A voice note that says what you love about them.',
+          'A photo timeline of your relationship.',
+          "A virtual gift box with photos, a voice note and a message. See these [Valentine's Day virtual gift ideas](/valentines-day-virtual-gift) for more examples.",
+          'A shared playlist with one song for each month you have been together.',
+        ],
+      },
+      { kind: 'h3', text: 'Physical gifts' },
+      {
+        kind: 'ul',
+        items: [
+          'Matching items, such as bracelets or mugs.',
+          'A care package with snacks from your city.',
+          'A printed photo book from your best trips.',
+        ],
+      },
+      { kind: 'h3', text: 'Experience gifts' },
+      {
+        kind: 'ul',
+        items: [
+          'A streaming subscription you can watch together.',
+          'An online cooking or art class you both join.',
+          'A virtual tour of a museum for a date night.',
+        ],
+      },
+      { kind: 'h2', text: 'How Do You Plan a Valentine\u2019s Date From Afar?' },
+      {
+        kind: 'p',
+        text: 'A date feels real when both people prepare.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Pick a start time that works in both time zones.',
+          'Order or cook the same meal.',
+          'Set the mood with lighting and music.',
+          'Watch a movie in sync or play an online game.',
+          'End with the gift reveal.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For more ideas, read these [long distance gift ideas](/long-distance-gift-ideas).',
+      },
+      { kind: 'h2', text: 'What Can You Do on a Small Budget?' },
+      {
+        kind: 'p',
+        text: 'Money is not the measure of a good Valentine\u2019s gift. Low-cost ideas often feel the most personal.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Write a letter listing ten reasons you love them.',
+          'Record a song or poem in your own voice.',
+          'Make a digital scrapbook of your best photos.',
+          'Plan a free video call walk, where each of you walks outside.',
+        ],
+      },
+      { kind: 'h2', text: 'How Do You Handle Time Zones and Busy Schedules?' },
+      {
+        kind: 'p',
+        text: 'Time differences can complicate even simple plans. Agree on a window that works for both of you, and send small gifts that do not need a live moment.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Schedule messages to arrive at the start of their Valentine\u2019s Day.',
+          'Send the gift link early and ask them to open it when they are ready.',
+          'Plan a second call on the weekend if weekdays are full.',
+        ],
+      },
+      { kind: 'h2', text: 'What Should You Say in a Valentine\u2019s Message?' },
+      {
+        kind: 'p',
+        text: 'Start with one detail you love, then mention a shared memory and a future plan. Example: \u201CI love how you make me laugh after long days. I cannot wait for our next trip. Happy Valentine\u2019s Day.\u201D',
+      },
+      {
+        kind: 'p',
+        text: 'You can place the message inside a GEMS virtual gift box alongside your photos.',
+      },
+      { kind: 'h2', text: 'What Should You Avoid When Gifting From a Distance?' },
+      {
+        kind: 'ul',
+        items: [
+          'Expensive gifts that create pressure.',
+          'Surprises that arrive when your partner is busy.',
+          'Generic messages with no personal detail.',
+          'Assuming your partner wants the same style of romance you do.',
+        ],
+      },
+      { kind: 'h2', text: 'A Valentine\u2019s Gift They Can Revisit All Year' },
+      {
+        kind: 'p',
+        text: 'A good long distance Valentine\u2019s gift shows effort, honesty and attention. Start early, choose one personal detail and make it easy for your partner to open on the day. If you need help setting up a digital gift, you can contact the GEMS team.',
+      },
+    ],
+    ctaHeading: 'Build Your Valentine\u2019s Gift in About a Minute',
+    ctaBody:
+      'Add photos, a voice note and a message, then create your Valentine\u2019s gift. Want to know what each plan includes? Check the pricing page.',
+    faqs: [
+      {
+        q: 'What is a good Valentine\u2019s gift for a long distance partner?',
+        a: 'Choose something personal, such as a voice note, a photo timeline or a care package. The detail matters more than the price.',
+      },
+      {
+        q: 'How far ahead should I send a Valentine\u2019s gift overseas?',
+        a: 'Allow several weeks for physical gifts and check the carrier\u2019s delivery estimates. Digital gifts can be sent in the final days.',
+      },
+      {
+        q: 'How can we celebrate Valentine\u2019s Day together on video?',
+        a: 'Cook the same meal, watch a movie in sync or play an online game. End the call with a gift reveal.',
+      },
+      {
+        q: 'What are cheap Valentine\u2019s ideas for long distance couples?',
+        a: 'Write a letter, record a voice message or build a digital scrapbook. These cost little but feel personal.',
+      },
+      {
+        q: 'Is a digital Valentine\u2019s gift romantic enough?',
+        a: 'It can be, when it includes personal photos, your voice and a specific message. Effort drives the feeling, not the format.',
+      },
+    ],
+    related: [
+      { label: "Valentine's Day virtual gift", path: '/valentines-day-virtual-gift' },
+      { label: 'Long distance relationship gifts', path: '/long-distance-gift-ideas' },
+      { label: 'Pricing - free & Premium gifts', path: '/pricing' },
+    ],
+  },
+  {
+    slug: 'photo-memory-video-gift',
+    keyword: 'photo memory video',
+    metaTitle: 'How to Make a Photo Memory Video or Slideshow Gift',
+    metaDescription:
+      'Learn how to make a photo memory video or slideshow gift that feels personal. Pick photos, shape the story, add music or a voice note, and share.',
+    h1: 'How to Make a Photo Memory Video or Slideshow Gift',
+    intro:
+      'A photo memory video turns scattered pictures into a story someone can watch again and again. It works for birthdays, anniversaries, graduations and farewells. This guide explains how to plan, build and share a slideshow gift, even if you have never edited a video. You will also find ways to keep the process simple.',
+    blocks: [
+      { kind: 'h2', text: 'What Is a Photo Memory Video?' },
+      {
+        kind: 'p',
+        text: 'A photo memory video is a short film made from still photos, often with music, captions or narration. A slideshow is a similar format where images change at set intervals. Both let you tell a story without filming new footage.',
+      },
+      { kind: 'h2', text: 'How Do You Make a Photo Memory Video Step by Step?' },
+      { kind: 'h3', text: 'Step 1: Choose a theme' },
+      {
+        kind: 'p',
+        text: 'Pick one story, such as \u201Cour first year,\u201D \u201Cgrowing up\u201D or \u201Cour trip.\u201D A clear theme stops the video from feeling random.',
+      },
+      { kind: 'h3', text: 'Step 2: Select the right photos' },
+      {
+        kind: 'p',
+        text: 'Aim for 20 to 30 photos for a video of about two minutes. That allows about five seconds per photo.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Choose sharp, well-lit images.',
+          'Include a mix of close-ups, group shots and candid moments.',
+          'Skip near-duplicates.',
+        ],
+      },
+      { kind: 'h3', text: 'Step 3: Put them in order' },
+      {
+        kind: 'p',
+        text: 'Arrange photos chronologically or by mood. Chronological order is easiest for viewers to follow.',
+      },
+      { kind: 'h3', text: 'Step 4: Add music, captions or a voice note' },
+      {
+        kind: 'p',
+        text: 'Use a song that matches the tone. Short captions with dates or places add context. A voice note gives the gift a personal touch.',
+      },
+      {
+        kind: 'p',
+        text: 'If you plan to share the video publicly, use music you have permission to use.',
+      },
+      { kind: 'h3', text: 'Step 5: Export and test' },
+      {
+        kind: 'p',
+        text: 'Save the final file in a common format, then watch it once on your phone and once on a computer. Check the sound levels before sending.',
+      },
+      { kind: 'h2', text: 'Which Tools Can You Use to Make One?' },
+      {
+        kind: 'p',
+        text: 'You do not need professional software. Most phones and computers include a basic photo or video editor.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Phone photo apps with built-in memory or slideshow features.',
+          'Free desktop video editors for more control.',
+          'Online slideshow makers that work in a browser.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'If you want to skip editing, the GEMS virtual gift box keeps photos, a voice note and a message together behind one link. It is not a video file, but it can work as a simpler alternative.',
+      },
+      { kind: 'h2', text: 'How Do You Make the Gift Feel Personal?' },
+      {
+        kind: 'ul',
+        items: [
+          'Open with a photo that means something to both of you.',
+          'Add short captions that name the place and year.',
+          'End with a message about what you look forward to.',
+          'Ask friends or family for photos you do not already have.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'To see how a link-based gift compares, read [how GEMS works](/how-it-works).',
+      },
+      { kind: 'h2', text: 'What Occasions Suit a Photo Memory Video?' },
+      {
+        kind: 'ul',
+        items: [
+          'Birthdays: A year in photos or a lifetime timeline.',
+          'Anniversaries: One photo per year together.',
+          'Graduations: Key moments from school years.',
+          'Farewells: Memories with coworkers or classmates.',
+          'Weddings: Childhood photos of each partner.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For anniversary inspiration, see these [digital anniversary gift ideas](/anniversary-digital-gift).',
+      },
+      { kind: 'h2', text: 'How Long Should a Photo Memory Video Be?' },
+      {
+        kind: 'p',
+        text: 'Shorter videos hold attention better. Match the length to the occasion:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Birthday or thank you: One to two minutes.',
+          'Anniversary or farewell: Two to three minutes.',
+          'Wedding or milestone: Three to four minutes, with a clear ending.',
+        ],
+      },
+      { kind: 'h2', text: 'What Mistakes Make a Photo Slideshow Feel Flat?' },
+      {
+        kind: 'ul',
+        items: [
+          'Too many photos, which makes the video drag.',
+          'Fast transitions that hide the pictures.',
+          'Low-quality images that look blurry on a big screen.',
+          'Music that is louder than the voice or captions.',
+          'No clear ending.',
+        ],
+      },
+      { kind: 'h2', text: 'How Do You Share the Video Safely?' },
+      {
+        kind: 'p',
+        text: 'Large video files can fail in messaging apps.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Upload to a private cloud folder and share the link.',
+          'Check the privacy settings before sending.',
+          'Avoid posting photos of children or private moments on public pages.',
+        ],
+      },
+      { kind: 'h2', text: 'A Photo Story Worth Watching Again' },
+      {
+        kind: 'p',
+        text: 'A strong memory video does not need advanced editing. It needs a clear theme, thoughtful photos and a personal touch. Take an hour, choose with care and send it with a short note. If you have questions about building a digital gift, you can contact the GEMS team.',
+      },
+    ],
+    ctaHeading: 'Turn Your Photos Into a Gift Today',
+    ctaBody:
+      'Upload your photos, add a message and create your free gift. Want to compare plans? Visit the pricing page.',
+    faqs: [
+      {
+        q: 'How many photos should I use in a memory video?',
+        a: 'Use 20 to 30 photos for a video of about two minutes. Show each image for around five seconds.',
+      },
+      {
+        q: 'What is the difference between a slideshow and a memory video?',
+        a: 'A slideshow shows photos in sequence. A memory video usually adds music, captions or narration for storytelling.',
+      },
+      {
+        q: 'Do I need editing skills to make a slideshow gift?',
+        a: 'Basic phone or desktop tools are enough for most projects. Start with a simple order and one song.',
+      },
+      {
+        q: 'What music is safe to use in a gift video?',
+        a: 'Private sharing carries less risk than public posting. For public use, choose music you have permission to use.',
+      },
+      {
+        q: 'How do I send a large video file to someone?',
+        a: 'Upload it to a private cloud folder and share the link. This avoids size limits in messaging apps.',
+      },
+    ],
+    related: [
+      { label: 'How GEMS works', path: '/how-it-works' },
+      { label: 'Digital anniversary gift ideas', path: '/anniversary-digital-gift' },
       { label: 'Pricing - free & Premium gifts', path: '/pricing' },
     ],
   },

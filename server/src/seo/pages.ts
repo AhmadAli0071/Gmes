@@ -51,6 +51,21 @@ const BLOG_PREVIEWS = [
     excerpt: 'Thoughtful ideas you can finish in an afternoon - digital, local and handmade.',
     path: '/last-minute-christmas-gift-ideas',
   },
+  {
+    title: 'Instant Gift Ideas You Can Send in Minutes',
+    excerpt: 'Forgot a gift? Voice notes, playlists and digital gift boxes that arrive in minutes.',
+    path: '/instant-gift-ideas',
+  },
+  {
+    title: "Valentine's Day Gifts for Long Distance Couples",
+    excerpt: 'Planning tips, digital ideas and ways to make February 14 feel close from afar.',
+    path: '/valentines-day-gifts-long-distance-couples',
+  },
+  {
+    title: 'How to Make a Photo Memory Video or Slideshow Gift',
+    excerpt: 'Pick photos, shape the story, add music or a voice note and share a gift they replay.',
+    path: '/photo-memory-video-gift',
+  },
 ];
 
 const SITE_STYLES = `
@@ -265,6 +280,15 @@ const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => ({
         if (block.kind === 'h2') return `<h2>${escapeHtml(block.text)}</h2>`;
         if (block.kind === 'h3') return `<h3>${escapeHtml(block.text)}</h3>`;
         if (block.kind === 'p') return `<p>${renderRichText(block.text)}</p>`;
+        if (block.kind === 'table') {
+          const head = block.headers.map((h) => `<th>${escapeHtml(h)}</th>`).join('');
+          const body = block.rows
+            .map(
+              (row) => `<tr>${row.map((cell) => `<td>${renderRichText(cell)}</td>`).join('')}</tr>`
+            )
+            .join('');
+          return `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+        }
         return `<ul>${block.items.map((item) => `<li>${renderRichText(item)}</li>`).join('')}</ul>`;
       })
       .join('')}
@@ -286,7 +310,7 @@ const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => ({
 </div>`,
 }));
 
-const BLOG_ARTICLES = BLOG_PREVIEWS.slice(-2);
+const BLOG_ARTICLES = BLOG_PREVIEWS.slice(5);
 
 const BLOG_PAGE: SeoPage = {
   path: PAGES.blog.path,

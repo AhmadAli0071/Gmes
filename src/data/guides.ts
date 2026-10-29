@@ -2,6 +2,7 @@ import birthdayImage from '../assets/images/guides/birthday.jpg';
 import anniversaryImage from '../assets/images/guides/anniversary.jpg';
 import valentinesImage from '../assets/images/guides/valentines.jpg';
 import longDistanceImage from '../assets/images/use-cases/long-distance.jpg';
+import lastMinuteImage from '../assets/images/use-cases/last-minute.jpg';
 import christmasImage from '../assets/images/template_christmas_wonder_1791359394567.jpg';
 
 export interface GiftGuide {
@@ -34,6 +35,36 @@ export const BLOG_POSTS: GiftGuide[] = [
     alt: 'Last-minute Christmas gifts including a festive virtual gift box',
     tag: 'Christmas',
     readTime: '6 min read',
+  },
+  {
+    title: 'Instant Gift Ideas You Can Send in Minutes',
+    excerpt:
+      'Forgot a gift? Voice notes, playlists and digital gift boxes that arrive in minutes.',
+    path: '/instant-gift-ideas',
+    image: lastMinuteImage,
+    alt: 'Instant gift ideas sent in minutes from a phone',
+    tag: 'Instant gifts',
+    readTime: '6 min read',
+  },
+  {
+    title: "Valentine's Day Gifts for Long Distance Couples",
+    excerpt:
+      'Planning tips, digital ideas and ways to make February 14 feel close from afar.',
+    path: '/valentines-day-gifts-long-distance-couples',
+    image: valentinesImage,
+    alt: 'Long distance Valentine\u2019s Day gift with a virtual gift box',
+    tag: "Valentine's Day",
+    readTime: '6 min read',
+  },
+  {
+    title: 'How to Make a Photo Memory Video or Slideshow Gift',
+    excerpt:
+      'Pick photos, shape the story, add music or a voice note and share a gift they replay.',
+    path: '/photo-memory-video-gift',
+    image: anniversaryImage,
+    alt: 'Photo memory slideshow gift with a romantic photo timeline',
+    tag: 'Photo gifts',
+    readTime: '7 min read',
   },
 ];
 

@@ -169,6 +169,42 @@ export const LandingPageView: React.FC<{ slug: LandingView }> = ({ slug }) => {
                       </ul>
                     );
                   }
+                  if (block.kind === 'table') {
+                    return (
+                      <div key={i} className="mt-5 overflow-x-auto rounded-xl border border-[#EAE4F9]">
+                        <table className="w-full border-collapse text-left text-[15px]">
+                          <thead>
+                            <tr className="bg-[#FAF7FF]">
+                              {block.headers.map((header) => (
+                                <th
+                                  key={header}
+                                  className="border-b border-[#EAE4F9] px-4 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#1E1B4B]"
+                                >
+                                  {header}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {block.rows.map((row) => (
+                              <tr key={row[0]} className="odd:bg-white even:bg-[#FCFAFF]">
+                                {row.map((cell, cellIndex) => (
+                                  <td
+                                    key={cell}
+                                    className={`border-b border-[#F1ECFA] px-4 py-3 leading-relaxed text-[#4B5563] ${
+                                      cellIndex === 0 ? 'font-semibold text-[#1E1B4B]' : ''
+                                    }`}
+                                  >
+                                    <RichText text={cell} />
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    );
+                  }
                   return (
                     <p
                       key={i}

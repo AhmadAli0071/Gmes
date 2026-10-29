@@ -143,6 +143,24 @@ export const PAGES: Record<string, PageMeta> = {
     description:
       'Need a Christmas gift fast? These easy last-minute ideas feel thoughtful, arrive on time and go beyond gift cards. Find options for every budget.',
   },
+  'instant-gift-ideas': {
+    path: '/instant-gift-ideas',
+    title: 'Instant Gift Ideas You Can Send in Minutes | GEMS',
+    description:
+      'Forgot a gift? Try these instant gift ideas you can share in minutes, from digital gift boxes to voice notes. See which works for every occasion.',
+  },
+  'valentines-day-gifts-long-distance-couples': {
+    path: '/valentines-day-gifts-long-distance-couples',
+    title: 'Valentine\u2019s Day Gifts for Long Distance Couples',
+    description:
+      'Find easy Valentine\u2019s Day gift ideas for long distance couples, from voice notes to shared playlists. Plan ahead and make February 14 feel close.',
+  },
+  'photo-memory-video-gift': {
+    path: '/photo-memory-video-gift',
+    title: 'How to Make a Photo Memory Video or Slideshow Gift',
+    description:
+      'Learn how to make a photo memory video or slideshow gift that feels personal. Pick photos, shape the story, add music or a voice note, and share.',
+  },
 };
 
 /* -------------------------------------------------------------------------- */
