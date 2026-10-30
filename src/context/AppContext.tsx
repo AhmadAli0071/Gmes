@@ -134,14 +134,28 @@ function readStoredSeason(fallback: EventSlug): EventSlug {
  * uploaded URLs. Anything unreadable falls back to a fresh draft rather than
  * crashing the creator.
  */
-export function readStoredDraft(user: User | null, eventSlug: EventSlug): Partial<GiftData> {
-  const fresh = makeDraft(user, eventSlug);
+export function readStoredDraft(eventSlug: EventSlug): Partial<GiftData> {
+  const fresh = makeDraft(eventSlug);
   try {
     const saved = localStorage.getItem(DRAFT_STORAGE_KEY);
     if (!saved) return fresh;
     const parsed: unknown = JSON.parse(saved);
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return fresh;
-    return { ...fresh, ...(parsed as Partial<GiftData>) };
+
+    const draft: Partial<GiftData> = { ...fresh, ...(parsed as Partial<GiftData>) };
+
+    // Older builds seeded a demo recipient, message and "Ahmad" sender. Clear
+    // those so the creator never shows a stranger's name or words as the
+    // user's own. Only touch the exact legacy values, never real user input.
+    const seeded =
+      draft.recipientName === LEGACY_DEMO_RECIPIENT || draft.message === LEGACY_DEMO_MESSAGE;
+    if (seeded) {
+      if (draft.recipientName === LEGACY_DEMO_RECIPIENT) draft.recipientName = '';
+      if (draft.message === LEGACY_DEMO_MESSAGE) draft.message = '';
+      if (draft.senderName === LEGACY_DEMO_SENDER) draft.senderName = '';
+    }
+
+    return draft;
   } catch {
     return fresh;
   }
@@ -160,12 +174,16 @@ export function readStoredStep(): number {
   return 1;
 }
 
-function makeDraft(user: User | null, eventSlug: EventSlug): Partial<GiftData> {
+const LEGACY_DEMO_RECIPIENT = 'Sarah Jenkins';
+const LEGACY_DEMO_SENDER = 'Ahmad';
+const LEGACY_DEMO_MESSAGE =
+  'Sarah, you make every ordinary day feel like an adventure! Wishing you the happiest celebration filled with love, laughter, and sweet moments. So grateful for you! ✨';
+
+function makeDraft(eventSlug: EventSlug): Partial<GiftData> {
   return {
-    recipientName: 'Sarah Jenkins',
-    senderName: user ? user.name : 'Ahmad',
-    message:
-      'Sarah, you make every ordinary day feel like an adventure! Wishing you the happiest celebration filled with love, laughter, and sweet moments. So grateful for you! ✨',
+    recipientName: '',
+    senderName: '',
+    message: '',
     templateId: 'tpl-confetti-pastel',
     eventSlug,
     mood: 'magical',
@@ -341,7 +359,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Current draft in Gift Creator. Hydrated from localStorage so a refresh
   // (or an accidental back-navigation) doesn't throw away a half-built gift.
   const [currentDraft, setCurrentDraft] = useState<Partial<GiftData>>(() =>
-    readStoredDraft(null, initialSeason.slug)
+    readStoredDraft(initialSeason.slug)
   );
 
   // Recently created gift for success screen
@@ -541,7 +559,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const startNewGift = (preset?: Partial<GiftData>) => {
-    setCurrentDraft({ ...makeDraft(user, selectedEventSlug), ...preset });
+    setCurrentDraft({ ...makeDraft(selectedEventSlug), ...preset });
     setJustCreatedGift(null);
     setCurrentView('create');
   };

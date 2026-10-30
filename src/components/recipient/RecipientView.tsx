@@ -66,14 +66,14 @@ export const RecipientView: React.FC<RecipientViewProps> = ({ gift: propGift }) 
   }
 
   const eventTheme = getEventBySlug(gift.eventSlug || 'birthday');
-  const recipientName = gift.recipientName || 'Sarah';
-  const senderName = gift.senderName || 'Ahmad';
+  const recipientName = gift.recipientName?.trim() || '';
+  const senderName = gift.senderName?.trim() || '';
 
   const greetingLabel = GREETING_LABEL[gift.eventSlug] || `Happy ${eventTheme.name}`;
 
   const revealGift = buildRevealGift(gift, {
-    title: `${greetingLabel}, ${recipientName} ❤️`,
-    subtitle: `Made with love by ${senderName}.`,
+    title: recipientName ? `${greetingLabel}, ${recipientName} ❤️` : `${greetingLabel} ❤️`,
+    subtitle: senderName ? `Made with love by ${senderName}.` : 'Made with love.',
   });
 
   const toggleSound = () => setSoundEnabled((prev) => !prev);

@@ -349,7 +349,7 @@ export const GiftCreator: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Sarah"
+                    placeholder="Their name"
                     value={currentDraft.recipientName || ''}
                     onChange={(e) =>
                       setCurrentDraft((prev) => ({ ...prev, recipientName: e.target.value }))
@@ -425,7 +425,7 @@ export const GiftCreator: React.FC = () => {
                   </label>
                   <input
                     type="text"
-                    placeholder="Ahmad"
+                    placeholder="Your name"
                     value={currentDraft.senderName || ''}
                     onChange={(e) =>
                       setCurrentDraft((prev) => ({ ...prev, senderName: e.target.value }))
@@ -662,13 +662,13 @@ export const GiftCreator: React.FC = () => {
                   <div className="flex justify-between">
                     <span className="text-zinc-500">To:</span>
                     <span className="font-bold text-zinc-900">
-                      {currentDraft.recipientName || 'Sarah'}
+                      {currentDraft.recipientName?.trim() || 'Not set'}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-500">From:</span>
                     <span className="font-bold text-zinc-900">
-                      {currentDraft.senderName || 'Ahmad'}
+                      {currentDraft.senderName?.trim() || 'Not set'}
                     </span>
                   </div>
                   <div className="flex justify-between">

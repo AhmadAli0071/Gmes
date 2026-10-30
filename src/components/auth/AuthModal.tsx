@@ -140,7 +140,7 @@ export const AuthModal: React.FC = () => {
                 id="auth-name"
                 type="text"
                 autoComplete="name"
-                placeholder="Ahmad Ali"
+                placeholder="Your name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 bg-[#FAFAF9] border border-[#E4E4E7] rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-[#6D28D9]"
