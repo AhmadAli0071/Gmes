@@ -17,6 +17,15 @@ export type LandingBlock =
   | { kind: 'ul'; items: string[] }
   | { kind: 'table'; headers: string[]; rows: string[][] };
 
+export type LandingLayout = 'classic' | 'split' | 'banner' | 'compact' | 'soft' | 'magazine';
+
+export type LandingImageKey =
+  | 'long-distance-couple'
+  | 'christmas-gift'
+  | 'instant-gift'
+  | 'valentines-gift'
+  | 'photo-memory';
+
 export interface LandingPage {
   slug: LandingView;
   keyword: string;
@@ -29,6 +38,12 @@ export interface LandingPage {
   ctaBody: string;
   faqs: LandingFaq[];
   related: { label: string; path: string }[];
+  /** Visual treatment for the article; defaults to `classic`. */
+  layout?: LandingLayout;
+  /** Hero/feature image shown in the article layout. */
+  image?: { key: LandingImageKey; alt: string };
+  /** Article schema dates; present only on the SEO blog posts. */
+  article?: { datePublished: string; dateModified: string };
 }
 
 export const LANDING_PAGES: LandingPage[] = [
@@ -433,6 +448,12 @@ export const LANDING_PAGES: LandingPage[] = [
     metaTitle: 'Surprise a Long Distance Partner on Their Birthday',
     metaDescription:
       'Plan a long distance birthday surprise that feels personal. Get timing tips, gift ideas and a simple step-by-step guide to make them feel closer.',
+    layout: 'split',
+    image: {
+      key: 'long-distance-couple',
+      alt: 'Long distance couple celebrating a birthday over a video call',
+    },
+    article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'How to Surprise Your Long Distance Partner on Their Birthday',
     intro:
       'Birthdays feel different when you live apart. You cannot show up with a cake, so the surprise has to come from your effort, timing and small details. This guide shows how to plan a birthday surprise for a partner in a long-distance relationship without making it feel rushed. You will get a simple plan, practical ideas and a few mistakes to avoid.',
@@ -567,6 +588,12 @@ export const LANDING_PAGES: LandingPage[] = [
     metaTitle: "Last-Minute Christmas Gifts That Aren't Gift Cards",
     metaDescription:
       'Need a Christmas gift fast? These easy last-minute ideas feel thoughtful, arrive on time and go beyond gift cards. Find options for every budget.',
+    layout: 'banner',
+    image: {
+      key: 'christmas-gift',
+      alt: 'Festive Christmas gift box with snow and holiday lights',
+    },
+    article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: "Last-Minute Christmas Gift Ideas That Aren't Gift Cards",
     intro:
       'Gift cards are fast, but they can feel generic when you want a present that shows real thought. The good news is that a last-minute gift can still feel personal. This guide covers ideas you can finish in an afternoon, for people nearby and people far away. Whether you celebrate Christmas with a full table or a quiet video call, these ideas fit.',
@@ -728,6 +755,12 @@ export const LANDING_PAGES: LandingPage[] = [
     metaTitle: 'Instant Gift Ideas You Can Send in Minutes | GEMS',
     metaDescription:
       'Forgot a gift? Try these instant gift ideas you can share in minutes, from digital gift boxes to voice notes. See which works for every occasion.',
+    layout: 'compact',
+    image: {
+      key: 'instant-gift',
+      alt: 'Instant gift being sent from a phone at the last minute',
+    },
+    article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'Instant Gift Ideas You Can Send in Minutes',
     intro:
       'Sometimes you remember a birthday, an anniversary or a hard week at the last second. An instant gift lets you show up on time without a shipping window. This guide lists gifts you can send in minutes, explains what makes them thoughtful and shows how to match them to the moment. It also covers the limits, so you can choose well.',
@@ -882,6 +915,12 @@ export const LANDING_PAGES: LandingPage[] = [
     metaTitle: 'Valentine\u2019s Day Gifts for Long Distance Couples',
     metaDescription:
       'Find easy Valentine\u2019s Day gift ideas for long distance couples, from voice notes to shared playlists. Plan ahead and make February 14 feel close.',
+    layout: 'soft',
+    image: {
+      key: 'valentines-gift',
+      alt: 'Romantic Valentine\u2019s gift box with rose petals for a long distance couple',
+    },
+    article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'Valentine\u2019s Day Gift Ideas for Long Distance Couples',
     intro:
       'Valentine\u2019s Day on February 14 can feel loud when your partner lives far away. The right gift does not need to be big. It needs to show attention and arrive when it matters. This guide shares gift ideas for long distance couples, plus planning tips and a few ways to celebrate together on screen.',
@@ -1040,6 +1079,12 @@ export const LANDING_PAGES: LandingPage[] = [
     metaTitle: 'How to Make a Photo Memory Video or Slideshow Gift',
     metaDescription:
       'Learn how to make a photo memory video or slideshow gift that feels personal. Pick photos, shape the story, add music or a voice note, and share.',
+    layout: 'magazine',
+    image: {
+      key: 'photo-memory',
+      alt: 'Photo memory slideshow gift made from anniversary photos',
+    },
+    article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'How to Make a Photo Memory Video or Slideshow Gift',
     intro:
       'A photo memory video turns scattered pictures into a story someone can watch again and again. It works for birthdays, anniversaries, graduations and farewells. This guide explains how to plan, build and share a slideshow gift, even if you have never edited a video. You will also find ways to keep the process simple.',

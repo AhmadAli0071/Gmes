@@ -1,5 +1,9 @@
 import { FAQS, PAGES, SITE } from '../../../src/data/seoContent';
 import { LANDING_PAGES } from '../../../src/data/landingPages';
+import {
+  landingArticleSchema,
+  landingFaqSchema,
+} from '../../../src/data/landingSchema';
 
 interface Faq {
   q: string;
@@ -13,6 +17,8 @@ interface SeoPage {
   content: string;
   faqs?: Faq[];
   schemaId?: string;
+  /** Extra JSON-LD scripts rendered verbatim in the head. */
+  schemas?: string[];
 }
 
 const BLOG_PREVIEWS = [
@@ -125,6 +131,10 @@ function faqHtml(faqs: Faq[]): string {
     .join('');
 }
 
+function jsonLdScript(id: string, data: unknown): string {
+  return `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+}
+
 function faqSchema(faqs: Faq[], id: string): string {
   const data = {
     '@context': 'https://schema.org',
@@ -136,7 +146,7 @@ function faqSchema(faqs: Faq[], id: string): string {
     })),
   };
 
-  return `<script type="application/ld+json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
+  return jsonLdScript(id, data);
 }
 
 function canonicalUrl(path: string): string {
@@ -145,7 +155,10 @@ function canonicalUrl(path: string): string {
 
 function renderHead(page: SeoPage): string {
   const url = canonicalUrl(page.path);
-  const schema = page.faqs && page.schemaId ? faqSchema(page.faqs, page.schemaId) : '';
+  const schema = [
+    ...(page.faqs && page.schemaId ? [faqSchema(page.faqs, page.schemaId)] : []),
+    ...(page.schemas ?? []),
+  ].join('');
 
   return `<!-- Primary -->
     <title>${escapeHtml(page.title)}</title>
@@ -263,13 +276,21 @@ const HOME_PAGE: SeoPage = {
 </div>`,
 };
 
-const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => ({
-  path: `/${page.slug}`,
-  title: page.metaTitle,
-  description: page.metaDescription,
-  schemaId: `gems-landing-faq-${page.slug}`,
-  faqs: page.faqs,
-  content: `
+const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => {
+  const article = landingArticleSchema(page);
+
+  return {
+    path: `/${page.slug}`,
+    title: page.metaTitle,
+    description: page.metaDescription,
+    faqs: page.faqs,
+    schemas: [
+      jsonLdScript(`gems-landing-faq-${page.slug}`, landingFaqSchema(page)),
+      ...(article
+        ? [jsonLdScript(`gems-landing-article-${page.slug}`, article)]
+        : []),
+    ],
+    content: `
 <div class="seo-fallback">
   <main>
     <p class="seo-eyebrow">${escapeHtml(page.keyword)}</p>
@@ -308,7 +329,8 @@ const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => ({
     </div>
   </main>
 </div>`,
-}));
+  };
+});
 
 const BLOG_ARTICLES = BLOG_PREVIEWS.slice(5);
 
