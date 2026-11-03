@@ -21,4 +21,19 @@ jobs:
           mkdir -p ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20 "$VPS_USER@$VPS_HOST" 'cd ~/Gems && git pull --ff-only origin main && docker compose up -d --build && docker compose ps && curl -fsS http://127.0.0.1:3001/api/health'
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=accept-new -o ConnectTimeout=20 "$VPS_USER@$VPS_HOST" 'bash -s' <<'REMOTE'
+          set -e
+          cd ~/Gems
+          git pull --ff-only origin main
+          docker compose up -d --build
+          docker compose ps
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:3001/api/health; then
+              echo
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Health check failed"
+          exit 1
+          REMOTE
