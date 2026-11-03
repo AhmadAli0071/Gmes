@@ -24,7 +24,11 @@ export type LandingImageKey =
   | 'christmas-gift'
   | 'instant-gift'
   | 'valentines-gift'
-  | 'photo-memory';
+  | 'photo-memory'
+  | 'thanksgiving-gift'
+  | 'virtual-gift'
+  | 'holiday-shipping'
+  | 'budget-gift';
 
 export interface LandingPage {
   slug: LandingView;
@@ -1250,6 +1254,883 @@ export const LANDING_PAGES: LandingPage[] = [
       { label: 'How GEMS works', path: '/how-it-works' },
       { label: 'Digital anniversary gift ideas', path: '/anniversary-digital-gift' },
       { label: 'Pricing - free & Premium gifts', path: '/pricing' },
+    ],
+  },
+  {
+    slug: 'thanksgiving-thank-you-messages',
+    keyword: 'thanksgiving thank you messages',
+    metaTitle: 'Thanksgiving Thank You Messages: Heartfelt Ideas',
+    metaDescription:
+      'Find thanksgiving thank you messages for family, friends and coworkers, plus easy tips to write a heartfelt note or send a digital greeting fast.',
+    layout: 'soft',
+    image: {
+      key: 'thanksgiving-gift',
+      alt: 'A small wrapped gift and cake on a warm table setting',
+    },
+    article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
+    h1: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
+    intro:
+      'Thanksgiving is the one holiday built around saying thank you, yet many people stall when they sit down to write the words. This guide gives you ready-to-use thanksgiving thank you messages for family, friends and coworkers, plus simple ways to make each one sound like you.',
+    blocks: [
+      {
+        kind: 'p',
+        text: '[Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving_%28United_States%29) falls on November 26 this year, so you still have time to plan.',
+      },
+      { kind: 'h2', text: 'What Makes a Thanksgiving Thank You Message Feel Heartfelt?' },
+      {
+        kind: 'p',
+        text: 'Specific beats generic. A message that names a real moment lands harder than \u201cthanks for everything.\u201d',
+      },
+      {
+        kind: 'p',
+        text: '[Gratitude](https://en.wikipedia.org/wiki/Gratitude) is generally described as appreciation for what someone has given or done for you. Your message simply puts that appreciation into words.',
+      },
+      { kind: 'p', text: 'Use this four-part formula:' },
+      {
+        kind: 'ul',
+        items: [
+          'Name the person.',
+          'Mention one specific thing they did.',
+          'Say how it helped or how it made you feel.',
+          'Close with a warm wish for the holiday.',
+        ],
+      },
+      { kind: 'h2', text: 'What Should You Write in a Thanksgiving Card?' },
+      { kind: 'h3', text: 'Thanksgiving gratitude messages for family' },
+      {
+        kind: 'ul',
+        items: [
+          '\u201cMom, thank you for teaching me that a full table starts with a full heart.\u201d',
+          '\u201cDad, I am thankful for every ride, every repair and every lesson. Happy Thanksgiving.\u201d',
+          '\u201cGrandma, your stories are the best part of our holiday. I am grateful for you.\u201d',
+        ],
+      },
+      { kind: 'h3', text: 'Thanksgiving wishes for friends' },
+      {
+        kind: 'ul',
+        items: [
+          '\u201cI am thankful for you and for every laugh we shared this year.\u201d',
+          '\u201cThank you for showing up when it counted. Happy Thanksgiving, my friend.\u201d',
+        ],
+      },
+      { kind: 'h3', text: 'Thanksgiving messages for coworkers' },
+      {
+        kind: 'ul',
+        items: [
+          '\u201cThank you for your help on this year\u2019s projects. I am grateful to work with you.\u201d',
+          '\u201cYour steady support made a busy quarter easier. Enjoy a restful holiday.\u201d',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Keep workplace notes short and professional. Two sentences are enough.',
+      },
+      { kind: 'h3', text: 'Thanksgiving appreciation messages for anyone' },
+      {
+        kind: 'p',
+        text: 'Not every thank you fits a category. These work for neighbors, teachers, mentors and old friends:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          '\u201cYou made this year better. I am thankful for you.\u201d',
+          '\u201cThank you for listening when I needed it most.\u201d',
+          '\u201cI do not say it often enough, so here it is: thank you.\u201d',
+          '\u201cGrateful for your kindness. Wishing you a warm Thanksgiving.\u201d',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Match the tone to the relationship. Close friends can be playful, while coworkers and clients usually prefer a polished, brief note.',
+      },
+      { kind: 'h2', text: 'How Do You Send Thanksgiving Greetings to Long Distance Family?' },
+      {
+        kind: 'p',
+        text: 'Distance makes the words matter more. You have three simple options:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Mail a handwritten note early, since holiday mail can run slow.',
+          'Record a gratitude voice message so they can hear your voice.',
+          'Send a digital Thanksgiving greeting that combines photos and words.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'GEMS lets you place photos, a voice note and a written message inside a 3D gift box, then share it as one link that opens on any phone with no app. If you want more ways to stay close across miles, browse these [long distance gift ideas](/long-distance-gift-ideas).',
+      },
+      { kind: 'h2', text: 'What Are Good Thanksgiving Card Alternatives?' },
+      {
+        kind: 'p',
+        text: 'A card is not the only way to say thanks. Try one of these:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A 30-second voice message for a parent or grandparent',
+          'A short photo slideshow with a caption on each picture',
+          'A handwritten list titled \u201cTen things I am thankful for about you\u201d',
+          'A shared digital greeting with a personal note',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'If a slideshow appeals to you, this guide on how to make a [photo memory video gift](/photo-memory-video-gift) walks through the steps.',
+      },
+      { kind: 'h2', text: 'How Can You Write a Better Thank You Note?' },
+      {
+        kind: 'ul',
+        items: [
+          'Draft it out loud first, then write down what sounded natural.',
+          'Keep it to two to four sentences.',
+          'Skip comparisons and focus on the one person you are thanking.',
+          'Send it a few days before the holiday so it arrives on time.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'A thankful-for-you message does not need fancy language. It needs to be true and specific.',
+      },
+      { kind: 'h2', text: 'Turn Thanksgiving Gratitude Into a Year-Round Habit' },
+      {
+        kind: 'p',
+        text: 'The best thank you messages do not have to end on Thursday. Send a short note whenever someone helps you, and the practice becomes easy.',
+      },
+      {
+        kind: 'p',
+        text: 'Start with one person this week. Add a photo, a voice note or a single sentence, and send it today.',
+      },
+    ],
+    ctaHeading: 'Send a Thanksgiving Thank You They Can Keep',
+    ctaBody:
+      'Add a photo, record a voice note and write your message, then share one link. A few honest words can make someone feel seen long after the plates are cleared.',
+    faqs: [
+      {
+        q: 'What is a good short Thanksgiving thank you message?',
+        a: '\u201cI am thankful for you and everything you do. Happy Thanksgiving.\u201d It is brief, warm and works for nearly anyone.',
+      },
+      {
+        q: 'What should I write in a Thanksgiving card for coworkers?',
+        a: 'Thank them for one specific contribution and wish them a restful holiday. Keep it to two sentences and a professional tone.',
+      },
+      {
+        q: 'How do I send Thanksgiving wishes to someone far away?',
+        a: 'Use a voice message, a photo or a digital greeting that arrives the same day. These feel personal even when you cannot visit.',
+      },
+      {
+        q: 'Can I send a gratitude voice message instead of a card?',
+        a: 'Absolutely, and many people find it more personal than text. Record it on your phone and share the file or a link.',
+      },
+      {
+        q: 'When should I send Thanksgiving thank you messages?',
+        a: 'Send them one to three days before Thanksgiving so they arrive in time. Digital messages can go out on the day itself.',
+      },
+    ],
+    related: [
+      { label: 'Long distance gift ideas', path: '/long-distance-gift-ideas' },
+      { label: 'How to make a photo memory video gift', path: '/photo-memory-video-gift' },
+      { label: 'How GEMS works', path: '/how-it-works' },
+    ],
+  },
+  {
+    slug: 'what-is-a-virtual-gift',
+    keyword: 'what is a virtual gift',
+    metaTitle: 'What Is a Virtual Gift? A Complete Beginner Guide',
+    metaDescription:
+      'What is a virtual gift? Learn the meaning, common types, benefits and examples, plus how to send a personal digital gift online in minutes today.',
+    layout: 'split',
+    image: {
+      key: 'virtual-gift',
+      alt: 'A 3D virtual gift box opening with sparkles',
+    },
+    article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
+    h1: 'What Is a Virtual Gift? A Complete Beginner\u2019s Guide',
+    intro:
+      'A virtual gift is a present you create and send online instead of wrapping and shipping. If you have ever wondered what is a virtual gift and whether it can feel as special as a physical one, this guide explains the basics, the main types and when each one makes sense.',
+    blocks: [
+      { kind: 'h2', text: 'What Is a Virtual Gift?' },
+      {
+        kind: 'p',
+        text: 'A virtual gift is a digital present delivered through a link, email or message. It can include photos, a voice note, a video, music or a written message.',
+      },
+      {
+        kind: 'p',
+        text: 'A [gift](https://en.wikipedia.org/wiki/Gift) is generally something given without expecting payment in return. A virtual gift follows the same idea, only the item is digital.',
+      },
+      {
+        kind: 'p',
+        text: 'Some virtual gifts arrive as an interactive gift box. The receiver opens a link, unwraps the box on screen and sees what you made for them.',
+      },
+      { kind: 'h2', text: 'What Are the Main Types of Virtual Gifts?' },
+      {
+        kind: 'ul',
+        items: [
+          'Digital gift cards: Balances for stores, apps or restaurants.',
+          'E-cards: Animated or designed greeting cards sent by email.',
+          'Personalized digital gifts: Photos, voice notes and messages combined in one place.',
+          'Media gifts: Playlists, photo slideshows or memory videos.',
+          'Subscriptions and courses: Access to a service or class.',
+          'Interactive gift boxes: A 3D box that opens with your content inside.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'GEMS falls into the personalized and interactive categories. You add photos, a voice note and a message, pick a gift box, then share one link. See the [how it works](/how-it-works) page for the full flow.',
+      },
+      { kind: 'h2', text: 'Virtual Gift vs Physical Gift: What Is the Difference?' },
+      {
+        kind: 'p',
+        text: 'Neither one is better in every case. Each has strengths.',
+      },
+      {
+        kind: 'table',
+        headers: ['', 'Virtual gift', 'Physical gift'],
+        rows: [
+          ['Delivery', 'Instant, by link', 'Depends on shipping'],
+          ['Cost', 'Often free to low', 'Item plus shipping'],
+          ['Personal content', 'Photos, voice, video', 'Handwriting, objects'],
+          ['Keepsake', 'Stays as a link', 'Sits on a shelf'],
+          ['Works abroad', 'No customs involved', 'Customs and delays possible'],
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'A physical gift gives someone an object to hold. A virtual gift gives them a moment they can replay.',
+      },
+      { kind: 'h2', text: 'What Are the Benefits of Digital Gifts?' },
+      {
+        kind: 'ul',
+        items: [
+          'Speed: You can send a gift online without shipping in minutes.',
+          'Reach: Distance does not matter, which helps families in different countries.',
+          'Personal touch: Your own photos and voice carry meaning that a generic item cannot.',
+          'Lower cost: Many options are free or inexpensive.',
+          'Less waste: No packaging, no returns.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Digital gifts also help when you remember a birthday at the last minute. A [virtual birthday gift](/virtual-birthday-gift) can be finished in about a minute.',
+      },
+      { kind: 'h2', text: 'What Are Some Virtual Gift Examples?' },
+      {
+        kind: 'p',
+        text: 'Here are practical examples by occasion:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Birthday: A gift box with childhood photos and a voice greeting.',
+          'Anniversary: A timeline of memories, one photo at a time.',
+          'Holidays: A festive message with a family picture.',
+          'Thank you: A short voice note that names what someone did.',
+          'Just because: A surprise link on an ordinary Tuesday.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Anniversary ideas are covered in more depth in this guide to a [digital anniversary gift](/anniversary-digital-gift).',
+      },
+      { kind: 'h2', text: 'How Do You Send a Virtual Gift?' },
+      {
+        kind: 'p',
+        text: 'The steps are similar on most platforms:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Collect your photos and decide what you want to say.',
+          'Record a voice note or write a message.',
+          'Choose a design that suits the occasion.',
+          'Share the link by text, email or social media.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'On GEMS, the receiver needs no app and no account. They open the link on a phone or computer.',
+      },
+      { kind: 'h2', text: 'What Should You Consider Before Sending One?' },
+      {
+        kind: 'p',
+        text: 'Be honest about the limits.',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Comfort with technology: Check that the person can open a link.',
+          'Privacy: Only share links with people you trust, because anyone with a link may be able to view it.',
+          'Occasion: Some moments, such as a wedding, still call for something tangible.',
+          'Pairing: You can send a digital gift now and a physical one later.',
+        ],
+      },
+      { kind: 'h2', text: 'When Is a Virtual Gift the Right Choice?' },
+      {
+        kind: 'p',
+        text: 'A virtual gift fits best when time is short, distance is large or the message matters more than the object. It also works well when you want to give a memory instead of an item.',
+      },
+      {
+        kind: 'p',
+        text: 'If you are still deciding, start small. Create one gift for someone you miss and see how they respond.',
+      },
+    ],
+    ctaHeading: 'Send Your First Virtual Gift in About a Minute',
+    ctaBody:
+      'Add photos, record a voice note and write your message, then share one link. The receiver opens it on any phone with no app and no account.',
+    faqs: [
+      {
+        q: 'What is the meaning of a virtual gift?',
+        a: 'A virtual gift is a digital present sent online, such as photos, a voice note or a message. It arrives through a link instead of the mail.',
+      },
+      {
+        q: 'Are virtual gifts free?',
+        a: 'Some are free, while others cost money, such as digital gift cards. GEMS is free to start, with optional paid upgrades.',
+      },
+      {
+        q: 'Do virtual gifts expire?',
+        a: 'It depends on the platform. Gift cards often have terms, and a gift link may stay active until the sender deletes it.',
+      },
+      {
+        q: 'Can I send a virtual gift to another country?',
+        a: 'Location rarely matters since nothing ships. The receiver only needs internet access.',
+      },
+      {
+        q: 'What is the difference between an e-card and a virtual gift?',
+        a: 'An e-card is usually a designed greeting. A virtual gift can add your own photos, voice and an unwrapping experience.',
+      },
+    ],
+    related: [
+      { label: 'Virtual birthday gift ideas', path: '/virtual-birthday-gift' },
+      { label: 'Digital anniversary gift ideas', path: '/anniversary-digital-gift' },
+      { label: 'How GEMS works', path: '/how-it-works' },
+    ],
+  },
+  {
+    slug: 'digital-gift-ideas-for-christmas',
+    keyword: 'digital gift ideas for christmas',
+    metaTitle: 'Best Digital Gift Ideas for Christmas in 2026',
+    metaDescription:
+      'Find digital gift ideas for Christmas that need no shipping, from voice messages to photo videos, for parents, family abroad and friends in 2026.',
+    layout: 'banner',
+    image: {
+      key: 'christmas-gift',
+      alt: 'Cosy Christmas fireplace with garlands, lights and a small gift house',
+    },
+    article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
+    h1: 'Best Digital Gift Ideas for Christmas 2026',
+    intro:
+      'Christmas falls on Friday, December 25 this year. If you want digital gift ideas for Christmas that arrive on time and still feel personal, this list covers thoughtful options for parents, family abroad and anyone hard to shop for.',
+    blocks: [
+      {
+        kind: 'p',
+        text: 'Many people have given gifts at [Christmas](https://en.wikipedia.org/wiki/Christmas) for generations. Digital gifts simply give that tradition a faster route.',
+      },
+      { kind: 'h2', text: 'Why Choose a Digital Gift for Christmas?' },
+      {
+        kind: 'ul',
+        items: [
+          'No shipping deadlines to track',
+          'No wrapping or packaging',
+          'Easy to personalize with photos and your voice',
+          'Works for family in other countries',
+          'Easy to send at the exact moment you choose',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Many of these ideas can be finished in under an hour and cost little or nothing. Digital gifts are not a replacement for every present. They work best as the heart of a gift or as a thoughtful extra.',
+      },
+      { kind: 'h2', text: 'What Are the Best Digital Christmas Gift Ideas?' },
+      { kind: 'h3', text: '1. A personalized 3D gift box' },
+      {
+        kind: 'p',
+        text: 'Add photos, a voice note and a message, then share one link. A [Christmas digital gift card](/christmas-digital-gift-card) built this way feels like opening a present, even on a screen.',
+      },
+      { kind: 'h3', text: '2. A Christmas voice message' },
+      {
+        kind: 'p',
+        text: 'Record a short message for a parent or grandparent. Mention a favorite memory from the year. Hearing your voice often means more than reading text.',
+      },
+      { kind: 'h3', text: '3. A photo memory video' },
+      {
+        kind: 'p',
+        text: 'Pick 15 to 20 photos from the year, add music and share the result. If you are not sure where to start, this guide to a [photo memory video gift](/photo-memory-video-gift) covers the steps.',
+      },
+      { kind: 'h3', text: '4. A shared playlist' },
+      {
+        kind: 'p',
+        text: 'Build a playlist of songs tied to your relationship. Add a note explaining why you chose each one.',
+      },
+      { kind: 'h3', text: '5. An online course or subscription' },
+      {
+        kind: 'p',
+        text: 'Choose something that matches their interests, such as cooking, language learning or music. Check what the plan includes first.',
+      },
+      { kind: 'h3', text: '6. A donation in their name' },
+      {
+        kind: 'p',
+        text: 'Give to a cause they care about and share the confirmation. Confirm the charity is legitimate before you donate.',
+      },
+      { kind: 'h3', text: '7. A digital gift card' },
+      {
+        kind: 'p',
+        text: 'Useful when you do not know their taste. Pair it with a personal message so it does not feel generic.',
+      },
+      { kind: 'h2', text: 'What Christmas Surprise Ideas Work Online?' },
+      {
+        kind: 'p',
+        text: 'A digital gift can become a small event:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A countdown: Send one short message a day for the week before Christmas.',
+          'A scheduled reveal: Share the link at a set time and plan a video call while they open it.',
+          'A shared memory hunt: Hide three old photos in the message and ask them to guess the year.',
+          'A family chain: Ask relatives to add one line each, then send the combined gift.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Pick the format that fits the person. A tech-savvy cousin may enjoy a puzzle, while a grandparent may prefer one clear message.',
+      },
+      { kind: 'h2', text: 'What Are Good Christmas Gifts for Parents?' },
+      {
+        kind: 'p',
+        text: 'Parents often value time and attention over items. Try these:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A voice message that thanks them for one specific memory',
+          'A digital photo album of the year\u2019s best moments',
+          'A \u201ccoupon\u201d for a video call every Sunday in January',
+        ],
+      },
+      { kind: 'h2', text: 'What Are the Best Christmas Gifts for Family Abroad?' },
+      {
+        kind: 'p',
+        text: 'Distance makes shipping slower and sometimes costly. A digital gift avoids customs and delays.',
+      },
+      {
+        kind: 'p',
+        text: 'Send your gift on Christmas morning in their time zone. For more ideas, see our [long distance gift ideas](/long-distance-gift-ideas).',
+      },
+      { kind: 'h2', text: 'How Do You Make a Digital Gift Feel Personal?' },
+      {
+        kind: 'ul',
+        items: [
+          'Use real photos instead of stock images.',
+          'Mention a specific moment from the year.',
+          'Record your voice instead of typing everything.',
+          'Keep the message short and sincere.',
+          'Time it so they open it when they can enjoy it.',
+        ],
+      },
+      { kind: 'h2', text: 'What if You Are Out of Time?' },
+      {
+        kind: 'p',
+        text: 'You can still finish a digital gift in an afternoon. Browse these [last-minute Christmas gifts that are not gift cards](/last-minute-christmas-gift-ideas) for more ideas.',
+      },
+      { kind: 'h2', text: 'Make Your Christmas Gift Count' },
+      {
+        kind: 'p',
+        text: 'The best digital present is not the fanciest one. It is the one that shows you paid attention.',
+      },
+      {
+        kind: 'p',
+        text: 'Pick one person, one memory and one way to share it. Then send it with a short note.',
+      },
+    ],
+    ctaHeading: 'Send a Digital Christmas Gift That Arrives on Time',
+    ctaBody:
+      'Build a festive 3D gift box with photos, a voice note and a message, then share one link. No shipping deadlines, no wrapping, no customs.',
+    faqs: [
+      {
+        q: 'What are some good Christmas gifts that do not need shipping?',
+        a: 'Voice messages, photo videos, playlists and digital gift boxes need no shipping. You can finish any of them in an afternoon.',
+      },
+      {
+        q: 'Are digital gifts thoughtful enough for Christmas?',
+        a: 'They can be, when you add personal photos, memories or your voice. Thought matters more than the format.',
+      },
+      {
+        q: 'How do I send a digital gift on Christmas morning?',
+        a: 'Create the gift ahead of time and keep the link ready. Send it by text or email when you want them to open it.',
+      },
+      {
+        q: 'What is a good digital gift for parents?',
+        a: 'A voice message with a favorite memory works well, as does a photo album from the year. Both are personal and easy to replay.',
+      },
+      {
+        q: 'Can I send a digital Christmas gift to family in another country?',
+        a: 'Digital gifts have no shipping or customs, so they arrive as soon as you send the link. Time zones are the only thing to plan around.',
+      },
+    ],
+    related: [
+      { label: 'Christmas digital gift card ideas', path: '/christmas-digital-gift-card' },
+      { label: 'Last-minute Christmas gift ideas', path: '/last-minute-christmas-gift-ideas' },
+      { label: 'Long distance gift ideas', path: '/long-distance-gift-ideas' },
+    ],
+  },
+  {
+    slug: 'holiday-shipping-deadlines-2026',
+    keyword: 'holiday shipping deadlines 2026',
+    metaTitle: 'Holiday Shipping Deadlines 2026: Avoid Delays',
+    metaDescription:
+      'Plan around holiday shipping deadlines 2026, avoid common delays and find instant gift options if you miss the cutoff. Read our guide in minutes.',
+    layout: 'compact',
+    image: {
+      key: 'holiday-shipping',
+      alt: 'Cosy holiday fireplace with Christmas garlands and lights',
+    },
+    article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
+    h1: 'How to Avoid Shipping Delays This Holiday Season',
+    intro:
+      'Every year, some gifts miss the tree because a package arrived a few days late. Knowing the holiday shipping deadlines 2026 helps you plan ahead, and a backup option keeps you covered if a cutoff passes. This guide explains the key dates, the usual causes of delays and what to do if time runs out.',
+    blocks: [
+      { kind: 'h2', text: 'What Are the Key Holiday Shipping Deadlines for 2026?' },
+      {
+        kind: 'p',
+        text: 'Christmas lands on a Friday this year, December 25. Carriers publish last recommended ship dates, and these change by service, origin and destination. See the [holiday shipping deadline pages](https://mailusa-com.pages.dev/holiday-shipping-deadlines).',
+      },
+      {
+        kind: 'p',
+        text: 'Here are examples from carrier lists compiled in October:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'USPS Ground Advantage (lower 48 states): December 17. [ShipStation carrier list](https://www.shipstation.com/?p=106115)',
+          'UPS Ground: December 17, with no delivery guarantee. [Holiday shipping deadline pages](https://mailusa-com.pages.dev/holiday-shipping-deadlines-2026/)',
+          'FedEx Ground Economy: December 15. [ShipStation carrier list](https://www.shipstation.com/en-gb/?p=106115)',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Always confirm your exact date on the carrier\u2019s own site. Express services usually have later cutoffs, but they cost more.',
+      },
+      { kind: 'h2', text: 'Why Do Holiday Shipping Delays Happen?' },
+      {
+        kind: 'p',
+        text: 'Volume is the biggest factor. [Black Friday](https://en.wikipedia.org/wiki/Black_Friday_%28shopping%29) falls on November 27 this year, and Cyber Monday follows on November 30. Packages then pile up for weeks.',
+      },
+      {
+        kind: 'p',
+        text: 'Other common causes include:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Winter weather',
+          'Address errors or missing apartment numbers',
+          'Seller processing time before the item even ships',
+          'Limited carrier capacity during peak weeks',
+        ],
+      },
+      { kind: 'h2', text: 'How Can You Avoid Holiday Shipping Delays?' },
+      {
+        kind: 'ul',
+        items: [
+          'Order early. Treat the carrier deadline as the last possible day, not the target.',
+          'Add a buffer. Some shipping guides suggest sending two to three days before the published cutoff. [Holiday shipping deadline pages](https://mailusa-com.pages.dev/holiday-shipping-deadlines-2026/)',
+          'Check handling time. Many sellers need a few days before they hand off the package.',
+          'Verify the address. One typo can add days.',
+          'Turn on tracking alerts. You can react quickly if something stalls.',
+          'Use pickup options. Store pickup or a parcel locker avoids missed deliveries.',
+          'Split your list as well. Buy physical gifts first, then fill any gaps with something that does not need a truck.',
+        ],
+      },
+      { kind: 'h2', text: 'What Are the Best Shipping Alternatives for Gifts?' },
+      {
+        kind: 'p',
+        text: 'You have more choices than waiting on a box:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'In-store or curbside pickup from local shops',
+          'Handmade gifts you finish at home',
+          'Digital gift cards delivered by email',
+          'Playlists, voice messages and photo slideshows',
+          'Digital gift boxes that open from one link',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Many of these arrive in minutes. This list of [instant gift ideas](/instant-gift-ideas) shows what you can send right now.',
+      },
+      { kind: 'h2', text: 'What Can You Do When You Miss the Deadline?' },
+      {
+        kind: 'p',
+        text: 'Missing the cutoff does not mean a bad gift. Try this approach:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Send a digital gift first so something arrives on time.',
+          'Tell them a physical item is on the way.',
+          'Let the late package feel like a bonus, not a failure.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For ideas that go beyond gift cards, see these [last-minute Christmas gift ideas](/last-minute-christmas-gift-ideas). You can also build a [Christmas digital gift card](/christmas-digital-gift-card) with photos, a voice note and a festive 3D box.',
+      },
+      { kind: 'h2', text: 'How Do You Track a Package Without the Stress?' },
+      {
+        kind: 'p',
+        text: 'Tracking helps most when you act on it:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Save the tracking number in one note or spreadsheet.',
+          'Check status a few days after shipping, not every hour.',
+          'Contact the seller early if the package has not moved.',
+          'Ask a neighbor to watch for deliveries if you travel.',
+          'If tracking shows a delay near the deadline, switch to a backup instead of waiting.',
+        ],
+      },
+      { kind: 'h2', text: 'What About Gifts for Family Abroad?' },
+      {
+        kind: 'p',
+        text: 'International deadlines come earlier and customs can add delays. For family overseas, a digital gift avoids both problems because nothing ships. It arrives the moment you send the link.',
+      },
+      {
+        kind: 'p',
+        text: 'You can also pair the two. Mail a small item early and send a personal digital message on Christmas Day, so the occasion feels complete even if the box is late.',
+      },
+      { kind: 'h2', text: 'Plan Now So December Stays Calm' },
+      {
+        kind: 'p',
+        text: 'A short checklist saves stress later:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'List every recipient this week.',
+          'Mark each carrier cutoff on your calendar.',
+          'Order physical gifts early.',
+          'Choose one digital backup for anyone you might miss.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'A little planning turns a rush into a routine. Even one week of early action makes December feel calmer and keeps your budget in check.',
+      },
+    ],
+    ctaHeading: 'Skip the Shipping Deadline With a Digital Gift',
+    ctaBody:
+      'When the cutoff passes, send photos, a voice note and a message in one link. It arrives the moment you send it, anywhere in the world.',
+    faqs: [
+      {
+        q: 'When is the last day to ship Christmas gifts in 2026?',
+        a: 'It depends on the carrier and service. Ground options mostly close in mid-December, so check your carrier\u2019s site.',
+      },
+      {
+        q: 'How early should I order holiday gifts to avoid delays?',
+        a: 'Order at least one to two weeks before the published cutoff. This leaves room for seller processing and carrier backlogs.',
+      },
+      {
+        q: 'What are gifts that do not need shipping?',
+        a: 'Digital gift cards, voice messages, photo slideshows and digital gift boxes need no shipping. They arrive by link or email.',
+      },
+      {
+        q: 'Are Black Friday orders more likely to arrive late?',
+        a: 'Volume rises after Black Friday, which can slow processing and delivery. Ordering early and tracking your package reduces the risk.',
+      },
+      {
+        q: 'What can I give if I miss the shipping deadline?',
+        a: 'Send a digital gift now and let a physical item follow. Both can be part of the same surprise.',
+      },
+    ],
+    related: [
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
+      { label: 'Last-minute Christmas gift ideas', path: '/last-minute-christmas-gift-ideas' },
+      { label: 'Christmas digital gift card ideas', path: '/christmas-digital-gift-card' },
+    ],
+  },
+  {
+    slug: 'black-friday-alternatives',
+    keyword: 'black friday alternatives',
+    metaTitle: 'Meaningful Gifts on a Budget: Black Friday Swaps',
+    metaDescription:
+      'Discover meaningful gifts on a budget this Black Friday, from free ideas to DIY digital gifts, with practical tips to give thoughtfully for less.',
+    layout: 'magazine',
+    image: {
+      key: 'budget-gift',
+      alt: 'A purple 3D gift box opening with sparkles',
+    },
+    article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
+    h1: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
+    intro:
+      'Black Friday lands on November 27 this year, and the deals can feel hard to ignore. But a lower price does not always mean a better gift. If you want meaningful gifts on a budget, this guide shares practical alternatives that focus on thought, time and attention.',
+    blocks: [
+      { kind: 'h2', text: 'Why Look for Black Friday Alternatives?' },
+      {
+        kind: 'p',
+        text: 'Sales encourage fast decisions, and fast decisions often lead to gifts nobody asked for. Some shoppers also want to spend less or buy fewer things.',
+      },
+      {
+        kind: 'p',
+        text: '[Buy Nothing Day](https://en.wikipedia.org/wiki/Buy_Nothing_Day), an international protest against consumerism, is observed around the same weekend. You do not have to join it to see the point: a gift can matter without a big receipt.',
+      },
+      { kind: 'h2', text: 'What Makes a Gift Meaningful?' },
+      {
+        kind: 'p',
+        text: 'Price rarely decides how a gift feels. These qualities do:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Specificity: It reflects something only you know about them.',
+          'Effort: They can see you spent time on it.',
+          'Timing: It arrives when they need it.',
+          'Story: It connects to a shared memory.',
+        ],
+      },
+      { kind: 'h2', text: 'What Are Free Gift Ideas That Do Not Cost Money?' },
+      {
+        kind: 'p',
+        text: 'Gifts that do not cost money still take real effort:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A handwritten letter that lists specific memories',
+          'A voice message that says what you appreciate',
+          'A list titled \u201cTen reasons I am glad you are in my life\u201d',
+          'A promise of your time, such as a weekly call or a home-cooked meal',
+          'A curated photo album from the past year',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'These are among the best non-material gifts because nobody else can give the same one.',
+      },
+      { kind: 'h2', text: 'What Are Cheap Thoughtful Gifts Under $10?' },
+      {
+        kind: 'p',
+        text: 'Prices vary by store and region, but many of these often fit a small budget:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A printed photo in a simple frame',
+          'Homemade cookies or a jar of spice mix',
+          'A plant cutting in a reused pot',
+          'A small notebook with a personal note inside',
+          'A mixed playlist with a short note for each song',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Focus on the note. A modest item with a clear message usually feels better than an expensive one with no explanation.',
+      },
+      { kind: 'h2', text: 'What Are Good Experience Gifts?' },
+      {
+        kind: 'p',
+        text: 'Experiences cost time more than money:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Cook their favorite meal.',
+          'Plan a hike or a picnic.',
+          'Host a movie night with their favorite snacks.',
+          'Offer an afternoon of babysitting or help with a project.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Write it on a card or send it in a message so the plan feels real.',
+      },
+      { kind: 'h2', text: 'How Can You Make a DIY Digital Gift?' },
+      {
+        kind: 'p',
+        text: 'Digital gifts suit tight budgets because you already own the ingredients: photos, your voice and your words.',
+      },
+      {
+        kind: 'p',
+        text: 'On GEMS you can [create a virtual gift](/create) with photos, a voice note and a message inside a 3D gift box, then share it as one link. It is free to start, and optional upgrades are listed on the [pricing page](/pricing).',
+      },
+      {
+        kind: 'p',
+        text: 'If you prefer video, try a [photo memory video gift](/photo-memory-video-gift) built from pictures you already have.',
+      },
+      { kind: 'h2', text: 'What Does a Budget-Friendly Gift Plan Look Like?' },
+      {
+        kind: 'p',
+        text: 'Here is a simple way to scale your effort:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          '$0: A letter or voice message that mentions one shared memory.',
+          'Around $5: A small item plus a handwritten note.',
+          'Around $10: A framed photo or a homemade treat with a personal card.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The note does most of the work at every level.',
+      },
+      { kind: 'h2', text: 'How Do You Give a Thoughtful Gift on a Budget?' },
+      {
+        kind: 'ul',
+        items: [
+          'Set a limit before you browse.',
+          'Start with the person, not the product.',
+          'Reuse what you have, such as photos and recipes.',
+          'Pick one meaningful item instead of many small ones.',
+          'Add a short note that explains your choice.',
+        ],
+      },
+      { kind: 'h2', text: 'Do Non-Material Gifts Always Work?' },
+      {
+        kind: 'p',
+        text: 'Not for everyone. Some people love objects, and that is fine. If you are unsure, pair a small item with a personal message so you cover both.',
+      },
+      { kind: 'h2', text: 'Choose Gifts That Show You Were Paying Attention' },
+      {
+        kind: 'p',
+        text: 'The best Black Friday alternative is simple: give something that proves you noticed. A few lines, a shared memory and a little time can outlast a discount.',
+      },
+      {
+        kind: 'p',
+        text: 'Pick one person today and write down three things you appreciate about them. That list is already the start of a gift.',
+      },
+    ],
+    ctaHeading: 'Give Something That Shows You Were Paying Attention',
+    ctaBody:
+      'Turn a favorite photo and a few honest words into a free digital gift. Add a voice note, choose a 3D box and share one link.',
+    faqs: [
+      {
+        q: 'What are good Black Friday alternatives for gifts?',
+        a: 'Handwritten letters, voice messages, experiences and DIY digital gifts are strong options. They cost little and feel personal.',
+      },
+      {
+        q: 'What are meaningful gifts on a budget?',
+        a: 'Choose gifts built on a memory, a skill or your time. A photo with a note often beats an expensive item with no story.',
+      },
+      {
+        q: 'What are some free gift ideas?',
+        a: 'Try a letter, a voice message, a photo album or a promise of help. These cost nothing but effort.',
+      },
+      {
+        q: 'Can a digital gift feel as special as a physical one?',
+        a: 'It can when it includes your own photos, voice and words. Personal detail matters more than the format.',
+      },
+      {
+        q: 'How do I avoid overspending on Black Friday?',
+        a: 'Set a budget before you shop and make a gift list first. Skip items that are not on it.',
+      },
+    ],
+    related: [
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'How to make a photo memory video gift', path: '/photo-memory-video-gift' },
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
     ],
   },
 ];

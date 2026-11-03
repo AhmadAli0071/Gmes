@@ -161,6 +161,36 @@ export const PAGES: Record<string, PageMeta> = {
     description:
       'Learn how to make a photo memory video or slideshow gift that feels personal. Pick photos, shape the story, add music or a voice note, and share.',
   },
+  'thanksgiving-thank-you-messages': {
+    path: '/thanksgiving-thank-you-messages',
+    title: 'Thanksgiving Thank You Messages: Heartfelt Ideas',
+    description:
+      'Find thanksgiving thank you messages for family, friends and coworkers, plus easy tips to write a heartfelt note or send a digital greeting fast.',
+  },
+  'what-is-a-virtual-gift': {
+    path: '/what-is-a-virtual-gift',
+    title: 'What Is a Virtual Gift? A Complete Beginner Guide',
+    description:
+      'What is a virtual gift? Learn the meaning, common types, benefits and examples, plus how to send a personal digital gift online in minutes today.',
+  },
+  'digital-gift-ideas-for-christmas': {
+    path: '/digital-gift-ideas-for-christmas',
+    title: 'Best Digital Gift Ideas for Christmas in 2026',
+    description:
+      'Find digital gift ideas for Christmas that need no shipping, from voice messages to photo videos, for parents, family abroad and friends in 2026.',
+  },
+  'holiday-shipping-deadlines-2026': {
+    path: '/holiday-shipping-deadlines-2026',
+    title: 'Holiday Shipping Deadlines 2026: Avoid Delays',
+    description:
+      'Plan around holiday shipping deadlines 2026, avoid common delays and find instant gift options if you miss the cutoff. Read our guide in minutes.',
+  },
+  'black-friday-alternatives': {
+    path: '/black-friday-alternatives',
+    title: 'Meaningful Gifts on a Budget: Black Friday Swaps',
+    description:
+      'Discover meaningful gifts on a budget this Black Friday, from free ideas to DIY digital gifts, with practical tips to give thoughtfully for less.',
+  },
 };
 
 /* -------------------------------------------------------------------------- */

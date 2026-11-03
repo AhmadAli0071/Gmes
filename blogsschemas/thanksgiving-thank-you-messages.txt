@@ -1,0 +1,97 @@
+How to Say Thank You on Thanksgiving: Heartfelt Message Ideas
+URL: https://gemsvg.com/thanksgiving-thank-you-messages
+
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://gemsvg.com/#organization",
+  "name": "GEMS",
+  "url": "https://gemsvg.com/",
+  "description": "GEMS lets you create a virtual 3D gift box with photos, a voice note and a message, then share it with one link."
+}
+</script>
+
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://gemsvg.com/thanksgiving-thank-you-messages#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good short Thanksgiving thank you message?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "“I am thankful for you and everything you do. Happy Thanksgiving.” It is brief, warm and works for nearly anyone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I write in a Thanksgiving card for coworkers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Thank them for one specific contribution and wish them a restful holiday. Keep it to two sentences and a professional tone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I send Thanksgiving wishes to someone far away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a voice message, a photo or a digital greeting that arrives the same day. These feel personal even when you cannot visit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I send a gratitude voice message instead of a card?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely, and many people find it more personal than text. Record it on your phone and share the file or a link."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I send Thanksgiving thank you messages?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Send them one to three days before Thanksgiving so they arrive in time. Digital messages can go out on the day itself."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://gemsvg.com/thanksgiving-thank-you-messages#article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://gemsvg.com/thanksgiving-thank-you-messages"
+  },
+  "headline": "How to Say Thank You on Thanksgiving: Heartfelt Message Ideas",
+  "description": "Find thanksgiving thank you messages for family, friends and coworkers, plus easy tips to write a heartfelt note or send a digital greeting fast.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://gemsvg.com/og-image.png",
+    "width": 1200,
+    "height": 630
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "GEMS",
+    "url": "https://gemsvg.com/"
+  },
+  "publisher": {
+    "@id": "https://gemsvg.com/#organization"
+  },
+  "datePublished": "2026-11-04",
+  "dateModified": "2026-11-04",
+  "inLanguage": "en-US"
+}
+</script>

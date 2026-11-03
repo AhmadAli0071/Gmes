@@ -72,6 +72,31 @@ const BLOG_PREVIEWS = [
     excerpt: 'Pick photos, shape the story, add music or a voice note and share a gift they replay.',
     path: '/photo-memory-video-gift',
   },
+  {
+    title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
+    excerpt: 'Ready-to-use messages for family, friends and coworkers, plus tips to make each one sound like you.',
+    path: '/thanksgiving-thank-you-messages',
+  },
+  {
+    title: "What Is a Virtual Gift? A Complete Beginner's Guide",
+    excerpt: 'The meaning, common types, benefits and how to send a personal digital gift in minutes.',
+    path: '/what-is-a-virtual-gift',
+  },
+  {
+    title: 'Best Digital Gift Ideas for Christmas 2026',
+    excerpt: 'No-shipping Christmas ideas, from voice messages to photo videos, for parents and family abroad.',
+    path: '/digital-gift-ideas-for-christmas',
+  },
+  {
+    title: 'How to Avoid Shipping Delays This Holiday Season',
+    excerpt: 'Key 2026 shipping deadlines, common delay causes and instant backups if you miss the cutoff.',
+    path: '/holiday-shipping-deadlines-2026',
+  },
+  {
+    title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
+    excerpt: 'Free and low-cost gift ideas built on time, attention and shared memories instead of discounts.',
+    path: '/black-friday-alternatives',
+  },
 ];
 
 const SITE_STYLES = `
@@ -114,8 +139,16 @@ function renderRichText(text: string): string {
     const index = match.index ?? 0;
     html += escapeHtml(text.slice(cursor, index));
     const label = match[1];
-    const href = match[2].startsWith('/') ? match[2] : '/';
-    html += `<a href="${escapeHtml(href)}">${escapeHtml(label)}</a>`;
+    const href = match[2];
+    const isExternal = /^https?:\/\//i.test(href);
+    const isInternal = href.startsWith('/');
+
+    if (isExternal || isInternal) {
+      const attrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      html += `<a href="${escapeHtml(href)}"${attrs}>${escapeHtml(label)}</a>`;
+    } else {
+      html += escapeHtml(match[0]);
+    }
     cursor = index + match[0].length;
   }
 

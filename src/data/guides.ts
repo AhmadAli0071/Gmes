@@ -3,6 +3,8 @@ import anniversaryImage from '../assets/images/guides/anniversary.jpg';
 import valentinesImage from '../assets/images/guides/valentines.jpg';
 import longDistanceImage from '../assets/images/use-cases/long-distance.jpg';
 import lastMinuteImage from '../assets/images/use-cases/last-minute.jpg';
+import familyAbroadImage from '../assets/images/use-cases/family-abroad.jpg';
+import heroGiftImage from '../assets/images/hero_gift_unboxing_1791359349622.jpg';
 import christmasImage from '../assets/images/template_christmas_wonder_1791359394567.jpg';
 
 export interface GiftGuide {
@@ -65,6 +67,56 @@ export const BLOG_POSTS: GiftGuide[] = [
     alt: 'Photo memory slideshow gift with a romantic photo timeline',
     tag: 'Photo gifts',
     readTime: '7 min read',
+  },
+  {
+    title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
+    excerpt:
+      'Ready-to-use messages for family, friends and coworkers, plus tips to make each one sound like you.',
+    path: '/thanksgiving-thank-you-messages',
+    image: lastMinuteImage,
+    alt: 'A small wrapped gift and cake on a warm table setting',
+    tag: 'Thanksgiving',
+    readTime: '6 min read',
+  },
+  {
+    title: 'What Is a Virtual Gift? A Complete Beginner\u2019s Guide',
+    excerpt:
+      'The meaning, common types, benefits and how to send a personal digital gift in minutes.',
+    path: '/what-is-a-virtual-gift',
+    image: heroGiftImage,
+    alt: 'A 3D virtual gift box opening with sparkles',
+    tag: 'Virtual gifts',
+    readTime: '7 min read',
+  },
+  {
+    title: 'Best Digital Gift Ideas for Christmas 2026',
+    excerpt:
+      'No-shipping Christmas ideas, from voice messages to photo videos, for parents and family abroad.',
+    path: '/digital-gift-ideas-for-christmas',
+    image: christmasImage,
+    alt: 'Cosy Christmas fireplace with garlands and holiday lights',
+    tag: 'Christmas',
+    readTime: '6 min read',
+  },
+  {
+    title: 'How to Avoid Shipping Delays This Holiday Season',
+    excerpt:
+      'Key 2026 shipping deadlines, common delay causes and instant backups if you miss the cutoff.',
+    path: '/holiday-shipping-deadlines-2026',
+    image: familyAbroadImage,
+    alt: 'Cosy holiday fireplace with Christmas garlands and lights',
+    tag: 'Holiday shipping',
+    readTime: '6 min read',
+  },
+  {
+    title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
+    excerpt:
+      'Free and low-cost gift ideas built on time, attention and shared memories instead of discounts.',
+    path: '/black-friday-alternatives',
+    image: longDistanceImage,
+    alt: 'A purple 3D gift box opening with sparkles',
+    tag: 'Budget gifts',
+    readTime: '6 min read',
   },
 ];
 

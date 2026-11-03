@@ -9,9 +9,9 @@ import { Reveal } from '../home/sections/Reveal';
 import { ArrowRight, Check, Plus, Sparkles } from 'lucide-react';
 import { LANDING_IMAGES } from './landingImages';
 
-const LINK_PATTERN = /\[([^\]]+)\]\((\/[^)]+)\)/g;
+const LINK_PATTERN = /\[([^\]]+)\]\((\/[^)\s]+|https?:\/\/[^)\s]+)\)/g;
 
-/** Renders copy that may contain `[label](/internal-path)` links. */
+/** Renders copy that may contain `[label](/internal-path)` or external links. */
 const RichText: React.FC<{ text: string }> = ({ text }) => {
   const nodes: React.ReactNode[] = [];
   let cursor = 0;
@@ -20,10 +20,13 @@ const RichText: React.FC<{ text: string }> = ({ text }) => {
   for (const match of text.matchAll(LINK_PATTERN)) {
     const start = match.index ?? 0;
     if (start > cursor) nodes.push(text.slice(cursor, start));
+    const href = match[2];
+    const external = /^https?:\/\//i.test(href);
     nodes.push(
       <a
         key={`link-${index++}`}
-        href={match[2]}
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         className="font-semibold text-[#6D28D9] underline decoration-[#C4B5FD] underline-offset-2 transition-colors hover:text-[#5B21B6]"
       >
         {match[1]}
