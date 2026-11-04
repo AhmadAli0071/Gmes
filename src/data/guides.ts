@@ -18,7 +18,6 @@ export interface GiftGuide {
   image: string;
   alt: string;
   tag: string;
-  readTime: string;
 }
 
 export const BLOG_POSTS: GiftGuide[] = [
@@ -30,7 +29,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: thanksgivingImage,
     alt: 'Thanksgiving dinner table with roasted turkey and autumn side dishes',
     tag: 'Thanksgiving',
-    readTime: '6 min read',
   },
   {
     title: 'What Is a Virtual Gift? A Complete Beginner\u2019s Guide',
@@ -40,7 +38,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: virtualGiftImage,
     alt: 'Woman using a smartphone while holding a small gift bag',
     tag: 'Virtual gifts',
-    readTime: '7 min read',
   },
   {
     title: 'Best Digital Gift Ideas for Christmas 2026',
@@ -50,7 +47,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: digitalChristmasImage,
     alt: 'Laptop and wrapped Christmas gifts on a red and black background',
     tag: 'Christmas',
-    readTime: '6 min read',
   },
   {
     title: 'How to Avoid Shipping Delays This Holiday Season',
@@ -60,7 +56,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: holidayShippingImage,
     alt: 'Delivery parcels stacked at the front door',
     tag: 'Holiday shipping',
-    readTime: '6 min read',
   },
   {
     title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
@@ -70,7 +65,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: budgetGiftImage,
     alt: 'Hands wrapping a handmade gift in brown paper and twine',
     tag: 'Budget gifts',
-    readTime: '6 min read',
   },
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
@@ -80,7 +74,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: longDistanceBirthdayImage,
     alt: 'Woman celebrating a birthday over a video call with cake and candles',
     tag: 'Long distance',
-    readTime: '6 min read',
   },
   {
     title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
@@ -90,7 +83,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: christmasImage,
     alt: 'Last-minute Christmas gifts including a festive virtual gift box',
     tag: 'Christmas',
-    readTime: '6 min read',
   },
   {
     title: 'Instant Gift Ideas You Can Send in Minutes',
@@ -100,7 +92,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: lastMinuteImage,
     alt: 'Instant gift ideas sent in minutes from a phone',
     tag: 'Instant gifts',
-    readTime: '6 min read',
   },
   {
     title: "Valentine's Day Gifts for Long Distance Couples",
@@ -110,7 +101,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: valentinesLongDistanceImage,
     alt: 'Man surprising his partner with red roses and a Valentine\u2019s gift',
     tag: "Valentine's Day",
-    readTime: '6 min read',
   },
   {
     title: 'How to Make a Photo Memory Video or Slideshow Gift',
@@ -120,7 +110,6 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: anniversaryImage,
     alt: 'Photo memory slideshow gift with a romantic photo timeline',
     tag: 'Photo gifts',
-    readTime: '7 min read',
   },
 ];
 
@@ -133,7 +122,6 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: birthdayImage,
     alt: '3D virtual birthday gift box with photos and confetti',
     tag: 'Birthday',
-    readTime: '5 min read',
   },
   {
     title: 'Digital Anniversary Gift Ideas',
@@ -142,7 +130,6 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: anniversaryImage,
     alt: '3D anniversary gift box with photos and a voice note',
     tag: 'Anniversary',
-    readTime: '5 min read',
   },
   {
     title: "Valentine's Day Virtual Gift Ideas",
@@ -151,7 +138,6 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: valentinesImage,
     alt: 'Romantic virtual gift box with rose petals',
     tag: "Valentine's Day",
-    readTime: '5 min read',
   },
   {
     title: 'Long Distance Relationship Gifts',
@@ -160,7 +146,6 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: valentinesImage,
     alt: 'Long distance gift box with photos and a voice note',
     tag: 'Long distance',
-    readTime: '5 min read',
   },
   {
     title: 'Christmas Digital Gift Card Ideas',
@@ -170,7 +155,6 @@ export const GIFT_GUIDES: GiftGuide[] = [
     image: christmasImage,
     alt: 'Christmas digital gift card with a festive 3D gift box and holiday lights',
     tag: 'Christmas',
-    readTime: '5 min read',
   },
   ...BLOG_POSTS,
 ];

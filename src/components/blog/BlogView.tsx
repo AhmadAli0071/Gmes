@@ -53,8 +53,7 @@ export const BlogView: React.FC = () => (
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7280]">
                   {guide.excerpt}
                 </p>
-                <span className="mt-4 inline-flex items-center justify-between border-t border-zinc-100 pt-3 text-xs font-semibold">
-                  <span className="text-zinc-400">{guide.readTime}</span>
+                <span className="mt-4 inline-flex items-center justify-end border-t border-zinc-100 pt-3 text-xs font-semibold">
                   <span className="inline-flex items-center gap-1 text-[#6D28D9]">
                     Read guide
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
