@@ -21,7 +21,7 @@ interface SeoPage {
   schemas?: string[];
 }
 
-const BLOG_PREVIEWS = [
+const GUIDE_PREVIEWS = [
   {
     title: 'Virtual Birthday Gift Ideas',
     excerpt: 'Celebrate together, wherever you are, with photos, a voice note and one link.',
@@ -46,6 +46,34 @@ const BLOG_PREVIEWS = [
     title: 'Christmas Digital Gift Card Ideas',
     excerpt: 'Holiday magic in one link - photos, a voice note and a festive 3D gift box.',
     path: '/christmas-digital-gift-card',
+  },
+];
+
+const BLOG_ARTICLES = [
+  {
+    title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
+    excerpt: 'Ready-to-use messages for family, friends and coworkers, plus tips to make each one sound like you.',
+    path: '/thanksgiving-thank-you-messages',
+  },
+  {
+    title: "What Is a Virtual Gift? A Complete Beginner's Guide",
+    excerpt: 'The meaning, common types, benefits and how to send a personal digital gift in minutes.',
+    path: '/what-is-a-virtual-gift',
+  },
+  {
+    title: 'Best Digital Gift Ideas for Christmas 2026',
+    excerpt: 'No-shipping Christmas ideas, from voice messages to photo videos, for parents and family abroad.',
+    path: '/digital-gift-ideas-for-christmas',
+  },
+  {
+    title: 'How to Avoid Shipping Delays This Holiday Season',
+    excerpt: 'Key 2026 shipping deadlines, common delay causes and instant backups if you miss the cutoff.',
+    path: '/holiday-shipping-deadlines-2026',
+  },
+  {
+    title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
+    excerpt: 'Free and low-cost gift ideas built on time, attention and shared memories instead of discounts.',
+    path: '/black-friday-alternatives',
   },
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
@@ -72,32 +100,9 @@ const BLOG_PREVIEWS = [
     excerpt: 'Pick photos, shape the story, add music or a voice note and share a gift they replay.',
     path: '/photo-memory-video-gift',
   },
-  {
-    title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
-    excerpt: 'Ready-to-use messages for family, friends and coworkers, plus tips to make each one sound like you.',
-    path: '/thanksgiving-thank-you-messages',
-  },
-  {
-    title: "What Is a Virtual Gift? A Complete Beginner's Guide",
-    excerpt: 'The meaning, common types, benefits and how to send a personal digital gift in minutes.',
-    path: '/what-is-a-virtual-gift',
-  },
-  {
-    title: 'Best Digital Gift Ideas for Christmas 2026',
-    excerpt: 'No-shipping Christmas ideas, from voice messages to photo videos, for parents and family abroad.',
-    path: '/digital-gift-ideas-for-christmas',
-  },
-  {
-    title: 'How to Avoid Shipping Delays This Holiday Season',
-    excerpt: 'Key 2026 shipping deadlines, common delay causes and instant backups if you miss the cutoff.',
-    path: '/holiday-shipping-deadlines-2026',
-  },
-  {
-    title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
-    excerpt: 'Free and low-cost gift ideas built on time, attention and shared memories instead of discounts.',
-    path: '/black-friday-alternatives',
-  },
 ];
+
+const BLOG_PREVIEWS = [...BLOG_ARTICLES, ...GUIDE_PREVIEWS];
 
 const SITE_STYLES = `
 <style>
@@ -364,8 +369,6 @@ const LANDING_PAGE_CONTENT: SeoPage[] = LANDING_PAGES.map((page) => {
 </div>`,
   };
 });
-
-const BLOG_ARTICLES = BLOG_PREVIEWS.slice(5);
 
 const BLOG_PAGE: SeoPage = {
   path: PAGES.blog.path,

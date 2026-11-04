@@ -27,6 +27,7 @@ export type LandingImageKey =
   | 'photo-memory'
   | 'thanksgiving-gift'
   | 'virtual-gift'
+  | 'digital-christmas-gift'
   | 'holiday-shipping'
   | 'budget-gift';
 
@@ -1265,7 +1266,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'soft',
     image: {
       key: 'thanksgiving-gift',
-      alt: 'A small wrapped gift and cake on a warm table setting',
+      alt: 'Thanksgiving dinner table with roasted turkey and autumn side dishes',
     },
     article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
     h1: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
@@ -1442,7 +1443,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'split',
     image: {
       key: 'virtual-gift',
-      alt: 'A 3D virtual gift box opening with sparkles',
+      alt: 'Woman using a smartphone while holding a small gift bag',
     },
     article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
     h1: 'What Is a Virtual Gift? A Complete Beginner\u2019s Guide',
@@ -1613,8 +1614,8 @@ export const LANDING_PAGES: LandingPage[] = [
       'Find digital gift ideas for Christmas that need no shipping, from voice messages to photo videos, for parents, family abroad and friends in 2026.',
     layout: 'banner',
     image: {
-      key: 'christmas-gift',
-      alt: 'Cosy Christmas fireplace with garlands, lights and a small gift house',
+      key: 'digital-christmas-gift',
+      alt: 'Laptop and wrapped Christmas gifts on a red and black background',
     },
     article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
     h1: 'Best Digital Gift Ideas for Christmas 2026',
@@ -1782,7 +1783,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'compact',
     image: {
       key: 'holiday-shipping',
-      alt: 'Cosy holiday fireplace with Christmas garlands and lights',
+      alt: 'Delivery parcels stacked at the front door',
     },
     article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
     h1: 'How to Avoid Shipping Delays This Holiday Season',
@@ -1960,7 +1961,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'magazine',
     image: {
       key: 'budget-gift',
-      alt: 'A purple 3D gift box opening with sparkles',
+      alt: 'Hands wrapping a handmade gift in brown paper and twine',
     },
     article: { datePublished: '2026-11-04', dateModified: '2026-11-04' },
     h1: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
