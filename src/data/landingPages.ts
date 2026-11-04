@@ -456,7 +456,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'split',
     image: {
       key: 'long-distance-couple',
-      alt: 'Long distance couple celebrating a birthday over a video call',
+      alt: 'Woman celebrating a birthday over a video call with cake and candles',
     },
     article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'How to Surprise Your Long Distance Partner on Their Birthday',
@@ -923,7 +923,7 @@ export const LANDING_PAGES: LandingPage[] = [
     layout: 'soft',
     image: {
       key: 'valentines-gift',
-      alt: 'Romantic Valentine\u2019s gift box with rose petals for a long distance couple',
+      alt: 'Man surprising his partner with red roses and a Valentine\u2019s gift',
     },
     article: { datePublished: '2026-10-29', dateModified: '2026-10-29' },
     h1: 'Valentine\u2019s Day Gift Ideas for Long Distance Couples',

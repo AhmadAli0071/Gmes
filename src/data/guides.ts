@@ -1,7 +1,6 @@
 import birthdayImage from '../assets/images/guides/birthday.jpg';
 import anniversaryImage from '../assets/images/guides/anniversary.jpg';
 import valentinesImage from '../assets/images/guides/valentines.jpg';
-import longDistanceImage from '../assets/images/use-cases/long-distance.jpg';
 import lastMinuteImage from '../assets/images/use-cases/last-minute.jpg';
 import christmasImage from '../assets/images/template_christmas_wonder_1791359394567.jpg';
 import thanksgivingImage from '../assets/images/blog/thanksgiving-thank-you.jpg';
@@ -9,6 +8,8 @@ import virtualGiftImage from '../assets/images/blog/virtual-gift.jpg';
 import digitalChristmasImage from '../assets/images/blog/digital-christmas-gift.jpg';
 import holidayShippingImage from '../assets/images/blog/holiday-shipping.jpg';
 import budgetGiftImage from '../assets/images/blog/budget-gift.jpg';
+import longDistanceBirthdayImage from '../assets/images/blog/long-distance-birthday.jpg';
+import valentinesLongDistanceImage from '../assets/images/blog/valentines-long-distance.jpg';
 
 export interface GiftGuide {
   title: string;
@@ -76,8 +77,8 @@ export const BLOG_POSTS: GiftGuide[] = [
     excerpt:
       'A simple plan across time zones - timing tips, gift ideas and mistakes to avoid.',
     path: '/long-distance-birthday-surprise',
-    image: longDistanceImage,
-    alt: 'Long distance birthday surprise with a virtual gift box and a video call',
+    image: longDistanceBirthdayImage,
+    alt: 'Woman celebrating a birthday over a video call with cake and candles',
     tag: 'Long distance',
     readTime: '6 min read',
   },
@@ -106,8 +107,8 @@ export const BLOG_POSTS: GiftGuide[] = [
     excerpt:
       'Planning tips, digital ideas and ways to make February 14 feel close from afar.',
     path: '/valentines-day-gifts-long-distance-couples',
-    image: valentinesImage,
-    alt: 'Long distance Valentine\u2019s Day gift with a virtual gift box',
+    image: valentinesLongDistanceImage,
+    alt: 'Man surprising his partner with red roses and a Valentine\u2019s gift',
     tag: "Valentine's Day",
     readTime: '6 min read',
   },
