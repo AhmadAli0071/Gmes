@@ -7,6 +7,7 @@ import { PhotoUploader } from './PhotoUploader';
 import { VoiceRecorder } from './VoiceRecorder';
 import { suggestMessage, MessageTone } from '../../services/suggestMessage';
 import { MOOD_THEMES, CARD_DESIGNS, MoodTheme } from '../../data/moodThemes';
+import { getTemplateById } from '../../data/templates';
 import { EventSlug, GiftMood } from '../../types';
 import {
   ArrowLeft,
@@ -106,6 +107,10 @@ export const GiftCreator: React.FC = () => {
   const activeMood = moods.find((m) => m.id === (currentDraft.mood || 'magical')) || moods[0];
   const activeTheme = activeMood.theme;
   const activeCardDesign = CARD_DESIGNS[currentDraft.mood || 'magical'];
+  // The picked design (of the 36) - its real name is shown in the preview and review.
+  const activeTemplate = getTemplateById(currentDraft.templateId || 'tpl-confetti-pastel');
+  const activeOccasion =
+    occasions.find((o) => o.slug === (currentDraft.eventSlug || 'birthday')) || occasions[0];
 
   const handleSelectOccasion = (slug: EventSlug) => {
     setCurrentDraft((prev) => ({
@@ -276,6 +281,12 @@ export const GiftCreator: React.FC = () => {
                   <span className="px-1.5 py-0.5 rounded-full bg-white/10 text-[#ffc95c] text-[9px] font-bold uppercase tracking-[0.14em] shrink-0">
                     {activeMood.emoji} {activeMood.name}
                   </span>
+                  <span
+                    className="px-1.5 py-0.5 rounded-full bg-white/10 text-white/70 text-[9px] font-bold uppercase tracking-[0.14em] shrink-0 truncate max-w-[110px]"
+                    title={activeTemplate.title}
+                  >
+                    {activeTemplate.title}
+                  </span>
                 </div>
 
                 {/* Box / Card segmented toggle */}
@@ -356,6 +367,24 @@ export const GiftCreator: React.FC = () => {
                     }
                     className="w-full px-4 py-3 bg-[var(--mood-soft)] border border-[var(--mood-border)] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--mood-accent)] font-medium"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2">
+                    Their email <span className="text-zinc-400 normal-case font-medium">(optional)</span>
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="their@email.com"
+                    value={currentDraft.recipientEmail || ''}
+                    onChange={(e) =>
+                      setCurrentDraft((prev) => ({ ...prev, recipientEmail: e.target.value }))
+                    }
+                    className="w-full px-4 py-3 bg-[var(--mood-soft)] border border-[var(--mood-border)] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[var(--mood-accent)] font-medium"
+                  />
+                  <p className="mt-1.5 text-[11px] text-zinc-500">
+                    Adds a ready-to-send email option when you share the gift link.
+                  </p>
                 </div>
 
                 <div>
@@ -665,6 +694,14 @@ export const GiftCreator: React.FC = () => {
                       {currentDraft.recipientName?.trim() || 'Not set'}
                     </span>
                   </div>
+                  {(currentDraft.recipientEmail || '').trim() && (
+                    <div className="flex justify-between gap-3">
+                      <span className="text-zinc-500 shrink-0">Email:</span>
+                      <span className="font-bold text-zinc-900 truncate">
+                        {currentDraft.recipientEmail?.trim()}
+                      </span>
+                    </div>
+                  )}
                   <div className="flex justify-between">
                     <span className="text-zinc-500">From:</span>
                     <span className="font-bold text-zinc-900">
@@ -673,14 +710,20 @@ export const GiftCreator: React.FC = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Occasion:</span>
-                    <span className="font-semibold text-zinc-800 capitalize">
-                      {currentDraft.eventSlug || 'birthday'}
+                    <span className="font-semibold text-zinc-800">
+                      {activeOccasion.emoji} {activeOccasion.name}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-zinc-500">Mood:</span>
-                    <span className="font-semibold text-zinc-800 capitalize">
-                      {currentDraft.mood || 'magical'}
+                    <span className="text-zinc-500">Design:</span>
+                    <span className="font-semibold text-zinc-800 text-right">
+                      {activeTemplate.title}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-zinc-500">Theme:</span>
+                    <span className="font-semibold text-zinc-800">
+                      {activeMood.emoji} {activeMood.name}
                     </span>
                   </div>
                 </div>

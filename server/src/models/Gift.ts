@@ -16,6 +16,8 @@ const giftSchema = new Schema(
     ownerToken: { type: String, default: null },
 
     recipientName: { type: String, required: true, trim: true, maxlength: 80 },
+    // Optional - prefills the share-by-email link; never used to send mail itself.
+    recipientEmail: { type: String, default: '', trim: true, maxlength: 254 },
     senderName: { type: String, required: true, trim: true, maxlength: 80 },
     message: { type: String, default: '', maxlength: 4000 },
 

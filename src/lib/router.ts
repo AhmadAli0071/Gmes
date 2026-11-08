@@ -15,6 +15,8 @@ export const ROUTES: ViewRoute[] = [
   'admin',
   'settings',
   'blog',
+  'contact-us',
+  'privacy-policy',
   ...LANDING_VIEWS,
 ];
 

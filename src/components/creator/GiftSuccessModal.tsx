@@ -10,6 +10,7 @@ import {
   QrCode,
   ExternalLink,
   MessageCircle,
+  Mail,
   X,
   ArrowRight,
 } from 'lucide-react';
@@ -85,6 +86,15 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
+  const recipientEmail = (gift.recipientEmail || '').trim();
+  const handleEmailShare = () => {
+    const subject = encodeURIComponent(`A GEMS gift for ${gift.recipientName} 🎁`);
+    const body = encodeURIComponent(
+      `Hi ${gift.recipientName},\n\nI made a special digital gift for you. Open it here:\n${shareUrl}\n\n- ${gift.senderName}`
+    );
+    window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+  };
+
   const handleNativeShare = async () => {
     if (navigator.share) {
       try {
@@ -157,6 +167,15 @@ export const GiftSuccessModal: React.FC<GiftSuccessModalProps> = ({ gift, onClos
             <span>Share</span>
           </button>
         </div>
+
+        {/* Email the gift link - prefilled when a recipient email was added */}
+        <button
+          onClick={handleEmailShare}
+          className="mt-3 w-full flex items-center justify-center gap-2 py-3 px-4 bg-[var(--mood-soft)] text-[var(--mood-strong)] border border-[var(--mood-border)] text-xs font-semibold rounded-xl hover:bg-[var(--mood-soft-strong)] transition-colors"
+        >
+          <Mail className="w-4 h-4" />
+          <span>{recipientEmail ? `Email ${recipientEmail}` : 'Email the link'}</span>
+        </button>
 
         {/* Secondary options: QR Code & Recipient Preview */}
         <div className="mt-4 pt-4 border-t border-zinc-100 flex flex-wrap items-center justify-around gap-3 text-xs text-zinc-600 font-medium">

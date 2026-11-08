@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { GiftData } from '../../types';
 import { getEventBySlug } from '../../data/events';
+import { getTemplateById } from '../../data/templates';
 import {
   Sparkles,
   Plus,
@@ -11,6 +12,7 @@ import {
   Copy,
   Trash2,
   Gift,
+  Crown,
 } from 'lucide-react';
 
 export const DashboardView: React.FC = () => {
@@ -97,11 +99,18 @@ export const DashboardView: React.FC = () => {
         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {gifts.map((gift) => {
             const eventInfo = getEventBySlug(gift.eventSlug || 'birthday');
+            // getTemplateById falls back to the first design - only trust it
+            // when the gift actually stores a template id.
+            const isPremium = Boolean(gift.templateId) && getTemplateById(gift.templateId).isPremium;
 
             return (
               <div
                 key={gift.id}
-                className="bg-white rounded-3xl border border-[#E4E4E7] shadow-xs hover:shadow-lg hover:border-purple-200 transition-all overflow-hidden flex flex-col justify-between"
+                className={`bg-white rounded-3xl border shadow-xs hover:shadow-lg transition-all overflow-hidden flex flex-col justify-between ${
+                  isPremium
+                    ? 'border-amber-300 ring-1 ring-amber-200/70 hover:border-amber-400'
+                    : 'border-[#E4E4E7] hover:border-purple-200'
+                }`}
               >
                 {/* Visual Present Card Artwork */}
                 <div
@@ -140,6 +149,14 @@ export const DashboardView: React.FC = () => {
                     <span>{eventInfo.emoji}</span>
                     <span>{eventInfo.name}</span>
                   </div>
+
+                  {/* Premium design badge */}
+                  {isPremium && (
+                    <div className="absolute top-3 right-3 text-[10px] font-black uppercase tracking-wider text-[#3B0764] bg-gradient-to-r from-amber-300 to-yellow-400 px-2 py-1 rounded-full flex items-center gap-1 shadow-md">
+                      <Crown className="w-3 h-3" />
+                      <span>Premium</span>
+                    </div>
+                  )}
 
                   {/* Open Preview badge - always shown on touch (no hover), hover-revealed on desktop */}
                   <div className="absolute bottom-3 right-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity bg-zinc-900 text-white text-[10px] font-bold px-2 py-1 rounded-md flex items-center gap-1">

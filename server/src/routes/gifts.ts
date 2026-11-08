@@ -9,8 +9,16 @@ import { uniqueShareCode } from '../utils/tokens';
 
 const mediaList = z.array(z.string().max(600)).max(8);
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 const giftFields = {
   recipientName: z.string().trim().min(1, 'Recipient name is required.').max(80),
+  recipientEmail: z
+    .string()
+    .trim()
+    .max(254)
+    .refine((v) => v === '' || EMAIL_RE.test(v), 'Enter a valid email address')
+    .default(''),
   senderName: z.string().trim().min(1, 'Your name is required.').max(80),
   message: z.string().max(4000).default(''),
   templateId: z.string().max(64).default(''),
@@ -50,14 +58,19 @@ type Scope = { filter: Record<string, unknown> };
 function scopeOf(req: any): Scope {
   if (req.user) return { filter: { ownerId: req.user._id } };
   const ownerToken = ownerTokenOf(req);
-  if (ownerToken) return { filter: { ownerToken } };
+  // Guests only ever see unclaimed gifts made on this device - never another
+  // account's gifts that happen to share the browser.
+  if (ownerToken) return { filter: { ownerToken, ownerId: null } };
   throw ApiError.unauthorized('auth_required', 'Sign in to see your gifts.');
 }
 
 function canManage(gift: any, req: any): boolean {
   if (req.user && gift.ownerId && String(gift.ownerId) === String(req.user._id)) return true;
   const ownerToken = ownerTokenOf(req);
-  return Boolean(ownerToken && gift.ownerToken && ownerToken === gift.ownerToken);
+  // Guests may only touch gifts that are still unclaimed by an account.
+  return Boolean(
+    ownerToken && !gift.ownerId && gift.ownerToken && ownerToken === gift.ownerToken
+  );
 }
 
 giftsRouter.get(
@@ -84,7 +97,9 @@ giftsRouter.post(
     const gift = await Gift.create({
       ...req.body,
       shareCode,
-      ownerToken,
+      // Account-owned gifts are not tied to the browser, so signing out (or
+      // anyone else using the same computer) can never list them again.
+      ownerToken: req.user ? null : ownerToken,
       ownerId: req.user ? req.user._id : null,
     });
 

@@ -42,6 +42,12 @@ const LandingPageView = lazy(() =>
 const BlogView = lazy(() =>
   import('./components/blog/BlogView').then((m) => ({ default: m.BlogView }))
 );
+const ContactUsView = lazy(() =>
+  import('./components/info/ContactUsView').then((m) => ({ default: m.ContactUsView }))
+);
+const PrivacyPolicyView = lazy(() =>
+  import('./components/info/PrivacyPolicyView').then((m) => ({ default: m.PrivacyPolicyView }))
+);
 
 const ViewFallback = () => (
   <div className="min-h-[60vh] grid place-items-center" role="status">
@@ -121,6 +127,8 @@ const MainRouter: React.FC = () => {
           {currentView === 'admin' && <AdminGate />}
           {currentView === 'settings' && <SettingsView />}
           {currentView === 'blog' && <BlogView />}
+          {currentView === 'contact-us' && <ContactUsView />}
+          {currentView === 'privacy-policy' && <PrivacyPolicyView />}
           {LANDING_VIEWS.includes(currentView as LandingView) && (
             <LandingPageView slug={currentView as LandingView} />
           )}

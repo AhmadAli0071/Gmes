@@ -33,6 +33,7 @@ const loginSchema = z.object({
 
 const updateSchema = z.object({
   name: z.string().trim().min(2).max(80).optional(),
+  email: emailField.optional(),
   avatarUrl: z.string().max(600).nullable().optional(),
 });
 
@@ -160,6 +161,14 @@ authRouter.patch(
     const updates: any = {};
     if (req.body.name !== undefined) updates.name = req.body.name;
     if (req.body.avatarUrl !== undefined) updates.avatarUrl = req.body.avatarUrl;
+    if (req.body.email !== undefined) {
+      const email = String(req.body.email).toLowerCase();
+      const taken = await User.findOne({ email, _id: { $ne: req.user._id } })
+        .select('_id')
+        .lean();
+      if (taken) throw ApiError.conflict('email_taken', 'That email is already in use.');
+      updates.email = email;
+    }
     const user = await User.findByIdAndUpdate(req.user._id, updates, { new: true });
     res.json({ user: toPublicUser(user) });
   })

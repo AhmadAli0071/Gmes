@@ -46,7 +46,11 @@ export async function logout(): Promise<void> {
   await api('/api/auth/logout', { method: 'POST' });
 }
 
-export async function updateMe(patch: { name?: string; avatarUrl?: string | null }): Promise<User> {
+export async function updateMe(patch: {
+  name?: string;
+  email?: string;
+  avatarUrl?: string | null;
+}): Promise<User> {
   const data = await api<{ user: RawUser }>('/api/auth/me', {
     method: 'PATCH',
     body: JSON.stringify(patch),

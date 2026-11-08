@@ -3,6 +3,7 @@ import { EventSlug, GiftData, GiftMood } from '../types';
 
 export interface GiftPayload {
   recipientName: string;
+  recipientEmail: string;
   senderName: string;
   message: string;
   templateId: string;
@@ -33,6 +34,7 @@ export function fromApi(raw: any): GiftData {
     id: str(raw.id),
     shareCode: str(raw.shareCode),
     recipientName: str(raw.recipientName, 'Someone Special'),
+    recipientEmail: str(raw.recipientEmail),
     senderName: str(raw.senderName, 'A Friend'),
     message: str(raw.message),
     templateId: str(raw.templateId),

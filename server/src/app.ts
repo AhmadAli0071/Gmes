@@ -10,6 +10,7 @@ import { authRouter } from './routes/auth';
 import { giftsRouter } from './routes/gifts';
 import { mediaRouter } from './routes/media';
 import { healthRouter } from './routes/health';
+import { contactRouter } from './routes/contact';
 import { uploadsRoot } from './routes/media';
 import { env } from './config/env';
 import { SEO_PAGES, renderSeoPage } from './seo/pages';
@@ -43,6 +44,7 @@ export function createApp(): express.Express {
   app.use('/api/auth', authRouter);
   app.use('/api/gifts', giftsRouter);
   app.use('/api/media', mediaRouter);
+  app.use('/api/contact', contactRouter);
   app.use('/api', notFoundHandler);
 
   // Uploaded media is public: gift links are public by design.

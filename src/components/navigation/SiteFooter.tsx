@@ -23,10 +23,16 @@ const KNOW_LINKS: { label: string; href: string }[] = [
   { label: 'Shared as a single link', href: '/how-it-works' },
 ];
 
+const COMPANY_LINKS: { label: string; href: string }[] = [
+  { label: 'Contact us', href: '/contact-us' },
+  { label: 'Privacy policy', href: '/privacy-policy' },
+  { label: 'Pricing & early access', href: '/pricing' },
+];
+
 export const SiteFooter: React.FC = () => (
   <footer className="relative z-10 bg-[#0E0724] border-t border-white/10 px-4 sm:px-6 lg:px-8 pt-14 pb-8">
     <div className="max-w-7xl mx-auto">
-      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] pb-10 border-b border-white/10">
+      <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] pb-10 border-b border-white/10">
         <div>
           <div className="flex items-center gap-2">
             <span className="grid h-8 w-8 place-items-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white text-sm font-black">
@@ -86,6 +92,24 @@ export const SiteFooter: React.FC = () => (
           </h4>
           <ul className="mt-4 space-y-2.5">
             {KNOW_LINKS.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-sm text-white/65 hover:text-white hover:translate-x-0.5 transition-all inline-block"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav aria-label="Company">
+          <h4 className="text-[11px] font-bold uppercase tracking-[0.16em] text-white/40">
+            Company
+          </h4>
+          <ul className="mt-4 space-y-2.5">
+            {COMPANY_LINKS.map((link) => (
               <li key={link.label}>
                 <a
                   href={link.href}

@@ -3,6 +3,7 @@ export interface PublicGift {
   id: string;
   shareCode: string;
   recipientName: string;
+  recipientEmail: string;
   senderName: string;
   message: string;
   templateId: string;
@@ -31,6 +32,7 @@ export function toPublicGift(doc: any): PublicGift {
     id: String(doc._id),
     shareCode: str(doc.shareCode),
     recipientName: str(doc.recipientName),
+    recipientEmail: str(doc.recipientEmail),
     senderName: str(doc.senderName),
     message: str(doc.message),
     templateId: str(doc.templateId),

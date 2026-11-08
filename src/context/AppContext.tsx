@@ -51,7 +51,7 @@ interface AppContextType {
   setUser: (user: User | null) => void;
   signIn: (mode: 'login' | 'signup', input: { name?: string; email: string; password: string }) => Promise<User>;
   signOut: () => Promise<void>;
-  updateProfile: (patch: { name?: string; avatarUrl?: string | null }) => Promise<void>;
+  updateProfile: (patch: { name?: string; email?: string; avatarUrl?: string | null }) => Promise<void>;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
   // Gifts (API-backed)
@@ -201,6 +201,7 @@ function makeDraft(eventSlug: EventSlug): Partial<GiftData> {
 function buildPayload(draft: Partial<GiftData>): GiftPayload {
   return {
     recipientName: draft.recipientName?.trim() || 'Someone Special',
+    recipientEmail: draft.recipientEmail?.trim() || '',
     senderName: draft.senderName?.trim() || 'A Friend',
     message:
       draft.message?.trim() ||
@@ -333,14 +334,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setUser = (next: User | null) => setUserState(next);
 
-  const updateProfile = useCallback(async (patch: { name?: string; avatarUrl?: string | null }) => {
-    try {
-      setUserState(await updateMe(patch));
-    } catch (err) {
-      showToast(errorMessage(err, 'Could not save your profile.'), 'error');
-      throw err;
-    }
-  }, [showToast]);
+  const updateProfile = useCallback(
+    async (patch: { name?: string; email?: string; avatarUrl?: string | null }) => {
+      try {
+        setUserState(await updateMe(patch));
+      } catch (err) {
+        showToast(errorMessage(err, 'Could not save your profile.'), 'error');
+        throw err;
+      }
+    },
+    [showToast]
+  );
 
   const [currentView, setCurrentViewState] = useState<ViewRoute>(initialRoute.view);
   const [recipientGift, setRecipientGift] = useState<GiftData | null>(null);

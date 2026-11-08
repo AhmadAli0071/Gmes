@@ -38,9 +38,16 @@ export const SettingsView: React.FC = () => {
       showToast('Name is required.', 'error');
       return;
     }
+    const nextEmail = email.trim();
+    if (!nextEmail) {
+      showToast('Email is required.', 'error');
+      return;
+    }
     setSaving(true);
     try {
-      await updateProfile({ name: name.trim() });
+      const patch: { name: string; email?: string } = { name: name.trim() };
+      if (nextEmail.toLowerCase() !== user.email.toLowerCase()) patch.email = nextEmail;
+      await updateProfile(patch);
       showToast('Profile updated successfully');
     } catch {
       /* the context surfaced the server error */
@@ -125,15 +132,13 @@ export const SettingsView: React.FC = () => {
                   id="settings-email"
                   type="email"
                   required
-                  readOnly
-                  title="Email changes need verification - coming soon."
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-zinc-100 border border-[#E4E4E7] rounded-xl text-xs text-zinc-500 focus:outline-none"
+                  className="w-full px-3.5 py-2.5 bg-[#FAFAF9] border border-[#E4E4E7] rounded-xl text-xs focus:ring-2 focus:ring-[#6D28D9]"
                 />
                 <p className="mt-1 text-[11px] text-zinc-400">
-                  Email is locked until address-change verification ships.
+                  Used to sign in and recover your account.
                 </p>
               </div>
 
@@ -153,7 +158,9 @@ export const SettingsView: React.FC = () => {
             <div className="space-y-6">
               <div>
                 <h2 className="text-base font-bold text-zinc-900">Active Membership</h2>
-                <p className="text-xs text-zinc-500 mt-0.5">Manage plan and invoice details.</p>
+                <p className="text-xs text-zinc-500 mt-0.5">
+                  Premium and Pro features are free for everyone right now during early access.
+                </p>
               </div>
 
               <div className="p-4 bg-purple-50/70 border border-purple-200 rounded-2xl flex items-center justify-between">
@@ -161,24 +168,33 @@ export const SettingsView: React.FC = () => {
                   <span className="text-[10px] uppercase font-bold text-[#6D28D9] tracking-wider">
                     Current Plan
                   </span>
-                  <h3 className="text-lg font-extrabold text-zinc-900 mt-0.5">GEMS Pro Member</h3>
-                  <p className="text-xs text-zinc-500 mt-1">Unlimited premium gifting & AI writer enabled.</p>
+                  <h3 className="text-lg font-extrabold text-zinc-900 mt-0.5">
+                    {user?.plan === 'pro'
+                      ? 'GEMS Pro'
+                      : user?.plan === 'premium'
+                        ? 'Premium'
+                        : 'Free Plan'}
+                  </h3>
+                  <p className="text-xs text-zinc-500 mt-1">
+                    {user?.plan === 'free'
+                      ? 'Basic gifting is free forever - and Premium templates are unlocked during early access.'
+                      : 'Full access to every premium template and unboxing effect.'}
+                  </p>
                 </div>
                 <div className="text-right">
-                  <span className="text-lg font-bold font-mono text-zinc-900">$12</span>
-                  <span className="text-xs text-zinc-500">/mo</span>
+                  <span className="text-lg font-bold font-mono text-zinc-900">$0</span>
+                  <span className="text-xs text-zinc-500">/ now</span>
                 </div>
               </div>
 
               <div className="border-t border-zinc-100 pt-4 flex items-center justify-between text-xs text-zinc-600">
-                <span>Next billing date: November 1, 2026</span>
-                <button
-                  type="button"
-                  onClick={() => showToast('Invoices sent to email')}
+                <span>You will not be charged during early access.</span>
+                <a
+                  href="/pricing"
                   className="text-[#6D28D9] font-semibold hover:underline"
                 >
-                  Download Invoices
-                </button>
+                  View plans
+                </a>
               </div>
             </div>
           )}

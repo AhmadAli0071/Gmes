@@ -442,14 +442,54 @@ const SIMPLE_PAGES: SeoPage[] = [
   <main>
     <p class="seo-eyebrow">Pricing</p>
     <h1>Simple, Transparent Gifting</h1>
-    <p>Create a free gift anytime, or upgrade to high-definition unboxing animations and voice notes.</p>
+    <p>Create a free gift anytime. Premium and Pro features are free for everyone during early access.</p>
     <h2>Free</h2>
     <p>Basic unboxing templates, a personalized message and an instant shareable link. Free forever.</p>
     <h2>Premium Gift</h2>
-    <p>All premium unboxing templates, up to four photos, a personal voice note and an ad-free experience for $4.99 per gift.</p>
+    <p>All premium unboxing templates, up to four photos, a personal voice note and an ad-free experience. Free during early access.</p>
     <h2>Pro</h2>
-    <p>Unlimited gifts, every premium template and HD unboxing animations. Pro starts at $12 per month.</p>
+    <p>Unlimited gifts, every premium template and HD unboxing animations. Free during early access.</p>
     <a class="seo-cta" href="/create">Start free</a>
+  </main>
+</div>`,
+  },
+  {
+    path: PAGES['contact-us'].path,
+    title: PAGES['contact-us'].title,
+    description: PAGES['contact-us'].description,
+    content: `
+<div class="seo-fallback">
+  <main>
+    <p class="seo-eyebrow">Contact us</p>
+    <h1>We Would Love to Hear From You</h1>
+    <p>Questions about a gift, an account issue or an idea to make GEMS better? Email us at <a href="mailto:support@gemsvg.com">support@gemsvg.com</a> or send a message from the contact page - we usually reply within one business day.</p>
+    <h2>Quick help</h2>
+    <ul>
+      <li><a href="/how-it-works">How GEMS works</a> - pick a design, add photos and a voice note, share one link.</li>
+      <li><a href="/pricing">Pricing</a> - free to start; Premium and Pro are free during early access.</li>
+      <li><a href="/privacy-policy">Privacy policy</a> - what we collect and the control you have.</li>
+    </ul>
+    <a class="seo-cta" href="/contact-us">Send us a message</a>
+  </main>
+</div>`,
+  },
+  {
+    path: PAGES['privacy-policy'].path,
+    title: PAGES['privacy-policy'].title,
+    description: PAGES['privacy-policy'].description,
+    content: `
+<div class="seo-fallback">
+  <main>
+    <p class="seo-eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p>GEMS collects as little as possible: your name and email only if you create an account, the content you put inside a gift, and a random device token that keeps your gifts yours before you sign in.</p>
+    <h2>Your gift stays private</h2>
+    <p>Only your account can see a gift in My Gifts. The share link you send is the only way anyone else can open it - we never sell your data and never show your gifts to other users.</p>
+    <h2>Cookies and payments</h2>
+    <p>We use one session cookie to keep you signed in. GEMS is free; Premium features are currently free during early access, and card details are never stored by us.</p>
+    <h2>Your rights</h2>
+    <p>View or update your details in Settings, or email <a href="mailto:support@gemsvg.com">support@gemsvg.com</a> to export or delete your data.</p>
+    <a class="seo-cta" href="/contact-us">Contact us</a>
   </main>
 </div>`,
   },

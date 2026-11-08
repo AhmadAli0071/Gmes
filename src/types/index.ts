@@ -70,6 +70,8 @@ export interface GiftData {
   id: string;
   shareCode: string;
   recipientName: string;
+  /** Optional - the recipient's email, used to prefill the share-by-email link. */
+  recipientEmail?: string;
   senderName: string;
   message: string;
   templateId: string;
@@ -130,5 +132,7 @@ export type ViewRoute =
   | 'admin'
   | 'settings'
   | 'blog'
+  | 'contact-us'
+  | 'privacy-policy'
   | LandingView;
 

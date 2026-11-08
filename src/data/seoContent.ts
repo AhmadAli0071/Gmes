@@ -85,9 +85,9 @@ export const PAGES: Record<string, PageMeta> = {
   },
   pricing: {
     path: '/pricing',
-    title: 'Pricing - Send a Digital Gift Free or from $4.99 | GEMS',
+    title: 'Pricing - Send a Virtual Gift Free | GEMS',
     description:
-      'Send a virtual gift free, unlock a Premium gift for $4.99, or go Pro for unlimited personalized digital gifts with HD unboxing animations.',
+      'Send a virtual gift free. Premium gifts and GEMS Pro are free for everyone during early access - create a 3D digital gift box in minutes.',
   },
   create: {
     path: '/create',
@@ -100,6 +100,18 @@ export const PAGES: Record<string, PageMeta> = {
     title: 'Gift Ideas and Tips - Birthdays, Anniversaries & More | GEMS',
     description:
       'Practical gift ideas and tips for birthdays, anniversaries, Valentine’s Day, long distance relationships and the holidays. Create a personal 3D gift box in minutes.',
+  },
+  'contact-us': {
+    path: '/contact-us',
+    title: 'Contact Us - Get in Touch with GEMS',
+    description:
+      'Questions, feedback or partnership ideas? Contact the GEMS team - we usually reply within one business day. Email us or send a message right from this page.',
+  },
+  'privacy-policy': {
+    path: '/privacy-policy',
+    title: 'Privacy Policy - How GEMS Handles Your Data | GEMS',
+    description:
+      'Read the GEMS privacy policy: what information we collect when you create a virtual gift, how it is used, who can see it and the choices you have.',
   },
   'virtual-birthday-gift': {
     path: '/virtual-birthday-gift',
