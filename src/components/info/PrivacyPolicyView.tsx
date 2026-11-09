@@ -1,5 +1,6 @@
 import React from 'react';
 import { SiteFooter } from '../navigation/SiteFooter';
+import { PageHero } from '../common/PageHero';
 
 const SECTIONS: { title: string; paragraphs: string[]; bullets?: string[] }[] = [
   {
@@ -74,22 +75,16 @@ const SECTIONS: { title: string; paragraphs: string[]; bullets?: string[] }[] = 
 
 export const PrivacyPolicyView: React.FC = () => (
   <>
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center max-w-2xl mx-auto">
-        <span className="text-xs font-bold tracking-wider text-[#6D28D9] uppercase">
-          Legal
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#18181B] tracking-tight mt-1">
-          Privacy Policy
-        </h1>
-        <p className="mt-3 text-base text-[#71717A]">
-          Your trust matters. Here is exactly what GEMS collects, why we collect it and the
-          control you have over it.
-        </p>
-        <p className="mt-2 text-xs text-zinc-400">Last updated: November 2026</p>
-      </div>
+    <PageHero
+      label="Legal"
+      title="Privacy Policy"
+      subtitle="Your trust matters. Here is exactly what GEMS collects, why we collect it and the control you have over it."
+    >
+      <p className="text-xs font-medium text-white/50">Last updated: November 2026</p>
+    </PageHero>
 
-      <div className="mt-12 space-y-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+      <div className="space-y-8">
         {SECTIONS.map((section) => (
           <section
             key={section.title}

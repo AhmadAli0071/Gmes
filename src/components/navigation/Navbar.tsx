@@ -73,12 +73,19 @@ export const Navbar: React.FC = () => {
     setUserDropdownOpen(false);
   };
 
-  // The home page and every SEO landing page open on a dark gradient hero - at
-  // the very top the bar is fully transparent so the hero runs straight
-  // through it (the navbar sits *on* the hero instead of above it), then it
-  // fogs up once the page moves.
+  // These views open on a dark gradient hero (PageHero / home hero) - at the
+  // very top the bar is fully transparent so the hero runs straight through
+  // it (the navbar sits *on* the hero instead of above it), then it fogs up
+  // once the page moves.
   const isDarkHero =
-    currentView === 'home' || LANDING_VIEWS.includes(currentView as (typeof LANDING_VIEWS)[number]);
+    currentView === 'home' ||
+    currentView === 'how-it-works' ||
+    currentView === 'pricing' ||
+    currentView === 'explore' ||
+    currentView === 'blog' ||
+    currentView === 'contact-us' ||
+    currentView === 'privacy-policy' ||
+    LANDING_VIEWS.includes(currentView as (typeof LANDING_VIEWS)[number]);
   const atTop = isDarkHero && !scrolled;
 
   const glassBg = atTop

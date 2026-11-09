@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { api } from '../../lib/api';
 import { SiteFooter } from '../navigation/SiteFooter';
+import { PageHero } from '../common/PageHero';
 import { Mail, MessageSquare, Send, Clock, HelpCircle } from 'lucide-react';
 
 const SUPPORT_EMAIL = 'support@gemsvg.com';
@@ -65,21 +66,13 @@ export const ContactUsView: React.FC = () => {
 
   return (
     <>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Title */}
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-bold tracking-wider text-[#6D28D9] uppercase">
-            Contact Us
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#18181B] tracking-tight mt-1">
-            We Would Love to Hear From You
-          </h1>
-          <p className="mt-3 text-base text-[#71717A]">
-            Questions about a gift, an account issue or an idea to make GEMS better? Send us a
-            message - we usually reply within one business day.
-          </p>
-        </div>
+      <PageHero
+        label="Contact Us"
+        title="We Would Love to Hear From You"
+        subtitle="Questions about a gift, an account issue or an idea to make GEMS better? Send us a message - we usually reply within one business day."
+      />
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Direct email card */}
         <div className="mt-10 bg-white rounded-3xl border border-[#E4E4E7] shadow-xs p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-center sm:text-left">

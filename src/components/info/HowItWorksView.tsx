@@ -1,25 +1,20 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { Sparkles, Smartphone, ShieldCheck, Zap } from 'lucide-react';
+import { PageHero } from '../common/PageHero';
 
 export const HowItWorksView: React.FC = () => {
   const { openCreator } = useApp();
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Title */}
-      <div className="text-center max-w-2xl mx-auto mb-16">
-        <span className="text-xs font-bold tracking-wider text-[#6D28D9] uppercase">
-          The Experience
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#18181B] tracking-tight mt-1">
-          Designed for Pure Delight
-        </h1>
-        <p className="mt-3 text-base text-[#71717A]">
-          GEMS turns thoughtful words into an interactive unboxing moment your loved ones will remember forever.
-        </p>
-      </div>
+    <>
+      <PageHero
+        label="The Experience"
+        title="Designed for Pure Delight"
+        subtitle="GEMS turns thoughtful words into an interactive unboxing moment your loved ones will remember forever."
+      />
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
       {/* 3 Core Steps Detailed */}
       <div className="space-y-12">
         {/* Step 1 */}
@@ -120,6 +115,7 @@ export const HowItWorksView: React.FC = () => {
           <span>Try It Now - Create a Gift</span>
         </button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Check, Sparkles } from 'lucide-react';
+import { PageHero } from '../common/PageHero';
 
 const PRO_MONTHLY = 12;
 const PRO_YEARLY_MONTHLY = 9.6;
@@ -23,21 +24,14 @@ export const PricingView: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Title */}
-      <div className="text-center max-w-2xl mx-auto">
-        <span className="text-xs font-bold tracking-wider text-[#6D28D9] uppercase">
-          Pricing
-        </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#18181B] tracking-tight mt-1">
-          Simple, Transparent Gifting
-        </h1>
-        <p className="mt-3 text-base text-[#71717A]">
-          Create a free gift anytime. Premium and Pro are free for everyone during early access.
-        </p>
-
+    <>
+      <PageHero
+        label="Pricing"
+        title="Simple, Transparent Gifting"
+        subtitle="Create a free gift anytime. Premium and Pro are free for everyone during early access."
+      >
         {/* Monthly / Yearly Toggle */}
-        <div className="mt-6 inline-flex items-center gap-2 p-1 bg-zinc-200/60 rounded-xl text-xs font-semibold">
+        <div className="inline-flex items-center gap-2 p-1 bg-white/10 border border-white/15 rounded-xl text-xs font-semibold backdrop-blur">
           <button
             type="button"
             onClick={() => setBillingCycle('monthly')}
@@ -45,7 +39,7 @@ export const PricingView: React.FC = () => {
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               billingCycle === 'monthly'
                 ? 'bg-white text-zinc-900 shadow-2xs'
-                : 'text-zinc-600 hover:text-zinc-900'
+                : 'text-white/70 hover:text-white'
             }`}
           >
             Monthly
@@ -57,14 +51,15 @@ export const PricingView: React.FC = () => {
             className={`px-3.5 py-1.5 rounded-lg transition-colors ${
               billingCycle === 'yearly'
                 ? 'bg-white text-zinc-900 shadow-2xs'
-                : 'text-zinc-600 hover:text-zinc-900'
+                : 'text-white/70 hover:text-white'
             }`}
           >
             <span>Annual (Save 20%)</span>
           </button>
         </div>
-      </div>
+      </PageHero>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
       {/* Pricing Cards Grid */}
       <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
         {/* FREE */}
@@ -233,6 +228,7 @@ export const PricingView: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };

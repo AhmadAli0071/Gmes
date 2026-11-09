@@ -4,6 +4,7 @@ import { TEMPLATES } from '../../data/templates';
 import { EVENTS } from '../../data/events';
 import { GiftTemplate, EventSlug } from '../../types';
 import { Search, Sparkles, SearchX } from 'lucide-react';
+import { PageHero } from '../common/PageHero';
 
 export const ExploreView: React.FC = () => {
   const { applyTemplate } = useApp();
@@ -35,17 +36,14 @@ export const ExploreView: React.FC = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Title */}
-      <div className="max-w-2xl">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#18181B] tracking-tight">
-          Find a gift they'll love.
-        </h1>
-        <p className="mt-1 text-xs text-[#71717A]">
-          Browse handcrafted unboxing presentations and digital keepsakes.
-        </p>
-      </div>
+    <>
+      <PageHero
+        label="Explore"
+        title="Find a gift they'll love."
+        subtitle="Browse handcrafted unboxing presentations and digital keepsakes."
+      />
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Search & Occasion Filter Pills */}
       <div className="mt-6 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Search */}
@@ -166,6 +164,7 @@ export const ExploreView: React.FC = () => {
         ))}
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };

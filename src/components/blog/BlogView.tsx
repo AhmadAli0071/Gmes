@@ -1,27 +1,16 @@
 import React from 'react';
 import { BLOG_POSTS } from '../../data/guides';
 import { SiteFooter } from '../navigation/SiteFooter';
-import { ArrowRight, BookOpen } from 'lucide-react';
+import { PageHero } from '../common/PageHero';
+import { ArrowRight } from 'lucide-react';
 
 export const BlogView: React.FC = () => (
   <div className="min-h-screen bg-[#FAF7FF]">
-    <section className="relative overflow-hidden border-b border-[#EAE4F9] bg-white">
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#8B5CF6]/10 blur-[90px]" />
-      <div className="relative mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-[#DDD6FE] bg-[#F5F3FF] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-[#6D28D9]">
-          <BookOpen className="h-3 w-3" />
-          Gift guides
-        </span>
-        <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-extrabold tracking-tight text-[#1E1B4B] text-balance sm:text-5xl">
-          Gift Ideas and Tips
-        </h1>
-        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#6B7280] sm:text-base">
-          Practical ideas for birthdays, anniversaries, Valentine&apos;s Day, long distance
-          relationships and the holidays - all built around photos, your voice and a message
-          that lasts.
-        </p>
-      </div>
-    </section>
+    <PageHero
+      label="Gift Guides"
+      title="Gift Ideas and Tips"
+      subtitle="Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays - all built around photos, your voice and a message that lasts."
+    />
 
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       <div className="grid gap-6 md:grid-cols-2">
