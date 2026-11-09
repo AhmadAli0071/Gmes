@@ -20,7 +20,9 @@ import {
   type GiftPayload,
 } from '../services/gifts';
 import {
+  claimDeviceGifts,
   fetchMe,
+  getPendingClaims,
   login as loginApi,
   logout as logoutApi,
   register as registerApi,
@@ -54,6 +56,10 @@ interface AppContextType {
   updateProfile: (patch: { name?: string; email?: string; avatarUrl?: string | null }) => Promise<void>;
   isAuthModalOpen: boolean;
   setIsAuthModalOpen: (open: boolean) => void;
+  // Guest gifts on this device - ask before moving them to the account
+  pendingClaimCount: number;
+  confirmDeviceClaims: () => Promise<void>;
+  dismissDeviceClaims: () => void;
   // Gifts (API-backed)
   gifts: GiftData[];
   giftsLoaded: boolean;
@@ -304,6 +310,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     void refreshGifts();
   }, [refreshGifts]);
 
+  /* Guest gifts are only ever moved onto an account after the user confirms
+   * it - signing in must never silently inherit gifts made on this device. */
+  const [pendingClaimCount, setPendingClaimCount] = useState(0);
+
   const signIn = useCallback(
     async (
       mode: 'login' | 'signup',
@@ -314,12 +324,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           ? await registerApi(input.name || '', input.email, input.password)
           : await loginApi(input.email, input.password);
       setUserState(next);
-      // Logging in claims the gifts this device created while signed out.
       await refreshGifts();
+      try {
+        setPendingClaimCount(await getPendingClaims());
+      } catch {
+        setPendingClaimCount(0);
+      }
       return next;
     },
     [refreshGifts]
   );
+
+  const confirmDeviceClaims = useCallback(async () => {
+    try {
+      await claimDeviceGifts();
+      await refreshGifts();
+    } catch {
+      /* keep the prompt if the claim fails - the gifts stay guest-owned */
+    } finally {
+      setPendingClaimCount(0);
+    }
+  }, [refreshGifts]);
+
+  const dismissDeviceClaims = useCallback(() => setPendingClaimCount(0), []);
 
   const signOut = useCallback(async () => {
     try {
@@ -328,6 +355,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       /* the cookie may already be gone */
     }
     setUserState(null);
+    setPendingClaimCount(0);
     await refreshGifts();
     showToast('Signed out', 'info');
   }, [refreshGifts, showToast]);
@@ -690,6 +718,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         updateProfile,
         isAuthModalOpen,
         setIsAuthModalOpen,
+        pendingClaimCount,
+        confirmDeviceClaims,
+        dismissDeviceClaims,
         gifts,
         giftsLoaded,
         refreshGifts,

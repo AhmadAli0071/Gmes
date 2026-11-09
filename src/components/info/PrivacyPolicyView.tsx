@@ -10,7 +10,7 @@ const SECTIONS: { title: string; paragraphs: string[]; bullets?: string[] }[] = 
     bullets: [
       'Account details - your name and email address, only if you choose to create an account.',
       'Gift content - the message, recipient name, photos, voice note and design choices you put inside a gift box.',
-      'Device ownership token - a random secret stored in your browser so your gifts stay yours before you sign in, and can be claimed by your account later.',
+      'Device ownership token - a random secret stored in your browser so your gifts stay yours before you sign in. They only move to your account after you confirm it - signing in never adds them automatically.',
       'Technical basics - session cookie, IP address and browser type used for security and rate limiting.',
     ],
   },

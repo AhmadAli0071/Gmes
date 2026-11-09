@@ -2,8 +2,8 @@ const OWNER_TOKEN_KEY = 'gems_owner_token';
 
 /**
  * Device secret stored in localStorage so a visitor who never signs in still
- * owns the gifts they create - and can claim them later by logging in.
- * The server sees it as the `x-owner-token` header.
+ * owns the gifts they create - they can add them to an account later after an
+ * explicit confirmation. The server sees it as the `x-owner-token` header.
  */
 export function getOwnerToken(): string {
   try {

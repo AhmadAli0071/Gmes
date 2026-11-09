@@ -57,3 +57,14 @@ export async function updateMe(patch: {
   });
   return toUser(data.user);
 }
+
+/** Unclaimed guest gifts waiting on this device - the UI asks before claiming. */
+export async function getPendingClaims(): Promise<number> {
+  const data = await api<{ count: number }>('/api/auth/pending-claims');
+  return Number(data.count) || 0;
+}
+
+/** Explicitly move this device's guest gifts onto the signed-in account. */
+export async function claimDeviceGifts(): Promise<void> {
+  await api('/api/auth/claim', { method: 'POST' });
+}

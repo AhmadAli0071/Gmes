@@ -4,6 +4,7 @@ import { injectContentSchema, usePageMeta } from './lib/seo';
 import { Navbar } from './components/navigation/Navbar';
 import { Toast } from './components/common/Toast';
 import { AuthModal } from './components/auth/AuthModal';
+import { ClaimGiftsModal } from './components/auth/ClaimGiftsModal';
 import { GiftSuccessModal } from './components/creator/GiftSuccessModal';
 import { LANDING_VIEWS, LandingView } from './types';
 
@@ -149,6 +150,7 @@ const GlobalOverlays: React.FC = () => {
     <>
       <Toast />
       <AuthModal />
+      <ClaimGiftsModal />
       {justCreatedGift && (
         <GiftSuccessModal
           gift={justCreatedGift}

@@ -64,7 +64,9 @@ authRouter.post(
       plan: 'free',
     });
 
-    await attachGuestGifts(String(user._id), ownerTokenOf(req));
+    // Guest gifts are never claimed automatically - a different person who
+    // signs in on the same browser must not inherit them. Claiming only
+    // happens through the explicit POST /claim confirmation below.
     await startSession(res, user._id);
     res.status(201).json({ user: toPublicUser(user) });
   })
@@ -85,7 +87,6 @@ authRouter.post(
     const ok = await bcrypt.compare(req.body.password, user.passwordHash);
     if (!ok) throw ApiError.unauthorized('invalid_credentials', 'Email or password is incorrect.');
 
-    await attachGuestGifts(String(user._id), ownerTokenOf(req));
     await startSession(res, user._id);
     res.json({ user: toPublicUser(user) });
   })
@@ -130,7 +131,6 @@ authRouter.post(
       await user.save();
     }
 
-    await attachGuestGifts(String(user._id), ownerTokenOf(req));
     await startSession(res, user._id);
     res.json({ user: toPublicUser(user) });
   })
@@ -174,11 +174,23 @@ authRouter.patch(
   })
 );
 
-/** Moves a guest's gifts onto the account they just created/signed into. */
+/** Moves a guest's gifts onto the account - only via the explicit claim below. */
 async function attachGuestGifts(userId: string, ownerToken: string | null): Promise<void> {
   if (!ownerToken) return;
   await Gift.updateMany({ ownerToken, ownerId: null }, { $set: { ownerId: userId } });
 }
+
+/** How many unclaimed guest gifts sit on this device - shown as a confirm prompt. */
+authRouter.get(
+  '/pending-claims',
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const ownerToken = ownerTokenOf(req);
+    if (!ownerToken) return res.json({ count: 0 });
+    const count = await Gift.countDocuments({ ownerToken, ownerId: null });
+    res.json({ count });
+  })
+);
 
 authRouter.post(
   '/claim',
