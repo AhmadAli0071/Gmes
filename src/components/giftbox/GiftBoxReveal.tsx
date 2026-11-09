@@ -190,13 +190,13 @@ export const GiftBoxReveal: React.FC<GiftBoxRevealProps> = ({
             <h1>
               {done
                 ? gift.title || `A gift for ${recipient}`
-                : `${recipient}, ${sender} sent you something`}
+                : `${recipient}, ${sender} sent you a gift`}
             </h1>
             <p className="sub">
               {phase === 'open'
                 ? 'Surprise!'
                 : done
-                  ? gift.subtitle || `Something from ${sender} in every layer.`
+                  ? gift.subtitle || `A gift from ${sender} in every layer.`
                   : "It's waiting inside."}
             </p>
           </>
