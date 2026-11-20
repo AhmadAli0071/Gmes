@@ -16,6 +16,9 @@ import newYearMessagesImage from '../assets/images/blog/new-year-messages.jpg';
 import photoGiftDigitalImage from '../assets/images/blog/photo-gift-digital.jpg';
 import giftComparisonImage from '../assets/images/blog/gift-comparison.jpg';
 import ecoGiftImage from '../assets/images/blog/eco-friendly-gift.jpg';
+import onlineSurpriseImage from '../assets/images/blog/online-surprise.jpg';
+import heartfeltMessageImage from '../assets/images/blog/heartfelt-message.jpg';
+import giftUniqueImage from '../assets/images/blog/gift-unique.jpg';
 
 export interface GiftGuide {
   title: string;
@@ -32,6 +35,36 @@ export function sortNewestFirst<T extends { path: string; date?: string }>(guide
 }
 
 export const BLOG_POSTS: GiftGuide[] = [
+  {
+    title: 'How to Surprise Someone Online: 15 Creative Ideas',
+    excerpt:
+      '15 creative online surprise ideas for partners, friends and family far away, from virtual parties to voice note gifts.',
+    path: '/surprise-someone-online-creative-ideas',
+    image: onlineSurpriseImage,
+    alt: 'Surprised woman celebrating with colleagues at a party',
+    tag: 'Surprises',
+    date: '2026-11-20',
+  },
+  {
+    title: 'How to Write a Heartfelt Message (With Examples)',
+    excerpt:
+      'Write a heartfelt message for any occasion with a simple formula, gift note tips and examples for mom, partners and friends.',
+    path: '/write-heartfelt-message-any-occasion',
+    image: heartfeltMessageImage,
+    alt: 'Person handwriting a personal letter with a pen',
+    tag: 'Messages',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Gifts for Someone Who Has Everything: Unique Ideas',
+    excerpt:
+      'Meaningful, sentimental and experience gift ideas for dads, grandparents and others who already have everything.',
+    path: '/gift-ideas-for-people-who-have-everything',
+    image: giftUniqueImage,
+    alt: 'Hands wrapping a red gift box with white ribbon',
+    tag: 'Gift ideas',
+    date: '2026-11-20',
+  },
   {
     title: 'How to Record a Voice Message Gift (With Script Ideas)',
     excerpt:

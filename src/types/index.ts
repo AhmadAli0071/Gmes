@@ -123,6 +123,9 @@ export const LANDING_VIEWS = [
   'personal-photo-gift-without-printing',
   'digital-gifts-vs-physical-gifts',
   'sustainable-gift-ideas-eco-friendly-holiday',
+  'surprise-someone-online-creative-ideas',
+  'write-heartfelt-message-any-occasion',
+  'gift-ideas-for-people-who-have-everything',
 ] as const;
 
 export type LandingView = (typeof LANDING_VIEWS)[number];

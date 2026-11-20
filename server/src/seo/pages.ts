@@ -51,6 +51,27 @@ const GUIDE_PREVIEWS = [
 
 const BLOG_ARTICLES = [
   {
+    title: 'How to Surprise Someone Online: 15 Creative Ideas',
+    excerpt:
+      '15 creative online surprise ideas for partners, friends and family far away, from virtual parties to voice note gifts.',
+    path: '/surprise-someone-online-creative-ideas',
+    date: '2026-11-20',
+  },
+  {
+    title: 'How to Write a Heartfelt Message (With Examples)',
+    excerpt:
+      'Write a heartfelt message for any occasion with a simple formula, gift note tips and examples for mom, partners and friends.',
+    path: '/write-heartfelt-message-any-occasion',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Gifts for Someone Who Has Everything: Unique Ideas',
+    excerpt:
+      'Meaningful, sentimental and experience gift ideas for dads, grandparents and others who already have everything.',
+    path: '/gift-ideas-for-people-who-have-everything',
+    date: '2026-11-20',
+  },
+  {
     title: 'How to Record a Voice Message Gift (With Script Ideas)',
     excerpt:
       'Learn how to record a voice message gift on your phone, what to say, and simple script ideas for birthdays, partners and family.',

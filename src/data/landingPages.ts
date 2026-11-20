@@ -35,7 +35,10 @@ export type LandingImageKey =
   | 'new-year-messages'
   | 'photo-gift'
   | 'gift-comparison'
-  | 'eco-gift';
+  | 'eco-gift'
+  | 'online-surprise'
+  | 'heartfelt-message'
+  | 'gift-unique';
 
 export interface LandingPage {
   slug: LandingView;
@@ -3227,6 +3230,550 @@ const NEW_LANDING_PAGES: LandingPage[] = [
       { label: 'Digital gift ideas for Christmas', path: '/digital-gift-ideas-for-christmas' },
       { label: 'Create a virtual gift', path: '/create' },
       { label: 'What is a virtual gift', path: '/what-is-a-virtual-gift' },
+    ],
+  },
+  {
+    slug: 'surprise-someone-online-creative-ideas',
+    keyword: 'surprise someone online',
+    metaTitle: 'How to Surprise Someone Online: 15 Creative Ideas',
+    metaDescription:
+      'Learn how to surprise someone online with 15 creative ideas for partners, friends, and family far away, from virtual parties to voice note gifts.',
+    layout: 'classic',
+    image: { key: 'online-surprise', alt: 'Surprised woman celebrating with colleagues at a party' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'How to Surprise Someone Online: 15 Creative Ideas',
+    intro:
+      'You do not have to be in the same room to make someone\u2019s day. With a little planning, a phone, and an internet connection, you can create a surprise that feels just as warm as one delivered in person. This guide explains how to surprise someone online, with 15 creative ideas for partners, friends, and family who live far away. Each idea includes practical tips so you can actually pull it off.',
+    blocks: [
+      { kind: 'h2', text: 'What Makes an Online Surprise Feel Special?' },
+      { kind: 'p', text: 'The best remote surprise ideas share a few qualities:' },
+      {
+        kind: 'ul',
+        items: [
+          'They are personal. They reflect your relationship, not a generic template.',
+          'They are unexpected. The timing or format catches the person off guard.',
+          'They involve effort. Planning shows you care.',
+          'They are easy to receive. The person should not need to install anything complicated.',
+        ],
+      },
+      { kind: 'p', text: 'Keep these in mind as you choose an idea below.' },
+      { kind: 'h2', text: '15 Online Surprise Ideas' },
+      { kind: 'h3', text: '1. Send a Digital Surprise Gift Box' },
+      {
+        kind: 'p',
+        text: 'A virtual gift box combines photos, a written message, and a voice note in one link. The recipient unwraps it on screen, which keeps the surprise element alive. With GEMS, you can [create a digital surprise gift](/create) and share it by text, email, or social media. It opens on any phone or computer without an app.',
+      },
+      { kind: 'h3', text: '2. Organize a Surprise Video Call' },
+      {
+        kind: 'p',
+        text: 'Tell the person you will call at a certain time, then invite friends or family to join quietly. When they connect, everyone is waiting. Zoom, Google Meet, or WhatsApp group calls make this easy. Tip: Ask everyone to join five minutes early with cameras on.',
+      },
+      { kind: 'h3', text: '3. Record a Heartfelt Voice Message' },
+      {
+        kind: 'p',
+        text: 'A voice note can feel more intimate than a text. Share a memory, tell them what they mean to you, and send it at an unexpected moment, like their lunch break.',
+      },
+      { kind: 'h3', text: '4. Create a "Reasons I Love You" List' },
+      {
+        kind: 'p',
+        text: 'Write a list of reasons you appreciate them, such as 10, 25, or one for each year of their age. Send it as a document, a series of messages, or a photo story.',
+      },
+      { kind: 'h3', text: '5. Throw a Virtual Celebration' },
+      { kind: 'p', text: 'Plan a short online party with a theme, playlist, and games. Ideas include:' },
+      {
+        kind: 'ul',
+        items: [
+          'A virtual trivia night about the guest of honor',
+          'A costume or dress-up theme',
+          'A shared toast at a set time',
+          'An online game like Pictionary or quiz apps',
+        ],
+      },
+      { kind: 'h3', text: '6. Send Food Delivery to Their Door' },
+      {
+        kind: 'p',
+        text: 'Order their favorite meal or dessert through a delivery app in their city. Time it for when you know they will be home and add a sweet note.',
+      },
+      { kind: 'h3', text: '7. Make a Group Video Montage' },
+      {
+        kind: 'p',
+        text: 'Ask friends and family to record short clips saying why they love the person. Combine them into one video with free editing apps. This works especially well for birthdays, graduations, and farewells.',
+      },
+      { kind: 'h3', text: '8. Plan a Watch Party' },
+      {
+        kind: 'p',
+        text: 'Pick a movie or series they love and watch it together using a sync feature on a streaming platform or a video call. Send snacks to their address beforehand for an extra surprise.',
+      },
+      { kind: 'h3', text: '9. Send a Countdown of Messages' },
+      { kind: 'p', text: 'In the days before a birthday or anniversary, send one small surprise each day. For example:' },
+      {
+        kind: 'ul',
+        items: [
+          'Day 5: A favorite photo of you together',
+          'Day 4: A song that reminds you of them',
+          'Day 3: A funny memory',
+          'Day 2: A short voice message',
+          'Day 1: The main gift',
+        ],
+      },
+      { kind: 'h3', text: '10. Create a Digital Scrapbook' },
+      {
+        kind: 'p',
+        text: 'Collect photos, screenshots of old chats, tickets, and notes into an online scrapbook. Add captions that explain why each memory matters.',
+      },
+      { kind: 'h3', text: '11. Write a Letter to Open Later' },
+      {
+        kind: 'p',
+        text: 'Write a heartfelt letter and ask them to open it on a specific day, like their next birthday or a tough exam day. Many email services let you schedule a message for the future.',
+      },
+      { kind: 'h3', text: '12. Surprise Them With an Online Class' },
+      {
+        kind: 'p',
+        text: 'Book a class they have mentioned wanting to try, such as cooking, painting, or a language. Better yet, sign up together so you have something to share.',
+      },
+      { kind: 'h3', text: '13. Plan a Virtual Date Night' },
+      { kind: 'p', text: 'For couples apart, a virtual date night can be a sweet surprise:' },
+      {
+        kind: 'ul',
+        items: [
+          'Cook the same recipe over video call',
+          'Play an online game together',
+          'Dress up and go out for dinner on camera',
+          'Stargaze while on the phone',
+        ],
+      },
+      { kind: 'p', text: 'You will find more ideas in this guide to [long distance birthday surprises](/long-distance-birthday-surprise).' },
+      { kind: 'h3', text: '14. Share a Custom Playlist' },
+      {
+        kind: 'p',
+        text: 'Build a playlist of songs tied to your memories together. Add a short note explaining why each song made the list.',
+      },
+      { kind: 'h3', text: '15. Send a Surprise Message at Midnight' },
+      {
+        kind: 'p',
+        text: 'Be the first to wish them on their birthday or New Year. Schedule a message or voice note to arrive exactly at midnight in their time zone.',
+      },
+      { kind: 'h2', text: 'Online Surprise Ideas by Relationship' },
+      { kind: 'h3', text: 'Virtual Surprise for Boyfriend or Girlfriend' },
+      {
+        kind: 'ul',
+        items: [
+          'A digital gift box with photos from your first dates',
+          'A surprise virtual date night',
+          'A countdown of messages before your anniversary',
+        ],
+      },
+      { kind: 'h3', text: 'Surprise Ideas for Friends Far Away' },
+      {
+        kind: 'ul',
+        items: [
+          'A group video montage',
+          'A food delivery to their door',
+          'A virtual game night with old friends',
+        ],
+      },
+      { kind: 'h3', text: 'Surprise Ideas for Family' },
+      {
+        kind: 'ul',
+        items: [
+          'A surprise video call with relatives',
+          'A recorded message from grandchildren',
+          'A digital family photo timeline',
+        ],
+      },
+      { kind: 'h2', text: 'Tips for Planning a Successful Online Surprise' },
+      {
+        kind: 'ul',
+        items: [
+          'Check the time zone so your surprise arrives at a good moment',
+          'Test links and videos before sending',
+          'Keep it simple for people who are not comfortable with technology',
+          'Involve a helper nearby if the surprise needs in-person coordination',
+          'Have a backup plan in case of a poor internet connection',
+        ],
+      },
+      { kind: 'h2', text: 'Making Distance Feel Smaller With a Thoughtful Surprise' },
+      {
+        kind: 'p',
+        text: 'An online surprise does not need a big budget. It needs a little planning and a lot of personal touch. Choose one idea that fits the person, add details only you would know, and time it well. Those small efforts are what turn a screen into a meaningful moment.',
+      },
+    ],
+    ctaHeading: 'Surprise Them With One Link',
+    ctaBody:
+      'Create a digital surprise gift with photos, a voice note and your message on GEMS, then share it at the perfect moment.',
+    faqs: [
+      { q: 'How can I surprise someone online on their birthday?', a: 'Send a digital gift box, organize a surprise video call with friends, or schedule a message to arrive at midnight. Adding personal photos or a voice note makes it more memorable.' },
+      { q: 'What is a cute online surprise for my girlfriend?', a: 'A virtual date night, a reasons I love you list, or a digital gift with your favorite photos together all work well. Personal details matter more than how elaborate it is.' },
+      { q: 'How do I surprise a friend who lives far away?', a: 'Order their favorite food to their door, send a group video montage, or plan a virtual game night. Including mutual friends makes the surprise feel bigger.' },
+      { q: 'What are some cheap online surprise ideas?', a: 'Voice messages, custom playlists, digital scrapbooks, and scheduled midnight messages cost little or nothing. Many digital gift platforms also offer free options.' },
+      { q: 'How do I plan a surprise video call?', a: 'Pick a time, invite guests privately, and ask them to join a few minutes early. Then call the person as planned and let everyone greet them together.' },
+    ],
+    related: [
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'Long distance birthday surprise', path: '/long-distance-birthday-surprise' },
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
+    ],
+  },
+  {
+    slug: 'write-heartfelt-message-any-occasion',
+    keyword: 'heartfelt message',
+    metaTitle: 'How to Write a Heartfelt Message (With Examples)',
+    metaDescription:
+      'Learn how to write a heartfelt message for any occasion using a simple formula, gift note tips, and examples for mom, partners, and best friends.',
+    layout: 'split',
+    image: { key: 'heartfelt-message', alt: 'Person handwriting a personal letter with a pen' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'How to Write a Heartfelt Message for Any Occasion',
+    intro:
+      'Many people freeze when they open a blank card or message box. You know what you feel, but the words come out stiff, cliched, or too short. The good news is that writing a heartfelt message is a skill, not a talent. With a simple structure and a few honest details, anyone can write something meaningful. This guide explains how to write a heartfelt message for any occasion, with a step-by-step formula, gift note wording tips, and examples for the people you love most.',
+    blocks: [
+      { kind: 'h2', text: 'What Makes a Message Feel Heartfelt?' },
+      { kind: 'p', text: 'A sincere message usually has three qualities:' },
+      {
+        kind: 'ul',
+        items: [
+          'It is specific. It mentions real moments, not general praise.',
+          'It is honest. It sounds like you, not a greeting card.',
+          'It is focused on them. It shows you notice who they are.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Research on gratitude suggests that expressing appreciation can strengthen relationships. Even a few sincere lines can leave a lasting impression.',
+      },
+      { kind: 'h2', text: 'A Simple Formula for Writing a Heartfelt Message' },
+      { kind: 'p', text: 'When you are stuck, use this four-part structure:' },
+      {
+        kind: 'ul',
+        items: [
+          'Open with them. Use their name and set the tone.',
+          'Share a specific memory or detail. This is the heart of the message.',
+          'Say what they mean to you. Be direct about your feelings.',
+          'Close with a wish or promise. Look ahead.',
+        ],
+      },
+      { kind: 'p', text: 'Example:' },
+      {
+        kind: 'p',
+        text: '"Sara, I still laugh every time I think about our road trip when the GPS sent us to a farm. You turn even the worst plans into good memories. I am so grateful you are in my life. Here is to many more wrong turns together."',
+      },
+      { kind: 'p', text: 'That is only four sentences, but each one does a job.' },
+      { kind: 'h2', text: 'How to Express Feelings in Words (Even If It Feels Awkward)' },
+      { kind: 'p', text: 'Some people find emotional writing uncomfortable. These tips help:' },
+      {
+        kind: 'ul',
+        items: [
+          'Write as you speak. Imagine saying it out loud to them.',
+          'Start with gratitude. "Thank you for..." is an easy way in.',
+          'Use "I" statements. "I feel lucky" sounds more personal than "You are great."',
+          'Do not over-polish. A little imperfection sounds genuine.',
+          'Read it aloud. If it sounds unnatural, simplify it.',
+        ],
+      },
+      { kind: 'h2', text: 'What to Write in a Gift Note' },
+      { kind: 'p', text: 'Gift notes are short, so every word counts. Good gift note wording usually includes:' },
+      {
+        kind: 'ul',
+        items: [
+          'Why you chose this gift for them',
+          'A short wish connected to the occasion',
+          'A warm sign-off',
+        ],
+      },
+      { kind: 'p', text: 'Gift note examples:' },
+      {
+        kind: 'ul',
+        items: [
+          '"I saw this and thought of our Sunday mornings. Happy birthday, with love."',
+          '"A small thank-you for being there every time I needed you."',
+          '"For the person who makes every day lighter. Happy anniversary."',
+          '"Something to remind you how proud I am of you. Congratulations!"',
+        ],
+      },
+      { kind: 'h2', text: 'Heartfelt Message Examples by Recipient' },
+      { kind: 'h3', text: 'Message for Mom' },
+      {
+        kind: 'p',
+        text: '"Mom, thank you for every packed lunch, late-night talk, and quiet sacrifice I did not notice at the time. I notice now. I love you more than I say."',
+      },
+      {
+        kind: 'p',
+        text: '"You taught me how to be strong and kind at the same time. I hope I make you as proud as you make me."',
+      },
+      { kind: 'h3', text: 'Message for Girlfriend or Partner' },
+      {
+        kind: 'p',
+        text: '"I still remember how nervous I was on our first date. Now you are the person I feel most at home with. Thank you for choosing me."',
+      },
+      {
+        kind: 'p',
+        text: '"You make ordinary days feel special. I do not say it enough, but I love the life we are building."',
+      },
+      {
+        kind: 'p',
+        text: 'For romantic occasions, you can pair your words with a [virtual anniversary gift](/anniversary-digital-gift) that includes your photos and a voice message.',
+      },
+      { kind: 'h3', text: 'Message for Best Friend' },
+      {
+        kind: 'p',
+        text: '"You have seen me at my worst and stayed anyway. That says everything about you. Thank you for being my person."',
+      },
+      { kind: 'p', text: '"Life is better with someone who laughs at the same terrible jokes. I am lucky it is you."' },
+      { kind: 'h3', text: 'Appreciation Message for Colleagues or Mentors' },
+      {
+        kind: 'p',
+        text: '"Thank you for your patience and guidance this year. I have learned so much from working with you."',
+      },
+      { kind: 'p', text: '"Your support made a real difference during a busy season. I am grateful to have you on the team."' },
+      { kind: 'h2', text: 'Heartfelt Messages by Occasion' },
+      { kind: 'h3', text: 'Birthday' },
+      {
+        kind: 'p',
+        text: '"Happy birthday! Watching you grow this past year has been inspiring. I hope this year brings you everything you have been working toward."',
+      },
+      { kind: 'h3', text: 'Anniversary' },
+      { kind: 'p', text: '"Another year of loving you, and I would choose you all over again. Thank you for every memory so far."' },
+      { kind: 'h3', text: 'Thank You' },
+      { kind: 'p', text: '"What you did meant more than you know. Thank you for showing up when it mattered."' },
+      { kind: 'h3', text: 'Graduation' },
+      { kind: 'p', text: '"All those late nights were worth it. I am so proud of you, and I cannot wait to see what you do next."' },
+      { kind: 'h3', text: 'Sympathy' },
+      { kind: 'p', text: '"I am so sorry for your loss. I am thinking of you and I am here whenever you need to talk."' },
+      { kind: 'h2', text: 'Sweet Message Ideas for Everyday Moments' },
+      { kind: 'p', text: 'Heartfelt messages do not need a special occasion. Short notes can brighten an ordinary day:' },
+      {
+        kind: 'ul',
+        items: [
+          '"Just thinking about you and smiling."',
+          '"Proud of you, today and always."',
+          '"Good luck today. You have got this."',
+          '"Thank you for being exactly who you are."',
+        ],
+      },
+      { kind: 'h2', text: 'Ways to Deliver Your Message' },
+      { kind: 'p', text: 'How you share your words can make them even more meaningful:' },
+      {
+        kind: 'ul',
+        items: [
+          'A handwritten card for in-person occasions',
+          'A voice note so they hear your tone',
+          'A digital gift combining your message with photos',
+          'A scheduled text that arrives at the perfect moment',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'GEMS lets you add your message to a [personalized digital gift](/create) with photos and a recorded voice note, so your words arrive with a little extra warmth.',
+      },
+      { kind: 'h2', text: 'Common Mistakes to Avoid' },
+      {
+        kind: 'ul',
+        items: [
+          'Relying only on cliches like "You mean the world to me"',
+          'Writing too much and losing the main point',
+          'Making the message about yourself',
+          'Copying a template without changing any details',
+          'Waiting for the perfect words instead of sending honest ones',
+        ],
+      },
+      { kind: 'h2', text: 'Saying What Matters, One Honest Line at a Time' },
+      {
+        kind: 'p',
+        text: 'A heartfelt message does not need beautiful language. It needs truth, a specific detail, and a bit of courage to say what you usually keep to yourself. Use the formula, borrow an example if you need a starting point, and make it yours with one real memory. The person reading it will feel the difference.',
+      },
+    ],
+    ctaHeading: 'Pair Your Words With Photos and Your Voice',
+    ctaBody:
+      'Add your heartfelt message to a GEMS digital gift with photos and a voice note, then share one link.',
+    faqs: [
+      { q: 'How do I start a heartfelt message?', a: 'Begin with the person\u2019s name and a specific memory or detail about them. Starting with gratitude, such as "Thank you for...", also makes it easier to continue.' },
+      { q: 'How long should a heartfelt message be?', a: 'Three to five sentences is enough for most cards and gift notes. Longer letters work well for milestones, but focus matters more than length.' },
+      { q: 'What should I write in a gift note?', a: 'Mention why you chose the gift, add a short wish for the occasion, and sign off warmly. One or two sentences is usually ideal.' },
+      { q: 'How can I make my message sound less generic?', a: 'Include a specific memory, an inside joke, or a quality you truly admire in them. Replace cliches with details only you would know.' },
+      { q: 'What is a heartfelt message for a best friend?', a: 'Thank them for a moment they supported you and tell them what their friendship means to you. Keep the tone warm and true to how you two usually talk.' },
+    ],
+    related: [
+      { label: 'Anniversary digital gift', path: '/anniversary-digital-gift' },
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'Photo memory video gift', path: '/photo-memory-video-gift' },
+    ],
+  },
+  {
+    slug: 'gift-ideas-for-people-who-have-everything',
+    keyword: 'gift ideas for people who have everything',
+    metaTitle: 'Gifts for Someone Who Has Everything: Unique Ideas',
+    metaDescription:
+      'Stuck on gifts for someone who has everything? Explore meaningful, sentimental, and experience gift ideas for dads, grandparents, and others too.',
+    layout: 'banner',
+    image: { key: 'gift-unique', alt: 'Hands wrapping a red gift box with white ribbon' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'Gift Ideas for People Who Have Everything',
+    intro:
+      'Every family has one: the person who says "I do not need anything" and means it. Dads, grandparents, successful friends, and minimalists can be some of the hardest people to buy for. Finding gifts for someone who has everything is not about finding a rarer object. It is usually about shifting from things to meaning, time, and memories. This guide shares unique, thoughtful gift ideas for hard-to-buy-for people, plus a simple way to decide what will actually land.',
+    blocks: [
+      { kind: 'h2', text: 'Why Is It Hard to Buy for Someone Who Has Everything?' },
+      { kind: 'p', text: 'There are a few common reasons:' },
+      {
+        kind: 'ul',
+        items: [
+          'They buy what they want for themselves',
+          'They have limited space or prefer less clutter',
+          'Their tastes are specific',
+          'They genuinely value people over possessions',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Understanding this changes your approach. The most meaningful gifts for these people are often non-physical, personal, or tied to shared experiences.',
+      },
+      { kind: 'h2', text: 'How to Choose a Gift That Means Something' },
+      { kind: 'p', text: 'Before you shop, ask yourself these questions:' },
+      {
+        kind: 'ul',
+        items: [
+          'What do they talk about with excitement? Hobbies and passions reveal good ideas.',
+          'What do they miss? A place, a person, or a time in their life.',
+          'What would make their day easier? Practical help can be a gift.',
+          'What memory do we share? Sentimental gifts start here.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The tradition of giving a gift is less about the object and more about the relationship it represents. Keep that in mind and you will rarely go wrong.',
+      },
+      { kind: 'h2', text: 'Sentimental Gift Ideas' },
+      {
+        kind: 'p',
+        text: 'Sentimental gifts cannot be bought in a store, which makes them ideal for people who already own everything.',
+      },
+      { kind: 'h3', text: '1. A Personalized Digital Memory Gift' },
+      {
+        kind: 'p',
+        text: 'Collect photos, a voice message, and a heartfelt note into one keepsake. This works especially well for parents and grandparents who treasure family memories. With GEMS, you can [create a personalized gift with photos and a voice note](/create) and share it as one link they can revisit anytime.',
+      },
+      { kind: 'h3', text: '2. A Letter About What They Mean to You' },
+      {
+        kind: 'p',
+        text: 'Write a detailed letter describing specific moments when they made a difference. Many people keep letters like this for years.',
+      },
+      { kind: 'h3', text: '3. A Family Recipe Collection' },
+      {
+        kind: 'p',
+        text: 'Gather recipes from relatives along with short stories about each dish. Share it as a printed booklet or a digital file.',
+      },
+      { kind: 'h3', text: '4. Recorded Family Stories' },
+      {
+        kind: 'p',
+        text: 'Interview a grandparent about their childhood and record it. The recording becomes a gift for them and a treasure for the whole family.',
+      },
+      { kind: 'h2', text: 'Experience Gifts' },
+      { kind: 'p', text: 'Experience gifts create memories instead of clutter. Some ideas:' },
+      {
+        kind: 'ul',
+        items: [
+          'A cooking or wine-tasting class',
+          'Tickets to a concert, sports match, or show',
+          'A day trip to a place they have always wanted to visit',
+          'A hot air balloon ride or scenic train journey',
+          'A spa day or massage',
+          'A guided tour of a local landmark',
+        ],
+      },
+      { kind: 'p', text: 'The best experience gifts are ones you can share. Time together is often what they value most.' },
+      { kind: 'h2', text: 'Non-Physical Gift Ideas' },
+      { kind: 'p', text: 'Non-physical gifts take up no space and often mean more:' },
+      {
+        kind: 'ul',
+        items: [
+          'Your time: Offer to help with a project, garden, or move',
+          'A donation to a cause they care about, in their name',
+          'An online class in a hobby they have mentioned',
+          'A subscription to an audiobook, music, or streaming service',
+          'A digital photo story of a special year',
+        ],
+      },
+      { kind: 'p', text: 'For more ideas that arrive instantly, see this list of [instant gift ideas](/instant-gift-ideas).' },
+      { kind: 'h2', text: 'Personalized Gift Ideas' },
+      { kind: 'p', text: 'Personalization turns an ordinary item into something unique:' },
+      {
+        kind: 'ul',
+        items: [
+          'A custom illustration of their home or pet',
+          'An engraved item with a meaningful date or quote',
+          'A star map showing the night sky from a special date',
+          'A photo book of a memorable trip',
+          'A custom playlist of songs from their youth',
+        ],
+      },
+      { kind: 'h2', text: 'Gift Ideas for Dads Who Have Everything' },
+      { kind: 'p', text: 'Dads often say they do not want anything. These ideas tend to work well:' },
+      {
+        kind: 'ul',
+        items: [
+          'A day doing his favorite activity with you, such as fishing, golf, or a match',
+          'A letter from each child about what they learned from him',
+          'A digital photo timeline of his life',
+          'A class to learn something new, like barbecue or woodworking',
+          'A recorded message from grandchildren',
+        ],
+      },
+      { kind: 'h2', text: 'Gift Ideas for Grandparents' },
+      { kind: 'p', text: 'Grandparents usually value connection above all:' },
+      {
+        kind: 'ul',
+        items: [
+          'A recorded video or voice message from grandchildren',
+          'A family photo story with captions',
+          'A scheduled monthly video call date',
+          'A framed or digital family tree',
+          'Help with tasks, like cooking a meal or tidying the garden',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'If they live far away, a digital gift lets them replay family moments whenever they like. See our [digital gifts for parents living abroad](/digital-gifts-for-parents-living-abroad) for more ideas.',
+      },
+      { kind: 'h2', text: 'Creative Gift Ideas for Hard-to-Buy-For Friends' },
+      {
+        kind: 'ul',
+        items: [
+          'A bucket list experience you do together',
+          'A box of local treats from your city',
+          'A memory jar filled with notes about your friendship',
+          'A virtual gift with your funniest photos together',
+        ],
+      },
+      { kind: 'h2', text: 'What Not to Buy for Someone Who Has Everything' },
+      { kind: 'p', text: 'Avoid these common mistakes:' },
+      {
+        kind: 'ul',
+        items: [
+          'Generic gift sets with no personal connection',
+          'Novelty items that end up as clutter',
+          'Duplicates of things they already own',
+          'Expensive items purchased only to impress',
+        ],
+      },
+      { kind: 'h2', text: 'When the Best Gift Is Simply You' },
+      {
+        kind: 'p',
+        text: 'People who have everything rarely remember what they unwrapped years ago. They remember who showed up, what was said, and how it made them feel. If you are stuck, choose something that captures a shared memory or gives you time together. A personal message, a voice note, or an afternoon spent side by side can mean more than anything on a store shelf.',
+      },
+    ],
+    ctaHeading: 'Give a Gift Only You Could Make',
+    ctaBody:
+      'Build a digital memory gift with photos, a voice note and your message on GEMS. It means more than another object on the shelf.',
+    faqs: [
+      { q: 'What do you get someone who has everything?', a: 'Focus on experiences, sentimental keepsakes, or gifts of your time instead of objects. Personal touches like letters, photos, and voice messages often mean the most.' },
+      { q: 'What is a meaningful gift for a dad who has everything?', a: 'A shared experience, a heartfelt letter, or a digital photo timeline of his life are strong choices. Many dads value time with family more than material gifts.' },
+      { q: 'What are good non-physical gift ideas?', a: 'Experience gifts, online classes, donations, subscriptions, and digital memory gifts are all great options. They take up no space and can feel very personal.' },
+      { q: 'What should I give grandparents who do not want anything?', a: 'Recorded messages from grandchildren, family photo stories, and regular video calls are often appreciated. Helping with daily tasks can also be a thoughtful gift.' },
+      { q: 'How do I make a gift feel more personal?', a: 'Connect it to a shared memory, add a handwritten or recorded message, and include details only you would know. Personal meaning matters more than price.' },
+    ],
+    related: [
+      { label: 'Digital gifts for parents abroad', path: '/digital-gifts-for-parents-living-abroad' },
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
     ],
   },
 ];

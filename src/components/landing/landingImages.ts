@@ -14,6 +14,9 @@ import newYearMessagesImage from '../../assets/images/blog/new-year-messages.jpg
 import photoGiftImage from '../../assets/images/blog/photo-gift-digital.jpg';
 import giftComparisonImage from '../../assets/images/blog/gift-comparison.jpg';
 import ecoGiftImage from '../../assets/images/blog/eco-friendly-gift.jpg';
+import onlineSurpriseImage from '../../assets/images/blog/online-surprise.jpg';
+import heartfeltMessageImage from '../../assets/images/blog/heartfelt-message.jpg';
+import giftUniqueImage from '../../assets/images/blog/gift-unique.jpg';
 import type { LandingImageKey } from '../../data/landingPages';
 
 export const LANDING_IMAGES: Record<LandingImageKey, string> = {
@@ -33,4 +36,7 @@ export const LANDING_IMAGES: Record<LandingImageKey, string> = {
   'photo-gift': photoGiftImage,
   'gift-comparison': giftComparisonImage,
   'eco-gift': ecoGiftImage,
+  'online-surprise': onlineSurpriseImage,
+  'heartfelt-message': heartfeltMessageImage,
+  'gift-unique': giftUniqueImage,
 };
