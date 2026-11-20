@@ -1,5 +1,5 @@
 import React from 'react';
-import { GIFT_GUIDES } from '../../../data/guides';
+import { GIFT_GUIDES, sortNewestFirst } from '../../../data/guides';
 import { Reveal } from './Reveal';
 import { ArrowRight, BookOpen } from 'lucide-react';
 
@@ -34,7 +34,7 @@ export const GiftTipsSection: React.FC = () => (
       </Reveal>
 
       <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {GIFT_GUIDES.slice(0, 3).map((guide, i) => (
+        {sortNewestFirst(GIFT_GUIDES).slice(0, 3).map((guide, i) => (
           <Reveal key={guide.path} delay={i * 0.08}>
             <a
               href={guide.path}

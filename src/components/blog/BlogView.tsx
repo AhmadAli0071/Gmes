@@ -1,5 +1,5 @@
 import React from 'react';
-import { BLOG_POSTS } from '../../data/guides';
+import { BLOG_POSTS, sortNewestFirst } from '../../data/guides';
 import { SiteFooter } from '../navigation/SiteFooter';
 import { PageHero } from '../common/PageHero';
 import { ArrowRight } from 'lucide-react';
@@ -14,7 +14,7 @@ export const BlogView: React.FC = () => (
 
     <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       <div className="grid gap-6 md:grid-cols-2">
-        {BLOG_POSTS.map((guide) => (
+        {sortNewestFirst(BLOG_POSTS).map((guide) => (
           <a
             key={guide.path}
             href={guide.path}

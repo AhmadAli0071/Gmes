@@ -29,7 +29,13 @@ export type LandingImageKey =
   | 'virtual-gift'
   | 'digital-christmas-gift'
   | 'holiday-shipping'
-  | 'budget-gift';
+  | 'budget-gift'
+  | 'voice-message-gift'
+  | 'parents-abroad'
+  | 'new-year-messages'
+  | 'photo-gift'
+  | 'gift-comparison'
+  | 'eco-gift';
 
 export interface LandingPage {
   slug: LandingView;
@@ -2136,6 +2142,1097 @@ export const LANDING_PAGES: LandingPage[] = [
   },
 ];
 
+const NEW_LANDING_PAGES: LandingPage[] = [
+  {
+    slug: 'voice-message-gift-script-ideas',
+    keyword: 'voice message gift',
+    metaTitle: 'How to Record a Voice Message Gift: Script Ideas',
+    metaDescription:
+      'Learn how to record a voice message gift on your phone, what to say, and use simple script ideas for birthdays, partners, mom, and family abroad.',
+    layout: 'classic',
+    image: { key: 'voice-message-gift', alt: 'Man recording a voice message on his smartphone' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'How to Record a Voice Message Gift (With Script Ideas)',
+    intro:
+      'A text tells someone what you mean. Your voice tells them how you feel. A voice message gift captures your tone, your laugh, and the small pauses that written words cannot hold. It costs nothing to record, works across any distance, and can be replayed for years. This guide walks you through how to record a heartfelt voice note on your phone, what to say, and ready-to-use script ideas for birthdays, partners, parents, and friends.',
+    blocks: [
+      { kind: 'h2', text: 'What Is a Voice Message Gift?' },
+      {
+        kind: 'p',
+        text: 'A voice message gift is a short, personal audio message recorded for one specific person and shared as a keepsake. Unlike a quick voice note sent in a chat, it is planned, thoughtful, and made to be saved.',
+      },
+      { kind: 'p', text: 'It can take a few different forms:' },
+      {
+        kind: 'ul',
+        items: [
+          'A standalone recorded message gift sent as an audio file',
+          'An audio greeting inside a digital gift alongside photos and a written note',
+          'A series of short clips from you, or from several family members',
+          'A voice note added to a photo slideshow or memory video',
+        ],
+      },
+      { kind: 'p', text: 'The format matters less than the message. What makes it a gift is the care you put into it.' },
+      { kind: 'h2', text: 'Why Does a Voice Note Feel So Personal?' },
+      {
+        kind: 'p',
+        text: 'People often say they keep voice notes from loved ones long after they delete old texts. There are clear reasons for that:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Your voice carries emotion. Warmth, excitement, and even nervousness come through naturally.',
+          'It is easy to replay. The recipient can listen again on a hard day or a special date.',
+          'It closes distance. Hearing a familiar voice feels closer than reading a screen.',
+          'It needs no shipping. You can send it instantly, even on the day itself.',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'For families and couples separated by distance, a personal audio message is one of the simplest ways to feel present. You can find more ideas in this guide to [gift ideas for long distance relationships](/long-distance-gift-ideas).',
+      },
+      { kind: 'h2', text: 'What Do You Need to Record a Message on Your Phone?' },
+      {
+        kind: 'p',
+        text: "You do not need a studio or a fancy microphone. Most modern phones record clear audio when you get the basics right. Here is what helps:",
+      },
+      {
+        kind: 'ul',
+        items: [
+          'A recording app: Voice Memos on iPhone, or the built-in Recorder or Sound Recorder app on most Android phones',
+          'A quiet room: Bedrooms and closets with soft furnishings work well',
+          'A short script or notes: So you do not lose your place',
+          'Headphones: To check the recording before you send it',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Phone microphones are built to pick up voices close by. That is why simple principles of [sound recording](https://en.wikipedia.org/wiki/Sound_recording_and_reproduction), like distance and background noise, make a bigger difference than expensive gear.',
+      },
+      { kind: 'h2', text: 'How to Record a Heartfelt Voice Note: Step by Step' },
+      { kind: 'h3', text: 'Step 1: Decide on the Purpose' },
+      {
+        kind: 'p',
+        text: 'Ask yourself one question first: what do I want this person to feel when they hear it? Loved, celebrated, thanked, or comforted? That single answer will shape your words, your tone, and how long you speak.',
+      },
+      { kind: 'h3', text: 'Step 2: Write a Short Script or Bullet Notes' },
+      {
+        kind: 'p',
+        text: 'A voice note script keeps you focused and calm. You do not have to read it word for word. Bullet points often sound more natural than a full script. Write down:',
+      },
+      { kind: 'ul', items: ['One specific memory you share', 'One thing you appreciate about them', 'One wish or hope for their future'] },
+      { kind: 'h3', text: 'Step 3: Find a Quiet Space' },
+      { kind: 'p', text: 'Background noise is the most common problem with home recordings. Before you start:' },
+      {
+        kind: 'ul',
+        items: [
+          'Turn off fans, air conditioners, and TVs',
+          'Close windows to block traffic sounds',
+          'Put your phone on Do Not Disturb so notifications do not interrupt',
+          'Choose a room with curtains, rugs, or a bed to reduce echo',
+        ],
+      },
+      { kind: 'h3', text: 'Step 4: Hold Your Phone Correctly' },
+      {
+        kind: 'p',
+        text: 'Keep the phone about 15 to 20 cm (6 to 8 inches) from your mouth. Angle it slightly to the side so your breath does not hit the microphone directly. Speak a little slower than you normally would. Smile while you talk. Listeners can often hear the difference.',
+      },
+      { kind: 'h3', text: 'Step 5: Record, Listen, and Re-record' },
+      {
+        kind: 'p',
+        text: 'Record a short test first and play it back with headphones. Check that your voice is clear and the volume is steady. Do not aim for perfection. A small laugh or a pause to collect yourself makes the message feel real. Re-record only if words are unclear or a loud noise cuts in.',
+      },
+      { kind: 'h3', text: 'Step 6: Package It as a Gift' },
+      {
+        kind: 'p',
+        text: 'A voice note on its own is lovely. Pairing it with photos and a written message turns it into a keepsake. With GEMS, you can record your voice directly in the browser and [create a personalized virtual gift](/create) that combines your recording, photos, and a note inside a digital gift box. The recipient opens it through a single link, with no app or account needed.',
+      },
+      { kind: 'h2', text: 'How Long Should a Voice Message Gift Be?' },
+      { kind: 'p', text: 'Shorter usually works better. A focused message is easier to listen to and more likely to be replayed. Use this as a general guide:' },
+      {
+        kind: 'ul',
+        items: [
+          'Quick greeting or thank-you: 20 to 45 seconds',
+          'Birthday or anniversary message: 1 to 2 minutes',
+          'Milestone moments (wedding, graduation, retirement): 2 to 4 minutes',
+          'Long messages: Split them into two or three short clips',
+        ],
+      },
+      { kind: 'p', text: 'If you find yourself rambling, go back to your three bullet points and trim.' },
+      { kind: 'h2', text: 'What to Say in a Voice Note: A Simple Structure' },
+      { kind: 'p', text: "If you are unsure what to say in a voice note, follow this six-part flow. It works for almost any occasion." },
+      {
+        kind: 'ul',
+        items: [
+          'Greet them by name. "Hi Sara, it is me."',
+          'Say why you are recording. "I wanted you to hear this from me today."',
+          'Share a specific memory. Details make it personal.',
+          'Tell them what they mean to you. Be direct and honest.',
+          'Offer a wish or hope. Look ahead to something good.',
+          'Close warmly. End with a familiar phrase or a sign-off only you two use.',
+        ],
+      },
+      { kind: 'h2', text: 'Voice Note Script Ideas for Every Occasion' },
+      {
+        kind: 'p',
+        text: 'Use these scripts as starting points. Replace the bracketed parts with your own details, and change any wording that does not sound like you.',
+      },
+      { kind: 'h3', text: 'Birthday Voice Message Ideas' },
+      {
+        kind: 'p',
+        text: '"Happy birthday, [name]! I wanted to start your day with something better than a text. I keep thinking about [shared memory], and how much I laughed that day. You make every year brighter for the people around you. I hope this year brings you [wish]. Have the best day, and save some cake for me."',
+      },
+      {
+        kind: 'p',
+        text: 'You can pair this with photos from past birthdays as a [virtual birthday gift](/virtual-birthday-gift) that arrives instantly.',
+      },
+      { kind: 'h3', text: 'Voice Message Ideas for Girlfriend or Partner' },
+      {
+        kind: 'p',
+        text: '"Hey you. I know we talk every day, but I wanted to say this properly. I still think about [first date or special moment]. Being with you feels like home. Thank you for [something specific they do]. I cannot wait for [next plan together]. I love you."',
+      },
+      { kind: 'p', text: 'Other ideas for partners:' },
+      {
+        kind: 'ul',
+        items: [
+          'Describe the moment you knew you liked them',
+          'List three small things they do that make you smile',
+          'Record a goodnight message they can play when you are apart',
+        ],
+      },
+      { kind: 'h3', text: 'Voice Message for Mom' },
+      {
+        kind: 'p',
+        text: '"Hi Mom. I do not say this enough, so I wanted to record it. Thank you for [specific sacrifice or habit]. I still remember [childhood memory]. So much of who I am comes from you. I hope you know how much you are loved. Talk soon."',
+      },
+      {
+        kind: 'p',
+        text: 'Parents and grandparents often value voice messages because they can replay them easily, without needing to scroll through chats.',
+      },
+      { kind: 'h3', text: 'Voice Note for a Loved One Far Away' },
+      {
+        kind: 'p',
+        text: '"Hi [name]. It is [time] here, and I was just thinking about you. I miss [something you do together]. Distance is hard, but hearing your voice always helps, so I hope mine helps a little today. Until we see each other again, know that I am always cheering for you."',
+      },
+      { kind: 'h3', text: 'Thank-You or Appreciation Message' },
+      {
+        kind: 'p',
+        text: '"[Name], I wanted to properly thank you for [what they did]. It meant more than you probably realize. You showed up when it mattered, and I will not forget it. Thank you for being you."',
+      },
+      { kind: 'h3', text: '"Just Because" Voice Note' },
+      {
+        kind: 'p',
+        text: '"No special reason for this message. I was [doing something ordinary] and it reminded you of you. I just wanted you to know you are on my mind and you matter to me. That is it. Have a good day."',
+      },
+      { kind: 'h2', text: 'Common Mistakes to Avoid' },
+      { kind: 'p', text: 'A few small slips can take away from an otherwise lovely message:' },
+      {
+        kind: 'ul',
+        items: [
+          'Recording in a noisy place. Background sound distracts from your words.',
+          'Reading too fast. Nerves speed people up. Slow down on purpose.',
+          'Being too general. "You are great" means less than a specific memory.',
+          'Making it too long. Keep it focused so it stays easy to replay.',
+          'Not checking the file. Always listen once before sending.',
+          'Forgetting privacy. Avoid sharing details the recipient may not want others to hear if they play it aloud.',
+        ],
+      },
+      { kind: 'h2', text: 'Other Audio Gift Ideas to Try' },
+      { kind: 'p', text: 'If you want to go beyond a single message, here are more audio gift ideas:' },
+      {
+        kind: 'ul',
+        items: [
+          'Family audio greeting: Collect short clips from siblings, cousins, or friends and combine them into one gift.',
+          'Voice time capsule: Record a message meant to be opened on a future date, like next birthday or New Year.',
+          'Bedtime story recording: Grandparents can record a story for grandchildren living far away.',
+          'Sing a short song: Even an imperfect version of a family favorite can be touching.',
+          'Sounds of home: Record familiar sounds for someone living abroad.',
+          'Inside-joke message: Recreate a funny moment only the two of you will understand.',
+        ],
+      },
+      { kind: 'h2', text: 'Ready to Record? Start With One Honest Minute' },
+      {
+        kind: 'p',
+        text: 'You do not need perfect words or a professional setup. You need a quiet room, a phone, and something true to say. Start with one memory and one thing you appreciate. Speak slowly, keep it short, and let your real voice come through. That is what the person you love will remember.',
+      },
+      {
+        kind: 'p',
+        text: 'When you are ready to turn your recording into a complete keepsake, you can see [how GEMS virtual gifts work](/how-it-works) and share your message in a few minutes.',
+      },
+    ],
+    ctaHeading: 'Turn Your Voice Into a Gift They Can Replay',
+    ctaBody:
+      'Record your voice, add photos and a message inside a GEMS digital gift box, and share it with one link. No app or account needed.',
+    faqs: [
+      { q: 'Can I send a voice message gift without an app?', a: 'Many digital gift platforms let you record your voice in a browser and share it through a link. The recipient simply opens the link on a phone or computer to listen.' },
+      { q: 'What should I say in a voice note to someone I miss?', a: 'Mention a specific memory, tell them what you miss about them, and share something you look forward to doing together. Keeping it simple and honest usually feels most meaningful.' },
+      { q: 'How can I make my phone recording sound clearer?', a: 'Record in a quiet room with soft furnishings and hold the phone about 15 to 20 cm from your mouth. Speaking slowly and testing a short clip first also helps.' },
+      { q: 'How long should a birthday voice message be?', a: 'Around one to two minutes works well for most birthday messages. That gives you time for a memory and a wish without losing the listener\u2019s attention.' },
+      { q: 'Are voice messages a good gift for parents or grandparents?', a: 'They often work very well because older relatives can replay them anytime without needing technical skills. Speak clearly and include a shared family memory to make it more personal.' },
+    ],
+    related: [
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'Long distance gift ideas', path: '/long-distance-gift-ideas' },
+      { label: 'Virtual birthday gift ideas', path: '/virtual-birthday-gift' },
+    ],
+  },
+  {
+    slug: 'digital-gifts-for-parents-living-abroad',
+    keyword: 'gifts for parents far away',
+    metaTitle: 'Gifts for Parents Far Away: Digital Gift Ideas',
+    metaDescription:
+      'Find gifts for parents far away: digital ideas to surprise mom and dad abroad, skip customs fees, and send love to the family in another country.',
+    layout: 'split',
+    image: { key: 'parents-abroad', alt: 'Senior couple enjoying a video call with family on a tablet' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'Digital Gifts for Parents Living Abroad',
+    intro:
+      'Living in a different country from your parents changes how you celebrate. Birthdays, Eid, Christmas, and anniversaries often pass with a phone call and a promise to visit soon. Finding thoughtful gifts for parents far away can feel tricky. Shipping is slow, international parcels can be expensive, and some items get stuck in customs. The good news is that a meaningful gift does not have to travel in a box. This guide covers digital gift ideas, practical tips, and simple ways to send love to parents online, wherever they live.',
+    blocks: [
+      { kind: 'h2', text: 'Why Is It Hard to Send Gifts to Parents in Another Country?' },
+      { kind: 'p', text: 'Anyone who has tried to post a parcel overseas knows the common problems:' },
+      {
+        kind: 'ul',
+        items: [
+          'High shipping costs that sometimes exceed the gift\u2019s value',
+          'Long delivery times, especially around holidays',
+          'Customs duties and paperwork on the receiving end',
+          'Restricted items, such as some foods, cosmetics, or electronics',
+          'Lost or damaged parcels with limited tracking',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Every country sets its own [customs rules](https://en.wikipedia.org/wiki/Customs), and parents may be asked to pay a fee before they can collect a package. That can turn a kind surprise into an inconvenience. Digital gifts avoid most of these issues. Because nothing is physically shipped, there is no parcel to clear, no delivery window to miss, and no fee for your parents to pay when it arrives.',
+      },
+      { kind: 'h2', text: 'What Makes a Good Gift for Parents Living Far Away?' },
+      {
+        kind: 'p',
+        text: 'Most parents do not want more things. When you live abroad, what they usually miss is you: your voice, your face, and feeling part of your daily life. A good long distance family gift tends to have these qualities:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Personal: It reflects your shared history, not just a product',
+          'Easy to open: No complicated apps, passwords, or setup',
+          'Easy to revisit: They can look at it again whenever they miss you',
+          'On time: It arrives on the actual day, not two weeks later',
+        ],
+      },
+      { kind: 'p', text: 'If you are new to this kind of gift, this explainer on [what a virtual gift is](/what-is-a-virtual-gift) covers the basics.' },
+      { kind: 'h2', text: 'Digital Gift Ideas for Mom and Dad Overseas' },
+      { kind: 'h3', text: '1. A Photo and Voice Message Keepsake' },
+      {
+        kind: 'p',
+        text: 'Gather photos from family trips, childhood moments, or recent days in your new city. Add a recorded voice note and a short written message. This kind of gift works well for immigrant parents and for parents whose children have moved abroad. It feels like a visit, even when a visit is not possible. With GEMS, you can [create a digital gift with photos, voice, and a message](/create) inside a 3D gift box. Your parents open it through one link on their phone, with no app or account needed.',
+      },
+      { kind: 'h3', text: '2. A "Day in My Life" Photo Story' },
+      {
+        kind: 'p',
+        text: 'Parents often wonder what your life actually looks like. Take photos throughout one ordinary day and add a short caption to each:',
+      },
+      { kind: 'ul', items: ['Your morning coffee or breakfast', 'Your commute or street', 'Your workplace or campus', 'Your favorite local shop', 'Dinner and your evening view'] },
+      { kind: 'p', text: 'This helps parents picture your routine and feel less distant.' },
+      { kind: 'h3', text: '3. A Recorded Message From the Whole Family' },
+      {
+        kind: 'p',
+        text: 'If you have children, ask them to record short clips for their grandparents. Siblings in different cities can add their own messages too. Combined, these clips create a warm family audio greeting your parents can replay many times.',
+      },
+      { kind: 'h3', text: '4. A Digital Thank-You Letter' },
+      {
+        kind: 'p',
+        text: 'Some things are easier to write than to say on a video call. A letter thanking your parents for specific sacrifices can be one of the most sentimental gifts for parents. Mention real moments, such as:',
+      },
+      { kind: 'ul', items: ['The time they supported a big decision', 'A childhood memory you still think about', 'Lessons from them you use today'] },
+      { kind: 'h3', text: '5. A Scheduled Video Call With a Surprise' },
+      {
+        kind: 'p',
+        text: 'Plan a video call and quietly invite other relatives to join. When your parents connect, they see the whole family waiting. This works especially well for birthdays and anniversaries. You can pair it with a digital gift you send right before the call.',
+      },
+      { kind: 'h3', text: '6. Online Classes or Subscriptions' },
+      { kind: 'p', text: 'Practical digital gifts can also be thoughtful. Depending on your parents\u2019 interests, consider:' },
+      {
+        kind: 'ul',
+        items: [
+          'A cooking, gardening, or language course',
+          'An audiobook or e-book subscription',
+          'A streaming service with shows in their language',
+          'A cloud storage plan to keep family photos safe',
+        ],
+      },
+      { kind: 'p', text: 'Check that the service is available in their country before you buy.' },
+      { kind: 'h3', text: '7. A Memory Timeline of Your Family' },
+      {
+        kind: 'p',
+        text: 'Scan old printed photos and arrange them in order, from your parents\u2019 wedding to the present day. Add a line about each moment. This kind of photo gift for parents often brings back stories they have not told in years.',
+      },
+      { kind: 'h2', text: 'How to Surprise Parents From Abroad' },
+      { kind: 'p', text: 'Timing and delivery make a big difference. Here are a few practical tips:' },
+      {
+        kind: 'ul',
+        items: [
+          'Check the time zone. Send the gift so it arrives in their morning, not in the middle of the night.',
+          'Use the app they already use. Share the link through WhatsApp, email, or whichever app they open daily.',
+          'Tell a sibling or relative. Ask someone nearby to help them open it if they are less comfortable with technology.',
+          'Follow up with a call. Watching their reaction together adds to the moment.',
+        ],
+      },
+      { kind: 'p', text: 'Many of these ideas also work across borders for couples and friends. This list of [long distance gift ideas](/long-distance-gift-ideas) has more options.' },
+      { kind: 'h2', text: 'Digital vs Physical Gifts for Family Abroad' },
+      {
+        kind: 'p',
+        text: 'Physical gifts still have their place, especially for special items you can hand over during a visit. Here is how the two options compare for international gifting:',
+      },
+      {
+        kind: 'table',
+        headers: ['Factor', 'Digital gifts', 'Physical gifts'],
+        rows: [
+          ['Delivery speed', 'Arrive instantly', 'Can take days or weeks'],
+          ['Cost', 'Often free or low cost', 'Item plus international shipping'],
+          ['Customs fees', 'None - nothing ships', 'Parcels may be charged duties'],
+          ['Sentimental value', 'Can include your voice and photos', 'Also meaningful'],
+          ['Touch and feel', 'Screen-based', 'You can hold them and display them'],
+        ],
+      },
+      { kind: 'p', text: 'Many families combine both. A digital gift arrives on the day, and a physical gift waits for the next visit home.' },
+      { kind: 'h2', text: 'Tips for Making Digital Gifts Easy for Older Parents' },
+      { kind: 'p', text: 'Not every parent is comfortable with technology. A few small choices make a big difference:' },
+      {
+        kind: 'ul',
+        items: [
+          'Choose gifts that open with a single tap, without sign-ups',
+          'Keep voice messages slow and clear',
+          'Use larger, clear photos rather than tiny collages',
+          'Send a short text explaining what the link is, so they do not mistake it for spam',
+          'Make sure the link stays available so they can revisit it',
+        ],
+      },
+      { kind: 'p', text: 'GEMS gift links do not expire and stay active until you delete them, so parents can return to the gift whenever they like.' },
+      { kind: 'h2', text: 'Bringing Your Parents Closer, Wherever You Live' },
+      {
+        kind: 'p',
+        text: 'Distance makes it harder to show up in person, but it does not stop you from showing up. The best gifts for parents far away are usually simple: a familiar voice, a few photos, and honest words that tell them you are thinking of them. Pick one idea from this list, make it personal, and send it in time for their morning.',
+      },
+    ],
+    ctaHeading: 'Send Your Parents Something They Can Open Anywhere',
+    ctaBody:
+      'Create a GEMS digital gift with photos, a voice note and your message, then share one link. It arrives instantly, with no customs fees and no apps.',
+    faqs: [
+      { q: 'What can I send my parents in another country without paying customs fees?', a: 'Digital gifts such as photo and voice keepsakes, e-books, online courses, or subscriptions do not pass through customs. They arrive instantly, and your parents will not be asked to pay anything to receive them.' },
+      { q: 'How can I surprise my parents from abroad on their anniversary?', a: 'Send a digital gift with old family photos and a recorded message, then join a video call with relatives. Timing it for their morning makes the surprise feel more special.' },
+      { q: 'What are good sentimental gifts for parents who live far away?', a: 'Voice messages, family photo timelines, and handwritten-style letters thanking them for specific moments tend to mean the most. Personal details matter more than the price.' },
+      { q: 'Are digital gifts suitable for parents who are not good with technology?', a: 'They can be, as long as the gift opens with one tap and needs no account or app download. A short text explaining the link also helps them feel comfortable opening it.' },
+      { q: 'How do I send love to my parents online when I cannot visit?', a: 'Regular video calls, short voice notes, and occasional digital gifts help parents feel connected. Sharing small details of your daily life often matters as much as big gestures.' },
+    ],
+    related: [
+      { label: 'Long distance gift ideas', path: '/long-distance-gift-ideas' },
+      { label: 'What is a virtual gift', path: '/what-is-a-virtual-gift' },
+      { label: 'Create a virtual gift', path: '/create' },
+    ],
+  },
+  {
+    slug: 'new-year-resolution-messages-loved-ones',
+    keyword: 'new year messages for loved ones',
+    metaTitle: 'New Year Messages for Loved Ones: 2027 Wishes',
+    metaDescription:
+      'Share heartfelt New Year messages for loved ones, with 2027 wishes for family, friends, and long distance partners, plus gratitude message ideas.',
+    layout: 'banner',
+    image: { key: 'new-year-messages', alt: 'Crowd celebrating New Year with fireworks over the city' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: "New Year's Resolution Messages to Send Loved Ones",
+    intro:
+      'The start of a new year is a natural moment to tell people what they mean to you. A short, sincere message can carry more weight than a generic "Happy New Year" forwarded to every contact. This guide shares New Year messages for loved ones, including family, friends, partners, and people far away. You will also find tips on writing your own, plus resolution-style messages that look ahead to the year together.',
+    blocks: [
+      { kind: 'h2', text: 'Why Send a Personal New Year Message?' },
+      {
+        kind: 'p',
+        text: 'Group chats fill up with copied greetings on 1 January. A personal note stands out because it is written for one person. A thoughtful New Year message can:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Thank someone for their support during the past year',
+          'Repair or refresh a relationship that drifted',
+          'Share hopes and plans for the year ahead',
+          'Help someone far away feel included in your celebration',
+        ],
+      },
+      {
+        kind: 'p',
+        text: "Many people make a [New Year's resolution](https://en.wikipedia.org/wiki/New_Year%27s_resolution) for themselves. Sharing a resolution that involves someone you love, like calling more often or planning a trip together, turns it into a promise you both can look forward to.",
+      },
+      { kind: 'h2', text: 'How to Write a Heartfelt New Year Wish' },
+      { kind: 'p', text: 'You do not need to be a writer. Use this simple structure:' },
+      {
+        kind: 'ul',
+        items: [
+          'Look back: Mention one moment from the past year you are grateful for.',
+          'Appreciate: Say what this person brought to your life.',
+          'Look ahead: Share a wish or resolution for the new year.',
+          'Close warmly: End with a personal sign-off.',
+        ],
+      },
+      { kind: 'p', text: 'Keep it short. Three or four sentences are usually enough to feel sincere without becoming a speech.' },
+      { kind: 'h2', text: 'New Year Messages for Family' },
+      { kind: 'p', text: 'Family members often hear the least appreciation, even though they give the most. Try one of these:' },
+      {
+        kind: 'p',
+        text: '"Happy New Year, Mom and Dad. Thank you for every phone call, every piece of advice, and every prayer this year. My resolution is to visit more and listen better. I love you both."',
+      },
+      {
+        kind: 'p',
+        text: '"To my brother: we argued less and laughed more this year, and I am proud of that. Here is to more late-night talks in the new year."',
+      },
+      { kind: 'p', text: '"Happy New Year to my wonderful family. Whatever this year brings, I am grateful we face it together."' },
+      { kind: 'p', text: '"Grandma, your stories made this year warmer. I hope the new year brings you good health and plenty of reasons to smile."' },
+      { kind: 'h2', text: 'Happy New Year Messages for Friends' },
+      { kind: 'p', text: 'Friends are often the people who carried us through the hard parts of the year. Let them know:' },
+      {
+        kind: 'p',
+        text: '"Happy New Year! You showed up for me more times than I can count this year. Here is to more adventures, fewer worries, and a lot more laughter."',
+      },
+      { kind: 'p', text: '"Another year of friendship in the books. Thank you for being my safe place. Let us make this year\u2019s plans actually happen."' },
+      { kind: 'p', text: '"New year, same promise: I will always be your biggest supporter. Wishing you a year full of good news."' },
+      { kind: 'p', text: '"Cheers to us surviving another year. I cannot imagine it without you."' },
+      { kind: 'h2', text: 'New Year Wishes for Long Distance Loved Ones' },
+      { kind: 'p', text: 'When you are celebrating in different time zones, a message helps close the gap. These work for partners, friends, and family abroad:' },
+      {
+        kind: 'p',
+        text: '"It is not midnight here yet, but I wanted you to be the first person I think of this year. I miss you, and I cannot wait until we celebrate in the same place."',
+      },
+      {
+        kind: 'p',
+        text: '"Distance kept us apart this year, but it never made us feel far. My resolution is simple: close the gap, one visit at a time."',
+      },
+      { kind: 'p', text: '"Happy New Year from across the miles. You are in my heart in every time zone."' },
+      {
+        kind: 'p',
+        text: 'If you are celebrating apart from a partner, these [gift ideas for long distance relationships](/long-distance-gift-ideas) can add something special to your message.',
+      },
+      { kind: 'h2', text: 'New Year Resolution Messages for Couples' },
+      { kind: 'p', text: 'Shared resolutions can feel romantic and meaningful. Here are a few ideas to send:' },
+      { kind: 'p', text: '"My resolution this year is to choose you, every day, in the small moments too."' },
+      { kind: 'p', text: '"This year, I want to say thank you more, rush less, and plan more date nights with you."' },
+      { kind: 'p', text: '"New year, new memories. Let us start a tradition that is just ours."' },
+      { kind: 'p', text: '"I do not need a new me this year. I just want more time with you."' },
+      { kind: 'h2', text: 'New Year Gratitude Messages' },
+      { kind: 'p', text: 'Gratitude messages work well for mentors, colleagues, neighbors, or anyone who made a difference:' },
+      { kind: 'p', text: '"Thank you for your patience and guidance this year. I learned so much from you, and I hope the new year treats you well."' },
+      { kind: 'p', text: '"You probably do not know how much your kindness helped me this year. Wishing you a peaceful and happy new year."' },
+      { kind: 'p', text: '"Grateful for people like you who make ordinary days better. Happy New Year."' },
+      { kind: 'h2', text: 'Best New Year Captions for Social Media' },
+      { kind: 'p', text: 'If you are posting rather than messaging, short captions work best:' },
+      {
+        kind: 'ul',
+        items: [
+          'New year, same people I am grateful for.',
+          'Leaving the stress in last year, taking the lessons forward.',
+          'Here is to slow mornings, kind words, and good company.',
+          'Fresh calendar, full heart.',
+          'Twelve new chapters. Let us write good ones.',
+        ],
+      },
+      { kind: 'h2', text: 'Creative New Year Surprise Ideas' },
+      { kind: 'p', text: 'Words become more memorable when you deliver them in a special way. Consider these options:' },
+      {
+        kind: 'ul',
+        items: [
+          'Record a New Year voice message so they hear your wish in your own voice',
+          'Send a digital New Year card with photos from the year you shared',
+          'Create a "year in review" photo story of your best moments together',
+          'Schedule your message to arrive right at midnight in their time zone',
+          'Write a letter for next New Year and ask them to open it in 12 months',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'With GEMS, you can [combine photos, a voice note, and your message](/create) in a digital gift and share it as one link. It works on any phone or computer, so it suits friends and family wherever they are celebrating.',
+      },
+      { kind: 'h2', text: 'Tips for Sending New Year Messages' },
+      { kind: 'p', text: 'A few practical points help your message land well:' },
+      {
+        kind: 'ul',
+        items: [
+          'Personalize every message. Change at least one detail for each person.',
+          'Mind the time zone. Send it so it arrives close to their midnight or morning.',
+          'Avoid copy-paste chains. People notice generic forwards.',
+          'Keep it positive. New Year is not the moment to raise old arguments.',
+          'Follow up. If you promised a call or visit in your message, put it in your calendar.',
+        ],
+      },
+      { kind: 'h2', text: 'Start the New Year With Words That Matter' },
+      {
+        kind: 'p',
+        text: 'The messages people keep are rarely the longest or most poetic. They are the ones that mention a real memory and a real hope. Pick a few people who shaped your year, write them something honest, and send it before the celebrations fade. It is a small habit that can set the tone for the entire year ahead.',
+      },
+    ],
+    ctaHeading: 'Send Your New Year Wish in Your Own Voice',
+    ctaBody:
+      'Record a New Year message with photos and a note inside a GEMS gift box, then share one link with everyone you love.',
+    faqs: [
+      { q: 'What is a short New Year message for loved ones?', a: 'A simple example is "Thank you for being part of my year. I cannot wait to make more memories with you in the new one." Short messages work best when they include one personal detail.' },
+      { q: 'What should I write in a New Year message for family?', a: 'Thank them for something specific from the past year and share a hope for the year ahead. Mentioning a shared memory makes the message feel personal.' },
+      { q: 'How do I wish someone Happy New Year from a long distance?', a: 'Send a message or voice note timed to arrive at midnight in their time zone. Mention that you miss them and share a plan to see each other soon.' },
+      { q: 'What is a good New Year resolution message for a partner?', a: 'Share a resolution that involves both of you, like more date nights or a trip together. Keep it warm, specific, and easy to act on.' },
+      { q: 'When is the best time to send New Year wishes?', a: 'Most people send messages on 31 December or the morning of 1 January. For people in other countries, match the timing to their local midnight.' },
+    ],
+    related: [
+      { label: 'Long distance gift ideas', path: '/long-distance-gift-ideas' },
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
+    ],
+  },
+  {
+    slug: 'personal-photo-gift-without-printing',
+    keyword: 'personalized photo gift',
+    metaTitle: 'Personalized Photo Gift Ideas Without Printing',
+    metaDescription:
+      'Explore personalized photo gift ideas with no printing. Learn to choose photos, build a photo story, and make a digital gift that feels personal.',
+    layout: 'compact',
+    image: { key: 'photo-gift', alt: 'Couple smiling while looking through a photo album together' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'How to Make a Photo Gift That Feels Personal (Without Printing)',
+    intro:
+      'Most of us have thousands of photos on our phones and almost none of them on our walls. Those pictures hold birthdays, trips, inside jokes, and ordinary days that suddenly feel precious. A photo gift does not need a printer, a frame, or a delivery date. With the right photos and a little storytelling, a digital photo gift can feel just as personal as a printed album. This guide covers personalized photo gift ideas, how to choose the right pictures, and simple ways to turn them into a meaningful memory gift.',
+    blocks: [
+      { kind: 'h2', text: 'Why Choose a Digital Photo Gift Instead of Printing?' },
+      { kind: 'p', text: 'Printed photos are lovely, but they come with trade-offs. A photo gift without printing offers some practical benefits:' },
+      {
+        kind: 'ul',
+        items: [
+          'Instant delivery: Perfect for last-minute occasions or people far away',
+          'No shipping or printing costs: You only need your phone or computer',
+          'Room for more: Add voice notes, captions, and dozens of photos',
+          'Easy to revisit: The recipient can open it on their phone anytime',
+          'Less waste: No paper, ink, or packaging',
+        ],
+      },
+      { kind: 'p', text: 'That said, a digital gift and a printed album can work together. Some people send a digital version on the day and print a favorite later.' },
+      { kind: 'h2', text: 'How to Choose Photos for a Gift' },
+      { kind: 'p', text: 'The photos you choose matter more than the format. Here is a simple process that works well.' },
+      { kind: 'h3', text: 'Start With a Theme' },
+      { kind: 'p', text: 'A theme gives your gift a clear purpose. Some ideas:' },
+      {
+        kind: 'ul',
+        items: [
+          '"Our first year together" for an anniversary',
+          '"Then and now" for a birthday or graduation',
+          '"Reasons I love you" with one photo per reason',
+          '"Our adventures" for travel photos',
+          '"Little moments" for everyday snapshots',
+        ],
+      },
+      { kind: 'h3', text: 'Pick Photos With Stories Behind Them' },
+      {
+        kind: 'p',
+        text: 'The best photos for a surprise are not always the most polished. A blurry selfie from a memorable night can mean more than a perfect portrait. Ask yourself: does this photo remind us of a feeling or a story? If the answer is yes, it belongs in the gift.',
+      },
+      { kind: 'h3', text: 'Mix Different Types of Shots' },
+      { kind: 'p', text: 'Variety keeps a photo story gift interesting:' },
+      {
+        kind: 'ul',
+        items: [
+          'Close-up faces and candid laughs',
+          'Wide shots of places you visited',
+          'Small details like a meal, a ticket, or a handwritten note',
+          'Old photos from childhood or early days',
+          'Recent photos that show how far you have come',
+        ],
+      },
+      { kind: 'h3', text: 'Keep the Number Manageable' },
+      {
+        kind: 'p',
+        text: 'More is not always better. For most gifts, 10 to 25 carefully chosen photos feel thoughtful without becoming overwhelming. If you have more, consider splitting them into chapters.',
+      },
+      { kind: 'h2', text: 'Personalized Photo Gift Ideas (No Printing Needed)' },
+      { kind: 'h3', text: '1. A Digital Photo Gift Box' },
+      {
+        kind: 'p',
+        text: 'Place your photos inside a virtual gift box with a message and a voice note. The recipient unwraps it on screen, which adds a sense of surprise. GEMS lets you [create a personalized photo gift](/create) with photos, a recorded voice message, and a written note inside a 3D gift box. You share it with a single link, and it opens on any device without an app.',
+      },
+      { kind: 'h3', text: '2. A Photo Story Timeline' },
+      {
+        kind: 'p',
+        text: 'Arrange photos in order from the first moment to the present. Add a one-line caption under each, such as "The day we met" or "Our first trip that went completely wrong." Timelines work well as photo gifts for anniversaries and for parents\u2019 milestone birthdays.',
+      },
+      { kind: 'h3', text: '3. An Online Photo Collage' },
+      { kind: 'p', text: 'A [collage](https://en.wikipedia.org/wiki/Collage) groups several images into a single picture. Online photo collage ideas include:' },
+      {
+        kind: 'ul',
+        items: [
+          'A grid of your favorite selfies together',
+          'A heart shape made of small photos',
+          'A "best of the year" layout with 12 photos, one per month',
+          'A before-and-after collage for a big change, like a new home',
+        ],
+      },
+      { kind: 'p', text: 'Many free design apps include collage templates you can use in minutes.' },
+      { kind: 'h3', text: '4. A Photo Memory Video' },
+      {
+        kind: 'p',
+        text: 'Turn your photos into a short slideshow with music and captions. Keep it between one and three minutes so it stays easy to watch and rewatch. You can learn more ideas in this guide to a [photo memory video gift](/photo-memory-video-gift).',
+      },
+      { kind: 'h3', text: '5. An Online Photo Album Gift' },
+      {
+        kind: 'p',
+        text: 'Shared albums in Google Photos or iCloud can become a gift when you organize them with a clear title and description. Invite family members to add their own photos for a group keepsake.',
+      },
+      { kind: 'h3', text: '6. "Reasons Why" Photo Cards' },
+      { kind: 'p', text: 'Pair each photo with one reason you appreciate the person. This format works beautifully as a photo gift for mom on Mother\u2019s Day or her birthday. Example:' },
+      {
+        kind: 'ul',
+        items: [
+          'Photo of her cooking: "You made every Sunday feel like a celebration."',
+          'Photo from graduation: "You believed in me before I believed in myself."',
+          'A recent selfie together: "You are still my favorite person to call."',
+        ],
+      },
+      { kind: 'h2', text: 'How to Make a Photo Gift Feel Personal' },
+      { kind: 'p', text: 'A collection of pictures becomes a meaningful gift when you add context. Try these touches:' },
+      {
+        kind: 'ul',
+        items: [
+          'Write captions. A few words explain why each moment matters.',
+          'Add your voice. A short voice note makes the gift feel like a conversation.',
+          'Include inside jokes. Small references only you two understand feel special.',
+          'Use their favorite colors or themes. Match the design to their personality.',
+          'End with a forward-looking message. Mention something you are looking forward to together.',
+        ],
+      },
+      { kind: 'h2', text: 'Photo Gift Ideas by Recipient' },
+      { kind: 'h3', text: 'Photo Gifts for Boyfriend or Girlfriend' },
+      {
+        kind: 'ul',
+        items: [
+          'A "first year together" timeline',
+          'A collage of every date night',
+          'A photo from each place you have traveled together, with a caption',
+        ],
+      },
+      { kind: 'h3', text: 'Photo Gifts for Mom or Dad' },
+      {
+        kind: 'ul',
+        items: [
+          'Childhood photos paired with recent ones',
+          'A family timeline from their wedding day',
+          'A grandchildren collage with short messages',
+        ],
+      },
+      { kind: 'h3', text: 'Photo Gifts for Friends' },
+      {
+        kind: 'ul',
+        items: [
+          'Funny moments and embarrassing throwbacks',
+          'A "friendship through the years" story',
+          'Photos from a shared trip with captions only you will understand',
+        ],
+      },
+      { kind: 'h2', text: 'Common Mistakes to Avoid' },
+      {
+        kind: 'ul',
+        items: [
+          'Using low-resolution or very blurry photos throughout',
+          'Including photos the recipient may not like of themselves',
+          'Adding too many similar shots of the same moment',
+          'Forgetting captions, which leaves the recipient guessing',
+          'Sharing private photos on a public link without checking privacy settings',
+        ],
+      },
+      { kind: 'h2', text: 'Turning Your Camera Roll Into a Lasting Keepsake' },
+      {
+        kind: 'p',
+        text: 'You already have the material for a meaningful gift sitting in your phone. The work is in choosing the right moments and telling their story. Pick a theme, select photos with real memories behind them, and add a few honest words. Whether you share it as a gift box, a timeline, or a short video, the personal touch is what the recipient will remember.',
+      },
+    ],
+    ctaHeading: 'Turn Your Photos Into a Gift They Can Open Instantly',
+    ctaBody:
+      'Build a photo gift box with captions, a voice note and your message on GEMS, then share one link. No printer, no shipping, no app needed.',
+    faqs: [
+      { q: 'How can I give a photo gift without printing?', a: 'You can create a digital photo gift box, slideshow, online album, or collage and share it through a link. These options arrive instantly and can include captions or voice messages.' },
+      { q: 'How many photos should I include in a photo gift?', a: 'Around 10 to 25 photos works well for most gifts. Choose quality and meaning over quantity so each picture adds to the story.' },
+      { q: 'What photos are best for a surprise gift?', a: 'Photos with a memory or story behind them usually work best, even if they are not perfect. Mix candid moments, special occasions, and everyday snapshots.' },
+      { q: 'What is a good photo gift for mom?', a: 'A mix of childhood and recent photos with short captions about what she means to you is a thoughtful choice. Adding a voice message makes it even more personal.' },
+      { q: 'Are digital photo gifts as meaningful as printed ones?', a: 'They can be just as meaningful when they include personal captions, stories, and your voice. The thought behind the photo selection matters more than the format.' },
+    ],
+    related: [
+      { label: 'Photo memory video gift', path: '/photo-memory-video-gift' },
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'What is a virtual gift', path: '/what-is-a-virtual-gift' },
+    ],
+  },
+  {
+    slug: 'digital-gifts-vs-physical-gifts',
+    keyword: 'digital gifts vs physical gifts',
+    metaTitle: 'Digital Gifts vs Physical Gifts: Which Is Better?',
+    metaDescription:
+      'Digital gifts vs physical gifts: compare the pros, cons, cost, waste, and thoughtfulness of each so you can pick the right gift for any occasion.',
+    layout: 'soft',
+    image: { key: 'gift-comparison', alt: 'Two hands exchanging a beautifully wrapped gift box' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'Digital Gifts vs Physical Gifts: Which One Is Better?',
+    intro:
+      'Gift giving has changed a lot in recent years. Alongside wrapped boxes and greeting cards, people now send e-gift cards, online experiences, voice messages, and virtual gift boxes. That raises a fair question: are digital gifts thoughtful, or do physical gifts still mean more? The honest answer is that it depends on the person, the occasion, and what you want the gift to say. This guide compares digital gifts vs physical gifts so you can decide with confidence.',
+    blocks: [
+      { kind: 'h2', text: 'What Counts as a Digital Gift?' },
+      { kind: 'p', text: 'A digital gift is anything you give that is delivered online rather than in person or by post. Common examples include:' },
+      {
+        kind: 'ul',
+        items: [
+          'E-gift cards and online vouchers',
+          'Streaming, music, or app subscriptions',
+          'Online classes and courses',
+          'E-books and audiobooks',
+          'Digital photo albums and memory videos',
+          'Virtual gift boxes with photos, messages, and voice notes',
+        ],
+      },
+      { kind: 'p', text: 'For a deeper explanation, see this guide on [what a virtual gift is](/what-is-a-virtual-gift).' },
+      { kind: 'h2', text: 'What Counts as a Physical Gift?' },
+      {
+        kind: 'p',
+        text: 'A physical gift is a tangible item the recipient can hold, use, or display. Think clothing, jewelry, books, flowers, gadgets, home decor, or handmade items. Physical gifts are usually wrapped, delivered in person, or shipped.',
+      },
+      { kind: 'h2', text: 'Pros and Cons of Digital Gifts' },
+      { kind: 'h3', text: 'Advantages of Digital Gifts' },
+      {
+        kind: 'ul',
+        items: [
+          'Instant gift delivery: They arrive in seconds, even on the day itself',
+          'No shipping costs or delays: Ideal for people in other cities or countries',
+          'Easy to personalize: You can add photos, videos, and your own voice',
+          'Low waste: Paperless gifting means no wrapping, boxes, or plastic',
+          'Easy to store: They do not take up space in a home',
+        ],
+      },
+      { kind: 'h3', text: 'Disadvantages of Digital Gifts' },
+      {
+        kind: 'ul',
+        items: [
+          'Less tangible: Some people prefer something they can touch',
+          'Can feel generic: A plain e-gift card may seem less personal',
+          'Requires a device: Recipients need a phone, tablet, or computer',
+          'Easy to overlook: A link can get buried in a busy inbox',
+        ],
+      },
+      { kind: 'h2', text: 'Pros and Cons of Physical Gifts' },
+      { kind: 'h3', text: 'Advantages of Physical Gifts' },
+      {
+        kind: 'ul',
+        items: [
+          'Tangible and visible: They can be held, worn, or displayed',
+          'The unwrapping moment: Opening a wrapped present is a ritual many people enjoy',
+          'Long-lasting reminders: A favorite item can be used for years',
+        ],
+      },
+      { kind: 'h3', text: 'Physical Gift Disadvantages' },
+      {
+        kind: 'ul',
+        items: [
+          'Shipping costs and delays, especially across borders',
+          'Customs fees on international parcels',
+          'Waste: [Gift wrapping](https://en.wikipedia.org/wiki/Gift_wrapping), packaging, and unwanted items often end up in the bin',
+          'Risk of mismatch: Wrong size, wrong taste, or something they already own',
+          'Clutter: Not everyone has room for more things',
+        ],
+      },
+      { kind: 'h2', text: 'Digital vs Physical Gifts: Side-by-Side Comparison' },
+      {
+        kind: 'table',
+        headers: ['Factor', 'Digital gifts', 'Physical gifts'],
+        rows: [
+          ['Delivery time', 'Instant', 'Days or weeks if shipped'],
+          ['Cost', 'Free to moderate', 'Item plus wrapping and shipping'],
+          ['Personal touch', 'Easy to add voice and photos', 'Touch and texture'],
+          ['Environmental impact', 'Usually lower waste', 'Packaging and transport'],
+          ['Best for distance', 'Far easier for long distance', 'Harder across borders'],
+          ['Best for display', 'Screen-based keepsakes', 'The edge for items you can display'],
+        ],
+      },
+      { kind: 'h2', text: 'Are Digital Gifts Thoughtful?' },
+      {
+        kind: 'p',
+        text: 'This is the most common concern. A digital gift is as thoughtful as the effort behind it. A last-second gift card sent without a message can feel rushed. On the other hand, a digital gift with carefully chosen photos, a handwritten-style note, and a recorded voice message can be deeply personal.',
+      },
+      {
+        kind: 'p',
+        text: 'The same is true for physical gifts. A generic item bought in a hurry often means less than a simple, personal gesture. What makes any gift thoughtful:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'It reflects the recipient\u2019s interests or your shared history',
+          'It shows time and attention, not just money',
+          'It arrives at the right moment',
+          'It includes a personal message',
+        ],
+      },
+      { kind: 'h2', text: 'When Is a Digital Gift the Better Choice?' },
+      { kind: 'p', text: 'Digital gifts often make more sense when:' },
+      {
+        kind: 'ul',
+        items: [
+          'The recipient lives in another city or country',
+          'You have missed shipping deadlines',
+          'The person values experiences or memories over objects',
+          'You want a low-waste, eco-friendly gift idea',
+          'You want to include your voice or video',
+        ],
+      },
+      { kind: 'p', text: 'If you are short on time, these [instant gift ideas](/instant-gift-ideas) can help you find something meaningful quickly.' },
+      { kind: 'h2', text: 'When Is a Physical Gift the Better Choice?' },
+      { kind: 'p', text: 'Physical gifts tend to work better when:' },
+      {
+        kind: 'ul',
+        items: [
+          'You are celebrating in person and want an unwrapping moment',
+          'The person loves collecting or displaying items',
+          'They need something practical, like clothing or a tool',
+          'The gift has a strong tactile element, such as a handmade item',
+        ],
+      },
+      { kind: 'h2', text: 'Can You Combine Digital and Physical Gifts?' },
+      { kind: 'p', text: 'Many people do, and it often works best. A few examples:' },
+      {
+        kind: 'ul',
+        items: [
+          'Send a digital gift on the day and give a small physical gift when you meet',
+          'Pair a physical present with a voice message that explains why you chose it',
+          'Use a digital photo story to announce an experience gift, like a trip',
+        ],
+      },
+      { kind: 'p', text: 'With GEMS, you can [create a digital gift box with photos, a message, and a voice note](/create), which can stand alone or complement a physical present.' },
+      { kind: 'h2', text: 'Gift Giving Trends to Know' },
+      { kind: 'p', text: 'A few broad shifts are shaping modern gift ideas:' },
+      {
+        kind: 'ul',
+        items: [
+          'Experiences over things: Many people prefer memories to possessions',
+          'Sustainable gifting: More buyers look for gifts with no waste',
+          'Personalization: Custom and sentimental gifts continue to grow in appeal',
+          'Remote relationships: Families and friends spread across cities need gifts that travel easily',
+        ],
+      },
+      { kind: 'p', text: 'These trends do not replace physical gifts. They simply give people more options.' },
+      { kind: 'h2', text: 'Choosing the Gift That Fits the Person' },
+      {
+        kind: 'p',
+        text: 'There is not a single winner in the digital vs physical debate. The better gift is the one that fits the recipient, the occasion, and your situation. If distance, time, or waste is a concern, a personal digital gift is a strong choice. If touch and the unwrapping moment matter most, go physical. And when in doubt, combine the two.',
+      },
+    ],
+    ctaHeading: 'Not Sure Which to Pick? Send Both Sides of the Story',
+    ctaBody:
+      'Create a digital gift box with photos, your voice and a message on GEMS. It stands alone or pairs perfectly with a physical present.',
+    faqs: [
+      { q: 'Are digital gifts as good as physical gifts?', a: 'They can be just as meaningful when they are personal and well thought out. The best choice depends on the recipient\u2019s preferences and the occasion.' },
+      { q: 'What are the disadvantages of physical gifts?', a: 'Physical gifts can involve shipping costs, delays, packaging waste, and the risk of choosing the wrong item. International parcels may also face customs fees.' },
+      { q: 'Are digital gifts eco-friendly?', a: 'Digital gifts usually create less waste because they need no wrapping, packaging, or shipping. They are a practical option for low-waste or paperless gifting.' },
+      { q: 'How can I make a digital gift feel more personal?', a: 'Add your own photos, a heartfelt written message, and a short voice note. Personal details turn a simple link into a meaningful keepsake.' },
+      { q: 'When should I choose a physical gift over a digital one?', a: 'Choose a physical gift when you are celebrating in person or the recipient values items they can hold and display. Practical needs like clothing or tools also suit physical gifts.' },
+    ],
+    related: [
+      { label: 'What is a virtual gift', path: '/what-is-a-virtual-gift' },
+      { label: 'Instant gift ideas', path: '/instant-gift-ideas' },
+      { label: 'Create a virtual gift', path: '/create' },
+    ],
+  },
+  {
+    slug: 'sustainable-gift-ideas-eco-friendly-holiday',
+    keyword: 'eco-friendly gift ideas',
+    metaTitle: 'Eco-Friendly Gift Ideas for a Low-Waste Holiday',
+    metaDescription:
+      'Discover eco-friendly gift ideas for a low-waste holiday, from zero waste and plastic-free presents to digital gifts that need no wrapping paper.',
+    layout: 'magazine',
+    image: { key: 'eco-gift', alt: 'Eco-friendly gift wrapped with natural leaves and candles' },
+    article: { datePublished: '2026-11-20', dateModified: '2026-11-20' },
+    h1: 'Sustainable Gift Ideas for an Eco-Friendly Holiday',
+    intro:
+      'The holiday season brings joy, but it also brings a lot of waste. Wrapping paper, plastic packaging, shipping boxes, and unwanted gifts often end up in the bin by January. If you want to celebrate generously while being kinder to the planet, sustainable gifting is a practical place to start. You do not need to be perfect. Small changes in what you give and how you wrap it add up. This guide covers eco-friendly gift ideas for every budget, plus simple tips for a low-waste holiday.',
+    blocks: [
+      { kind: 'h2', text: 'What Makes a Gift Eco-Friendly?' },
+      { kind: 'p', text: 'An environmentally friendly present usually meets at least one of these criteria:' },
+      {
+        kind: 'ul',
+        items: [
+          'Low or zero waste: Little or no packaging',
+          'Reusable or long-lasting: Designed to be used for years',
+          'Made from sustainable materials: Recycled, organic, or responsibly sourced',
+          'Locally made: Shorter transport distances',
+          'Non-physical: Experiences or digital gifts with no material footprint at the doorstep',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The idea behind [zero waste living](https://en.wikipedia.org/wiki/Zero_waste) is to reduce what we throw away by rethinking how we consume. Applied to gifting, it means choosing presents people will actually use and love.',
+      },
+      { kind: 'h2', text: 'Why Choose Sustainable Gifting?' },
+      { kind: 'p', text: 'Beyond reducing waste, sustainable gifts often have other benefits:' },
+      {
+        kind: 'ul',
+        items: [
+          'They tend to be more thoughtful because they require intention',
+          'They reduce clutter for the recipient',
+          'Many support small, local makers',
+          'Digital and experience gifts can be cheaper and faster',
+        ],
+      },
+      { kind: 'h2', text: 'Zero Waste Gift Ideas' },
+      { kind: 'p', text: 'These gifts create little to no waste:' },
+      {
+        kind: 'ul',
+        items: [
+          'Homemade treats: Cookies, jams, or spice blends in reusable jars',
+          'Houseplants or herb kits: A living gift that grows over time',
+          'Secondhand books: Pre-loved copies of favorite titles',
+          'Beeswax food wraps: A reusable alternative to cling film',
+          'Refillable products: Soaps, shampoos, or cleaning supplies from refill shops',
+        ],
+      },
+      { kind: 'h2', text: 'Plastic-Free Gift Ideas' },
+      { kind: 'p', text: 'If plastic is your main concern, look for:' },
+      {
+        kind: 'ul',
+        items: [
+          'Bamboo or stainless steel kitchen tools',
+          'Glass or steel water bottles',
+          'Natural fiber clothing like organic cotton or linen',
+          'Wooden toys for children',
+          'Solid shampoo and soap bars wrapped in paper',
+        ],
+      },
+      { kind: 'p', text: 'Always check packaging, too. A plastic-free product can still arrive wrapped in plastic.' },
+      { kind: 'h2', text: 'Paperless Gift Ideas and Digital Gifts for the Environment' },
+      {
+        kind: 'p',
+        text: 'Digital gifts are one of the easiest ways to cut holiday waste. There is no wrapping, no shipping box, and no delivery van. Popular paperless gift ideas include:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Virtual gift boxes with photos, voice notes, and messages',
+          'E-books and audiobooks',
+          'Online classes in cooking, art, music, or languages',
+          'Streaming or app subscriptions',
+          'Donations to a cause the recipient cares about',
+          'Digital photo albums of the year\u2019s best memories',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'Digital gifts do use some energy through devices and servers, but they usually avoid the packaging and transport involved in physical presents. With GEMS, you can [send a personalized digital gift with photos, a voice message, and a written note](/create). The unwrapping happens on screen, so there is no paper to throw away.',
+      },
+      { kind: 'h2', text: 'Experience Gifts With a Small Footprint' },
+      { kind: 'p', text: 'Experiences create memories instead of clutter. Some eco-friendly options:' },
+      {
+        kind: 'ul',
+        items: [
+          'A cooking class or pottery workshop',
+          'Tickets to a local concert, play, or museum',
+          'A nature walk, hike, or picnic you plan together',
+          'A gift voucher for a local cafe or restaurant',
+          'A "time voucher" for help with a chore, babysitting, or a home-cooked dinner',
+        ],
+      },
+      { kind: 'h2', text: 'Eco-Friendly Christmas Gifts by Recipient' },
+      { kind: 'h3', text: 'For Parents and Grandparents' },
+      {
+        kind: 'ul',
+        items: [
+          'A digital photo story of family memories',
+          'A recorded voice message from grandchildren',
+          'A potted plant or herb garden',
+          'Locally made honey or tea',
+        ],
+      },
+      { kind: 'h3', text: 'For Friends' },
+      {
+        kind: 'ul',
+        items: [
+          'A reusable coffee cup from a local roaster',
+          'Tickets to an event you can attend together',
+          'A virtual gift with your funniest memories',
+        ],
+      },
+      { kind: 'h3', text: 'For Partners' },
+      {
+        kind: 'ul',
+        items: [
+          'A planned day out with no material gifts',
+          'A memory box of photos and messages',
+          'A handwritten letter on recycled paper',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'If you are looking for more festive ideas, this guide to [digital gift ideas for Christmas](/digital-gift-ideas-for-christmas) has additional options.',
+      },
+      { kind: 'h2', text: 'Gifts With No Wrapping Paper' },
+      {
+        kind: 'p',
+        text: 'Much traditional wrapping paper is coated, laminated, or covered in glitter, which can make it hard to recycle. Try these alternatives:',
+      },
+      {
+        kind: 'ul',
+        items: [
+          'Fabric wrapping: Scarves, tea towels, or the Japanese furoshiki style',
+          'Reusable gift bags that can be passed on',
+          'Brown paper decorated with stamps or drawings',
+          'Old maps, newspapers, or magazines',
+          'No wrapping at all, with a digital reveal instead',
+        ],
+      },
+      {
+        kind: 'p',
+        text: 'The "scrunch test" is a simple way to check paper: if it springs back when scrunched, it likely contains plastic and may not be recyclable. Check your local recycling rules to be sure.',
+      },
+      { kind: 'h2', text: 'Minimalist Gift Ideas' },
+      { kind: 'p', text: 'Minimalist gifts focus on quality and meaning over quantity:' },
+      {
+        kind: 'ul',
+        items: [
+          'One well-made item instead of several small ones',
+          'A consumable gift, like good coffee or chocolate',
+          'A heartfelt letter or voice note',
+          'Shared time, like a planned dinner or video call',
+        ],
+      },
+      { kind: 'h2', text: 'Tips for a Low-Waste Holiday' },
+      { kind: 'p', text: 'Gifts are only part of the picture. A few more ways to cut waste:' },
+      {
+        kind: 'ul',
+        items: [
+          'Make a list. Ask what people actually want or need.',
+          'Agree on a gift limit with family, such as Secret Santa.',
+          'Shop locally to reduce shipping.',
+          'Reuse decorations each year.',
+          'Send e-cards instead of paper cards.',
+          'Plan meals carefully to reduce food waste.',
+        ],
+      },
+      { kind: 'h2', text: 'Giving Generously While Caring for the Planet' },
+      {
+        kind: 'p',
+        text: 'An eco-friendly holiday does not mean giving less love. It means being more intentional about what you give and how it arrives. Choose one or two changes this year, like swapping wrapping paper for fabric or sending a digital gift to someone far away. Small, steady choices make sustainable gifting easier every year.',
+      },
+    ],
+    ctaHeading: 'Send a Gift With Zero Wrapping Paper',
+    ctaBody:
+      'Create a digital gift with photos, a voice note and your message on GEMS. It arrives by link with no packaging, no shipping and no waste.',
+    faqs: [
+      { q: 'What are some good eco-friendly gift ideas?', a: 'Experience gifts, digital gifts, houseplants, homemade treats, and reusable items are all strong choices. Look for gifts with little packaging that the recipient will actually use.' },
+      { q: 'Are digital gifts better for the environment?', a: 'Digital gifts usually avoid packaging, wrapping paper, and shipping, which reduces waste. They still use some energy through devices, but their footprint at the doorstep is minimal.' },
+      { q: 'How can I wrap gifts without wrapping paper?', a: 'Use fabric, reusable gift bags, brown paper, or old maps and newspapers. Another option is to skip wrapping entirely and reveal the gift digitally.' },
+      { q: 'What is a zero waste gift?', a: 'A zero waste gift creates little or no trash, such as an experience, a homemade treat in a reusable jar, or a digital gift. The goal is to avoid packaging and items that get thrown away.' },
+      { q: 'How do I have a low-waste holiday with family?', a: 'Agree on gift limits, shop locally, reuse decorations, and plan meals to avoid leftovers going to waste. Choosing experiences or digital gifts also reduces clutter and packaging.' },
+    ],
+    related: [
+      { label: 'Digital gift ideas for Christmas', path: '/digital-gift-ideas-for-christmas' },
+      { label: 'Create a virtual gift', path: '/create' },
+      { label: 'What is a virtual gift', path: '/what-is-a-virtual-gift' },
+    ],
+  },
+];
+
+export const ALL_LANDING_PAGES: LandingPage[] = [...LANDING_PAGES, ...NEW_LANDING_PAGES];
+
 export function getLandingPage(slug: LandingView): LandingPage {
-  return LANDING_PAGES.find((page) => page.slug === slug) ?? LANDING_PAGES[0];
+  return ALL_LANDING_PAGES.find((page) => page.slug === slug) ?? LANDING_PAGES[0];
 }

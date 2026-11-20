@@ -10,6 +10,12 @@ import holidayShippingImage from '../assets/images/blog/holiday-shipping.jpg';
 import budgetGiftImage from '../assets/images/blog/budget-gift.jpg';
 import longDistanceBirthdayImage from '../assets/images/blog/long-distance-birthday.jpg';
 import valentinesLongDistanceImage from '../assets/images/blog/valentines-long-distance.jpg';
+import voiceMessageImage from '../assets/images/blog/voice-message-gift.jpg';
+import parentsAbroadImage from '../assets/images/blog/parents-abroad.jpg';
+import newYearMessagesImage from '../assets/images/blog/new-year-messages.jpg';
+import photoGiftDigitalImage from '../assets/images/blog/photo-gift-digital.jpg';
+import giftComparisonImage from '../assets/images/blog/gift-comparison.jpg';
+import ecoGiftImage from '../assets/images/blog/eco-friendly-gift.jpg';
 
 export interface GiftGuide {
   title: string;
@@ -18,9 +24,74 @@ export interface GiftGuide {
   image: string;
   alt: string;
   tag: string;
+  date?: string;
+}
+
+export function sortNewestFirst<T extends { path: string; date?: string }>(guides: T[]): T[] {
+  return [...guides].sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
 }
 
 export const BLOG_POSTS: GiftGuide[] = [
+  {
+    title: 'How to Record a Voice Message Gift (With Script Ideas)',
+    excerpt:
+      'Learn how to record a voice message gift on your phone, what to say, and simple script ideas for birthdays, partners and family.',
+    path: '/voice-message-gift-script-ideas',
+    image: voiceMessageImage,
+    alt: 'Man recording a voice message on his smartphone',
+    tag: 'Voice messages',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Gifts for Parents Far Away: Digital Gift Ideas',
+    excerpt:
+      'Digital gift ideas to surprise mom and dad abroad, skip customs fees, and send love to family in another country.',
+    path: '/digital-gifts-for-parents-living-abroad',
+    image: parentsAbroadImage,
+    alt: 'Senior couple enjoying a video call with family on a tablet',
+    tag: 'Family abroad',
+    date: '2026-11-20',
+  },
+  {
+    title: 'New Year Messages for Loved Ones: 2027 Wishes',
+    excerpt:
+      'Heartfelt New Year messages for family, friends and long distance partners, plus resolution message ideas.',
+    path: '/new-year-resolution-messages-loved-ones',
+    image: newYearMessagesImage,
+    alt: 'Crowd celebrating New Year with fireworks over the city',
+    tag: 'New Year',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Personalized Photo Gift Ideas Without Printing',
+    excerpt:
+      'Photo gift ideas with no printing - choose photos, build a photo story and make a digital gift that feels personal.',
+    path: '/personal-photo-gift-without-printing',
+    image: photoGiftDigitalImage,
+    alt: 'Couple smiling while looking through a photo album together',
+    tag: 'Photo gifts',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Digital Gifts vs Physical Gifts: Which Is Better?',
+    excerpt:
+      'Compare the pros, cons, cost, waste and thoughtfulness of digital and physical gifts so you can pick the right one.',
+    path: '/digital-gifts-vs-physical-gifts',
+    image: giftComparisonImage,
+    alt: 'Two hands exchanging a beautifully wrapped gift box',
+    tag: 'Gift guides',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Eco-Friendly Gift Ideas for a Low-Waste Holiday',
+    excerpt:
+      'Sustainable gift ideas for a low-waste holiday, from zero waste presents to digital gifts that need no wrapping paper.',
+    path: '/sustainable-gift-ideas-eco-friendly-holiday',
+    image: ecoGiftImage,
+    alt: 'Eco-friendly gift wrapped with natural leaves and candles',
+    tag: 'Eco-friendly',
+    date: '2026-11-20',
+  },
   {
     title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
     excerpt:
@@ -29,6 +100,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: thanksgivingImage,
     alt: 'Thanksgiving dinner table with roasted turkey and autumn side dishes',
     tag: 'Thanksgiving',
+    date: '2026-11-04',
   },
   {
     title: 'What Is a Virtual Gift? A Complete Beginner\u2019s Guide',
@@ -38,6 +110,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: virtualGiftImage,
     alt: 'Woman using a smartphone while holding a small gift bag',
     tag: 'Virtual gifts',
+    date: '2026-11-04',
   },
   {
     title: 'Best Digital Gift Ideas for Christmas 2026',
@@ -47,6 +120,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: digitalChristmasImage,
     alt: 'Laptop and wrapped Christmas gifts on a red and black background',
     tag: 'Christmas',
+    date: '2026-11-04',
   },
   {
     title: 'How to Avoid Shipping Delays This Holiday Season',
@@ -56,6 +130,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: holidayShippingImage,
     alt: 'Delivery parcels stacked at the front door',
     tag: 'Holiday shipping',
+    date: '2026-11-04',
   },
   {
     title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
@@ -65,6 +140,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: budgetGiftImage,
     alt: 'Hands wrapping a handmade gift in brown paper and twine',
     tag: 'Budget gifts',
+    date: '2026-11-04',
   },
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
@@ -74,6 +150,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: longDistanceBirthdayImage,
     alt: 'Woman celebrating a birthday over a video call with cake and candles',
     tag: 'Long distance',
+    date: '2026-10-29',
   },
   {
     title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
@@ -83,6 +160,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: christmasImage,
     alt: 'Last-minute Christmas gifts including a festive virtual gift box',
     tag: 'Christmas',
+    date: '2026-10-29',
   },
   {
     title: 'Instant Gift Ideas You Can Send in Minutes',
@@ -92,6 +170,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: lastMinuteImage,
     alt: 'Instant gift ideas sent in minutes from a phone',
     tag: 'Instant gifts',
+    date: '2026-10-29',
   },
   {
     title: "Valentine's Day Gifts for Long Distance Couples",
@@ -101,6 +180,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: valentinesLongDistanceImage,
     alt: 'Man surprising his partner with red roses and a Valentine\u2019s gift',
     tag: "Valentine's Day",
+    date: '2026-10-29',
   },
   {
     title: 'How to Make a Photo Memory Video or Slideshow Gift',
@@ -110,6 +190,7 @@ export const BLOG_POSTS: GiftGuide[] = [
     image: anniversaryImage,
     alt: 'Photo memory slideshow gift with a romantic photo timeline',
     tag: 'Photo gifts',
+    date: '2026-10-29',
   },
 ];
 

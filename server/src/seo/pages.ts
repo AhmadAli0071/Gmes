@@ -1,5 +1,5 @@
 import { FAQS, PAGES, SITE } from '../../../src/data/seoContent';
-import { LANDING_PAGES } from '../../../src/data/landingPages';
+import { ALL_LANDING_PAGES as LANDING_PAGES } from '../../../src/data/landingPages';
 import {
   landingArticleSchema,
   landingFaqSchema,
@@ -51,58 +51,112 @@ const GUIDE_PREVIEWS = [
 
 const BLOG_ARTICLES = [
   {
+    title: 'How to Record a Voice Message Gift (With Script Ideas)',
+    excerpt:
+      'Learn how to record a voice message gift on your phone, what to say, and simple script ideas for birthdays, partners and family.',
+    path: '/voice-message-gift-script-ideas',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Gifts for Parents Far Away: Digital Gift Ideas',
+    excerpt:
+      'Digital gift ideas to surprise mom and dad abroad, skip customs fees, and send love to family in another country.',
+    path: '/digital-gifts-for-parents-living-abroad',
+    date: '2026-11-20',
+  },
+  {
+    title: 'New Year Messages for Loved Ones: 2027 Wishes',
+    excerpt:
+      'Heartfelt New Year messages for family, friends and long distance partners, plus resolution message ideas.',
+    path: '/new-year-resolution-messages-loved-ones',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Personalized Photo Gift Ideas Without Printing',
+    excerpt:
+      'Photo gift ideas with no printing - choose photos, build a photo story and make a digital gift that feels personal.',
+    path: '/personal-photo-gift-without-printing',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Digital Gifts vs Physical Gifts: Which Is Better?',
+    excerpt:
+      'Compare the pros, cons, cost, waste and thoughtfulness of digital and physical gifts so you can pick the right one.',
+    path: '/digital-gifts-vs-physical-gifts',
+    date: '2026-11-20',
+  },
+  {
+    title: 'Eco-Friendly Gift Ideas for a Low-Waste Holiday',
+    excerpt:
+      'Sustainable gift ideas for a low-waste holiday, from zero waste presents to digital gifts that need no wrapping paper.',
+    path: '/sustainable-gift-ideas-eco-friendly-holiday',
+    date: '2026-11-20',
+  },
+  {
     title: 'How to Say Thank You on Thanksgiving: Heartfelt Message Ideas',
     excerpt: 'Ready-to-use messages for family, friends and coworkers, plus tips to make each one sound like you.',
     path: '/thanksgiving-thank-you-messages',
+    date: '2026-11-04',
   },
   {
     title: "What Is a Virtual Gift? A Complete Beginner's Guide",
     excerpt: 'The meaning, common types, benefits and how to send a personal digital gift in minutes.',
     path: '/what-is-a-virtual-gift',
+    date: '2026-11-04',
   },
   {
     title: 'Best Digital Gift Ideas for Christmas 2026',
     excerpt: 'No-shipping Christmas ideas, from voice messages to photo videos, for parents and family abroad.',
     path: '/digital-gift-ideas-for-christmas',
+    date: '2026-11-04',
   },
   {
     title: 'How to Avoid Shipping Delays This Holiday Season',
     excerpt: 'Key 2026 shipping deadlines, common delay causes and instant backups if you miss the cutoff.',
     path: '/holiday-shipping-deadlines-2026',
+    date: '2026-11-04',
   },
   {
     title: 'Black Friday Alternatives: Meaningful Gifts That Cost Less',
     excerpt: 'Free and low-cost gift ideas built on time, attention and shared memories instead of discounts.',
     path: '/black-friday-alternatives',
+    date: '2026-11-04',
   },
   {
     title: 'Surprise a Long Distance Partner on Their Birthday',
     excerpt: 'A simple plan across time zones - timing tips, gift ideas and mistakes to avoid.',
     path: '/long-distance-birthday-surprise',
+    date: '2026-10-29',
   },
   {
     title: "Last-Minute Christmas Gifts That Aren't Gift Cards",
     excerpt: 'Thoughtful ideas you can finish in an afternoon - digital, local and handmade.',
     path: '/last-minute-christmas-gift-ideas',
+    date: '2026-10-29',
   },
   {
     title: 'Instant Gift Ideas You Can Send in Minutes',
     excerpt: 'Forgot a gift? Voice notes, playlists and digital gift boxes that arrive in minutes.',
     path: '/instant-gift-ideas',
+    date: '2026-10-29',
   },
   {
     title: "Valentine's Day Gifts for Long Distance Couples",
     excerpt: 'Planning tips, digital ideas and ways to make February 14 feel close from afar.',
     path: '/valentines-day-gifts-long-distance-couples',
+    date: '2026-10-29',
   },
   {
     title: 'How to Make a Photo Memory Video or Slideshow Gift',
     excerpt: 'Pick photos, shape the story, add music or a voice note and share a gift they replay.',
     path: '/photo-memory-video-gift',
+    date: '2026-10-29',
   },
 ];
 
 const BLOG_PREVIEWS = [...BLOG_ARTICLES, ...GUIDE_PREVIEWS];
+
+const sortedBlogArticles = [...BLOG_ARTICLES].sort((a, b) => b.date.localeCompare(a.date));
 
 const SITE_STYLES = `
 <style>
@@ -381,7 +435,7 @@ const BLOG_PAGE: SeoPage = {
     <h1>Gift Ideas and Tips</h1>
     <p>Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays - all built around photos, your voice and a message that lasts.</p>
     <ul>
-      ${BLOG_ARTICLES.map(
+      ${sortedBlogArticles.map(
         (guide) =>
           `<li><a href="${guide.path}">${escapeHtml(guide.title)}</a> - ${escapeHtml(guide.excerpt)}</li>`
       ).join('')}
