@@ -12,15 +12,15 @@ export const BlogView: React.FC = () => (
       subtitle="Practical ideas for birthdays, anniversaries, Valentine's Day, long distance relationships and the holidays - all built around photos, your voice and a message that lasts."
     />
 
-    <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-      <div className="grid gap-6 md:grid-cols-2">
+    <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sortNewestFirst(BLOG_POSTS).map((guide) => (
           <a
             key={guide.path}
             href={guide.path}
-            className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#EAE4F9] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#C4B5FD] hover:shadow-[0_28px_60px_-36px_rgba(109,40,217,0.55)] sm:flex-row"
+            className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#EAE4F9] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#C4B5FD] hover:shadow-[0_28px_60px_-36px_rgba(109,40,217,0.55)]"
           >
-              <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-[#EDE9FE] sm:aspect-auto sm:w-52">
+              <div className="relative aspect-[16/10] shrink-0 overflow-hidden bg-[#EDE9FE]">
                 <img
                   src={guide.image}
                   alt={guide.alt}
@@ -35,11 +35,11 @@ export const BlogView: React.FC = () => (
                   {guide.tag}
                 </span>
               </div>
-              <div className="flex flex-1 flex-col p-6">
-                <h2 className="text-lg font-extrabold leading-snug tracking-tight text-[#1E1B4B] transition-colors group-hover:text-[#6D28D9]">
+              <div className="flex flex-1 flex-col p-5">
+                <h2 className="text-base font-extrabold leading-snug tracking-tight text-[#1E1B4B] transition-colors group-hover:text-[#6D28D9]">
                   {guide.title}
                 </h2>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7280]">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-[#6B7280] line-clamp-3">
                   {guide.excerpt}
                 </p>
                 <span className="mt-4 inline-flex items-center justify-end border-t border-zinc-100 pt-3 text-xs font-semibold">
